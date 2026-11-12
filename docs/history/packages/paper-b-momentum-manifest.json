@@ -1,0 +1,87 @@
+{
+  "archive": "paper-b-momentum-sources.zip",
+  "bytes": 71678,
+  "sha256": "c278a6fb517b683bb569fcf0359f2736bdeaf6580bad85a42382814ceec30a03",
+  "included_files": [
+    {
+      "path": "absolute-bounds.tex",
+      "bytes": 5053,
+      "sha256": "c8872329868a7e03e82286593bbeef9149c0e4b564bee134e7c859eb8f1927d1"
+    },
+    {
+      "path": "exchange-instability.tex",
+      "bytes": 18191,
+      "sha256": "7a57ea7bce26e2994ab03054aab379d8acbdf7a447604ff5d30bafc829c59588"
+    },
+    {
+      "path": "free-dielectric.tex",
+      "bytes": 9436,
+      "sha256": "a9c66696c43cadf6135f4d28b58e2bc9d8a189e9bd87ad59a4013379bfe65c9a"
+    },
+    {
+      "path": "interpretation.tex",
+      "bytes": 8663,
+      "sha256": "695b3014205aa2f025800f4ac0ec25cf381e11000b25f9cbbcf0fca13f5d8fbd"
+    },
+    {
+      "path": "introduction.tex",
+      "bytes": 5021,
+      "sha256": "6f3516232313914bddb2af17d0e26b0a2cf4a455ff7eebbd1c99e1bc09fd872b"
+    },
+    {
+      "path": "main.tex",
+      "bytes": 4065,
+      "sha256": "79fb3bd28a82c1925d1b8733cfadb268dd36208a878da6271684bdc9bfcfa581"
+    },
+    {
+      "path": "mass-gap.tex",
+      "bytes": 16936,
+      "sha256": "5731dd1349e334090e2e5f9a089cffb035bd6db50f297fa35ff878ce3c450b75"
+    },
+    {
+      "path": "mean-field.tex",
+      "bytes": 22646,
+      "sha256": "46055400b5c0077f1b91c78947181782160ce5c3f98f403d624c99f028411e30"
+    },
+    {
+      "path": "photon-extension.tex",
+      "bytes": 18760,
+      "sha256": "96aa47c65957e7d75e1e5311eecd9d18ec20fb624e0061275787d5abe0456327"
+    },
+    {
+      "path": "proof.tex",
+      "bytes": 17535,
+      "sha256": "a56877d725d86b2aec55e0deb4fd2e16ce5e9f6d2910c9dad1444bcaf77a880d"
+    },
+    {
+      "path": "references.tex",
+      "bytes": 6613,
+      "sha256": "ade36bcffbf5bf9c43061a4741e3cac264ab09864259377bcb1549939d4832d0"
+    },
+    {
+      "path": "static-response.tex",
+      "bytes": 22802,
+      "sha256": "950e6184a4cdcea678035a9f207a5d63f81595c4c5aff0aa18d1efa009bc119d"
+    },
+    {
+      "path": "ultraviolet-obstruction.tex",
+      "bytes": 13769,
+      "sha256": "50ae29e86ba6644e4adddaad05f50d28b952b131b4f238b37a759c536e0ce409"
+    },
+    {
+      "path": "vacuum-obstruction.tex",
+      "bytes": 4250,
+      "sha256": "46007702af87f2f268126f029511c2f328964a8f7f64c55d35afcbde6ffa5221"
+    }
+  ],
+  "validation": {
+    "fresh_compile": "passed",
+    "passes": 3,
+    "pages": 57,
+    "compiler_diagnostics": [],
+    "text_matches_review_pdf": true,
+    "text_sha256": "0b7afb19c59c3589d1c4838f5c5bb26d8a4f684363c6a50b23f5da21f215f084",
+    "check_directory": "tmp/paper-b-momentum-check-2g835o8g",
+    "submitted": false
+  }
+}

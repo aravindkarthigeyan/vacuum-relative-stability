@@ -1,0 +1,483 @@
+% New deduction for the specified fully free-Wick-ordered cutoff model.
+\section{Exchange destabilizes the statically matched free sea}
+\label{pv-section}
+
+The strict-absorption counterexample can be strengthened. In the modified
+photon-mass model, cancellation of the free-sea static response leaves a
+negative exchange contribution in the same soft transverse direction.
+This section proves that the free sea is not the product-state vacuum at
+that matching value. The energy improvement can be chosen proportional to
+volume. This is a deduction for the specific cutoff and full free-vacuum
+Wick ordering of this paper; it is not a claim about the physical photon
+mass or about vacuum-relative stability in the presence of nuclei.
+
+Throughout this section, fix
+\[
+ m>0,\qquad \Lambda_f>0,\qquad \Lambda_\gamma>0,\qquad
+ \alpha>0,\qquad e^2=4\pi\alpha,
+\]
+and set
+\begin{equation}
+ \delta\mu^2=2e^2\chi(0),\qquad
+ \chi(0)=\frac{\Lambda_f^3}{6\pi^2\sqrt{\Lambda_f^2+m^2}}.
+ \label{pv-matching}
+\end{equation}
+No small-coupling assumption is needed for the variational upper bound
+proved here. All constants may depend on these fixed parameters.
+The only limit taken is \(L\to\infty\). There are no nuclei.
+
+\subsection{An exactly neutral and pointwise charge-free family}
+
+Let \(q_L=(2\pi/L)e_1\), take transverse polarization \(e_2\), and write
+\[
+ A_L=P_f\mathsf a_2\cos(q_L\cdot x)P_f,
+ \qquad X_L=P_+A_LP_-.
+\]
+Here \(A_L\) is a fermionic one-particle current matrix, not the photon
+field operator. In free positive- and negative-energy eigenbases define
+\begin{equation}
+ (B_L)_{ij}=\frac{(X_L)_{ij}}{E_i+|E_j|},\qquad
+ S_L=B_L-B_L^*,\qquad
+ \gamma_{L,t}=e^{tS_L}P_-e^{-tS_L},\qquad
+ Q_{L,t}=\gamma_{L,t}-P_-.
+ \label{pv-family}
+\end{equation}
+The map \(B_L\) is from the negative to the positive free subspace.
+Every \(\gamma_{L,t}\) is a projection of rank \(2M_L\), so its Slater
+determinant belongs to the exact neutral sector.
+
+\begin{lemma}[Vanishing charge density at every rotation parameter]
+\label{pv-zero-charge}
+The family \eqref{pv-family} satisfies
+\[
+ \rho_{Q_{L,t}}(x)=0
+ \qquad\text{for every }x\in\T_L^3\text{ and every }t\in\R.
+\]
+In particular its direct Coulomb energy is exactly zero.
+\end{lemma}
+\begin{proof}
+Introduce the constant matrix
+\[
+ \mathsf C_5=\mathsf a_1\mathsf a_2\mathsf a_3\mathsf b.
+\]
+The four factors are Hermitian and mutually anticommuting. Reversing
+their order produces six sign changes, so \(\mathsf C_5\) is Hermitian
+and \(\mathsf C_5^2=I\). It anticommutes with each \(\mathsf a_i\) and
+with \(\mathsf b\). This is a constant unitary grading; it is not the
+antiunitary charge-conjugation operation, nor a grading commuting with
+the spatial Dirac matrices.
+
+Since \(\mathsf C_5\) commutes with the momentum cutoff and with
+\(|D_0|\),
+\[
+ \mathsf C_5P_-\mathsf C_5=P_+,
+ \qquad \mathsf C_5A_L\mathsf C_5=-A_L,
+ \qquad \mathsf C_5X_L\mathsf C_5=-X_L^*.
+\]
+The energy denominators in \eqref{pv-family} are preserved, whence
+\(\mathsf C_5B_L\mathsf C_5=-B_L^*\) and
+\(\mathsf C_5S_L\mathsf C_5=S_L\). Therefore
+\[
+ \mathsf C_5\gamma_{L,t}\mathsf C_5
+ =e^{tS_L}P_+e^{-tS_L}=I-\gamma_{L,t}.
+\]
+Taking the spin trace of the diagonal kernel gives
+\[
+ \tr_{\C^4}\gamma_{L,t}(x,x)=2d_L
+ =\tr_{\C^4}P_-(x,x).
+\]
+This proves the assertion with the sign convention
+\(\rho_Q=-\tr_{\C^4}Q(x,x)\).
+\end{proof}
+
+Put
+\begin{equation}
+ s_L=\sum_{i\in+,j\in-}
+          \frac{|(X_L)_{ij}|^2}{E_i+|E_j|}
+     =\frac V2\chi_L(q_L;e_2),
+ \qquad Q_{L,1}=[S_L,P_-]=B_L+B_L^*.
+ \label{pv-susceptibility}
+\end{equation}
+The subscript \(1\) on \(Q_{L,1}\) denotes the first derivative at
+\(t=0\), not the value \(Q_{L,t}\) at \(t=1\). The identity for \(s_L\)
+is the two-transfer cosine calculation of Proposition~\ref{prop:response}.
+Expansion of the rotation gives
+\begin{equation}
+ Q_{L,t}=t(B_L+B_L^*)+t^2(B_LB_L^*-B_L^*B_L)+O(t^3),
+ \label{pv-expansion}
+\end{equation}
+where the second-order diagonal blocks lie respectively in the positive
+and negative free subspaces. Consequently,
+\begin{align}
+ \Tr(D_0Q_{L,t})&=t^2s_L+O(V|t|^3),
+ \label{pv-kinetic-expansion}\\
+ J_{L,t}:=\Tr(A_LQ_{L,t})&=2ts_L+O(Vt^2).
+ \label{pv-current-expansion}
+\end{align}
+Uniformity of these and the other remainders is proved below.
+
+\subsection{The soft response of the sharp cutoff}
+
+The main theorem only needs \(\chi_L(q_L;e_2)\to\chi(0)\), already
+proved in Proposition~\ref{prop:response}. The following additional
+calculation identifies the sharp-cutoff loss at small nonzero momentum.
+
+\begin{lemma}[A linear cusp in the continuum static susceptibility]
+\label{pv-cusp}
+Let \(\chi_\infty(k)\) denote the continuum version of
+\eqref{eq:chiL}, with transfer \(ke_1\), polarization \(e_2\), and the
+same sharp ball cutoff on both momenta. Then
+\begin{equation}
+ \chi_\infty(k)=\chi(0)-\kappa_\Lambda|k|+O(k^2),\qquad
+ \kappa_\Lambda=
+ \frac{\Lambda_f^2}{8\pi^2E_\Lambda}
+ \left(1-\frac{\Lambda_f^2}{4E_\Lambda^2}\right)>0.
+ \label{pv-cusp-formula}
+\end{equation}
+Moreover \(\chi_L(q_L;e_2)-\chi(0)=O(L^{-1})\).
+The latter estimate does not assert a sign for the finite-lattice error.
+\end{lemma}
+\begin{proof}
+Center the two momenta at \(u\pm ke_1/2\), and write
+\(E_\pm=E(u\pm ke_1/2)\). Direct Dirac traces give the integrand
+\[
+ F_k(u)=\frac{1}{E_++E_-}
+ \left(1+
+ \frac{|u|^2+m^2-k^2/4-2u_2^2}{E_+E_-}\right).
+\]
+It is smooth and even in \(k\), uniformly for \(u\) in a fixed bounded
+set, because \(m>0\). Thus
+\[
+ F_k(u)=F_0(u)+O(k^2),\qquad
+ F_0(u)=\frac{1-u_2^2/E(u)^2}{E(u)}.
+\]
+The centered intersection of the two cutoff balls is star-shaped. In
+direction \(\omega\in S^2\) its radial boundary is
+\[
+ r_{\max}(\omega,k)
+ =\sqrt{\Lambda_f^2-\frac{k^2}{4}(1-\omega_1^2)}
+     -\frac{|k|}{2}|\omega_1|
+ =\Lambda_f-\frac{|k|}{2}|\omega_1|+O(k^2),
+\]
+uniformly in \(\omega\). Integrating the boundary layer therefore gives
+\[
+ \chi(0)-\chi_\infty(k)
+ =\frac{|k|\Lambda_f^2}{2(2\pi)^3E_\Lambda}
+ \int_{S^2}|\omega_1|
+     \left(1-\frac{\Lambda_f^2\omega_2^2}{E_\Lambda^2}\right)\dd\omega
+ +O(k^2).
+\]
+The two angular integrals are \(2\pi\) and \(\pi/2\), respectively,
+giving \eqref{pv-cusp-formula}.
+
+For the lattice statement, use momentum cubes of side \(h=2\pi/L\).
+The integrands and their first momentum derivatives are uniformly bounded
+for small \(h\). The number of cubes meeting the boundaries of the two
+balls is \(O(h^{-2})\), so their total volume is \(O(h)\); the interior
+cellwise Riemann error is also \(O(h)\). Hence
+\(\chi_L(q_L;e_2)-\chi_\infty(h)=O(h)\). Combining this with the
+continuum expansion proves the last claim.
+\end{proof}
+
+The cusp is a property of the sharp, field-independent cutoff. Removing
+the constant in the static quadratic response does not remove this
+nonanalytic cutoff dependence. For the argument below its relevant
+consequence is simply that the residual soft kinetic--photon cost per
+volume tends to zero.
+
+\subsection{A positive exchange limit}
+
+Define a matrix symbol on \(\R^3\) by
+\begin{equation}
+ F(p)=\mathbf1_{\{|p|\leq\Lambda_f\}}
+ \frac{P_+(p)\mathsf a_2P_-(p)+P_-(p)\mathsf a_2P_+(p)}{2E(p)}.
+ \label{pv-symbol}
+\end{equation}
+Inside the cutoff ball it can also be written as
+\[
+ F(p)=\frac1{2E(p)}
+       \left(\mathsf a_2-\frac{p_2D(p)}{E(p)^2}\right).
+\]
+Our Fourier normalization is
+\[
+ \check F(z)=\int_{\R^3}e^{ip\cdot z}F(p)\frac{\dd p}{(2\pi)^3},
+ \qquad
+ \mathcal X_\Lambda=
+       \int_{\R^3}\frac{\|\check F(z)\|_{\HS}^2}{|z|}\dd z.
+\]
+
+\begin{lemma}[Strictly positive exchange coefficient]
+\label{pv-exchange-limit}
+The number \(\mathcal X_\Lambda\) is finite and strictly positive, and
+\begin{equation}
+ \lim_{L\to\infty}\frac{\mathrm{Ex}(Q_{L,1})}{V}
+ =\frac12\mathcal X_\Lambda.
+ \label{pv-exchange-limit-formula}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The symbol \(F\) is bounded, compactly supported, and nonzero. For example,
+its interior value at zero is \(\mathsf a_2/(2m)\), and its interior
+formula is continuous. Thus \(F\in L^1\cap L^2\), \(\check F\) is bounded
+and square integrable, and
+\[
+ \int_{|z|\leq1}\frac{\|\check F(z)\|_{\HS}^2}{|z|}\dd z<\infty,
+ \qquad
+ \int_{|z|>1}\frac{\|\check F(z)\|_{\HS}^2}{|z|}\dd z
+ \leq\|\check F\|_{L^2}^2.
+\]
+Since \(\check F\) is not zero in \(L^2\), the integral is strictly positive.
+
+For the limit, abbreviate \(q=q_L\), and let
+\(D_{q,L}=\{p:p,p+q\in\Gamma_{f,L}\}\). The \(+q\) momentum entries of
+\(Q_{L,1}\) are
+\[
+ T_q(p)=\frac{P_+(p+q)\mathsf a_2P_-(p)
+                 +P_-(p+q)\mathsf a_2P_+(p)}
+                 {2(E(p+q)+E(p))},\qquad p\in D_{q,L}.
+\]
+The \(-q\) entries are their adjoints. In the exchange trace only
+opposite momentum transfers can pair. Reindexing these two contributions
+gives the exact identity
+\begin{equation}
+ \frac{\mathrm{Ex}(Q_{L,1})}{V}
+ =\frac2{V^2}
+ \sum_{\substack{p,p'\in D_{q,L}\\p\ne p'}}
+ \frac{4\pi}{|p-p'|^2}
+       \operatorname{Re}\tr\bigl(T_q(p)^*T_q(p')\bigr).
+ \label{pv-exchange-sum}
+\end{equation}
+The omitted diagonal is exactly the omitted zero Coulomb mode.
+The matrices \(T_q\) are uniformly bounded, and converge to \(F/2\)
+away from the cutoff boundary. To handle the integrable diagonal
+singularity, split \eqref{pv-exchange-sum} at \(|p-p'|=\eta\).
+Lattice-shell counting gives, uniformly in \(L\),
+\[
+ \frac1V\sum_{0<|k|<\eta}|k|^{-2}\leq C\eta.
+\]
+Together with \(M_L/V\leq C_\Lambda\), this bounds the absolute
+near-diagonal contribution by \(C_\Lambda\eta\). The corresponding
+continuum contribution obeys the same bound. Away from the diagonal the
+Riemann sums converge; the cutoff boundary has measure zero. First let
+\(L\to\infty\), then \(\eta\downarrow0\). The result is
+\[
+ \frac12\iint
+       \frac{4\pi}{|p-p'|^2}\tr\bigl(F(p)F(p')\bigr)
+                      \frac{\dd p\dd p'}{(2\pi)^6}
+ =\frac12\mathcal X_\Lambda.
+\]
+The last identity is the Fourier transform of the Coulomb kernel.
+It may be justified first with \(e^{-\epsilon|z|}/|z|\), whose transform
+is \(4\pi/(|p-p'|^2+\epsilon^2)\), and then by dominated convergence.
+No positivity of the individual matrix traces in the momentum integral
+is assumed. Positivity follows from its real-space expression.
+\end{proof}
+
+\subsection{Uniform remainders and the variational theorem}
+
+For \(L\) large enough that \(|q_L|\leq\Lambda_\gamma\), choose a photon
+state coherent in the squeezed representation of Lemma~\ref{lem:proca},
+using only the real transverse cosine mode. Optimizing its amplitude for
+the given Slater state yields the exact trial expectation
+\begin{equation}
+ E_\gamma(\delta\mu)+\mathcal T_L(t),\qquad
+ \mathcal T_L(t)=\Tr(D_0Q_{L,t})
+       -\frac\alpha2\mathrm{Ex}(Q_{L,t})
+       -\frac{e^2J_{L,t}^2}{V(|q_L|^2+\delta\mu^2)}.
+ \label{pv-trial-energy}
+\end{equation}
+Indeed, the amplitude-dependent field and interaction terms are
+\(V(|q_L|^2+\delta\mu^2)a^2/4+eaJ_{L,t}\). The direct term is absent
+by Lemma~\ref{pv-zero-charge}. Other photon modes remain in the squeezed
+vacuum; optimizing over them too could only lower the energy.
+
+\begin{lemma}[Volume-uniform Taylor control]
+\label{pv-remainders}
+There are \(\bar t>0\) and \(C<\infty\), independent of sufficiently
+large \(L\), such that for \(|t|\leq\bar t\),
+\begin{equation}
+ \mathcal T_L(t)=a_Lt^2+R_L(t),\qquad
+ |R_L(t)|\leq CV|t|^3,
+ \label{pv-uniform-remainder}
+\end{equation}
+where
+\begin{equation}
+ a_L=s_L\left(1-
+       \frac{2e^2\chi_L(q_L;e_2)}{|q_L|^2+\delta\mu^2}\right)
+       -\frac\alpha2\mathrm{Ex}(Q_{L,1}).
+ \label{pv-hessian}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The integral formula
+\[
+ B_L=\int_0^\infty e^{-u|D_0|}X_Le^{-u|D_0|}\dd u
+\]
+implies \(\|S_L\|=\|B_L\|\leq1/(2m)\), since \(\|A_L\|\leq1\).
+Taylor's formula for \(e^{tS_L}P_-e^{-tS_L}\) therefore has operator-norm
+remainders bounded independently of \(L\) on a fixed interval in \(t\).
+The one-particle dimension is \(4M_L=O(V)\). Multiplication by
+\(D_0\), whose norm is at most \(E_\Lambda\), or by \(A_L\), gives
+\eqref{pv-kinetic-expansion}--\eqref{pv-current-expansion} with uniform
+constants. The quadratic kinetic coefficient is
+\[
+ \Tr\bigl(D_0(B_LB_L^*-B_L^*B_L)\bigr)
+ =\sum_{i+,j-}(E_i+|E_j|)|(B_L)_{ij}|^2=s_L.
+\]
+Also \(s_L=O(V)\).
+
+For the exchange remainder use its polarized bilinear form. For cutoff
+one-particle matrices \(Q,R\), the Hilbert--Schmidt trace inequality gives
+\[
+ \left|\frac1V\sum_{k\ne0}\frac{4\pi}{|k|^2}
+          \Tr(QT_{-k}RT_k)\right|
+ \leq\left(\frac1V\sum_{0<|k|\leq2\Lambda_f}
+                         \frac{4\pi}{|k|^2}\right)
+                   \|Q\|_{\HS}\|R\|_{\HS}
+ \leq C_\Lambda\|Q\|_{\HS}\|R\|_{\HS}.
+\]
+Here \(T_k=P_fe^{ik\cdot x}P_f\) has norm at most one and vanishes
+for \(|k|>2\Lambda_f\). Taylor control gives
+\(\|Q_{L,t}\|_{\HS}=O(\sqrt V|t|)\) and
+\(\|Q_{L,t}-tQ_{L,1}\|_{\HS}=O(\sqrt Vt^2)\). Consequently
+\[
+ \mathrm{Ex}(Q_{L,t})
+ =t^2\mathrm{Ex}(Q_{L,1})+O(V|t|^3).
+\]
+Finally, \eqref{pv-current-expansion}, \(s_L=O(V)\), and
+\(|q_L|^2+\delta\mu^2\geq\delta\mu^2>0\) show that the photon term
+has an \(O(V|t|^3)\) remainder. Its quadratic coefficient is
+\(-4e^2s_L^2/[V(|q_L|^2+\delta\mu^2)]\). Substituting
+\eqref{pv-susceptibility} proves \eqref{pv-hessian}.
+\end{proof}
+
+\begin{theorem}[Extensive lowering below the statically matched free-sea vacuum]
+\label{pv-instability-theorem}
+Under \eqref{pv-matching}, there exist \(L_0,c>0\) such that for every
+\(L\geq L_0\) there is an exactly neutral Slater determinant and a
+squeezed coherent photon state whose energy obeys
+\begin{equation}
+ \langle H^{(\delta\mu)}_{\Lambda,L}(0)\rangle
+ \leq E_\gamma(\delta\mu)-cV.
+ \label{pv-extensive-lowering}
+\end{equation}
+If \(E^{\mathrm{prod,vac}}_{\Lambda,L}\) is the infimum over exactly
+neutral Slater determinants tensored with photon states, and
+\(E^{\vac,(\delta\mu)}_{\Lambda,L}\) is the unrestricted neutral
+vacuum energy, then
+\begin{equation}
+ E^{\vac,(\delta\mu)}_{\Lambda,L}
+ \leq E^{\mathrm{prod,vac}}_{\Lambda,L}
+ \leq E_\gamma(\delta\mu)-cV.
+ \label{pv-vacuum-bounds}
+\end{equation}
+In particular the free sea tensored with its optimal photon state is not
+a product-state ground state for sufficiently large boxes at this tuning.
+\end{theorem}
+\begin{proof}
+At \(\delta\mu^2=2e^2\chi(0)\),
+\[
+ \frac{s_L}{V}\left(1-
+       \frac{2e^2\chi_L(q_L;e_2)}{|q_L|^2+\delta\mu^2}\right)
+ \longrightarrow0.
+\]
+Lemma~\ref{pv-exchange-limit} therefore gives the strictly negative limit
+\begin{equation}
+ \lim_{L\to\infty}\frac{a_L}{V}
+ =-\frac\alpha4\mathcal X_\Lambda<0.
+ \label{pv-negative-hessian-limit}
+\end{equation}
+Choose \(L_0\) large enough that the selected photon mode is retained,
+the uniform remainder estimates apply, and
+\(a_L/V\leq-\alpha\mathcal X_\Lambda/8\) for \(L\geq L_0\).
+Choose a fixed \(0<t_*\leq\bar t\) with
+\(Ct_*\leq\alpha\mathcal X_\Lambda/16\), enlarging the remainder
+constant to a positive number if necessary. Then
+\[
+ \mathcal T_L(t_*)
+ \leq-\frac{\alpha\mathcal X_\Lambda}{16}t_*^2V.
+\]
+Use the trial state in \eqref{pv-trial-energy}, with
+\(c=\alpha\mathcal X_\Lambda t_*^2/16>0\). All states are admissible
+in the exact neutral sector, so the remaining conclusions follow from
+the variational principle.
+\end{proof}
+
+The mechanism is now an explicit Hessian calculation: the matched
+kinetic--photon contribution per volume vanishes in the soft limit, the
+charge density vanishes exactly, and the exchange contribution tends to
+a strictly negative constant. The positive bare photon mass still gives
+the extensive lower bound of Theorem~\ref{thm:ct}; the result above is
+compatible with it and does not reinstate the \(L^5\) instability.
+
+The theorem identifies the failure of the free sea as a reference
+minimizer at the specified static matching. It does not construct the
+interacting mean-field vacuum, determine a physical renormalized photon
+mass, prove spontaneous symmetry breaking, or compare nuclear energies
+with that interacting vacuum. The vacuum-relative product-state question
+must use its actual minimizing vacuum energy, which is strictly below
+the free-sea value in the regime proved here.
+
+\begin{corollary}[An exchange-shifted necessary bare-mass threshold]
+\label{pv-exchange-threshold}
+Assume \(0<\alpha<4/\pi\), and define
+\[
+ r_\Lambda=\frac{\alpha\mathcal X_\Lambda}{2\chi(0)}.
+\]
+Then \(0<r_\Lambda\leq\alpha\pi/4<1\). For this corollary replace
+\eqref{pv-matching} by an arbitrary fixed \(\delta\mu^2>0\).
+If
+\begin{equation}
+ \delta\mu^2<
+ \frac{2e^2\chi(0)}{1-r_\Lambda},
+ \label{pv-exchange-threshold-formula}
+\end{equation}
+there are \(c,L_0>0\) such that
+\[
+ E^{\vac,(\delta\mu)}_{\Lambda,L}
+ \leq E^{\mathrm{prod,vac}}_{\Lambda,L}
+ \leq E_\gamma(\delta\mu)-cV
+ \qquad(L\geq L_0).
+\]
+Consequently, minimization by the free sea and its optimal photon state
+for all sufficiently large boxes requires
+\(\delta\mu^2\geq2e^2\chi(0)/(1-r_\Lambda)\). This is a necessary
+condition, not a sufficient condition or a physical photon-mass
+renormalization prescription. The threshold is strictly larger than the
+free-sea static matching value \(2e^2\chi(0)\).
+\end{corollary}
+\begin{proof}
+Since \(Q_{L,1}=B_L+B_L^*\),
+\[
+ \Tr\bigl(|D_0|Q_{L,1}^2\bigr)
+ =\sum_{i+,j-}(E_i+|E_j|)|(B_L)_{ij}|^2=s_L.
+\]
+The periodic Coulomb--Kato exchange bound
+\eqref{eq:exchange}, together with \(|p|\leq|D_0|\) and
+\(|D_0|\geq m\), gives
+\[
+ \mathrm{Ex}(Q_{L,1})
+ \leq\left(\frac\pi2+\frac{c_*}{mL}\right)s_L.
+\]
+Divide by \(V\) and use \eqref{pv-susceptibility} and
+Lemma~\ref{pv-exchange-limit}. The limit yields
+\(\mathcal X_\Lambda\leq(\pi/2)\chi(0)\), proving the bound on
+\(r_\Lambda\).
+
+For any fixed positive \(\delta\mu^2\), the same rotation and photon
+optimization have the coefficient \eqref{pv-hessian}, and the uniform
+remainder proof remains valid. Its limit is now
+\[
+ \lim_{L\to\infty}\frac{a_L}{V}
+ =\frac{\chi(0)}2
+    \left(1-\frac{2e^2\chi(0)}{\delta\mu^2}\right)
+       -\frac\alpha4\mathcal X_\Lambda
+ =\frac{\chi(0)}2
+    \left(1-r_\Lambda-\frac{2e^2\chi(0)}{\delta\mu^2}\right).
+\]
+It is strictly negative under \eqref{pv-exchange-threshold-formula}.
+The fixed-small-\(t\) argument of Theorem~\ref{pv-instability-theorem}
+then gives the stated extensive lowering. At equality the limiting
+quadratic coefficient vanishes; this argument makes no claim about
+higher orders or about minimization above the threshold.
+\end{proof}

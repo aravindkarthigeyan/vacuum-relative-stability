@@ -1,0 +1,547 @@
+% Corrected continuation: static response and a positive photon-mass deformation.
+\section{Continuation I: static susceptibility and a positive photon-mass deformation}
+\label{sec:ward}
+
+This section gives two statements with different scopes. First, the free cutoff
+Dirac sea has a negative second-order response to a sufficiently soft static
+transverse field. Second, adding a fixed positive transverse photon-mass term
+produces a modified Hamiltonian with an extensive lower bound. The second
+statement does not establish stability of renormalized massless QED. The
+distinction is necessary because the field-independent momentum cutoff used
+here is not gauge covariant.
+
+Write
+\[
+ E(p)=\sqrt{p^2+m^2},\qquad
+ D(p)=\boldsymbol{\mathsf a}\cdot p+m\mathsf b,\qquad
+ P_\pm(p)=\frac12\bigl(1\pm D(p)/E(p)\bigr),\qquad
+ E_\Lambda=\sqrt{\Lambda_f^2+m^2}.
+\]
+All fermionic perturbation statements below concern \(H_D\) and its free
+vacuum, without the Coulomb interaction. They are finite-dimensional
+statements before any limit is taken.
+
+\subsection{Static transverse susceptibility of the cutoff Dirac sea}
+
+For \(q\in(2\pi/L)\Z^3\setminus\{0\}\) and a real unit vector
+\(\varepsilon\perp q\), define
+\begin{equation}
+ \chi_L(q;\varepsilon)=\frac1V
+ \sum_{\substack{p\in\Gamma_{f,L}\\p+q\in\Gamma_{f,L}}}
+ \frac{\tr\left[P_+(p+q)(\varepsilon\cdot\boldsymbol{\mathsf a})
+ P_-(p)(\varepsilon\cdot\boldsymbol{\mathsf a})\right]}
+ {E(p+q)+E(p)}.
+ \label{eq:chiL}
+\end{equation}
+Each summand is nonnegative. Indeed, with
+\(X=P_+(p+q)(\varepsilon\cdot\boldsymbol{\mathsf a})P_-(p)\), its
+numerator is \(\tr(XX^*)\).
+
+\begin{lemma}[Trace identity]
+\label{lem:trace}
+For every \(p\in\R^3\) and every real unit vector \(\varepsilon\),
+\begin{equation}
+ \tr\left[P_+(p)(\varepsilon\cdot\boldsymbol{\mathsf a})
+ P_-(p)(\varepsilon\cdot\boldsymbol{\mathsf a})\right]
+ =2\left(1-\frac{(\varepsilon\cdot p)^2}{E(p)^2}\right).
+ \label{eq:trace-identity}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set \(\mathsf e=\varepsilon\cdot\boldsymbol{\mathsf a}\). The Dirac
+anticommutation relations give \(\mathsf e^2=1\) and
+\[
+ \mathsf eD(p)\mathsf e=-D(p)+2(\varepsilon\cdot p)\mathsf e.
+\]
+Using \(\tr D(p)=\tr\mathsf e=0\), \(D(p)^2=E(p)^2I\), and
+\(\tr[D(p)\mathsf e]=4\varepsilon\cdot p\), we obtain
+\[
+ \tr(P_+\mathsf eP_-\mathsf e)
+ =\frac14\left(4-\frac{\tr[D(p)\mathsf eD(p)\mathsf e]}{E(p)^2}\right)
+ =\frac14\left(8-\frac{8(\varepsilon\cdot p)^2}{E(p)^2}\right).
+\]
+\end{proof}
+
+\begin{proposition}[Second-order response to a static transverse field]
+\label{prop:response}
+Let \(A_{\rm cl}(x)=a\varepsilon\cos(q\cdot x)\), where \(a\in\R\), and put
+\[
+ J_q=\int_{\T_L^3}\cos(q\cdot x)\,\varepsilon\cdot j(x)\dd x,
+ \qquad h(a)=H_D+eaJ_q.
+\]
+Restrict \(h(a)\) to the neutral fermionic sector. Then:
+\begin{enumerate}[label=(\roman*)]
+\item The free vacuum \(\Omega_f\) is the unique ground state of \(h(0)\),
+and the remaining spectrum is contained in \([2m,\infty)\).
+\item The lowest eigenvalue \(e_0(a)\) is real-analytic and even near zero,
+and
+\begin{equation}
+ e_0(a)=-\frac{e^2a^2V}{2}\chi_L(q;\varepsilon)+O(a^4).
+ \label{eq:second-order}
+\end{equation}
+The remainder in this statement is at fixed \(L,q\) and cutoffs.
+\item For fixed \(n\in\Z^3\setminus\{0\}\), fixed \(\varepsilon\perp n\),
+and \(q=2\pi n/L\),
+\begin{equation}
+ \lim_{L\to\infty}\chi_L(q;\varepsilon)=\chi(0)
+ :=\int_{|p|\leq\Lambda_f}
+ \frac{1-(\varepsilon\cdot p)^2/E(p)^2}{E(p)}\frac{\dd p}{(2\pi)^3}
+ =\frac{\Lambda_f^3}{6\pi^2E_\Lambda}.
+ \label{eq:chi0}
+\end{equation}
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+Every nonvacuum state in the neutral free sector contains at least one
+electron and one positron, so its energy is at least \(2m\). The simplicity
+and gap imply analytic perturbation theory for the lowest eigenvalue.
+The vacuum current vanishes: its local sea contribution is an odd momentum
+sum for the symmetric cutoff, and the nonzero cosine mode also has zero
+momentum diagonal. Hence \(\langle\Omega_f,J_q\Omega_f\rangle=0\).
+
+In the finite sea representation let
+\[
+ A_f=P_f(\varepsilon\cdot\boldsymbol{\mathsf a})
+             \cos(q\cdot x)P_f.
+\]
+The normal-ordered bilinear \(J_q\) creates from the vacuum precisely the
+particle-hole states with matrix elements
+\(\langle\varphi_i,A_f\varphi_j\rangle\), where \(i\) is a positive-energy
+state and \(j\) a negative-energy state of \(D_0\). If \(R_D\) denotes the
+inverse of \(H_D\) on \(\Omega_f^\perp\) in the neutral sector, the
+coefficient of \(a^2\) is
+\[
+ -e^2\langle J_q\Omega_f,R_DJ_q\Omega_f\rangle
+ =-e^2\sum_{i,j}
+   \frac{|\langle\varphi_i,A_f\varphi_j\rangle|^2}{E_i+|E_j|}.
+\]
+The two momentum transfers \(q\) and \(-q\) have matrix coefficient
+\(\frac12\varepsilon\cdot\boldsymbol{\mathsf a}\). They give disjoint
+particle-hole matrix entries because \(q\ne0\). Thus the sum is
+\(V[\chi_L(q;\varepsilon)+\chi_L(-q;\varepsilon)]/4\).
+The substitution \(p\mapsto-p\), together with
+\[
+ \mathsf bP_\pm(p)\mathsf b=P_\pm(-p),\qquad
+ \mathsf b(\varepsilon\cdot\boldsymbol{\mathsf a})\mathsf b
+ =-\varepsilon\cdot\boldsymbol{\mathsf a},
+\]
+proves \(\chi_L(-q;\varepsilon)=\chi_L(q;\varepsilon)\).
+Finally, translation by any \(t\) with \(q\cdot t=\pi\) modulo \(2\pi\)
+preserves the cutoff and \(H_D\), while sending \(J_q\) to \(-J_q\).
+Consequently \(e_0(a)=e_0(-a)\), which proves the even remainder in
+\eqref{eq:second-order}.
+
+For (iii), the summand is bounded and continuous in its momenta, since
+\(m>0\). The intersection of the two cutoff balls converges to the cutoff
+ball, whose boundary has measure zero. Riemann-sum convergence and
+Lemma~\ref{lem:trace} therefore give the integral in \eqref{eq:chi0}.
+Angular averaging gives
+\[
+ \chi(0)=\frac1{2\pi^2}\int_0^{\Lambda_f}
+ \left(\frac{p^2}{\sqrt{p^2+m^2}}
+       -\frac{p^4}{3(p^2+m^2)^{3/2}}\right)\dd p
+ =\frac{\Lambda_f^3}{6\pi^2E_\Lambda},
+\]
+as follows by differentiating \(p^3/(3\sqrt{p^2+m^2})\).
+\end{proof}
+
+\begin{corollary}[Negative static mass-like curvature]
+\label{cor:tachyon}
+The free-sea Born--Oppenheimer energy, including the classical magnetic
+energy of the specified cosine mode, satisfies
+\begin{equation}
+ e_0(a)+\frac{V|q|^2a^2}{4}
+ =\frac{Va^2}{4}\left(|q|^2-2e^2\chi_L(q;\varepsilon)\right)+O(a^4).
+ \label{eq:tachyon}
+\end{equation}
+Its quadratic coefficient is negative exactly when
+\[
+ |q|^2<2e^2\chi_L(q;\varepsilon).
+\]
+Define the positive scale
+\begin{equation}
+ \mu_{\rm ind}^2:=2e^2\chi(0)
+ =\frac{4\alpha}{3\pi}\frac{\Lambda_f^3}{E_\Lambda}
+ =\frac{4\alpha}{3\pi}\Lambda_f^2
+   \left(1+O(m^2/\Lambda_f^2)\right).
+ \label{eq:muind}
+\end{equation}
+For fixed nonzero \(n\), fixed \(\varepsilon\perp n\), and any
+\(0<\delta<1\), sufficiently large \(L\) satisfies
+\(2e^2\chi_L(2\pi n/L;\varepsilon)>(1-\delta)\mu_{\rm ind}^2\).
+In particular, the quadratic coefficient is negative along these sequences
+once \(|2\pi n/L|^2<(1-\delta)\mu_{\rm ind}^2\).
+\end{corollary}
+\begin{proof}
+For a transverse cosine, \(\frac12\int|\nabla\times A_{\rm cl}|^2
+=V|q|^2a^2/4\). Apply Proposition~\ref{prop:response} and its limit.
+\end{proof}
+
+The limit used in this corollary does not imply instability for every
+finite momentum with \(|q|<\mu_{\rm ind}\). The finite-momentum condition
+contains \(\chi_L(q;\varepsilon)\), not \(\chi(0)\). The word ``mass-like''
+describes the nonzero constant in this static quadratic coefficient. No
+photon pole, real-time dispersion relation, or physical tachyon mass has
+been derived. Coulomb and photon fluctuation corrections are not included
+in this free-sea susceptibility.
+
+\begin{remark}[Gauge interpretation and the scope of positivity]
+\label{rem:ward}
+On a torus a constant vector potential generally carries nontrivial
+holonomy. It can be removed by a periodic charged gauge transformation only
+if \(eA_iL\in2\pi\Z\) for every component. Thus finite-volume gauge
+invariance does not by itself require independence of all constant
+potentials. The model also fixes the harmonic photon sector by omitting
+\(k=0\).
+
+In an infinite-volume gauge-compatible treatment, the Ward identities,
+together with the appropriate locality and regularity of the polarization
+tensor near zero momentum, constrain an unphysical photon-mass term.
+Those ingredients are not supplied by the present field-independent
+momentum cutoff. In particular, the fact that the canonical Dirac coupling
+is linear in \(A\) does not, by itself, disprove the possibility of such
+cancellations after a different regularization and renormalization.
+We do not assume an unproved Schwinger-term or diamagnetic cancellation.
+The classical-field Pauli--Villars construction of \cite{GHLS2013} is an
+example of a different framework; it is not a theorem for the present
+quantized many-body Hamiltonian.
+
+There is a valid abstract positivity statement. If a finite-dimensional
+\(H_0\geq0\) has simple ground state \(\Omega\), a positive gap, and a
+self-adjoint centered current \(J\), then
+\[
+ \left.\frac{\dd^2}{\dd a^2}\inf\sigma(H_0+eaJ)\right|_{a=0}
+ =-2e^2\langle J\Omega,(H_0|_{\Omega^\perp})^{-1}J\Omega\rangle.
+\]
+This is strictly negative precisely when \(J\Omega\ne0\). In that case,
+\[
+ \langle J\Omega,(H_0|_{\Omega^\perp})^{-1}J\Omega\rangle
+ \geq\frac{\|J\Omega\|^2}{\|H_0\|}>0.
+\]
+The hypotheses do not establish nonzero pair coupling or a positive
+susceptibility per volume for arbitrary regulators. Here these facts are
+verified by the explicit current and \eqref{eq:chi0}. The negative curvature
+and the \(L^5\) trial estimate of Section~\ref{sec:counterexamples} both
+exhibit the inadequacy of this massless, field-independent cutoff for a
+volume-extensive vacuum energy.
+\end{remark}
+
+\paragraph{Numerical scale, not a finite-volume threshold theorem.}
+For \(\alpha=1/137\), direct evaluation of \eqref{eq:chi0} and
+\eqref{eq:muind} gives the following dimensionless values:
+\begin{center}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+\(\Lambda_f/m\) & \(\chi(0)/m^2\) & \(\mu_{\rm ind}^2/m^2\)
+& \((2\pi/\mu_{\rm ind})m\)\\
+\midrule
+5   & 0.413973 & 0.0759437 & 22.8000\\
+10  & 1.680306 & 0.3082532 & 11.3169\\
+100 & 168.860197 & 30.9775155 & 1.1289\\
+\bottomrule
+\end{tabular}
+\end{center}
+For \(\Lambda_f\gg m\), the continuum long-wavelength estimate for the
+lowest-mode length scale is
+\[
+ L_*:=\frac{2\pi}{\mu_{\rm ind}}
+ \sim\frac{112.8875}{\Lambda_f}.
+\]
+This estimates the scale of onset; an actual finite-box test must use
+\eqref{eq:chiL} and the exact criterion in Corollary~\ref{cor:tachyon}.
+No monotonicity in \(|q|\), or exact threshold inferred from a numerical
+lattice sample, is asserted.
+
+\subsection{An extensive bound for a positive photon-mass deformation}
+
+Introduce an additional fixed parameter \(\delta\mu>0\) and define
+\begin{equation}
+ H^{(\delta\mu)}_{\Lambda,L}(R,Z)
+ =H_{\Lambda,L}(R,Z)
+ +\frac{\delta\mu^2}{2}\int_{\T_L^3}:\!A(x)\cdot A(x)\!:\dd x.
+ \label{eq:Hct}
+\end{equation}
+Photon normal ordering here is relative to the original massless Fock
+vacuum. The added operator is independent of states and nuclear
+configurations. It changes the bare Hamiltonian. It is a transverse
+photon-mass deformation of the two-polarization Coulomb-gauge model; the
+instantaneous Coulomb interaction is unchanged. We do not identify it
+with a complete covariant Proca theory, or assume that it is an allowed
+renormalization of physical massless QED without further matching conditions.
+
+Choose the real polarization frame so that
+\(\varepsilon_\lambda(-k)=\varepsilon_\lambda(k)\). This is possible by
+choosing the frame independently on each pair \(\{k,-k\}\); no smooth
+global polarization frame is needed for these finite mode sets.
+
+\begin{lemma}[Diagonalization of the modified photon Hamiltonian]
+\label{lem:proca}
+Let \(\omega_k=\sqrt{|k|^2+\delta\mu^2}\). There is a unitary \(U\) on the
+photon Fock space, a finite product of oscillator squeezing transformations,
+such that
+\begin{align}
+ U\left(H_\gamma+\frac{\delta\mu^2}{2}\int:\!A^2\!:\right)U^*
+ &=\sum_{k,\lambda}\omega_k a^\dagger_{k,\lambda}a_{k,\lambda}
+   +E_\gamma(\delta\mu),
+ \label{eq:proca-H}\\
+ U A(x)U^*
+ &=\sum_{k,\lambda}\frac{\varepsilon_\lambda(k)}{\sqrt{2V\omega_k}}
+ \left(a_{k,\lambda}e^{ik\cdot x}+a^\dagger_{k,\lambda}e^{-ik\cdot x}\right),
+ \label{eq:proca-A}
+\end{align}
+where all sums run over the original retained nonzero photon modes and
+\begin{equation}
+ E_\gamma(\delta\mu)
+ =\sum_{k,\lambda}
+ \left(\frac{\omega_k-|k|}{2}-\frac{\delta\mu^2}{4|k|}\right)
+ \in\left[-\frac{\delta\mu^2}{4}\sum_{k,\lambda}|k|^{-1},\,0\right].
+ \label{eq:proca-const}
+\end{equation}
+For \(L\geq\Lambda_\gamma^{-1}\),
+\( |E_\gamma(\delta\mu)|\leq C\delta\mu^2\Lambda_\gamma^2V\).
+\end{lemma}
+\begin{proof}
+Use orthonormal real sine and cosine modes for each pair \(\{k,-k\}\)
+and polarization. Each real oscillator has coordinates \(X,\Pi\),
+\([X,\Pi]=i\), with massless Hamiltonian
+\[
+ \frac12(\Pi^2+|k|^2X^2)-\frac{|k|}{2},
+ \qquad X=\frac{a+a^\dagger}{\sqrt{2|k|}}.
+\]
+The added normal-ordered term for that oscillator is
+\(\frac{\delta\mu^2}{2}(X^2-1/(2|k|))\). Hence their sum is
+\[
+ \frac12(\Pi^2+\omega_k^2X^2)
+ -\frac{|k|}{2}-\frac{\delta\mu^2}{4|k|}.
+\]
+The unitary dilation with
+\[
+ UXU^*=\sqrt{|k|/\omega_k}\,X,
+ \qquad U\Pi U^*=\sqrt{\omega_k/|k|}\,\Pi
+\]
+sends the quadratic oscillator to
+\(\omega_k(a^\dagger a+1/2)\), and sends its field coordinate to
+\((a+a^\dagger)/\sqrt{2\omega_k}\). There are two real oscillators per
+pair and polarization, exactly the number of original momentum-mode
+oscillators. Returning to plane waves proves both operator identities and
+the stated scalar constant, with no additional factor of two.
+
+The identity
+\(\omega_k-|k|=\delta\mu^2/(\omega_k+|k|)\) implies
+\(0\leq\omega_k-|k|\leq\delta\mu^2/(2|k|)\), proving the scalar bounds.
+Finally, lattice-shell counting gives
+\[
+ \frac1V\sum_{0<|k|\leq\Lambda_\gamma,\lambda}|k|^{-1}
+ \leq C\Lambda_\gamma^2
+ \qquad (L\geq\Lambda_\gamma^{-1}).
+\]
+For example, after writing \(k=2\pi n/L\), the sum of \(|n|^{-1}\)
+over \(0<|n|\leq R\) is bounded by \(CR^2\); if \(R<1\), it is empty.
+\end{proof}
+
+\begin{theorem}[Extensive lower bound for the modified massive-bare model]
+\label{thm:ct}
+Let \(\delta\mu>0\) and
+\(L\geq\max\{\Lambda_f^{-1},\Lambda_\gamma^{-1}\}\).
+For every distinct nuclear configuration, the Hamiltonian
+\eqref{eq:Hct} is self-adjoint on
+\[
+ (I\otimes U^*)D\left(I\otimes\sum_{k,\lambda}
+                         \omega_k a^\dagger_{k,\lambda}a_{k,\lambda}\right)
+\]
+and has compact resolvent. The same statements hold on each nonempty
+charge sector. On every admissible neutral sector,
+\begin{equation}
+ H^{(\delta\mu)}_{\Lambda,L}(R,Z)
+ \geq-A_\Lambda K-
+ \left(B_\Lambda+\frac{6e^2d_L^2}{\delta\mu^2}
+                  +C\delta\mu^2\Lambda_\gamma^2\right)V,
+ \label{eq:ct-bound}
+\end{equation}
+where \(A_\Lambda,B_\Lambda\) are the constants of
+Section~\ref{sec:lower-proof} and \(d_L=M_L/V\).
+Since \(d_L\leq C\Lambda_f^3\) in the specified range of box sizes,
+this is a lower bound uniform in volume. Moreover,
+\begin{equation}
+ -\left(B_\Lambda+\frac{6e^2d_L^2}{\delta\mu^2}
+                  +C\delta\mu^2\Lambda_\gamma^2\right)V
+ \leq E^{\vac,(\delta\mu)}_{\Lambda,L}
+ \leq E_\gamma(\delta\mu)\leq0.
+ \label{eq:ct-vac}
+\end{equation}
+Thus the extensive estimate \eqref{eq:W} holds for this modified model
+with the stated normal ordering. No additional infrared decoupling of
+the original nonzero current couplings is imposed.
+\end{theorem}
+\begin{proof}
+Conjugate by \(I\otimes U\). The fermionic terms are unchanged, the
+photon Hamiltonian is given by \eqref{eq:proca-H}, and the interaction
+contains the field \eqref{eq:proca-A}. Every current coefficient is a bounded
+operator on the finite-dimensional fermionic space. A finite sum of such
+coefficients times creation or annihilation operators is infinitesimally
+bounded relative to the positive oscillator Hamiltonian. The Coulomb and
+free fermionic terms are bounded for each fixed configuration and fixed
+regulators. Kato--Rellich therefore gives self-adjointness on the stated
+domain. Equivalently, the perturbation is infinitesimally form bounded,
+so its form norm is equivalent to the oscillator form norm after adding a
+constant. Finitely many positive-frequency oscillators have compact
+form-domain embedding, proving compact resolvent. Charge conservation
+reduces the operator to the indicated sectors.
+
+Apply Lemma~\ref{lem:square} with frequencies \(\omega_k\) and coefficients
+\[
+ B_{k,\lambda}=
+ \frac{e}{\sqrt{2V\omega_k}}\,
+ \varepsilon_\lambda(k)\cdot\widehat j(k).
+\]
+Here and below \(|B|^2\) denotes \(B^*B\), not a commuting numerical square.
+The result is
+\begin{align*}
+ \sum_{k,\lambda}\omega_k a^\dagger a
+       +e\int j\cdot UAU^*
+ &\geq-\frac{e^2}{2V}\sum_{k,\lambda}
+       \frac{|\varepsilon_\lambda(k)\cdot\widehat j(k)|^2}{\omega_k^2}\\
+ &\geq-\frac{e^2}{2\delta\mu^2}
+             \int\sum_{i=1}^3j_i(x)^2\dd x\\
+ &\geq-\frac{6e^2d_L^2V}{\delta\mu^2}.
+\end{align*}
+For the second step the transverse polarization matrix is a positive
+contraction on the vector index, so its operator quadratic form is bounded
+by the full vector square, regardless of commutation between currents.
+Extending the Fourier sum and applying Parseval then gives the integral.
+The last step is \eqref{eq:local-bounds}. Add \(H_D\geq0\), the
+electrostatic estimate \eqref{eq:full-coulomb-bound}, and the scalar bound
+in Lemma~\ref{lem:proca}. This proves \eqref{eq:ct-bound} and the lower
+vacuum bound.
+
+For the upper vacuum bound, use
+\(\Omega_f\otimes U^*\Omega_\gamma\). Its free fermion and fully
+Wick-ordered Coulomb expectations vanish at \(K=0\). Its current-field
+expectation vanishes because the free-sea current is zero. Its photon
+energy is exactly \(E_\gamma(\delta\mu)\).
+\end{proof}
+
+\begin{remark}[Soft-momentum matching and the remaining distinction]
+\label{rem:ct-choice}
+\begin{enumerate}[label=(\alph*)]
+\item In the free-sea static quadratic calculation the deformation replaces
+the coefficient in \eqref{eq:tachyon} by
+\(q^2+\delta\mu^2-2e^2\chi_L(q;\varepsilon)\).
+Thus the choice
+\(\delta\mu^2=\mu_{\rm ind}^2=2e^2\chi(0)\) cancels its constant part
+in the infinite-volume, soft-momentum limit at order \(e^2\).
+We call this \emph{static leading-order matching}. It is not an exact
+finite-volume identity and does not prove a nonperturbative massless photon
+or the Ward identities of a renormalized theory.
+\item At this choice,
+\[
+ \frac{6e^2d_L^2}{\delta\mu^2}
+ =\frac{3d_L^2}{\chi(0)}
+ \longrightarrow\frac{\Lambda_f^3E_\Lambda}{2\pi^2}
+ \quad(L\to\infty).
+\]
+The cancellation of \(\alpha\) in this particular bound is algebraic.
+It is not a statement about cutoff-uniform renormalized parameters.
+\item In the neutral-current trial construction, optimizing the displaced
+massive oscillator coordinates replaces the massless photon gain by
+\[
+ -\frac{e^2J^2}{V(q^2+\delta\mu^2)},
+ \qquad
+ \frac{e^2J^2}{V(q^2+\delta\mu^2)}
+ \leq\frac{e^2J^2}{V\delta\mu^2}=O(V).
+\]
+The scalar photon contribution is also \(O(V)\). The \(L^5\) mechanism
+is therefore removed in this modified model, consistently with the theorem.
+\item Theorem~\ref{thm:ct} needs only \(\delta\mu>0\). It gives no
+uniformity as \(\delta\mu\downarrow0\) or as the ultraviolet cutoffs are
+removed. It does not restore gauge covariance at nonzero momentum or
+establish the physical massless renormalization conditions. The theorem
+is an alternative extensive statement for a changed bare Hamiltonian;
+it does not supersede the earlier infrared-cutoff result within its own
+model. Comparing nuclear and interacting vacuum energies still requires
+a relative estimate beyond \eqref{eq:ct-bound}--\eqref{eq:ct-vac}.
+\end{enumerate}
+\end{remark}
+
+\subsection{An analytic small-box check for the retained self-image convention}
+
+\begin{remark}[Small-box obstruction under both specified conventions]
+\label{rem:madelung}
+Let
+\[
+ r_{\rm self}=\lim_{x\to0}\bigl(G_1(x)-|x|^{-1}\bigr),\qquad
+ \xi=-r_{\rm self}.
+\]
+We first prove \(\xi>0\) without relying on sampled Ewald values.
+For \(\eta>0\), the Ewald identity for the zero-mean unit-torus Green
+function is
+\begin{align}
+ G_1(x)
+ &=\sum_{n\in\Z^3}\frac{\operatorname{erfc}(\eta|x+n|)}{|x+n|}
+   +\frac1\pi\sum_{n\ne0}
+       \frac{e^{-\pi^2|n|^2/\eta^2}}{|n|^2}
+                  \cos(2\pi n\cdot x)-\frac\pi{\eta^2}.
+ \label{eq:ewald-analytic}
+\end{align}
+Both sums converge absolutely away from lattice singularities. To verify
+the normalization, write
+\[
+ \frac{\operatorname{erfc}(\eta|x|)}{|x|}
+ =\frac2{\sqrt\pi}\int_\eta^\infty e^{-t^2|x|^2}\dd t.
+\]
+Its Fourier transform at \(k\ne0\) is
+\(4\pi|k|^{-2}(1-e^{-|k|^2/(4\eta^2)})\), and its integral is
+\(\pi/\eta^2\). Periodization and the reciprocal sum in
+\eqref{eq:ewald-analytic} therefore give exactly the Fourier coefficients
+\(4\pi/|2\pi n|^2\), with zero mean.
+
+Set \(\eta=\sqrt\pi\), subtract \(|x|^{-1}\), and let \(x\to0\).
+The singular real-space summand contributes \(-2\), while the last
+constant in \eqref{eq:ewald-analytic} contributes \(-1\). Hence
+\begin{equation}
+ r_{\rm self}
+ =\sum_{n\ne0}\frac{\operatorname{erfc}(\sqrt\pi|n|)}{|n|}
+  +\frac1\pi\sum_{n\ne0}\frac{e^{-\pi|n|^2}}{|n|^2}-3.
+ \label{eq:madelung-sign}
+\end{equation}
+The elementary Gaussian-tail bound
+\(\operatorname{erfc}(t)\leq e^{-t^2}/(\sqrt\pi t)\), \(t>0\), yields
+\begin{align*}
+ r_{\rm self}
+ &\leq\frac2\pi\sum_{n\ne0}\frac{e^{-\pi|n|^2}}{|n|^2}-3\\
+ &\leq\frac2\pi
+   \left[\left(1+2\sum_{j\geq1}e^{-\pi j^2}\right)^3-1\right]-3.
+\end{align*}
+Since \(\pi>3\) and \(e^3>16\), one has \(e^{-\pi}<1/16\), and
+\[
+ \sum_{j\geq1}e^{-\pi j^2}
+ \leq\sum_{j\geq1}e^{-\pi j}<\frac1{15}.
+\]
+It follows, using only rational bounds, that
+\[
+ r_{\rm self}
+ <\frac23\left[\left(\frac{17}{15}\right)^3-1\right]-3<0.
+\]
+This proves \(\xi>0\). It does not assert a sign or a maximum location for
+the regular part throughout the unit cell.
+
+If only the divergent Euclidean nuclear self-energy is removed, the
+retained finite self-image term is
+\(-\alpha\xi(2L)^{-1}\sum_iZ_i^2\). Now take exactly the small-box example
+of \eqref{eq:small-box}: two nuclei with \(Z_1=Z_2=1\), only the fermion
+momentum \(p=0\), and no retained nonzero photon modes. These charges are
+compatible with the finite electron capacity. Zero mean and the positive
+singularity of \(G_1\) imply that some \(r_*\ne0\) has \(G_1(r_*)<0\).
+For \(R_1-R_2=Lr_*\), retaining the self-image term gives
+\[
+ E_{\Lambda,L}(R,Z)-E^{\vac}_{\Lambda,L}
+ =2m+\frac\alpha L\bigl(G_1(r_*)-\xi\bigr)
+ \longrightarrow-\infty\qquad(L\downarrow0).
+\]
+Under the convention removing the entire nuclear diagonal, the same
+conclusion follows with \(\xi\) absent. Thus the lower restriction
+\(L\geq L_0>0\) is necessary for an all-configurations relative theorem
+under either of these two specified conventions. The photon deformation
+does not change this example because the sufficiently small boxes retain
+no photon modes.
+\end{remark}

@@ -1,0 +1,47 @@
+{
+  "archive": "paper-a-lattice-sources.zip",
+  "bytes": 18309,
+  "sha256": "31e702ba28f0051e4750c1c45b69fbebe00055637b228576685b00e980cffb6c",
+  "included_files": [
+    {
+      "path": "comparison.tex",
+      "bytes": 8134,
+      "sha256": "1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273"
+    },
+    {
+      "path": "main.tex",
+      "bytes": 5136,
+      "sha256": "ed741955104fb9d5368d3b01a2af91dbea17ebccc6e49f4457eb7f56bf2758cc"
+    },
+    {
+      "path": "model.tex",
+      "bytes": 5234,
+      "sha256": "2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e"
+    },
+    {
+      "path": "references.tex",
+      "bytes": 2189,
+      "sha256": "ec11e40b6d8e9f6e097a754bf987d6ac0569bb690e877fa68978585acefadd48"
+    },
+    {
+      "path": "thermodynamics.tex",
+      "bytes": 14449,
+      "sha256": "56b29baca17406cb1800315140ae725fc838ec89b5f15813580452a1e2adafcb"
+    },
+    {
+      "path": "transfer.tex",
+      "bytes": 4884,
+      "sha256": "b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf"
+    }
+  ],
+  "validation": {
+    "fresh_compile": "passed",
+    "passes": 3,
+    "pages": 12,
+    "compiler_diagnostics": [],
+    "text_matches_review_pdf": true,
+    "text_sha256": "17913f12a4b7a4ba6e21e9eb4c1ecc4aaaa4f495fb9657b206bb62e9685fef7f",
+    "check_directory": "tmp/paper-a-lattice-check-ahllspp3",
+    "submitted": false
+  }
+}

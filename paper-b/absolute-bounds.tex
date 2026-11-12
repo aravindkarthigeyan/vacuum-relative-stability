@@ -1,0 +1,128 @@
+\section{Absolute operator bounds and their infrared cost}
+\label{sec:lower-proof}
+
+For the remainder of the paper write
+$H_{\Lambda,L}=H_D+H_\gamma+H_I+H_C$, where $H_C$ includes
+the four-field Wick Coulomb term, the linear source coupling, and
+the nuclear pair energy. The current is
+$j_i(x)=:\!\psi^\dagger(x)\mathsf a_i\psi(x)\!:_P$.
+These conventions are exactly those of \eqref{eq:model} and
+\eqref{pe-field-definition}; no new normalization is introduced.
+
+\begin{lemma}[Local cutoff bounds and noncommutative square completion]
+\label{lem:local}
+At each point, with $d_L=M_L/V$,
+\begin{equation}
+ -2d_LI\le\rho(x),j_i(x)\le2d_LI,
+ \qquad \sum_{i=1}^3j_i(x)^2\le12d_L^2I.
+ \label{eq:local-bounds}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The four operators $\psi_a(x)/\sqrt{d_L}$ satisfy normalized
+four-mode CAR. Their number operator has spectrum $0,1,2,3,4$,
+and the sea has local density $2d_L$. This proves the density bound.
+Each $\mathsf a_i$ has two eigenvalues $+1$ and two $-1$, so
+diagonalizing it proves the current bound. Its normal-ordering scalar
+vanishes by the symmetric momentum cutoff. Squaring the three
+separate self-adjoint bounds gives the last inequality.
+\end{proof}
+
+\begin{lemma}[Photon square completion]
+\label{lem:square}
+For a bounded fermion operator $B$ and a commuting photon oscillator
+$a$, the following quadratic-form identity holds:
+\begin{equation}
+ \omega a^\dagger a+a^\dagger B+B^\dagger a
+ =\omega(a+\omega^{-1}B)^\dagger(a+\omega^{-1}B)
+   -\omega^{-1}B^\dagger B.
+ \label{eq:square}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Expand the right side. Only commutation between the fermion and
+photon tensor factors is used.
+\end{proof}
+The shifted operators need not be canonical oscillators:
+$[a+\omega^{-1}B,a^\dagger+\omega^{-1}B^\dagger]
+=I+\omega^{-2}[B,B^\dagger]$. Thus the identity is a valid
+lower-bound device, not a simultaneous unitary diagonalization of
+noncommuting currents.
+
+Let $H_C^{\rm dens}$ be obtained by replacing the four-field Wick
+term with $\alpha D_L(\rho,\rho)/2$. The symmetric Fourier sum
+is a positive operator sum. Set $\nu_s=e^{s\Delta}\nu$,
+$G_s=e^{s\Delta}G_L$, and $h_s=G_L-G_s$. Direct expansion gives
+\begin{align}
+ H_C^{\rm dens}
+ &=\frac\alpha2D_L(\rho+\nu_s,\rho+\nu_s)
+   +\alpha D_L(\rho,\nu-\nu_s)\notag\\
+ &\quad+\alpha\sum_{i<j}Z_iZ_jh_{2s}(R_i-R_j)
+   -\frac\alpha2G_{2s}(0)\sum_iZ_i^2.
+ \label{eq:heat-identity}
+\end{align}
+This identity uses point nuclei throughout; smoothing is only a
+comparison in the proof. Lemma~\ref{lem:heat} and
+\eqref{eq:local-bounds} bound the core term below by
+$-16\pi\alpha d_LsZ_{\rm tot}$, the nuclear short-range term
+below by $-4\pi\alpha sZ_{\rm tot}^2/V$, and the last diagonal
+by the stated heat-kernel estimate. The exact neutrality capacity
+$Z_{\rm tot}\le2M_L$ therefore gives
+\begin{equation}
+ H_C^{\rm dens}\ge-24\pi\alpha d_LsZ_{\rm tot}
+ -\frac{13\alpha}{4\sqrt2\pi^{3/2}\sqrt s}\sum_iZ_i^2.
+ \label{b-density-absolute}
+\end{equation}
+
+For completely explicit constants, put $d_*=(1+1/\pi)^3$ and
+\begin{align}
+ A_\Lambda&=\alpha\Lambda_f
+ \left[24\pi d_*Z_{\max}
+       +\frac{13}{4\sqrt2\pi^{3/2}}Z_{\max}^2\right],\notag\\
+ B_\Lambda&=\frac{364\alpha}{\pi^2}d_*\Lambda_f^4.
+ \label{b-absolute-constants}
+\end{align}
+For $L\ge\Lambda_f^{-1}$, taking $s=\Lambda_f^{-2}$ proves
+$H_C^{\rm dens}\ge-A_\Lambda K$.
+The exact Wick identity~\eqref{eq:wick} controls the ordering change.
+For contractions $A,B$ with norms at most one,
+$\|AB-APB-BPA\|\le3$, $\|n_P(X)\|\le8M_L\|X\|$,
+and $|\Tr(PA(1-P)B)|\le4M_L$. Hence the norm of the difference
+per Coulomb mode is at most $28M_L$. Since
+\begin{equation}
+ \frac1V\sum_{0<|k|\le2\Lambda_f}\frac{4\pi}{|k|^2}
+ =\kappa_{\Lambda,L}\le\frac{26\Lambda_f}{\pi^2},
+ \label{eq:coulomb-mode-sum}
+\end{equation}
+we obtain the full operator estimate
+\begin{equation}
+ \|H_C-H_C^{\rm dens}\|\le B_\Lambda V,
+ \qquad H_C\ge-A_\Lambda K-B_\Lambda V.
+ \label{eq:full-coulomb-bound}
+\end{equation}
+All of these estimates hold over the full admissible Fock sector.
+
+If every coupled photon frequency is at least $k_{\min}>0$, square
+completion, transverse polarization projection, and Parseval give
+\begin{align}
+ H_\gamma+H_I
+ &\ge-\frac{e^2}{2V}\sum_{k,\lambda}
+       \frac{|\varepsilon_\lambda(k)\cdot\widehat j(k)|^2}{|k|^2}
+ \notag\\
+ &\ge-\frac{e^2}{2k_{\min}^2}
+          \int\sum_i j_i(x)^2\dd x
+ \ge-\frac{6e^2d_L^2V}{k_{\min}^2}.
+ \label{b-photon-absolute}
+\end{align}
+Here $|B|^2=B^\dagger B$; polarization and Parseval are operator
+quadratic-form identities and require no current commutativity.
+For ordinary nonzero torus modes $k_{\min}=2\pi/L$. Thus
+\begin{equation}
+ H_{\Lambda,L}\ge-A_\Lambda K-B_\Lambda V
+  -\frac{6e^2d_*^2\Lambda_f^6}{4\pi^2}VL^2.
+ \label{b-lower-L5}
+\end{equation}
+With a separately imposed fixed infrared cutoff $k_{\min}\ge\kappa>0$
+this argument instead gives an extensive lower bound, at the cost of
+changing the coupled photon modes. The next section shows that the
+$L^5$ loss is real for the unmodified bare regulator with massless photons.

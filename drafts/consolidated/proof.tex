@@ -1,0 +1,452 @@
+\section{The momentum-cutoff model and its relative bounds}
+\label{sec:model}
+Set $\hbar=c=1$, $m>0$, $\alpha>0$, $\Lambda=\Lambda_f>0$, and $V=L^3$.
+On $\T_L^3=\R^3/L\Z^3$ define
+\[
+\Gamma_{\Lambda,L}=\{p\in(2\pi/L)\Z^3:|p|\le\Lambda\},\quad
+M_L=\#\Gamma_{\Lambda,L},\quad d_L=M_L/V.
+\]
+The one-particle space $\mathfrak h$ is the span of these plane waves
+tensored with $\C^4$, of dimension $D=4M_L$.
+Hermitian Dirac matrices $\mathsf a_j,\mathsf b$ obey the Clifford
+relations. Set
+\[
+D_0(p)=\mathsf a\cdot p+\mathsf b m,\quad E(p)=\sqrt{|p|^2+m^2},
+\quad P=\mathbf1_{(-\infty,0)}(D_0),\quad \rank P=2M_L.
+\]
+The finite sea CAR representation $\F=\bigwedge\mathfrak h$ is
+unitarily equivalent to the full electron--positron Fock space.
+It imposes no Slater restriction and retains all pair terms.
+In this representation
+\[
+H_D=\mathrm d\Gamma(D_0)-\Tr(PD_0)\ge0,\qquad Q=N-2M_L=N_e-N_p.
+\]
+Electric fermion charge in units of $e$ is $-Q$.
+For integral positive nuclear charges $Z_i$, neutrality requires
+$Q=Z_{\rm tot}:=\sum_iZ_i$, admissible exactly when $Z_{\rm tot}\le2M_L$.
+
+Let $P_f$ denote the scalar band projection and put
+\[
+T_k=P_fe^{ikx}P_f\otimes\id_4,\quad
+n_P(A)=\mathrm d\Gamma(A)-\Tr(PA),\quad
+\rho_k=-n_P(T_k).
+\]
+Thus $\rho(x)=-:\!\psi^\dagger(x)\psi(x)\!:_P$ and $\rho_0=-Q$.
+For $k\ne0$, $\Tr(PT_k)=0$. Only $|k|\le2\Lambda$ can contribute.
+The zero-mean periodic Coulomb kernel and form are
+\begin{equation}
+G_L(x)=\frac1V\sum_{k\ne0}\frac{4\pi}{|k|^2}e^{ikx},\qquad
+D_L(f,g)=\frac1V\sum_{k\ne0}\frac{4\pi}{|k|^2}
+\overline{\widehat f(k)}\,\widehat g(k).
+\label{eq:coulomb}
+\end{equation}
+The kernel is a distribution, or a heat-summed function off the origin.
+Omitting the zero mode and imposing neutrality implements the torus
+Gauss constraint. Other charge sectors are auxiliary algebraic sectors,
+not isolated nonneutral physical torus systems.
+
+For distinct point nuclei $\nu=\sum_iZ_i\delta_{R_i}$, set
+\begin{align}
+H_\nu&=H_0+W_\nu+U_{\rm nn},&
+W_\nu&=\alpha D_L(\rho,\nu),\\
+U_{\rm nn}&=\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j),&
+H_0&=H_D+\frac{\alpha}{2V}\sum_{k\ne0}v_kW_P(T_{-k},T_k),
+\label{eq:model}
+\end{align}
+where $v_k=4\pi/|k|^2$ and $W_P$ is the full four-field Wick product
+relative to the free sea, explicitly defined by \eqref{eq:wick}.
+No counterterm is added. The nuclear diagonal is removed by mollifying
+each delta, subtracting its \emph{entire periodic Coulomb diagonal},
+and taking the limit. This leaves exactly $U_{\rm nn}$.
+Keeping a finite self-image term would specify a different energy convention.
+The source coupling is the compression of a point Coulomb potential
+to the fermion band; the nuclear repulsion itself is not band-truncated.
+
+Each $H_\nu$ is a bounded self-adjoint matrix on all of $\F$ and
+commutes with $Q$. These elementary facts do not give uniform stability.
+Define
+\[
+E_\nu(q)=\min\sigma(H_\nu|_{Q=q}),\qquad
+E^{\vac}=\min\sigma(H_0|_{Q=0}).
+\]
+Every comparison uses the same ordering, parameters, and volume.
+
+\begin{theorem}[One nucleus, every box size]\label{thm:one}
+Suppose
+\begin{equation}
+13\alpha\Lambda<\pi^2m.
+\label{eq:mass-condition}
+\end{equation}
+For one nucleus of charge $Z$, every $L>0$ with $Z\le2M_L$, and every $R$,
+\begin{equation}
+E_{Z\delta_R}(Z)-E^{\vac}\ge-\frac{\alpha Z^2}{2}\kappa_{\Lambda,L}
+\ge-\frac{13\alpha\Lambda}{\pi^2}Z^2,\qquad
+\kappa_{\Lambda,L}=\frac1V\sum_{0<|k|\le2\Lambda}v_k.
+\label{eq:one-bound}
+\end{equation}
+This is a comparison with the exact interacting vacuum for the full
+correlated Fock Hamiltonian.
+\end{theorem}
+
+\begin{theorem}[Arbitrary admissible nuclei]\label{thm:many}
+Under \eqref{eq:mass-condition}, let $L\ge\Lambda^{-1}$,
+$1\le Z_i\le Z_{\max}$, and $Z_{\rm tot}\le2M_L$.
+Uniformly in distinct positions and in $K$,
+\begin{equation}
+E_\nu(Z_{\rm tot})-E^{\vac}\ge
+-\alpha\Lambda\left[
+24\pi(1+1/\pi)^3Z_{\max}
++\frac{13}{4\sqrt2\,\pi^{3/2}}Z_{\max}^2
+\right]K.
+\label{eq:many-bound}
+\end{equation}
+\end{theorem}
+
+At $\alpha=1/137$, the sufficient condition permits
+$\Lambda/m<\pi^2\,137/13\simeq104.01$, and $Z_{\max}=26$ is allowed.
+The constants and cutoff restriction are not claimed optimal.
+A sharper hypothesis is positivity of the effective mass
+\eqref{eq:effective-mass} in every box under consideration.
+Transverse photons are absent from the model defined so far.
+
+\section{Ordering algebra and the effective mass}
+\label{sec:ordering}
+\begin{lemma}[Exact Wick identity]\label{lem:wick}
+For arbitrary one-particle matrices $A,B$,
+\begin{equation}
+n_P(A)n_P(B)=W_P(A,B)+n_P(AB-APB-BPA)
++\Tr(PA(1-P)B).
+\label{eq:wick}
+\end{equation}
+Consequently
+\begin{align}
+H_0&=C+\mathrm d\Gamma(\hf)
++\frac{\alpha}{2V}\sum_{k\ne0}v_k\rho_{-k}\rho_k,
+\label{eq:rewrite}\\
+\hf&=D_0-\frac\alpha2K_{\rm sign},&
+K_{\rm sign}&=\frac1V\sum_{k\ne0}v_kT_{-k}(1-2P)T_k,\\
+C&=-\Tr(PD_0)-\frac\alpha2\Ex(P),&
+\Ex(P)&=\frac1V\sum_{k\ne0}v_k\Tr(PT_{-k}PT_k).
+\label{eq:constant}
+\end{align}
+This is a rewriting, not a new counterterm.
+\end{lemma}
+\begin{proof}
+Use the CAR contractions
+$\langle c_i^\dagger c_j\rangle=P_{ji}$ and
+$\langle c_i c_j^\dagger\rangle=\delta_{ij}-P_{ij}$.
+After removing the within-bilinear contractions, the single cross
+contractions in $c_i^\dagger c_jc_\ell^\dagger c_r$ give
+$AB-APB-BPA$, and the double cross contraction is
+$\Tr(PA(1-P)B)$. The remaining four-field term is $W_P$.
+This proves the polynomial identity \eqref{eq:wick}.
+
+Sum it with $A=T_{-k}$, $B=T_k$ symmetrically in $k$.
+Let $K_I=V^{-1}\sum v_kT_{-k}T_k$ and
+$K_P=V^{-1}\sum v_kT_{-k}PT_k$.
+The single contraction sums to $K_I-2K_P=K_{\rm sign}$.
+The double contraction sums to $\Tr(PK_I)-\Ex(P)$.
+Expanding $n_P(K_{\rm sign})$ leaves the scalar
+\[
+\frac\alpha2\Tr(PK_{\rm sign})
+-\frac\alpha2[\Tr(PK_I)-\Ex(P)]=-\frac\alpha2\Ex(P).
+\]
+Adding $H_D$ gives \eqref{eq:rewrite}.
+\end{proof}
+
+\begin{lemma}[Uniform mass criterion]\label{lem:mass}
+The translation-invariant matrix $\hf$ has the form
+\begin{equation}
+\hf(p)=\mathsf a\cdot v_{\rm eff}(p)+\mathsf b M_{\rm eff}(p),\qquad
+M_{\rm eff}(p)=m-\frac{\alpha}{2V}
+\sum_{\substack{r\in\Gamma_{\Lambda,L}\\r\ne p}}
+\frac{4\pi}{|p-r|^2}\frac{m}{E(r)}.
+\label{eq:effective-mass}
+\end{equation}
+Its spatial coefficients are Hermitian and scalar in Dirac indices,
+and $\Tr\hf=0$. For every $L>0$,
+\begin{equation}
+\kappa_{\Lambda,L}\le26\Lambda/\pi^2,\qquad
+M_{\rm eff}\ge(m-13\alpha\Lambda/\pi^2)\id.
+\label{eq:kappa}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Insert $1-2P(r)=D_0(r)/E(r)$ in \eqref{eq:rewrite}.
+Compression by $T_k$ gives \eqref{eq:effective-mass} and its analogous
+vector entry. Every Dirac matrix there is traceless.
+Write $k=2\pi n/L$, $R=\Lambda L/\pi$.
+The shell $|n|_\infty=j$ contains $24j^2+2$ points, so
+\[
+\kappa_{\Lambda,L}
+=\frac1{\pi L}\sum_{0<|n|\le R}|n|^{-2}
+\le\frac{26\lfloor R\rfloor}{\pi L}\le\frac{26\Lambda}{\pi^2}.
+\]
+For $R<1$ the sum is empty. Use $m/E(r)\le1$ for the mass bound.
+\end{proof}
+
+\section{Positivity of the centered fermion trace}
+\begin{lemma}[Positive centered trace]\label{lem:positive-trace}
+On $\C^n\otimes\C^4$, let
+$h=\sum_jv_j\otimes\mathsf a_j+M\otimes\mathsf b$,
+where $v_j,M$ are Hermitian and $M>0$.
+Consider any finite ordered product $U$ of $e^{-sh}$, $s\ge0$,
+and $e^{-i\Phi}$ with $\Phi$ Hermitian and scalar in Dirac indices.
+If the total free time is positive, the corresponding centered CAR trace is
+\begin{equation}
+F=\exp\left(\frac i2\sum_{\rm kicks}\Tr\Phi\right)\det(1+U)>0.
+\label{eq:positive-trace}
+\end{equation}
+The centering is $R(A)=\mathrm d\Gamma(A)-\Tr(A)/2$.
+The kicks need not commute with each other or with $h$.
+\end{lemma}
+\begin{proof}
+The Hermitian unitary $\mathsf C_5=\mathsf a_1\mathsf a_2\mathsf a_3
+\mathsf b$ anticommutes with all four Dirac matrices and commutes
+with scalar kicks. Every factor preserves its indefinite form. Thus
+\[
+U^\dagger\mathsf C_5U=\mathsf C_5,\qquad
+U^\dagger=\mathsf C_5U^{-1}\mathsf C_5.
+\]
+Put $S=i\sum\Tr\Phi$. Since $\Tr h=0$, $\det U=e^{-S}$ and $S$ is
+imaginary. It follows that
+\[
+\overline{\det(1+U)}=\det(1+U^\dagger)
+=\det(U)^{-1}\det(1+U)=e^S\det(1+U).
+\]
+Therefore $e^{S/2}\det(1+U)$ is real.
+The exterior-algebra identities $\Gamma(U_1)\Gamma(U_2)=\Gamma(U_1U_2)$
+and $\Tr_{\F}\Gamma(U)=\det(1+U)$ identify it with the centered trace.
+
+It cannot vanish. Along a free interval $f(t)=e^{-th}f(0)$,
+\begin{equation}
+\frac{\dd}{\dd t}\langle f(t),\mathsf b f(t)\rangle
+=-\langle f(t),\{h,\mathsf b\}f(t)\rangle
+=-2\langle f(t),M f(t)\rangle<0
+\label{eq:beta-monotone}
+\end{equation}
+for a nonzero vector. Scalar unitary kicks preserve this form.
+All factors are invertible. A product with positive total free time
+therefore cannot have an eigenvector with an eigenvalue of modulus one,
+since its initial and final values of this form would agree.
+In particular $-1$ is not an eigenvalue.
+Scale all kicks continuously to zero. The real trace never vanishes
+and ends at $\det(1+e^{-s_{\rm tot}h})>0$, proving the claim.
+\end{proof}
+
+The constant scalar kick $e^{i\theta\id}$ is included in this lemma.
+Its centered CAR version is $e^{i\theta(N-D/2)}$.
+It permits exact charge projection, which a grand-canonical estimate
+by itself would not supply.
+
+\section{Canonical Gaussian domination}
+For every spin-scalar compressed multiplication matrix $\Phi$,
+$\Tr(P\Phi)=\Tr\Phi/2$: only diagonal momentum entries enter its trace
+and $\tr_{\C^4}P(p)=2$.
+Choose one $k$ from each pair $\{k,-k\}$ and put
+$A_k=(T_k+T_{-k})/2$, $B_k=(T_k-T_{-k})/(2i)$.
+Then $\rho_k=-R(A_k)-iR(B_k)$ and
+\begin{equation}
+\frac{\alpha}{2V}\sum_{k\ne0}v_k\rho_{-k}\rho_k
+=\frac\alpha V\sum_{\{k,-k\}}v_k
+\left(R(A_k)^2+R(B_k)^2\right).
+\label{eq:squares}
+\end{equation}
+The commutators cancel in the symmetric $k,-k$ sum.
+
+\begin{theorem}[Canonical completed-square comparison]\label{thm:gd}
+Assume $M_{\rm eff}>0$. For any real source $\sigma$ with finite
+Fourier data on $0<|k|\le2\Lambda$, set
+\[
+D_{\rm band}(\sigma,\sigma)=V^{-1}
+\sum_{0<|k|\le2\Lambda}v_k|\widehat\sigma(k)|^2 .
+\]
+In every nonempty sector $q$,
+\begin{equation}
+\min\sigma\!\left[
+(H_0+\alpha D_L(\rho,\sigma))|_{Q=q}\right]
+\ge E^{\vac}-\frac\alpha2D_{\rm band}(\sigma,\sigma).
+\label{eq:gd}
+\end{equation}
+In particular $E_0(q)\ge E_0(0)$, so the global interacting vacuum
+energy is the neutral one.
+\end{theorem}
+\begin{proof}
+Completing \eqref{eq:squares} gives a finite matrix
+\[
+H(\eta)=C+\mathrm d\Gamma(\hf)
++\frac12\sum_{a=1}^r\lambda_a(R_a+\eta_a)^2,\quad
+\lambda_a>0,\quad\eta_a\in\R ,
+\]
+where $R_a$ is a centered Hermitian spin-scalar bilinear.
+There are two components for each $k,-k$ pair, with
+$\lambda_a=2\alpha v_k/V$. The scalar source addition is exactly
+$\alpha D_{\rm band}(\sigma,\sigma)/2$.
+Vanishing compressed modes contribute only a nonnegative scalar square.
+
+Fix $\beta>0$, $\delta=\beta/n$, and use
+\[
+\mathcal T_n(\eta)=e^{-\beta C}
+\left[e^{-\delta\mathrm d\Gamma(\hf)}
+\prod_a e^{-\delta\lambda_a(R_a+\eta_a)^2/2}\right]^n.
+\]
+The spectral theorem gives the exact componentwise identity
+\begin{equation}
+e^{-\delta\lambda_a(R_a+\eta_a)^2/2}
+=\int\frac{e^{-z^2/2}\dd z}{\sqrt{2\pi}}\,
+e^{i\sqrt{\delta\lambda_a}zR_a}
+e^{i\sqrt{\delta\lambda_a}z\eta_a}.
+\label{eq:HS}
+\end{equation}
+No simultaneous diagonalization of the $R_a$ is used.
+Since charge commutes with each factor and is integral,
+$P_q=(2\pi)^{-1}\int_0^{2\pi}e^{i\theta(Q-q)}\dd\theta$.
+The Gaussian expansions yield
+\begin{equation}
+\Tr(P_q\mathcal T_n(\eta))
+=\frac{e^{-\beta C}}{2\pi}
+\int_0^{2\pi}\dd\theta\int\dd\mu(z)\,
+e^{-iq\theta}e^{i\ell_\eta(z)}F_n(z,\theta),
+\label{eq:canonical}
+\end{equation}
+where $\ell_\eta$ is real. The trace $F_n$ is a product of centered
+free factors and scalar kicks, including $e^{i\theta Q}$.
+Lemma~\ref{lem:positive-trace} gives $F_n(z,\theta)>0$ pointwise.
+Taking the absolute value therefore gives
+\begin{equation}
+|\Tr(P_q\mathcal T_n(\eta))|
+\le\frac{e^{-\beta C}}{2\pi}\int\dd\theta\,\dd\mu(z)F_n(z,\theta)
+=\Tr(P_0\mathcal T_n(0)).
+\label{eq:partition}
+\end{equation}
+The nonsymmetric Trotter operator need not itself be positive.
+Finite-matrix norm convergence gives
+$0<\Tr_{Q=q}e^{-\beta H(\eta)}
+\le\Tr_{Q=0}e^{-\beta H(0)}$ as $n\to\infty$.
+Taking $-\beta^{-1}\log$ and then $\beta\to\infty$ proves
+\eqref{eq:gd}; the scalar $C$ is identical on both sides.
+Setting the source to zero proves the final assertion.
+\end{proof}
+
+\begin{corollary}[Interacting dielectric inequality]\label{cor:dielectric}
+For real zero-mean $\phi\in H^1(\T_L^3)$ and
+$\rho(\phi)=\int\rho(x)\phi(x)\dd x$, every nonempty sector satisfies
+\begin{equation}
+(H_0+\rho(\phi))|_{Q=q}
+\ge\left(E^{\vac}-\frac1{8\pi\alpha}\|\nabla\phi\|_2^2\right)\id.
+\label{eq:interacting-dielectric}
+\end{equation}
+No small-amplitude assumption or assumed interacting gap is needed.
+\end{corollary}
+\begin{proof}
+For nonzero modes take
+$\widehat\sigma(k)=|k|^2\widehat\phi(k)/(4\pi\alpha)$.
+Then $\rho(\phi)=\alpha D_L(\rho,\sigma)$ and the source cost is
+\[
+\frac\alpha2D_{\rm band}(\sigma,\sigma)
+=\frac1{8\pi\alpha V}\sum_{0<|k|\le2\Lambda}
+|k|^2|\widehat\phi(k)|^2
+\le\frac1{8\pi\alpha}\|\nabla\phi\|_2^2.
+\]
+A constant potential couples to $Q$ and is not controlled by this norm.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:one}]
+For $\sigma=Z\delta_R$ every Fourier modulus is $Z$ and there is no
+nuclear pair term. Apply \eqref{eq:gd} in sector $q=Z$ and use
+$D_{\rm band}(\sigma,\sigma)=Z^2\kappa_{\Lambda,L}$
+and \eqref{eq:kappa}.
+\end{proof}
+
+\section{Point-nucleus electrostatics for arbitrary numbers of nuclei}
+\begin{lemma}[Density and heat estimates]\label{lem:heat}
+Let $P_t(x)$ denote the positive torus heat kernel,
+$G_s=e^{s\Delta}G_L$, and $h_s=G_L-G_s$. Then
+\begin{align}
+\|\rho(x)\|&\le2d_L,&d_L&\le(\Lambda/\pi+1/L)^3,\label{eq:density}\\
+h_s(x)&=4\pi\int_0^s(P_t(x)-V^{-1})\dd t,&
+h_s(x)&\ge-4\pi s/V,\quad\|h_s\|_1\le8\pi s,\label{eq:heat}\\
+0\le G_s(0)&\le\frac{13}{2\pi^{3/2}\sqrt{s}}.
+\label{eq:heat-self}
+\end{align}
+\end{lemma}
+\begin{proof}
+The four components $\psi_j(x)/\sqrt{d_L}$ obey four-mode CAR.
+Thus $\psi^\dagger(x)\psi(x)$ has spectrum in $[0,4d_L]$ and
+free-sea expectation $2d_L$, proving the density estimate.
+Counting momenta in a cube proves the bound on $d_L$.
+Integrating the heat equation for $G_L$ proves \eqref{eq:heat};
+positivity and unit integral of $P_t$ give its two bounds.
+With $a=4\pi^2s/L^2$, the maximum-norm shells give
+\[
+G_s(0)=\frac1{\pi L}\sum_{n\ne0}\frac{e^{-a|n|^2}}{|n|^2}
+\le\frac{26}{\pi L}\sum_{j=1}^\infty e^{-aj^2}
+\le\frac{26}{\pi L}\int_0^\infty e^{-at^2}\dd t
+=\frac{13}{2\pi^{3/2}\sqrt{s}}.
+\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:many}]
+Let $\nu_s=e^{s\Delta}\nu$. This is a comparison density; the
+Hamiltonian still has point nuclei. Gaussian domination and positivity
+of omitted Fourier terms give, in every sector,
+\[
+H_0+\alpha D_L(\rho,\nu_s)
+\ge E^{\vac}-\frac\alpha2D_{\rm band}(\nu_s,\nu_s)
+\ge E^{\vac}-\frac\alpha2D_L(\nu_s,\nu_s).
+\]
+The core error has the operator bound
+\begin{equation}
+\alpha D_L(\rho,\nu-\nu_s)
+=\alpha\sum_i Z_i\int\rho(x)h_s(x-R_i)\dd x
+\ge-16\pi\alpha d_LsZ_{\rm tot}.
+\label{eq:core}
+\end{equation}
+This is a norm integral of bounded operators, not a classical
+replacement of noncommuting densities.
+The remaining nuclear identity is
+\begin{align}
+U_{\rm nn}-\frac\alpha2D_L(\nu_s,\nu_s)
+&=\alpha\sum_{i<j}Z_iZ_jh_{2s}(R_i-R_j)
+-\frac\alpha2G_{2s}(0)\sum_iZ_i^2\\
+&\ge-\frac{4\pi\alpha s}{V}Z_{\rm tot}^2
+-\frac\alpha2G_{2s}(0)\sum_iZ_i^2.
+\label{eq:nuclear-heat}
+\end{align}
+Here $D_L(\nu_s,\nu_s)=\sum_{i,j}Z_iZ_jG_{2s}(R_i-R_j)$.
+Neutral capacity $Z_{\rm tot}\le2d_LV$ turns the first error into
+$8\pi\alpha d_LsZ_{\rm tot}$. Therefore
+\begin{equation}
+E_\nu(Z_{\rm tot})-E^{\vac}
+\ge-24\pi\alpha d_LsZ_{\rm tot}
+-\frac\alpha2G_{2s}(0)\sum_iZ_i^2.
+\label{eq:all-s}
+\end{equation}
+Take $s=\Lambda^{-2}$, use $L\ge\Lambda^{-1}$ and
+\eqref{eq:density}--\eqref{eq:heat-self}, then
+$Z_{\rm tot}\le Z_{\max}K$ and $\sum_iZ_i^2\le Z_{\max}^2K$.
+\end{proof}
+
+The missing ingredient was a vacuum-relative comparison.
+Theorem~\ref{thm:gd} supplies it without a volume error, and the
+heat argument converts the source self-cost into an $O(K)$ cost.
+No operator Graf--Schenker theorem is asserted or needed here.
+
+\subsection{Small boxes remain an actual obstruction}
+The one-nucleus theorem holds for all $L$ in the specified diagonal
+convention; the many-nucleus theorem cannot.
+For $L<2\pi/\Lambda$, only the zero fermion momentum remains.
+All nonzero density modes vanish and $H_C=0$.
+Two unit nuclei are admissible since $2M_L=2$.
+The charge-$2$ state costs $2m$.
+There is $x_0\ne0$ on the unit torus with $G_1(x_0)<0$:
+otherwise the nonzero mean-zero Green function, positive near the
+origin, could not have zero integral.
+Choose $R_1-R_2=Lx_0$. Exactly,
+\begin{equation}
+E_\nu(2)-E^{\vac}=2m+\frac{\alpha}{L}G_1(x_0)
+\longrightarrow-\infty\quad(L\downarrow0).
+\label{eq:small-box}
+\end{equation}
+This is a periodic point-source obstruction, not pair collapse.
+A fixed positive lower bound on $L$ removes it.

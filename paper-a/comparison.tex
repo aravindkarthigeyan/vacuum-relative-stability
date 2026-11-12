@@ -1,0 +1,208 @@
+\section{Vacuum comparison and nuclear self-energies}
+\label{sec:comparison}
+
+\begin{theorem}[Exact physical-sector comparison]
+\label{thm:main}
+For the Hamiltonian \eqref{eq:hamiltonian}, with $a>0$, $g>0$,
+$r\ge0$, and $m\ge0$, every admissible integer source satisfies
+\begin{equation}
+ E_\nu\ge E_0+m|Q_\nu|,\qquad Q_\nu=\sum_x\nu_x.
+ \label{eq:main}
+\end{equation}
+At inverse temperature $b>0$ let $Z_\nu(b)=\Tr(P_\nu e^{-bH})$.
+Then $0<Z_\nu(b)\le Z_0(b)$, and for $m>0$ also
+\begin{equation}
+ Z_\nu(b)\le\binom{4N}{2N+|Q_\nu|}
+                         e^{-bm|Q_\nu|}Z_0(b).
+ \label{eq:thermal}
+\end{equation}
+The unrestricted auxiliary ground energy equals the physical
+zero-source energy $E_0$.
+\end{theorem}
+\begin{proof}
+Set $c_E=g^2/(2a)$. The electric heat kernel on one link,
+relative to normalized Haar measure, is the positive wrapped Gaussian
+\begin{equation}
+ k_t(\phi)=\sum_{\ell\in\mathbb Z}e^{-c_Et\ell^2}e^{i\ell\phi}
+ =\sqrt{\frac{\pi}{c_Et}}\sum_{s\in\mathbb Z}
+             e^{-(\phi-2\pi s)^2/(4c_Et)}>0.
+ \label{eq:heat}
+\end{equation}
+Let $K_t(U,V)$ be the product over links. The bounded matrix
+Feynman--Kac formula in this setting follows directly from the
+Dyson series. With $B(U)=H_B(U)+d\Gamma(h_W(U))$, the norm of
+the $k$th-order kernel is bounded by
+\[
+ K_b(U,V)(b\|B\|)^k/k!.
+\]
+To see this, bound every matrix insertion by $\|B\|$ and
+integrate the positive kernels by their convolution identity.
+The series is absolutely convergent and is the bounded-perturbation
+Dyson series for the semigroup. Its Markov bridge moments give
+\begin{equation}
+ [e^{-bH}](U,V)=K_b(U,V)\,
+ \mathbb E_{V\to U}^{b}
+ \left[e^{-\int_0^bH_B(\omega_t)\,dt}\Gamma(V_\omega)\right],
+ \label{eq:fk}
+\end{equation}
+where $V_\omega$ is the ordered one-particle propagator generated
+by $-h_W(\omega_t)$. The circle Brownian bridges have continuous
+paths. Boundedness of the coefficients justifies step approximations
+and dominated convergence. This establishes the formula without
+an unbounded-potential or formal Trotter interchange.
+
+Inserting the gauge unitary changes the first kernel argument
+to $U^u$. The finite-CAR identity $\Tr_\F\Gamma(A)=\det(I+A)$ gives
+\begin{align}
+ \Tr(W(u)e^{-bH})
+ =\int dU\,K_b(U^u,U)\,
+ \mathbb E_{U\to U^u}^{b}
+ \left[e^{-\int_0^bH_B(\omega_t)\,dt}
+ e^{-2i\sum_x\theta_x}\det(I+uV_\omega)\right].
+ \label{eq:twisted}
+\end{align}
+The trace formula is justified by factoring the heat semigroup
+into two Hilbert--Schmidt factors and integrating their kernel
+convolution. The preceding Dyson bound also dominates the
+integrals uniformly in the gauge angles at fixed finite lattice
+and fixed $b$.
+
+For $m>0$ every integrand in \eqref{eq:twisted} is positive:
+the scalar factors are positive and Lemma~\ref{lem:transfer}
+applies to the time-dependent Wilson mass $M(\omega_t)\ge mI$.
+Denote the resulting nonnegative function of the angles by
+$F_b(\theta)$. Exact gauge projection gives
+\[
+ Z_\nu(b)=\int\frac{d\theta}{(2\pi)^N}
+          e^{-i\theta\cdot\nu}F_b(\theta),\qquad
+ |Z_\nu(b)|\le Z_0(b).
+\]
+The actual heat trace of a nonempty sector is positive.
+
+For the stronger assertion, fix a root site and write
+$\theta_x=\vartheta_x+\phi$, with $\vartheta_{\rm root}=0$.
+This is a measure-preserving change of torus coordinates.
+The endpoint $U^u$ and the entire bridge weight depend only
+on $\vartheta$. At fixed relative twist and bridge, integration
+in $\phi$ is the $Q_\nu$ Fourier coefficient of the centered
+trace for $e^{i\vartheta}V_\omega$. Lemma~\ref{lem:fourier}
+applies with $D=4N$, $d=2N$, and $m_*=m$.
+Remove the remaining phase $e^{-i\vartheta\cdot\nu}$ by absolute
+value and integrate the nonnegative zeroth coefficient.
+Its integral is exactly the vacuum's full local-Gauss partition
+function. This proves \eqref{eq:thermal}.
+
+Compact resolvent gives
+$E_\nu=-\lim_{b\to\infty}b^{-1}\log Z_\nu(b)$;
+the binomial factor disappears in this limit.
+For $m=0$, determinants are nonnegative by the limit in
+Section~\ref{sec:transfer}; alternatively
+$\|H_\epsilon-H_0\|\le2N\epsilon$ gives continuity of every
+sector ground energy. Finally the auxiliary space is the direct
+sum of joint integer Gauss sectors. Their comparison with
+$\mathcal H_0$ proves its stated global minimality.
+\end{proof}
+
+The inequality concerns the net fermion charge forced by the
+external sources. It is not a gap above the vacuum within its
+neutral sector and says nothing about a neutral pair or photon
+excitation gap. The constant gauge transformation enforces
+$\sum q_x=Q_\nu$; every relative gauge angle is also projected.
+All compact link holonomies, including torus harmonic variables,
+remain integrated.
+
+\subsection{The subtraction convention}
+
+Let $D:\mathbb R^{\mathcal E}\to\mathbb R^X$ be the incidence
+matrix, $\Delta=DD^*$ the nonnegative combinatorial Laplacian,
+and $\G_n=\Delta^+$ its zero-mean inverse. On $\mathcal H_\nu$,
+\begin{equation}
+ H_E=c_E\left[(\nu-q)^*\G_n(\nu-q)
+              +\|E-D^*\G_n(\nu-q)\|^2\right].
+ \label{eq:longitudinal}
+\end{equation}
+This follows by orthogonal projection of a real link vector onto
+$\operatorname{ran}D^*$ and $\ker D$, using $DE=\nu-q$.
+The electric and occupation operators commute, so the same
+calculation holds in their joint basis as a quadratic-form
+identity. The allowed spectrum of the residual flux depends
+on the charge and integrality constraints; \eqref{eq:longitudinal}
+does not create an independent transverse physical Hilbert space.
+
+For nuclei at sites $R_i$, with integer $1\le Z_i\le Z_{\max}$,
+put $\nu_x=\sum_iZ_i\mathbf1_{\{x=R_i\}}$.
+The source-source term in \eqref{eq:longitudinal} is
+\begin{equation}
+ c_E\nu^*\G_n\nu
+ =c_E\G_n(0)\sum_iZ_i^2
+   +2c_E\sum_{i<j}Z_iZ_j\G_n(R_i-R_j).
+ \label{eq:source-energy}
+\end{equation}
+Thus define the prescribed individual subtraction and energy by
+\[
+ S_n=c_E\G_n(0)\sum_iZ_i^2,\qquad
+ E_\nu^{\rm sub}=E_\nu-S_n.
+\]
+It is state independent and position independent, with its
+finite-box dependence fixed by the periodic Green function.
+There was no subtraction in Theorem~\ref{thm:main}.
+
+\begin{lemma}[Uniform lattice self-energy]
+\label{lem:green}
+For every $n\ge3$,
+\begin{equation}
+ 0\le\G_n(0)=\frac1{n^3}\sum_{k\ne0}
+ \frac1{4\sum_{j=1}^3\sin^2(\pi k_j/n)}
+ \le\frac{13}{16}.
+ \label{eq:green}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Choose one reciprocal representative per residue with
+$|k_j|\le n/2$. The denominator is at least $16|k|^2/n^2$,
+since $\sin(\pi|k_j|/n)\ge2|k_j|/n$.
+The shell $\max_j|k_j|=s$ has at most $24s^2+2\le26s^2$
+points. Therefore
+$\G_n(0)\le26\lfloor n/2\rfloor/(16n)\le13/16$.
+\end{proof}
+
+\begin{corollary}[Stability after individual nuclear subtraction]
+\label{cor:stability}
+For any nuclear sites, including repeated sites, with
+$Z_{\rm tot}=\sum_iZ_i\le2n^3$,
+\begin{align}
+ E_\nu^{\rm sub}-E_0
+ &\ge mZ_{\rm tot}-c_E\G_n(0)\sum_iZ_i^2\nonumber\\
+ &\ge mZ_{\rm tot}-\frac{13\pi\alpha}{8a}Z_{\max}^2K,
+ \qquad g^2=4\pi\alpha.
+ \label{eq:stability}
+\end{align}
+\end{corollary}
+\begin{proof}
+Subtract $S_n$ from \eqref{eq:main} and use Lemma~\ref{lem:green}.
+\end{proof}
+
+The constant is independent of volume, source positions, fermion
+pair content and gauge excitations. It has no coupling-smallness
+condition. Adding $S_n$ to the raw energy would count the source
+self-energy twice.
+If two labeled nuclei occupy the same site, their mutual
+$2c_EZ_iZ_j\G_n(0)$ term is retained. Subtracting the square
+of the combined site charge instead is a different model and
+is not an $O(K)$ subtraction for unrestricted site occupancy.
+Lattice sources resolve distance only to order $a$; this model
+does not preserve the continuum point-source collision singularity.
+
+One can alternatively prescribe volume-independent species constants
+using
+\begin{equation}
+ \G_\infty(0)=\int_{[-1/2,1/2]^3}
+ \frac{dt}{4\sum_j\sin^2(\pi t_j)}
+ \le\frac{\pi\sqrt3}{8}.
+ \label{eq:green-infinite}
+\end{equation}
+The bound follows by comparison with
+$\frac1{16}|t|^{-2}$ and the containing ball of radius $\sqrt3/2$.
+Then $S_\infty=c_E\G_\infty(0)\sum_iZ_i^2$ is a different
+explicit normalization, and \eqref{eq:main} gives the
+corresponding bound with $S_\infty$.

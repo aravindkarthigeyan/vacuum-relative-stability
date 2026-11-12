@@ -1,0 +1,4 @@
+# Store and check out every file byte for byte, with no line-ending conversion.
+# lean/status.json pins the Paper A sources by SHA-256, and the package manifests
+# in docs/history/packages/ record hashes of the original files.
+* -text

@@ -1,0 +1,108 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage{xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+urlcolor=blue!45!black,pdftitle={Vacuum-relative stability and charge gaps in compact Hamiltonian lattice QED},
+pdfauthor={}}
+\setlength{\emergencystretch}{2em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diver}{div}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
+\newcommand{\vac}{\mathrm{vac}}
+\title{Vacuum-relative stability and charge gaps\\in compact Hamiltonian lattice QED}
+\author{}
+\date{29 October 2026}
+\begin{document}
+\maketitle
+\begin{center}
+\small Research-tool credits: Opus 5.5 + Astra 6\\
+Human author metadata has not been supplied.
+\end{center}
+\begin{abstract}
+For a precisely specified compact $U(1)$ Hamiltonian lattice gauge theory
+with four-component Wilson fermions, nonnegative bare mass $m$, and
+untruncated electric rotors, we prove
+$E_\nu\ge E_0+m|\sum_x\nu_x|$ in every admissible integer static-source
+sector of exact local Gauss law. The comparison holds at every positive
+gauge coupling. It includes the sources' electric self-energy;
+subtracting prescribed individual nuclear self-energies gives a
+volume-uniform lower bound of order the number of nuclei.
+The argument combines a positive centered fermion trace, a quantitative
+transfer-spectrum estimate, positive compact-rotor heat kernels, and
+gauge projection. All transfer and Fourier estimates are proved here.
+At fixed lattice spacing we also prove the vacuum thermodynamic limit
+and an open, zero-exterior-flux thermodynamic limit for each fixed
+admissible periodic source cell. The corresponding periodic-boundary
+source limit requires a boundary-flux comparison that is stated
+explicitly and remains unproved. These are finite-spacing results;
+they do not construct renormalized continuum QED or establish a
+neutral pair gap, binding, or crystalline order.
+\end{abstract}
+
+\paragraph{Tool-use disclosure.}
+Significant portions of the research development, proof drafts,
+exposition, and internal checking were produced with generative-AI
+tools. Internal AI-assisted audits are not external peer review.
+
+\section{Introduction}
+An absolute lower bound proportional to the number of lattice sites
+does not compare matter with the interacting vacuum. The question
+addressed here is whether introducing static integer charges can
+lower the energy below that vacuum when all fermion pair terms and
+the quantized gauge field are retained. For the Hamiltonian below,
+the answer is negative before the individual source self-energies
+are subtracted. The induced net fermion charge also costs at least
+its bare rest energy.
+
+The compact-link framework is that of Hamiltonian lattice gauge
+theory \cite{KS}. We use a direct spatial Wilson discretization of
+the Dirac Hamiltonian \cite{Zache}, with continuous time and canonical
+fermions. Its positive Wilson mass coefficient is a structural
+hypothesis of the proof. Positivity criteria for fermion traces
+\cite{Wei} and Gaussian-domination estimates in electron--radiation
+models \cite{Miyao} provide related context; no theorem for those
+different Hamiltonians is substituted for the proof here.
+Likewise, continuum Coulomb thermodynamic-limit results
+\cite{ThermoI,ThermoII} do not settle the compact Gauss-law boundary
+problem encountered below. No priority claim is made.
+
+The source character in our gauge projection has modulus one, so
+its integral against a positive measure is bounded by the same
+integral without that character. Such a modulus observation does
+not by itself identify a static energy or fix its self-energy
+normalization. Seiler's lattice result \cite{Seiler} concerns an
+upper bound on growth of the color-confining potential using
+Hamiltonian positivity and Euclidean rotations; it is not invoked
+as the source-sector theorem proved here.
+The Gaussian-domination comparison of
+Fr\"ohlich--Simon--Spencer \cite[Section 2]{FSS} concerns shifted
+bond energies in classical ferromagnets. These are relevant
+predecessors in method, with different hypotheses and conclusions.
+Here the finite-CAR positivity, gauge-sector projection and
+zero-temperature passage are all established explicitly.
+
+Section~\ref{sec:model} specifies the operator, ordering, gauge
+conventions and admissible sectors. Section~\ref{sec:transfer}
+proves the finite-dimensional positivity and Fourier estimates.
+Section~\ref{sec:comparison} applies them to exact gauge projection
+and fixes the nuclear self-energy convention.
+Section~\ref{sec:thermo} proves the two thermodynamic limits and
+separates the remaining periodic-source question.
+
+\input{model}
+\input{transfer}
+\input{comparison}
+\input{thermodynamics}
+\input{references}
+\end{document}

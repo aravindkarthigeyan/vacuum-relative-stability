@@ -1,0 +1,246 @@
+\section{Local remainders and the interacting vacuum}
+\label{rel4-section}
+
+This section separates an elementary useful remainder estimate from
+the additional vacuum coercivity required for a dynamical low-energy
+theorem. The on-site sea is not the interacting vacuum, even after a
+nontrivial electric-flux compression. All statements concern the
+unimproved Wilson Hamiltonian \eqref{lat-hamiltonian}, with $n\ge3$,
+$N=n^3$, $m>0$, and $g^2>0$.
+
+\subsection{The bare excitation number cannot have a vacuum-relative gap}
+
+Choose the $\beta$ eigenbasis and fill the two negative-$\beta$ modes
+at every site. Denote that normalized fermionic vector by $\Omega_b$.
+Let $N_e$ count occupied positive-$\beta$ modes and let $N_p$ count
+holes in the negative-$\beta$ modes. Then
+\begin{equation}
+ N_{\rm exc}=N_e+N_p=d\Gamma(\beta)+2N,\qquad
+ Q=N_e-N_p,\qquad
+ \ker N_{\rm exc}=L^2(U(1)^{\mathcal E})\otimes\C\Omega_b .
+ \label{rel4-excitation-definition}
+\end{equation}
+These operators commute with every local Gauss transformation.
+They do not commute with the full Hamiltonian.
+
+\begin{proposition}[Bare-sea obstruction, also at bounded flux]
+\label{rel4-bare-sea}
+No eigenvector of $H$ belongs to $\ker N_{\rm exc}$. Consequently any
+normalized physical vacuum ground state $\Psi_0$ satisfies
+$\langle\Psi_0,N_{\rm exc}\Psi_0\rangle>0$.
+The same assertion holds for the finite-dimensional compression
+$P_FHP_F$ to $|E_e|\le F$ on every link, for every integer $F\ge1$.
+In particular, a bound
+\begin{equation}
+ \langle N_{\rm exc}\rangle_\Psi
+ \le \frac{C}{m}\bigl(\langle H\rangle_\Psi-E_0+C_s(Z_{\rm tot}+K)\bigr)
+ \label{rel4-false-coercivity}
+\end{equation}
+cannot hold on all sufficiently low-energy states, even at zero
+source, for finite constants $C$ and $C_s$; $C_s$ has energy units.
+\end{proposition}
+\begin{proof}
+Write $V=d\Gamma(\sum_j\alpha_jv_j)$. All other terms of $H$
+preserve $\ker N_{\rm exc}$. The Wilson hopping within the filled
+negative block vanishes on $\Omega_b$, and the positive block is empty.
+For each positively oriented link $e=(x,j)$, $V$ creates an electron
+at one endpoint and a hole at the other. The two orientations give
+orthogonal fermionic states. For $n\ge3$, different oriented links
+also give orthogonal states. The spin matrix is $\sigma_j/(2ia)$
+up to a sign and a unit-modulus link factor, with
+$\operatorname{tr}(\sigma_j^*\sigma_j)=2$. Hence for any link
+wavefunction $f$,
+\begin{equation}
+ \|V(f\Omega_b)\|^2=\frac{3N}{a^2}\|f\|^2 .
+ \label{rel4-sea-pair-norm}
+\end{equation}
+This vector is orthogonal to $\ker N_{\rm exc}$. The eigenvalue
+equation therefore cannot hold on a nonzero $f\Omega_b$.
+The compact-resolvent realization guarantees a ground state in the
+physical vacuum sector.
+
+For the compressed statement put $P_F=\prod_e\mathbf1_{[-F,F]}(E_e)$.
+The projection commutes with $N_{\rm exc}$ and with Gauss's law.
+On the one-link range of $P_F$, the two compressed shifts obey
+\[
+ \|P_FUf\|^2+\|P_FU^*f\|^2
+ =2\|f\|^2-\|\mathbf1_{\{E=F\}}f\|^2
+              -\|\mathbf1_{\{E=-F\}}f\|^2
+ \ge\|f\|^2 .
+\]
+The last inequality uses $F\ge1$; the two endpoint projections are
+then orthogonal. With all other link projections present, the same
+identity holds by tensoring with their ranges. The preceding
+orthogonality computation now gives
+\[
+ \|P_FVP_F(f\Omega_b)\|^2\ge\frac{3N}{2a^2}\|f\|^2 .
+\]
+Thus the compressed eigenvalue equation also cannot hold on the
+bare-sea subspace. At $K=Z_{\rm tot}=0$, a ground state of the
+original Hamiltonian makes the right side of
+\eqref{rel4-false-coercivity} zero and the left side strictly positive.
+For the compressed assertion, replace $H$ and $E_0$ there by
+$H_F=P_FHP_F$ and its physical vacuum energy $E_{0,F}$.
+Its own ground state gives the same contradiction.
+\end{proof}
+
+This is a counterexample to the specified \emph{bare} number
+coercivity, not to a gap for an appropriately dressed heavy-particle
+projection. The case $F=0$ deletes all derivative hopping and is a
+different, degenerate compression.
+
+\subsection{A uniform bound on the virtual-pair density}
+
+There is a useful quantitative replacement, which displays rather
+than removes the vacuum contribution. Put
+\[
+ \mu=m+\frac{3r}{a},\qquad H_g=H_E+H_B,\qquad
+ E_g=\inf\sigma(H_g),\qquad E_{\rm ref}=E_g-2\mu N .
+\]
+The pure gauge operator has a unique strictly positive ground
+function: its positive torus heat kernel and bounded real potential
+give a positivity-improving semigroup. Gauge invariance and uniqueness
+make that function gauge invariant. Its product with $\Omega_b$ is
+a physical vacuum trial state, so $E_0\le E_{\rm ref}$.
+
+\begin{proposition}[Excitation density with an explicit volume term]
+\label{rel4-density}
+For every $0<\eta<m$, as quadratic forms,
+\begin{equation}
+ H\ge E_{\rm ref}+(m-\eta)N_{\rm exc}
+                  -\frac{3N}{2\eta a^2}.
+ \label{rel4-density-form}
+\end{equation}
+In particular, any normalized state with
+$\langle H\rangle\le E_0+\Delta$, $\Delta\ge0$, satisfies
+\begin{equation}
+ \langle N_{\rm exc}\rangle
+ \le \frac{2\Delta}{m}+\frac{6N}{(ma)^2}.
+ \label{rel4-density-energy}
+\end{equation}
+No source restriction or weak gauge coupling is needed for this
+estimate; the statement can be restricted to any physical sector.
+\end{proposition}
+\begin{proof}
+The pair-preserving part $H_d=H_g+d\Gamma(\beta M(U))$ obeys
+\[
+ H_d=H_g-2\operatorname{Tr}_{\ell^2(X)}M(U)+T_e(U)+T_p(U)
+ \ge E_{\rm ref}+mN_{\rm exc}.
+\]
+Here $T_e\ge mN_e$, $T_p\ge mN_p$, and
+$\operatorname{Tr}M=\mu N$ exactly. The transpose in the hole
+operator preserves positivity.
+
+At a fixed link configuration the pair-changing block is
+$S(U)=\sum_j\sigma_jv_j(U)$. Its singular-value decomposition is
+used only for a pointwise fermionic inequality, not to conjugate the
+electric kinetic energy. For one singular value $s$, the operator
+$s(e^\dagger p^\dagger+pe)$ acts on the even two-mode subspace as
+$\left(\begin{smallmatrix}0&s\\s&0\end{smallmatrix}\right)$.
+Consequently
+\[
+ \pm s(e^\dagger p^\dagger+pe)
+ \le\eta(n_e+n_p)+\sqrt{\eta^2+s^2}-\eta
+ \le\eta(n_e+n_p)+\frac{s^2}{2\eta}.
+\]
+The odd subspace has zero pair matrix and satisfies the same inequality.
+Summing singular modes gives
+\[
+ \pm V(U)\le\eta N_{\rm exc}
+             +\frac{\operatorname{Tr}S(U)^2}{2\eta}.
+\]
+The Pauli trace removes cross terms. For $n\ge3$,
+$\operatorname{Tr}T_j^2=0=\operatorname{Tr}(T_j^*)^2$, and hence
+\[
+ \operatorname{Tr}S^2
+ =2\sum_j\operatorname{Tr}v_j^2=\frac{3N}{a^2}.
+\]
+The resulting pointwise bound integrates to a form bound on the
+full Hilbert space. Adding the estimate on $H_d$ proves
+\eqref{rel4-density-form}. Use $\eta=m/2$,
+$E_0\le E_{\rm ref}$, and the assumed energy budget to obtain
+\eqref{rel4-density-energy}.
+\end{proof}
+
+Thus the heavy regime controls a density of bare virtual pairs.
+It does not turn their total number into $O(K)$ at fixed $ma$ and
+unbounded volume.
+
+\subsection{What annihilation of a local sea actually proves}
+
+\begin{lemma}[Local-annihilation remainder estimate]
+\label{rel4-annihilation}
+Let $P_x$ project onto the on-site bare sea and put
+$P_X=\prod_{x\in X}P_x$, tensoring with the identity on gauge variables.
+Let bounded self-adjoint local terms $R_X$ satisfy $R_XP_X=0$.
+If
+\[
+ \varepsilon=\sup_x\sum_{X\ni x}\|R_X\|<\infty,
+ \qquad R=\sum_XR_X ,
+\]
+then $-\varepsilon N_{\rm exc}\le R\le\varepsilon N_{\rm exc}$.
+\end{lemma}
+\begin{proof}
+Self-adjointness gives $P_XR_X=0$, so
+$R_X=(I-P_X)R_X(I-P_X)$ and
+$-\|R_X\|(I-P_X)\le R_X\le\|R_X\|(I-P_X)$.
+The commuting on-site projections satisfy
+$I-P_X\le\sum_{x\in X}(I-P_x)\le\sum_{x\in X}n_{{\rm exc},x}$.
+Summing proves the assertion.
+\end{proof}
+
+The lemma validates the algebraic part of the proposed design
+principle. Combined with \eqref{rel4-density-energy}, however, it
+still leaves the error
+$\varepsilon[2\Delta/m+6N/(ma)^2]$.
+If instead $R_XP_X=A_X(U)P_X$ for a nonconstant gauge operator,
+subtracting a number does not establish the lemma's hypothesis.
+The operator $A_X(U)$ must be retained in the effective gauge
+Hamiltonian or controlled in differences of sourced and unsourced
+expectations. Its being the same operator in both problems does
+not make its two ground-state expectations equal.
+
+A genuinely dressed version would replace $P_x$ and $N_{\rm exc}$
+by precisely constructed projections and an excitation number for
+which the interacting vacuum has zero expectation, and would prove
+an energy bound for that number. Finite-order normal ordering does
+not by itself establish either property. In particular, an exact
+annihilation claim at $K=0$ must be checked on the actual interacting
+vacuum, not just on the reference product vector.
+
+\subsection{The missing dynamical Schur-complement estimate}
+
+For clarity, the formal reduction can be stated as an exact
+conditional lemma. Let $P$ be a specified retained projection in a
+physical sector, $Q=I-P$, and write
+$H=\left(\begin{smallmatrix}A&B\\B^*&D\end{smallmatrix}\right)$.
+If $D-z\ge\delta Q>0$ as forms, then completion of the square gives
+\begin{align}
+ \langle(u,v),(H-z)(u,v)\rangle
+ &=\langle u,[A-z-B(D-z)^{-1}B^*]u\rangle \nonumber\\
+ &\quad+\|(D-z)^{1/2}[v+(D-z)^{-1}B^*u]\|^2 .
+ \label{rel4-schur-identity}
+\end{align}
+This holds on the form domain when the displayed compositions are
+defined; in particular it is an ordinary matrix identity after a
+finite electric compression. If, in addition,
+$B(D-z)^{-1}B^*\le\varepsilon N_{\rm eff}$ on $P$, one obtains
+the lower Schur bound $A-z-\varepsilon N_{\rm eff}$.
+On a no-positron retained space with $N_{\rm eff}=Z_{\rm tot}$,
+this is genuinely proportional to source charge.
+
+The required lower bound on the \emph{full} pair block $D-z$ and
+the source-relative bound on its Schur correction have not been
+proved here. The elementary flux-restricted denominators in
+Section~\ref{flux4-section} do not imply these operator hypotheses.
+One must also control the retained gauge Hamiltonian and its
+vacuum normalization. A charged-sector gap concerns different
+values of $Q$ and supplies no such estimate for neutral pairs.
+
+The local Schrieffer--Wolff theorem of
+Bravyi--DiVincenzo--Loss~\cite{BDL}, Theorem~3, has a remainder
+$O(N|\epsilon|^{k+1})$ for its specified finite-dimensional,
+on-site-gapped setting. Its locality theorem does not replace the
+two additional estimates above. The relative-form and isolated-band
+assumptions in extensions to unbounded systems must likewise be
+checked rather than imported by name.

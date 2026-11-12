@@ -1,0 +1,286 @@
+{
+  "schema_version": 1,
+  "source": {
+    "id": "paper-a",
+    "title": "Vacuum-relative stability and charge gaps in compact Hamiltonian lattice QED",
+    "status": "Draft dated 29 October 2026; not yet reviewed by specialists.",
+    "main": "paper-a/main.tex",
+    "pdf": "paper-a/paper-a-lattice.pdf",
+    "pinned_sha256": {
+      "paper-a/comparison.tex": "1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273",
+      "paper-a/main.tex": "ed741955104fb9d5368d3b01a2af91dbea17ebccc6e49f4457eb7f56bf2758cc",
+      "paper-a/model.tex": "2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+      "paper-a/references.tex": "ec11e40b6d8e9f6e097a754bf987d6ac0569bb690e877fa68978585acefadd48",
+      "paper-a/thermodynamics.tex": "56b29baca17406cb1800315140ae725fc838ec89b5f15813580452a1e2adafcb",
+      "paper-a/transfer.tex": "b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf"
+    }
+  },
+  "states": {
+    "NOT_STARTED": "No Lean declaration states this result.",
+    "FROZEN_UNPROVED": "An author-approved Lean statement of the result is frozen with proof `sorry`. This is not proof progress.",
+    "PROVED": "The frozen Lean statement is proved; the build and the axiom audit pass.",
+    "AUDITED": "PROVED, and a statement audit by a reviewer who did not write it confirmed it against the source."
+  },
+  "results": [
+    {
+      "label": "lem:operator",
+      "kind": "Lemma",
+      "number": "2.1",
+      "title": "Operator realization",
+      "file": "paper-a/model.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`H` is self-adjoint with compact resolvent and trace-class heat semigroup; every nonempty Gauss sector reduces `H`; extensive bounds on `H` and `E_0`.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "lem:transfer",
+      "kind": "Lemma",
+      "number": "3.1",
+      "title": "Positivity and the transfer annulus",
+      "file": "paper-a/transfer.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`.",
+      "lean_coverage": "the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence",
+      "outside_lean": "form preservation of the actual propagators, derived from the generator relations; the β-form derivative identity (3.3), the strict decrease and the Gronwall integration; algebraic multiplicities and the exact eigenvalue count; reality and positivity of the centered trace along the homotopy; measurable histories."
+    },
+    {
+      "label": "lem:fourier",
+      "kind": "Lemma",
+      "number": "3.2",
+      "title": "Canonical Fourier bound",
+      "file": "paper-a/transfer.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`|F_q| ≤ binom(2d, d+|q|) e^{-b m_* |q|} F_0` for `|q| ≤ d`.",
+      "lean_coverage": "the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q`",
+      "outside_lean": "the factorization `F(φ) = C ∏_j |1 + e^{iφ} λ_j|²`, the identification of `F_q` with the finite antidiagonal correlation, and negative `q` by conjugation."
+    },
+    {
+      "label": "thm:main",
+      "kind": "Theorem",
+      "number": "4.1",
+      "title": "Exact physical-sector comparison",
+      "file": "paper-a/comparison.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`E_ν ≥ E_0 + m |Q_ν|` in every admissible integer source sector; `0 < Z_ν(b) ≤ Z_0(b)`, and the binomial thermal bound (4.2) for `m > 0`.",
+      "lean_coverage": "the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation",
+      "outside_lean": "the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection, the ground-energy limit, and the case `m = 0`."
+    },
+    {
+      "label": "lem:green",
+      "kind": "Lemma",
+      "number": "4.2",
+      "title": "Uniform lattice self-energy",
+      "file": "paper-a/comparison.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`0 ≤ G_n(0) ≤ 13/16` for every `n ≥ 3`.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "cor:stability",
+      "kind": "Corollary",
+      "number": "4.3",
+      "title": "Stability after individual nuclear subtraction",
+      "file": "paper-a/comparison.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`E_ν^sub - E_0 ≥ m Z_tot - (13πα/(8a)) Z_max² K`.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "lem:cut",
+      "kind": "Lemma",
+      "number": "5.1",
+      "title": "Cutting with retained rotors",
+      "file": "paper-a/thermodynamics.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`‖H - H_cut‖ ≤ B n_c` with `B = (4r + 2 + 8/g²)/a`, and the cut auxiliary minimum is the sum of the open-block minima.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "thm:vacuum-limit",
+      "kind": "Theorem",
+      "number": "5.2",
+      "title": "Vacuum thermodynamic limit",
+      "file": "paper-a/thermodynamics.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "The vacuum energy density `e_vac` exists, with open and periodic finite-size errors at most `3B/ℓ` and `6B/ℓ`.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "prop:cell",
+      "kind": "Proposition",
+      "number": "5.3",
+      "title": "Fixed-cell relative bounds",
+      "file": "paper-a/thermodynamics.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "`0 ≤ E_ν^per - E_0^per - m Z_tot ≤ C_cell K` for a fixed periodic source cell, and an extensive electric budget.",
+      "outside_lean": "all of it."
+    },
+    {
+      "label": "thm:open-source",
+      "kind": "Theorem",
+      "number": "5.4",
+      "title": "Open zero-flux source limit",
+      "file": "paper-a/thermodynamics.tex",
+      "state": "NOT_STARTED",
+      "lean": null,
+      "claim": "The open zero-exterior-flux source energy density exists and bounds the periodic-source density from above; the vacuum-plus-rest density bounds it from below.",
+      "outside_lean": "all of it."
+    }
+  ],
+  "open_in_source": [
+    {
+      "label": "eq:bf",
+      "file": "paper-a/thermodynamics.tex",
+      "note": "Hypothesis (BF), a boundary-flux comparison. Paper A states it and explicitly does not prove it; the periodic-source limit is conditional on it."
+    }
+  ],
+  "supporting": [
+    {
+      "name": "QEDCore.preservesForm_mul",
+      "supports": "lem:transfer",
+      "step": "Product algebra: `U* C U = C` and `V* C V = C` imply `(UV)* C (UV) = C`, in any monoid with a star-multiplication.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.preservesForm_one",
+      "supports": "lem:transfer",
+      "step": "The identity preserves every form.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.preservesForm_list_prod",
+      "supports": "lem:transfer",
+      "step": "An ordered product of form-preserving factors preserves the form. That each free evolution and kick preserves `C_5` is a hypothesis.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.adjoint_eq_conjugate_inverse",
+      "supports": "lem:transfer",
+      "step": "From `C C = 1`, `U V = 1` and `U* C U = C`, derive `U* = C V C`: the identity `U* = C_5 U⁻¹ C_5`, with the inverse supplied explicitly.",
+      "headline": true
+    },
+    {
+      "name": "QEDCore.no_unit_factor_of_strict_drop",
+      "supports": "lem:transfer",
+      "step": "Scalar endpoint implication: `B(T) < B(0)` and `B(T) = t B(0)` exclude `t = 1`. The strict drop itself is a hypothesis.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.stable_endpoint_positive",
+      "supports": "lem:transfer",
+      "step": "Scalar endpoint implication: with a strict drop, `t < 1` forces `B(0) > 0`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.unstable_endpoint_negative",
+      "supports": "lem:transfer",
+      "step": "Scalar endpoint implication: with a strict drop, `t > 1` forces `B(0) < 0`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.stable_annulus_from_endpoint",
+      "supports": "lem:transfer",
+      "step": "Division step: `B(0) > 0`, `B(T) = t B(0)` and an assumed contraction `B(T) ≤ r B(0)` give `t ≤ r`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.unstable_annulus_from_endpoint",
+      "supports": "lem:transfer",
+      "step": "Division step with `B(0) < 0`: the same hypotheses give `r ≤ t`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.inverse_eigenvector",
+      "supports": "lem:transfer",
+      "step": "Eigenvector level: `U x = λ x`, `V U = 1` and `λ ≠ 0` give `V x = λ⁻¹ x`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.involution_mulVec_ne_zero",
+      "supports": "lem:transfer",
+      "step": "`C C = 1` and `x ≠ 0` give `C x ≠ 0`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.adjoint_inverse_eigenvector",
+      "supports": "lem:transfer",
+      "step": "Eigenvector-level inverse-adjoint correspondence: `U* (C x) = λ⁻¹ (C x)`. No multiplicity statement.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.elementary_zero",
+      "supports": "lem:fourier",
+      "step": "`e_0 = 1` for the elementary symmetric coefficients, defined as subset sums.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.norm_elementary_le",
+      "supports": "lem:fourier",
+      "step": "`|e_k| ≤ binom(N, k) r^k` when every `|λ_i| ≤ r`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.correlation_zero",
+      "supports": "lem:fourier",
+      "step": "The zeroth antidiagonal coefficient equals the vacuum weight `Σ_j |a_j|²`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.one_le_vacuumWeight",
+      "supports": "lem:fourier",
+      "step": "`a_0 = 1` implies that the vacuum weight is at least 1.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.norm_correlation_le",
+      "supports": "lem:fourier",
+      "step": "Termwise bound and Mathlib's Vandermonde identity: `|corr_q| ≤ binom(2N, N+q) r^q` for `0 ≤ r ≤ 1` and every natural `q`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.elementary_correlation_bound",
+      "supports": "lem:fourier",
+      "step": "The same bound for the elementary symmetric coefficients of `λ`.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.relative_correlation_bound",
+      "supports": "lem:fourier",
+      "step": "The finite coefficient estimate behind (3.4): `|corr_q| ≤ binom(2N, N+q) r^q` times the vacuum weight.",
+      "headline": true
+    },
+    {
+      "name": "QEDCore.positive_measure_comparison",
+      "supports": "thm:main",
+      "step": "The norm of an integrable complex integral is at most the integral of a pointwise majorant against a positive measure.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.phase_preserves_bound",
+      "supports": "thm:main",
+      "step": "A unit-modulus phase preserves a norm bound (removing `e^{-iθ·ν}`).",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.scaled_coefficient_comparison",
+      "supports": "thm:main",
+      "step": "Pointwise: phase times nonnegative prefactor times correlation is bounded by the binomial factor times prefactor times vacuum weight.",
+      "headline": false
+    },
+    {
+      "name": "QEDCore.canonical_integral_comparison",
+      "supports": "thm:main",
+      "step": "The integrated comparison behind (4.2), conditional on a supplied measure, nonnegative prefactor, unit phase, eigenvalue bound and integrability.",
+      "headline": true
+    }
+  ]
+}

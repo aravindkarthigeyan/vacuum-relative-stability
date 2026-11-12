@@ -1,0 +1,237 @@
+\section{A nonperturbative free-sea dielectric estimate}
+\label{fd-section}
+
+This section gives an independent quadratic-field estimate.  It holds on
+the entire finite electron--positron Fock space, not just on quasi-free
+states or on the neutral sector.  It is useful for distinguishing a proved
+free-sea response bound from an assumption about an interacting vacuum.
+
+Let $\mathbb T_L^3$ have volume $V=L^3$, and let $P_f$ project onto the
+momenta $p\in(2\pi/L)\mathbb Z^3$ with $|p|\le\Lambda$.  On the resulting
+four-spinor space set
+\[
+ D_0(p)=\boldsymbol{\mathsf a}\cdot p+m\mathsf b,
+ \quad E(p)=\sqrt{|p|^2+m^2},\quad
+ P_\pm(p)=\frac12\left(1\pm\frac{D_0(p)}{E(p)}\right),\qquad m>0.
+\]
+The positive particle--hole Hamiltonian and the normal-ordered scalar
+coupling are
+\[
+ H_D=d\Gamma(D_0)-\operatorname{Tr}(P_-D_0),\qquad
+ n(\phi)=d\Gamma(\Phi)-\operatorname{Tr}(P_-\Phi),\qquad
+ \Phi=P_f\phi P_f.
+\]
+Here $\phi\in H^1(\mathbb T_L^3)\cap L^\infty(\mathbb T_L^3)$ is real.
+The sign of a physical electric potential can be included in $\phi$.
+Use the Fourier convention
+$\widehat\phi(k)=\int_{\mathbb T_L^3}e^{-ik\cdot x}\phi(x)\,dx$, so that
+$\|\nabla\phi\|_2^2=V^{-1}\sum_k|k|^2|\widehat\phi(k)|^2$.
+
+\subsection{The cutoff off-diagonal block and its gradient bounds}
+
+Put $B=P_+\Phi P_-$ and define the weighted squared norm
+\begin{equation}
+ \mathcal S_{\Lambda,L}(\phi)
+ :=\sum_{i\in+,\,j\in-}
+       \frac{|B_{ij}|^2}{E_i+|E_j|},
+ \label{fd-weighted-norm}
+\end{equation}
+where the matrix entries are taken in free Dirac eigenbases.  The following
+bounds retain the sharp fermion cutoff:
+\begin{align}
+ \|B\|_{\mathrm{HS}}^2
+ &\le C^{(2)}_{\Lambda,L}\|\nabla\phi\|_2^2,
+ &C^{(2)}_{\Lambda,L}
+ &=\frac1{2V}\sum_{|p|\le\Lambda}E(p)^{-2},
+ \label{fd-hs-bound}\\
+ \mathcal S_{\Lambda,L}(\phi)
+ &\le C^{(3)}_{\Lambda,L}\|\nabla\phi\|_2^2,
+ &C^{(3)}_{\Lambda,L}
+ &=\frac1{4V}\sum_{|p|\le\Lambda}E(p)^{-3}.
+ \label{fd-weighted-bound}
+\end{align}
+In particular, for every $L\ge L_0>0$ one can use the volume-independent
+constants
+\begin{align}
+ \overline C^{(2)}_{\Lambda,L_0}
+ &=\frac1{2m^2L_0^3}+\frac{13\Lambda}{8\pi^3},
+ \label{fd-c2}\\
+ \overline C^{(3)}_{\Lambda,L_0}
+ &=\frac1{4m^3L_0^3}
+       +\frac{13}{16\pi^3}\bigl(2+\log_+(\Lambda/m)\bigr),
+ \qquad\log_+x=\max\{\log x,0\}.
+ \label{fd-c3}
+\end{align}
+
+\paragraph{Proof of the gradient bounds.}
+The Dirac trace identity for the scalar coupling is
+\begin{align}
+ \operatorname{tr}_{\mathbb C^4}
+       \bigl(P_+(p+k)P_-(p)\bigr)
+ &=1-\frac{p\cdot(p+k)+m^2}{E(p)E(p+k)}\nonumber\\
+ &=\frac{|k|^2-(E(p+k)-E(p))^2}{2E(p)E(p+k)}
+ \le\frac{|k|^2}{2E(p)E(p+k)}.
+ \label{fd-projector-trace}
+\end{align}
+For $a,b>0$,
+\[
+ \frac1{ab}\le\frac12(a^{-2}+b^{-2}),\qquad
+ \frac1{ab(a+b)}\le\frac14(a^{-3}+b^{-3}).
+\]
+The second inequality follows from
+$(a+b)(a^3+b^3)\ge4a^2b^2$.
+Insert \eqref{fd-projector-trace} in the Fourier expressions for
+$\|B\|_{\mathrm{HS}}^2$ and \eqref{fd-weighted-norm}, and use these two
+scalar inequalities.  The sums over $p$ and $p+k$, both required to belong
+to the cutoff band, can each be bounded by the full band sum.  Parseval
+then proves \eqref{fd-hs-bound}--\eqref{fd-weighted-bound}.  Equivalently,
+\[
+ \mathcal S_{\Lambda,L}(\phi)
+ =\frac1V\sum_k\Pi_{\Lambda,L}(k)|\widehat\phi(k)|^2,
+ \quad
+ \Pi_{\Lambda,L}(k)=\frac1V
+ \sum_{\substack{p,p+k\ \mathrm{in\ the\ band}}}
+ \frac{\operatorname{tr}(P_+(p+k)P_-(p))}{E(p+k)+E(p)},
+\]
+and $0\le\Pi_{\Lambda,L}(k)\le C^{(3)}_{\Lambda,L}|k|^2$.
+In particular its zero mode vanishes exactly.
+
+For completeness, the lattice bounds in
+\eqref{fd-c2}--\eqref{fd-c3} can be checked without a continuum
+approximation.  Set $h=2\pi/L$, $a=m/h$, and $J=\lfloor\Lambda/h\rfloor$.
+The shell $|n|_\infty=j$ has $24j^2+2\le26j^2$ integer points.
+For the inverse-square sum, this gives
+\[
+ \frac1V\sum_{0<|p|\le\Lambda}E(p)^{-2}
+ \le\frac{26}{Vh^2}\sum_{j=1}^J\frac{j^2}{a^2+j^2}
+ \le\frac{26\Lambda}{8\pi^3}.
+\]
+For the inverse-cube sum, split at $j=a$.  The part $j\le a$ is bounded
+by $1$ using $\sum_{j=1}^n j^2=n(n+1)(2n+1)/6$, and the remaining harmonic
+sum is bounded by $1+\log_+(\Lambda/m)$.  Consequently
+\[
+ \frac1V\sum_{0<|p|\le\Lambda}E(p)^{-3}
+ \le\frac{26}{8\pi^3}\bigl(2+\log_+(\Lambda/m)\bigr).
+\]
+Adding the $p=0$ term proves the stated constants.  If $a<1$, the first
+part is empty and the same bound follows from
+$\sum_{j=1}^Jj^{-1}\le1+\log J$; if $J=0$, the sum is empty.
+
+These are bounds for the compressed multiplication operator $\Phi$ inside
+the cutoff one-particle space.  In particular
+$\|[P_-,\Phi]\|_{\mathrm{HS}}^2=2\|B\|_{\mathrm{HS}}^2$ there.
+They do not assert the same formula for a commutator with a projection
+acting on unretained modes.  No cutoff-boundary term has been discarded:
+restricting both retained momentum indices only decreases the positive
+sums used in the proof.
+
+\subsection{A nonperturbative operator inequality on the full Fock space}
+
+\paragraph{Proposition.}
+Let $\tau>0$ and $v=\|\phi\|_\infty<\tau m$.  Then
+\begin{align}
+ \tau H_D+n(\phi)
+ &\ge-\sum_{i\in+,\,j\in-}
+       \frac{|B_{ij}|^2}{\tau(E_i+|E_j|)-2v}\,I\nonumber\\
+ &\ge-\frac{\mathcal S_{\Lambda,L}(\phi)}{\tau-v/m}\,I
+ \ge-\frac{\overline C^{(3)}_{\Lambda,L_0}}
+                 {\tau-v/m}\|\nabla\phi\|_2^2\,I
+ \quad(L\ge L_0).
+ \label{fd-dielectric}
+\end{align}
+The constants are independent of the charge sector and of the number of
+real or virtual pairs.  This is an exact inequality, not a second-order
+expansion in the potential.
+
+\paragraph{Proof.}
+For any normalized many-body state its one-particle density matrix obeys
+$0\le\gamma\le1$ by the CAR, whether or not the state is quasi-free.
+Put $Q=\gamma-P_-$ and
+$K=Q_{++}-Q_{--}\ge0$.  The inequality $\gamma^2\le\gamma$ implies
+\begin{equation}
+ Q^2\le K,
+ \qquad T:=\operatorname{Tr}(D_0Q)
+       =\operatorname{Tr}(|D_0|K).
+ \label{fd-q-square}
+\end{equation}
+The diagonal potential terms are bounded below by
+$-v\operatorname{Tr}K$.  Since $\tau|D_0|-v$ is positive,
+\[
+ \tau T-v\operatorname{Tr}K
+ \ge\operatorname{Tr}\bigl((\tau|D_0|-v)Q^2\bigr)
+ \ge\sum_{i\in+,\,j\in-}
+       [\tau(E_i+|E_j|)-2v]|Q_{ij}|^2.
+\]
+The omitted diagonal-block squares in the last inequality are positive.
+The off-diagonal potential contribution is
+$2\operatorname{Re}\sum_{i,j}\overline{B_{ij}}Q_{ij}$.
+Completing each scalar square proves the first line of
+\eqref{fd-dielectric}.  The second uses
+$\tau(E_i+|E_j|)-2v\ge(\tau-v/m)(E_i+|E_j|)$,
+and the final bound is \eqref{fd-weighted-bound}.
+Since every normalized state satisfies the estimate, it is an operator
+inequality on the entire finite Fock space.
+
+\paragraph{Constant shifts and the threshold condition.}
+In the exact charge sector $N_e-N_p=q$, a constant shift gives
+$n(\phi)=n(\phi-c)+cq$.  Thus one may replace $v$ by
+$\|\phi-c\|_\infty$ in \eqref{fd-dielectric} and add $cq$ to its right
+side.  On the neutral sector this allows centering the potential by any
+constant.  A threshold restriction cannot simply be omitted from an
+all-sector gradient-only bound: if $\phi=-c$ with $c>\tau m$, its gradient
+vanishes, but a zero-momentum electron has energy $\tau m-c<0$.
+
+There is also a precise estimate with an explicit threshold penalty.
+Let $0<\sigma<\tau$, denote the positive operators $|D_0|$ on the two
+spectral subspaces by $E_\pm$, and write $A_-:=\max\{-A,0\}$ for the
+negative part of a self-adjoint matrix.  Then
+\begin{multline}
+ \tau H_D+n(\phi)\ge
+ -\frac{\mathcal S_{\Lambda,L}(\phi)}{\sigma}
+ -\operatorname{Tr}\bigl[((\tau-\sigma)E_++\Phi_{++})_-\bigr]\\
+ -\operatorname{Tr}\bigl[((\tau-\sigma)E_- -\Phi_{--})_-\bigr].
+ \label{fd-threshold}
+\end{multline}
+To prove this, use $\sigma T$ and the off-diagonal potential to complete
+the weighted squares with denominator $\sigma(E_i+|E_j|)$.
+The remaining diagonal expectation is bounded below by the two displayed
+negative traces because the electron and hole diagonal density matrices
+each lie between zero and one.  No assertion of volume independence is
+made for this threshold penalty when the gap condition fails.
+
+\subsection{A precisely scoped mean-field consequence}
+
+Suppose a separately established estimate for a photon-free mean-field
+functional gives
+\begin{equation}
+ \mathcal E_0(\gamma)\ge\theta\operatorname{Tr}(D_0Q)
+ \quad\text{for all }0\le\gamma\le1,
+ \qquad\theta>0.
+ \label{fd-hf-hypothesis}
+\end{equation}
+Then, for $\|\phi\|_\infty<\theta m$,
+\begin{equation}
+ \mathcal E_0(\gamma)+\operatorname{Tr}(\Phi Q)
+ \ge-\frac{\overline C^{(3)}_{\Lambda,L_0}}
+                 {\theta-\|\phi\|_\infty/m}
+       \|\nabla\phi\|_2^2.
+ \label{fd-hf-dielectric}
+\end{equation}
+This follows from the preceding one-particle proof with $\tau=\theta$;
+it holds in the mean-charge class and hence also on exact-charge Slaters.
+
+For clarity, one sufficient hypothesis for \eqref{fd-hf-hypothesis} in
+the fully free-Wick-ordered functional is the periodic exchange inequality
+\[
+ \mathrm{Ex}(Q)\le\frac\pi2\operatorname{Tr}(|p|Q^2)
+                      +\frac{c_*}{L}\operatorname{Tr}Q^2.
+\]
+If this inequality has been proved for the selected periodic Green function,
+then its nonnegative direct term and \eqref{fd-q-square} give
+\[
+ \theta=1-\frac{\alpha\pi}{4}-\frac{\alpha c_*}{2mL_0}>0
+ \quad\text{uniformly for }L\ge L_0.
+\]
+This states the needed mean-field assumption explicitly.  The free operator
+bound \eqref{fd-dielectric} requires neither that exchange estimate nor
+any interacting-vacuum hypothesis.

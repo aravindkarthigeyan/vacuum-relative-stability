@@ -1,0 +1,5 @@
+min over random instances of E_q(eta)-E_0(0) (should be >=0):
+ proper h : 0.2751879699953026
+ h with scalar part : -0.9115899005694414
+ indefinite mass : 0.7317527741145131
+

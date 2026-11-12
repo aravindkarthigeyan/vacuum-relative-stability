@@ -1,0 +1,384 @@
+\section{An exact-charge relative theorem for screened lattice fermions}
+\label{sl-sec}
+
+This section establishes the screened lattice intermediate problem proposed
+in Section~\ref{sec:reduction}. The result is a direct consequence of
+bounded local occupation, a summable external potential, and a canonical
+energy comparison proved below. It applies to the exact many-body energy
+and to its exact-charge Slater restriction. No spectral-gap theorem or
+small-coupling expansion is needed. The constants are uniform in volume,
+but not in the removal of screening or the lattice ultraviolet regulator.
+This is a benchmark theorem for a different, explicitly specified model;
+it is not a theorem about continuum QED.
+
+\subsection{Local Hamiltonians and canonical energy continuity}
+\label{sl-local}
+
+Let \(\Omega\) be a finite set of lattice sites, with \(2r\) fermion modes
+per site, where \(r\) is a fixed positive integer. Put
+\[
+\mathcal F_\Omega=\bigwedge\bigl(\ell^2(\Omega)\otimes\mathbb C^{2r}\bigr),
+\qquad D=2r|\Omega|,
+\qquad n_x=\sum_{a=1}^{2r}c_{x,a}^*c_{x,a},
+\qquad N=\sum_xn_x.
+\]
+Write \(N_* = r|\Omega|\) and \(Q=N-N_*\). The neutral vacuum energy will
+always mean the minimum in the exact sector \(Q=0\), even if another
+charge sector has a lower energy. Consider a decomposition
+\begin{equation}
+H_0=C_\Omega I+\sum_{\varnothing\ne X\subset\Omega}h_X,
+\qquad h_X=h_X^*,\qquad [h_X,N_X]=0,
+\qquad N_X=\sum_{x\in X}n_x,
+\label{sl-local-h}
+\end{equation}
+where \(h_X\) belongs to the CAR algebra of the modes at sites in \(X\).
+In particular every \(h_X\) is even. The scalar \(C_\Omega\) can include a
+fixed free-vacuum normalization; its size is irrelevant below. Define
+\begin{equation}
+d_X=2r|X|,
+\qquad
+J=\sup_{x\in\Omega}\sum_{X\ni x}d_X\|h_X\|.
+\label{sl-J}
+\end{equation}
+For a family of volumes the hypothesis is that \(J\) is bounded by a
+volume-independent constant. Finite range is sufficient but not
+necessary. Summable two-site interactions also satisfy this hypothesis.
+
+For any charge-preserving Hamiltonian \(H\), let
+\(E_{\rm MB}(n;H)\) be its minimum over all normalized vectors with
+\(N=n\), and let \(E_{\rm SD}(n;H)\) be the minimum over normalized
+Slater determinants in that sector. These minima exist: the Hilbert
+space is finite dimensional and the relevant Grassmannian is compact.
+The Slater class is an exact-particle-number class, not a mean-charge
+relaxation.
+
+\begin{lemma}[Uniform comparison between exact charge sectors]
+\label{sl-charge-lip}
+For \(\mathcal A\in\{{\rm MB},{\rm SD}\}\) and
+\(0\le n,n'\le D\), the Hamiltonian \eqref{sl-local-h} satisfies
+\begin{equation}
+\left|E_{\mathcal A}(n';H_0)-E_{\mathcal A}(n;H_0)\right|
+\le 2J|n'-n|.
+\label{sl-charge-lip-eq}
+\end{equation}
+This assertion includes sectors arbitrarily close to the empty and fully
+occupied sectors.
+\end{lemma}
+
+\begin{proof}
+Use a single index \(i\) for a mode and, for each support \(X\), define
+\[
+A_X^+=\sum_{i\in X}c_i[h_X,c_i^*]
+       =\sum_{i\in X}c_ih_Xc_i^*-(d_X-N_X)h_X,
+\]
+where the sum over \(i\in X\) includes all internal modes. Both terms are
+self-adjoint and commute with \(N_X\). Moreover \(A_X^+\) vanishes on
+the fully occupied local sector. Its norm is at most
+\(2d_X\|h_X\|\). On every other local number sector,
+\(d_X-N_X\ge1\), so the block decomposition by \(N_X\) proves the
+operator inequality
+\begin{equation}
+-2d_X\|h_X\|(d_X-N_X)
+\le A_X^+\le 2d_X\|h_X\|(d_X-N_X).
+\label{sl-local-create}
+\end{equation}
+Similarly
+\[
+A_X^-=\sum_{i\in X}c_i^*[h_X,c_i]
+       =\sum_{i\in X}c_i^*h_Xc_i-N_Xh_X
+\]
+is self-adjoint, commutes with \(N_X\), vanishes on the empty local
+sector, and obeys
+\begin{equation}
+-2d_X\|h_X\|N_X\le A_X^-\le 2d_X\|h_X\|N_X.
+\label{sl-local-annihilate}
+\end{equation}
+Evenness implies that modes outside \(X\) commute with \(h_X\). Thus
+\eqref{sl-J}--\eqref{sl-local-annihilate} give
+\begin{equation}
+\sum_i c_i[H_0,c_i^*]\le 2J(D-N),
+\qquad
+\sum_i c_i^*[H_0,c_i]\le 2JN.
+\label{sl-summed-comm}
+\end{equation}
+For example the first bound follows by writing
+\(d_X-N_X=\sum_{x\in X}(2r-n_x)\) and collecting the coefficient
+of each positive operator \(2r-n_x\).
+
+Let \(\Psi\) minimize the energy in the \(n\)-particle class under
+consideration. If \(n<D\), the creation trials satisfy
+\[
+\sum_i\|c_i^*\Psi\|^2=D-n,
+\]
+and, using \eqref{sl-summed-comm},
+\begin{align*}
+\sum_i\langle c_i^*\Psi,H_0c_i^*\Psi\rangle
+&=(D-n)\langle\Psi,H_0\Psi\rangle
+ +\left\langle\Psi,\sum_i c_i[H_0,c_i^*]\Psi\right\rangle\\
+&\le(D-n)\bigl(E_{\mathcal A}(n;H_0)+2J\bigr).
+\end{align*}
+At least one trial is nonzero. Its energy, or equivalently the weighted
+average of the nonzero trial energies, proves
+\(E_{\mathcal A}(n+1;H_0)\le E_{\mathcal A}(n;H_0)+2J\).
+The annihilation trials give
+\(E_{\mathcal A}(n-1;H_0)\le E_{\mathcal A}(n;H_0)+2J\) for \(n>0\).
+Applying these two inequalities to adjacent sectors and iterating proves
+\eqref{sl-charge-lip-eq}.
+
+For completeness, all these trials stay in the Slater class when
+\(\Psi\) is a Slater determinant. If its occupied subspace is \(F\),
+then \(c^*(f)\Psi\) is the wedge of \((1-P_F)f\) with \(\Psi\),
+hence either zero or decomposable. For annihilation, rotate an
+orthonormal basis of \(F\) so that its first vector is proportional
+to \(P_Ff\); contraction by \(f\) then removes that first vector.
+Thus \(c(f)\Psi\) is also zero or decomposable. The proof does not
+require a Slater minimizer to be an eigenvector of \(H_0\).
+\end{proof}
+
+\subsection{Relative energy and relative correlation estimates}
+\label{sl-relative}
+
+Take integer nuclear charges \(1\le Z_i\le Z_{\max}\), and write
+\(Z_{\rm tot}=\sum_iZ_i\). Suppose
+\(0\le N_*+Z_{\rm tot}\le D\), the exact finite-mode admissibility
+condition. Let
+\begin{equation}
+H_\nu=H_0+V_\nu+U_\nu I,
+\qquad [V_\nu,N]=0,
+\qquad \|V_\nu\|\le aZ_{\rm tot},
+\qquad U_\nu\ge0,
+\label{sl-source-assumption}
+\end{equation}
+with a constant \(a\) independent of volume, the number of sources,
+and their positions. No disjointness of source supports is assumed.
+
+\begin{theorem}[Screened lattice vacuum-relative stability]
+\label{sl-relative-theorem}
+Set \(C=2J+a\). For both \(\mathcal A={\rm MB}\) and
+\(\mathcal A={\rm SD}\),
+\begin{equation}
+U_\nu-CZ_{\rm tot}
+\le E_{\mathcal A}(N_*+Z_{\rm tot};H_\nu)
+      -E_{\mathcal A}(N_*;H_0)
+\le U_\nu+CZ_{\rm tot}.
+\label{sl-two-sided}
+\end{equation}
+In particular, with the actual interacting neutral vacuum
+\(E_0^{\rm vac}=E_{\rm MB}(N_*;H_0)\),
+\begin{equation}
+E_{\rm MB}(N_*+Z_{\rm tot};H_\nu)-E_0^{\rm vac}
+\ge-CZ_{\max}K.
+\label{sl-stability}
+\end{equation}
+Define the nonnegative Slater correlation errors
+\begin{align*}
+c_\nu&=E_{\rm SD}(N_*+Z_{\rm tot};H_\nu)
+       -E_{\rm MB}(N_*+Z_{\rm tot};H_\nu),\\
+c_0&=E_{\rm SD}(N_*;H_0)-E_{\rm MB}(N_*;H_0).
+\end{align*}
+Then the following two-sided relative correlation estimate also holds:
+\begin{equation}
+|c_\nu-c_0|\le 2CZ_{\rm tot}\le 2CZ_{\max}K.
+\label{sl-relative-correlation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For any fixed particle number, the operator inequalities
+\(-aZ_{\rm tot}I\le V_\nu\le aZ_{\rm tot}I\) bound the change of
+either variational infimum by \(aZ_{\rm tot}\). Apply
+Lemma~\ref{sl-charge-lip} to compare the remaining source-free energy
+in sector \(N_*+Z_{\rm tot}\) with that in sector \(N_*\). This proves
+\eqref{sl-two-sided}; dropping \(U_\nu\ge0\) gives
+\eqref{sl-stability}. Subtract the two relative energy differences
+in \eqref{sl-two-sided}. The same specified nuclear repulsion occurs
+in both and cancels, leaving \eqref{sl-relative-correlation}.
+No state-dependent or source-dependent vacuum subtraction is used.
+\end{proof}
+
+The theorem also covers bounded local defects:
+\(V_\nu=\sum_iB_i\), with \([B_i,N]=0\) and
+\(\|B_i\|\le aZ_i\), regardless of overlap between their supports.
+The charge-sector lemma is essential if the physical source sector
+differs from the neutral vacuum sector. Simply comparing both
+Hamiltonians with their unconstrained ground energies would not prove
+\eqref{sl-stability} with the stated vacuum.
+
+\subsection{A concrete Yukawa model with particle--hole pair terms}
+\label{sl-yukawa}
+
+Fix lattice spacing one, \(\ell\ge3\), and
+\(\Omega_\ell=(\mathbb Z/\ell\mathbb Z)^3\). Its Laplacian is
+\[
+(\Delta_\ell f)(x)=\sum_{j=1}^3
+\bigl(f(x+e_j)+f(x-e_j)-2f(x)\bigr).
+\]
+For \(\mu>0\), define the translation-invariant screened kernel by
+\begin{equation}
+W_{\mu,\ell}(x-y)
+=4\pi\langle\delta_x,(-\Delta_\ell+\mu^2)^{-1}\delta_y\rangle.
+\label{sl-yukawa-kernel}
+\end{equation}
+The zero Fourier mode is retained. This is a screened Poisson
+resolvent, not the zero-mode-deleted Coulomb Green function. The finite
+matrix identity
+\[
+(-\Delta_\ell+\mu^2)^{-1}
+=\int_0^\infty e^{-\mu^2t}e^{t\Delta_\ell}\,dt
+\]
+proves positivity of every kernel entry: the heat semigroup has
+nonnegative entries, as follows by expanding the exponential of the
+nonnegative adjacency matrix. Since \(e^{t\Delta_\ell}1=1\), it also
+proves the exact, volume-independent row sum
+\begin{equation}
+W_{\mu,\ell}(x)\ge0,
+\qquad
+S_\mu:=\sum_{x\in\Omega_\ell}W_{\mu,\ell}(x)
+=\frac{4\pi}{\mu^2}.
+\label{sl-row-mass}
+\end{equation}
+
+Put \(q_x=n_x-r\), so \(\|q_x\|=r\), and let
+\begin{equation}
+H_0=H_{\rm kin}
+ +\frac g2\sum_{x,y\in\Omega_\ell}
+ W_{\mu,\ell}(x-y)q_xq_y,
+\qquad g\ge0.
+\label{sl-concrete-h0}
+\end{equation}
+The matter interaction includes its specified finite on-site term.
+All operators are literal finite CAR operators; no additional Wick
+prescription is implicit. Suppose \(H_{\rm kin}\) has a decomposition
+of the form \eqref{sl-local-h} with constant \(J_{\rm kin}\).
+For the off-site term indexed by \(\{x,y\}\),
+\(\|gW(x-y)q_xq_y\|\le gr^2W(x-y)\) and \(d_{\{x,y\}}=4r\).
+For the on-site term the corresponding bound is
+\(gr^2W(0)/2\) and \(d_{\{x\}}=2r\). Therefore
+\begin{equation}
+J\le J_{\rm kin}+4gr^3S_\mu.
+\label{sl-J-concrete}
+\end{equation}
+
+One concrete kinetic choice, with \(r=2\), is the lattice Dirac band
+Hamiltonian
+\begin{equation}
+h_W(p)=\sum_{j=1}^3\alpha_j\sin p_j
+ +\beta\left(m+w\sum_{j=1}^3(1-\cos p_j)\right),
+\qquad m>0,\quad w\ge0,
+\label{sl-wilson}
+\end{equation}
+and
+\[
+H_{\rm kin}=d\Gamma(h_W)-\operatorname{Tr}(h_WP_-),
+\qquad P_-=\boldsymbol1_{(-\infty,0)}(h_W).
+\]
+Its bands are \(\pm\varepsilon(p)\), each with multiplicity two,
+and \(\varepsilon(p)\ge m\). Filling the negative bands gives
+\(N_*=2|\Omega_\ell|\). This kinetic Hamiltonian is nonnegative,
+and the scalar subtraction does not enter \(J_{\rm kin}\).
+For an entirely explicit, deliberately loose bound, use the on-site
+term \(c_x^*\beta(m+3w)c_x\) and nearest-neighbor matrices
+\(T_j=-i\alpha_j/2-w\beta/2\). The on-site norm is
+\(2(m+3w)\). A bond acts on eight modes and has norm at most
+\(8\|T_j\|\le4(1+w)\); at most six bonds meet each site.
+Consequently
+\begin{equation}
+J_{\rm kin}\le8(m+3w)+192(1+w).
+\label{sl-J-kinetic}
+\end{equation}
+
+In the particle--hole representation of the two bands, positive-band
+annihilators are electron annihilators \(b\), and negative-band
+annihilators are positron creators \(d^*\). Then
+\(Q=N-N_*=N_e-N_p\), while \(H_{\rm kin}\) is the positive free
+electron--positron Hamiltonian. Local densities and their interactions
+generically contain \(b^*d^*\) and \(db\) terms in this representation.
+These terms are retained; neither electron number nor positron number
+is fixed. Charge conservation fixes only their difference. The theorem
+does not rely on conservation of the number of pairs.
+
+Choose sites \(R_i\in\Omega_\ell\), with repetitions permitted, and
+the lattice point distribution
+\(\nu(x)=\sum_iZ_i\delta_{R_i,x}\). Define
+\begin{align}
+V_\nu&=-g\sum_iZ_i\sum_xW_{\mu,\ell}(x-R_i)q_x,
+\label{sl-source-potential}\\
+U_\nu&=g\sum_{i<j}Z_iZ_jW_{\mu,\ell}(R_i-R_j)\ge0.
+\label{sl-nuclear-repulsion}
+\end{align}
+Each individual nuclear self-energy
+\(gZ_i^2W_{\mu,\ell}(0)/2\) is excluded by this explicit convention.
+It is finite on the lattice. Distinct sources at the same site still
+contribute their mutual repulsion in \eqref{sl-nuclear-repulsion}.
+These are discrete point sources; the finite on-site potential does
+not represent the singularity of a continuum point nucleus.
+
+Equations~\eqref{sl-row-mass} and \eqref{sl-source-potential} give
+\(\|V_\nu\|\le grS_\mu Z_{\rm tot}\). Thus a valid constant in
+Theorem~\ref{sl-relative-theorem} is
+\begin{equation}
+C_\mu=2J_{\rm kin}+g(8r^3+r)\frac{4\pi}{\mu^2}.
+\label{sl-Cmu}
+\end{equation}
+In particular
+\[
+E_{\rm MB}(N_*+Z_{\rm tot};H_\nu)-E_0^{\rm vac}
+\ge-C_\mu Z_{\max}K,
+\qquad
+|c_\nu-c_0|\le2C_\mu Z_{\max}K.
+\]
+These bounds hold at arbitrary \(g\ge0\), for every admissible exact
+charge sector and every source configuration, uniformly in \(\ell\).
+There are no photons or local Gauss-law constraints in this purely
+fermionic model. Exact neutrality is the specified physical charge
+sector, rather than a conclusion of a gauge constraint.
+
+\subsection{What the theorem establishes, and the Coulomb obstruction}
+\label{sl-scope}
+
+The result is stronger than finite-dimensional boundedness: the
+comparison is with the interacting neutral vacuum and its constant is
+independent of volume, source overlap, and pair number. It also proves
+the screened analogue of the sufficient relative correlation estimate
+\eqref{eq:rel-corr}. Its mechanism is nevertheless elementary: the
+entire external perturbation has norm of order \(K\). It supplies no
+decay estimate for the response of the vacuum and no refined expansion
+of the correlation energy. The bound need not vanish when the
+interaction is removed, although the actual correlation error then
+vanishes for a quadratic Hamiltonian.
+
+No source-free gap, nor persistence of a gap after arbitrary sources
+are added, enters the proof. The gap results of De Roeck--Salmhofer
+\cite{DRS2019} can be investigated separately for suitable weakly
+interacting lattice systems. They are not needed for this relative
+energy estimate, and do not by themselves provide uniform gaps or
+localized response in arbitrary nuclear backgrounds.
+
+The coefficient obstruction to recovering an expanding Coulomb window
+is explicit. Here \(S_\mu=4\pi/\mu^2\), so the estimate deteriorates
+as the screening length grows. For the unscreened mean-zero discrete
+Coulomb kernel \(G_\ell\), its Fourier coefficient at
+\(k=(2\pi/\ell,0,0)\) gives
+\begin{equation}
+\sum_x|G_\ell(x)|
+\ge\left|\sum_xG_\ell(x)e^{-ik\cdot x}\right|
+=\frac{4\pi}{4\sin^2(\pi/\ell)},
+\label{sl-coulomb-l1}
+\end{equation}
+which grows quadratically in the box side. Likewise, the absolute
+sum of a Coulomb kernel retained only out to distance \(R\) grows
+as \(R^2\) in three dimensions. This absolute-row-sum estimate
+therefore cannot yield a uniform coefficient while the
+Coulomb window expands. Global neutrality alone does not alter these
+absolute-norm estimates. A new cancellation or electrostatic estimate
+would be required; \eqref{sl-coulomb-l1} is an obstruction to this
+proof method, not a counterexample to Coulomb stability.
+
+Finally the lattice spacing has been fixed throughout. Restoring a
+variable spacing changes the kinetic norms, the source potential, and
+the density of available modes. No uniform ultraviolet limit, charge
+renormalization, continuum point-source theorem, or quantized-photon
+stability follows from \eqref{sl-Cmu}. The successful screened theorem
+removes the need for a gap-based argument at this preliminary stage;
+it identifies the nonsummable Coulomb tail and continuum ultraviolet
+limit as the places where stronger estimates are needed.

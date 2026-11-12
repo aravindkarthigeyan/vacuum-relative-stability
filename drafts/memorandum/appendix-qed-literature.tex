@@ -1,0 +1,192 @@
+\section{Agent report: QED literature and operator checks}
+\label{app-qed:report}
+
+This report records a primary-source audit and an independent operator check. Its mathematical conclusions concern the particular regulators and normal-ordering conventions specified below. In particular, an instability of a field-independent momentum cutoff is not a theorem about every possible regularization of quantum electrodynamics.
+
+\subsection{What the cited QED stability results establish}
+\label{app-qed:literature}
+
+\paragraph{Lieb--Loss.}
+The model of \cite{LL2002} has a fixed number \(N\) of electrons, fixed point nuclei with unsmeared Coulomb interactions, and quantized transverse photons with an ultraviolet cutoff. There are no positrons or pair-creation terms. Electrons are defined by the positive spectral subspace of the \emph{field-dependent} Dirac operator \(D(A)\), so this projection couples the electronic and photon variables. Theorem 2.1 implies a lower bound of the form
+\[
+ E_{N,K}\geq -C_{\alpha,Z}\Lambda_\gamma(N+K).
+\]
+Its sufficient conditions include the existence of \(\kappa,\varepsilon\) satisfying
+\begin{align*}
+ \kappa&\geq\max\{64.5,\pi Z\},\\
+ (\kappa\alpha)^2&<1-\varepsilon\leq1,\\
+ \frac{(1-\varepsilon)^2\alpha}
+ {(1-\varepsilon-\kappa^2\alpha^2)^{3/2}}
+ &\leq\frac{1}{8\pi(0.060)}.
+\end{align*}
+In particular, the theorem permits \(\alpha=1/137\) and \(Z\leq42\). Neutrality converts the displayed bound into one proportional to \(K\). The paper also analyzes instabilities associated with the free projection \(P_+(D(0))\). Neither its positive theorem nor its projection construction supplies a comparison with a full, pair-producing Fock-space Hamiltonian; such a comparison would require an additional theorem.
+
+\paragraph{Lieb's survey.}
+The survey \cite{Lieb2002} distinguishes lower boundedness for each finite system from a uniform bound linear in particle number. Its final relativistic quantized-field discussion concerns a positive-subspace, no-pair model. It is therefore not an independent full-QED stability theorem. It also distinguishes stability of the second kind from the additional arguments needed to establish a thermodynamic limit.
+
+\paragraph{J\"akel--Wreszinski.}
+The model of \cite{JW2018} contains electrons, positrons, pair terms, and quantized photons on a torus, with finitely many fermionic modes and a Fourier-cutoff, Wick-ordered Coulomb interaction. It contains no external nuclei. Its Theorem 4.5 asserts
+\[
+ H(\Lambda,V)+\mu(\Lambda,V)I\geq0
+\]
+for a finite, regulator-dependent scalar \(\mu\). The theorem does not establish \(\mu=O(V)\), does not identify \(\mu\) with the negative interacting ground-state energy, and does not compare energies with and without nuclei. In the published conclusion, equation (43), a form \(\mu=V[-\rho+\nu(\Lambda)]\) is presented as a possibility, not a proved volume estimate. Thus the stated theorem is compatible with a vacuum energy that decreases faster than volume. This distinction remains necessary even if one accepts every intermediate argument in that paper.
+
+\subsection{An operator-ordering caution}
+\label{app-qed:ordering}
+
+The following is an independent algebraic check, not a citation to a published correction. A correspondence between normally ordered CAR operators and Grassmann symbols does not preserve ordinary multiplication. For example,
+\[
+ [c_1^\dagger c_2,c_2^\dagger c_1]
+ =c_1^\dagger c_1-c_2^\dagger c_2,
+\]
+which is not zero. The corresponding even Grassmann monomials commute. Consequently, commuting symbols alone cannot justify an operator displacement of photons by fermionic currents or establish invariance of the Coulomb operator under that displacement. This matters when auditing the displacement argument in Proposition 4.1 of the accessible version of \cite{JW2018}. The observation does not invalidate finite-regulator lower boundedness, which has a separate elementary proof; it identifies an operator step that cannot be imported without further justification.
+
+A valid completion of squares is available without assuming that different currents commute. Let \(a_r\) be photon annihilation operators, let \(\omega_r>0\), and let \(B_r\) be bounded fermionic operators. Fermionic operators commute with the photon operators. On the photon finite-particle core,
+\begin{align}
+ &\omega_r a_r^\dagger a_r+a_r^\dagger B_r+B_r^\dagger a_r\notag\\
+ &\qquad=\omega_r\left(a_r+\omega_r^{-1}B_r\right)^\dagger
+                 \left(a_r+\omega_r^{-1}B_r\right)
+          -\omega_r^{-1}B_r^\dagger B_r.
+ \label{app-qed:square}
+\end{align}
+The identity follows by multiplication, and hence gives the corresponding quadratic-form lower bound after summation. The shifted operators need not satisfy the canonical commutation relations. In particular, \eqref{app-qed:square} proves neither unitary equivalence to free photons nor an exact decoupling. The remaining negative current-current operator is a substantive part of the stability problem.
+
+\subsection{Independent verification of a neutral-current trial state}
+\label{app-qed:trial}
+
+Here is a direct variational obstruction for a sharp, field-independent fermion momentum cutoff and massless photons. It uses no nuclei, so there are no point-source or nuclear-self-energy issues in the construction. Units are \(\hbar=c=1\), the Maxwell energy is \(\frac12\int(E^2+B^2)\), and \(e^2=4\pi\alpha\).
+
+Fix positive cutoffs \(\Lambda_f,\Lambda_\gamma\). On \(\mathbb T_L^3\), let \(P\) project onto scalar momenta
+\[
+ \Gamma_{\Lambda_f,L}
+ =\left\{p\in(2\pi/L)\mathbb Z^3:|p|\leq\Lambda_f\right\},
+ \qquad M=|\Gamma_{\Lambda_f,L}|.
+\]
+The Dirac one-particle space is \(\operatorname{Ran}P\otimes\mathbb C^4\). Denote its free negative-energy projection by \(P_-\), of rank \(2M\). The finite-dimensional particle-hole transformation identifies the electron--positron Fock space with the CAR Fock space in which \(P_-\) is filled. A Slater projection of rank \(2M\) therefore represents a state of exactly zero normal-ordered electric charge.
+
+Set
+\[
+ q=2\pi/L,\qquad C=P\cos(qx_1)P,
+ \qquad S=\operatorname{sign}(C),
+ \qquad\operatorname{sign}(0)=+1.
+\]
+The convention at zero is necessary: it makes \(S=S^*=S^{-1}\), including when \(C\) has a kernel. Let \(\alpha_2\) be the second Dirac velocity matrix and define
+\begin{equation}
+ \gamma=\frac12(I+\alpha_2 S).
+ \label{app-qed:gamma}
+\end{equation}
+The operators \(S\) and \(\alpha_2\) act on different factors. Thus \(\gamma^2=\gamma=\gamma^*\). Since \(\operatorname{tr}_{\mathbb C^4}\alpha_2=0\), its rank is \(2M\). Let the fermionic trial vector be the associated Slater determinant.
+
+\paragraph{Charge and current.}
+Its normal-ordered charge density has zero expectation pointwise, because
+\begin{equation}
+ \operatorname{tr}_{\mathbb C^4}\gamma(x,x)
+ =\frac{2M}{L^3}
+ =\operatorname{tr}_{\mathbb C^4}P_-(x,x).
+ \label{app-qed:neutral-density}
+\end{equation}
+Writing \(j_2\) for the dimensionless normal-ordered Dirac current, its cosine component is
+\begin{align}
+ J&=\int_{\mathbb T_L^3}\cos(qx_1)\langle j_2(x)\rangle\,dx\notag\\
+  &=\operatorname{Tr}[(\gamma-P_-)\alpha_2 C]
+   =2\operatorname{Tr}|C|.
+ \label{app-qed:current}
+\end{align}
+The sea contribution vanishes because \(P_-\) is diagonal in momentum and \(C\) has zero momentum diagonal. Since \(\|C\|\leq1\),
+\begin{align}
+ J&\geq2\operatorname{Tr}C^2\notag\\
+  &=\#\{p\in\Gamma_{\Lambda_f,L}:p+qe_1\in\Gamma_{\Lambda_f,L}\}\notag\\
+  &=M-O(L^2)\asymp L^3.
+ \label{app-qed:current-size}
+\end{align}
+The trace identity counts the two allowed momentum shifts in the cosine. The error counts a boundary layer of fixed thickness in lattice units. All asymptotic statements in this subsection keep the cutoffs fixed and take \(L\to\infty\).
+
+\paragraph{Free fermion energy.}
+The positive electron--positron free Hamiltonian has expectation
+\(\operatorname{Tr}[D_0(\gamma-P_-)]\). In particular,
+\begin{equation}
+ 0\leq\langle H_{\mathrm{Dirac}}\rangle
+ \leq4M\sqrt{\Lambda_f^2+m^2}=O(L^3).
+ \label{app-qed:free-cost}
+\end{equation}
+Thus the trial state pays the full rest-energy cost of its particle-hole excitations.
+
+\paragraph{Coulomb energy and Wick ordering.}
+For this check, take full fermionic Wick ordering relative to \(P_-\). Put
+\[
+ Q=\gamma-P_-,\qquad
+ T_k=(Pe^{ik\cdot x}P)\otimes I_4,
+ \qquad \rho(k)=:\!d\Gamma(T_k)\!:\,.
+\]
+Wick's rule, with the reference contractions subtracted, gives the exact identity
+\begin{equation}
+ \langle:\!\rho(-k)\rho(k)\!:\rangle
+ =\operatorname{Tr}(QT_{-k})\operatorname{Tr}(QT_k)
+  -\operatorname{Tr}(QT_{-k}QT_k).
+ \label{app-qed:wick}
+\end{equation}
+The first term is zero by \eqref{app-qed:neutral-density}. For the second term, the Hilbert--Schmidt inequality and \(\|T_k\|\leq1\) imply
+\[
+ \left|\operatorname{Tr}(QT_{-k}QT_k)\right|
+ \leq\|Q\|_{\mathrm{HS}}^2\leq4M.
+\]
+Here \(\|Q\|\leq1\), since \(Q\) is a difference of orthogonal projections. No charge-density modes with \(|k|>2\Lambda_f\) occur. For
+\[
+ H_C=\frac{e^2}{2L^3}
+       \sum_{k\ne0}\frac{:\!\rho(-k)\rho(k)\!:\,}{|k|^2},
+\]
+it follows that
+\begin{equation}
+ |\langle H_C\rangle|
+ \leq\frac{2e^2M}{L^3}
+          \sum_{0<|k|\leq2\Lambda_f}|k|^{-2}
+ \leq C_{\alpha,\Lambda_f}L^3.
+ \label{app-qed:coulomb-cost}
+\end{equation}
+The last inequality follows by counting lattice shells:
+\(L^{-3}\sum_{0<|k|\leq2\Lambda_f}|k|^{-2}\) is bounded for large \(L\). An additional fixed Fourier cutoff in the Coulomb interaction only shortens this sum. Formula \eqref{app-qed:wick} directly controls the chosen normal ordering; it does not assume that two different prescriptions coincide.
+
+\paragraph{Coherent transverse photons.}
+Take the product with a photon coherent state whose mean vector potential is
+\[
+ A(x)=a e_2\cos(qx_1).
+\]
+This mode is transverse and is present once \(q\leq\Lambda_\gamma\). Its normally ordered photon energy and current interaction are, up to the harmless convention for the sign of \(e\),
+\[
+ \frac14 q^2L^3 a^2+eaJ.
+\]
+Minimization over the real number \(a\) gives
+\begin{equation}
+ \inf_a\left\{\frac14q^2L^3a^2+eaJ\right\}
+ =-\frac{e^2J^2}{q^2L^3}.
+ \label{app-qed:photon-gain}
+\end{equation}
+Combining \eqref{app-qed:current-size}, \eqref{app-qed:free-cost},
+\eqref{app-qed:coulomb-cost}, and \eqref{app-qed:photon-gain} proves the variational bound
+\begin{equation}
+ E^{\mathrm{vac}}_{\Lambda,L}
+ \leq-c_{\alpha,\Lambda_f}L^5
+      +C_{\alpha,m,\Lambda_f}L^3
+ \qquad (L\hbox{ sufficiently large}),
+ \label{app-qed:superextensive}
+\end{equation}
+with \(c_{\alpha,\Lambda_f}>0\) for every \(\alpha>0\).
+
+\subsection{Scope of the obstruction}
+\label{app-qed:scope}
+
+There is no omitted total-charge constraint: the Slater vector has exactly the same rank as the filled free sea. Local charge fluctuations need not vanish, but their Coulomb energy is included in \eqref{app-qed:coulomb-cost}; solving the longitudinal Gauss constraint does not require a state to have zero charge fluctuations. The photon trial mode is transverse. Its occupation number is large but finite for each finite \(L\).
+
+The optimized amplitude satisfies \(|a|=O(L^2)\), and the magnetic field is of order \(L\). These are not small-field states. They are nevertheless admissible for a regulator that restricts momenta but not field amplitudes. Consequently \eqref{app-qed:superextensive} is a rigorous diagnostic of that regulator, not an assertion that physical low-energy matter exhibits this behavior.
+
+With the free-vacuum normalization used above, the inequality
+\[
+ E_{\Lambda,L}(R,Z)\geq-C_\Lambda(K+L^3)
+\]
+fails already at \(K=0\). A scalar vacuum counterterm bounded in magnitude by a constant times \(L^3\) cannot change this conclusion. Finite mass changes and a fixed nonzero charge only change the constants in the trial estimate.
+
+By contrast, subtracting the \emph{exact interacting} vacuum energy removes this common superextensive contribution. The construction therefore neither proves nor disproves
+\[
+ E_{\Lambda,L}(R,Z)-E^{\mathrm{vac}}_{\Lambda,L}\geq-C_\Lambda K.
+\]
+For box sizes bounded away from zero, no proof or counterexample to that relative estimate is supplied by this report. In particular, it would be incorrect to infer failure of the relative estimate solely from \eqref{app-qed:superextensive}, or to infer the relative estimate from finite-volume lower boundedness after an unrestricted scalar shift.

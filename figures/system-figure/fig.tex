@@ -1,0 +1,96 @@
+\documentclass[border=8pt]{standalone}
+\usepackage{amsmath,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,decorations.markings,shadings,calc,positioning,fit,backgrounds}
+\definecolor{flux}{RGB}{238,118,22}
+\definecolor{ink}{RGB}{32,38,52}
+\tikzset{lab/.style={font=\footnotesize,text=ink,align=left,fill=white,fill opacity=0.88,text opacity=1,inner sep=1.5pt,rounded corners=1pt},
+         lead/.style={draw=ink!50,line width=0.45pt},
+         ptitle/.style={font=\bfseries\small,text=ink,anchor=west},
+         box/.style={draw=ink!22,rounded corners=4pt,line width=0.6pt}}
+\begin{document}
+\begin{tikzpicture}[line cap=round,line join=round]
+%=========================== (a) ===========================
+\begin{scope}
+\input{anchors.tex}
+\input{lattice_body.tex}
+\node[lab,anchor=south] (Ln) at ($(N)+(-1.75,0.95)$) {static point nucleus\\ (here $Z=2$): source $\nu_x=+2$};
+\draw[lead] ($(Ln.south east)+(-0.4,0)$) -- ($(N)+(-0.25,0.27)$);
+\node[lab,anchor=east] (Le) at ($(e1)+(-0.55,0.55)$) {electron\\ $q_x=+1$};
+\draw[lead] (Le.east) -- ($(e1)+(-0.18,0.12)$);
+\node[lab,anchor=west] (Lf) at ($(e2)+(0.75,1.0)$) {electric flux lines\\ $E_\ell\in\mathbb Z$ end on charges};
+\draw[lead] (Lf.west) -- ($(N)!0.55!(e2)+(0.02,0.1)$);
+\node[lab,anchor=west] (Lp) at ($(P)+(0.95,0.1)$) {virtual $e^+e^-$ pair, created\\ by hopping, joined by one\\ unit of flux};
+\draw[lead] (Lp.west) -- ($(P)!0.45!(Q)+(0.1,0)$);
+\node[lab,anchor=east] (Ll) at ($(loop)+(-0.95,-1.55)$) {closed flux loop,\\ $\operatorname{div}E=0$:\\ transverse photon};
+\draw[lead] (Ll.north east) -- ($(loop)+(-0.35,-0.45)$);
+\node[lab,anchor=west] (Lm) at ($(mag)+(1.05,-1.0)$) {magnetic flux\\ through a plaquette\\ $U_p=e^{i\Phi_B}$};
+\draw[lead] (Lm.west) -- ($(mag)+(0.42,-0.3)$);
+\draw[ink!65,line width=0.5pt,{Bar[width=4pt]}-{Bar[width=4pt]}] ($(c000)+(-0.1,-0.42)$) -- node[below left=-2pt,font=\footnotesize,text=ink]{$a$} ($(a1)+(-0.1,-0.42)$);
+\node[font=\bfseries\small,text=ink,anchor=west] at (-5.2,4.75) {(a)\ \ The system on a periodic cubic lattice};
+% legend
+\begin{scope}[shift={(-5.0,-4.05)}]
+ \shade[ball color=black!35] (0,0) circle (0.1);  \node[font=\scriptsize,text=ink,anchor=west] at (0.18,0) {filled Dirac sea, $q_x=0$};
+ \shade[ball color=blue!72] (0,-0.38) circle (0.12); \node[font=\scriptsize,text=ink,anchor=west] at (0.18,-0.38) {electron, $q_x=+1$};
+ \shade[ball color=orange!90!red] (0,-0.76) circle (0.12); \node[font=\scriptsize,text=ink,anchor=west] at (0.18,-0.76) {positron, $q_x=-1$};
+ \draw[line width=0.45pt,draw=black!30,dash pattern=on 1.5pt off 1.5pt] (-0.15,-1.14)--(0.12,-1.14); \node[font=\scriptsize,text=ink,anchor=west] at (0.18,-1.14) {periodic continuation, torus $(\mathbb Z/n\mathbb Z)^3$};
+\end{scope}
+\end{scope}
+%======================== right column =======================
+\begin{scope}[shift={(8.15,0)}]
+\node[box,minimum width=6.4cm,minimum height=3.55cm,anchor=north west] (B) at (-0.4,4.35) {};
+\node[ptitle] at (-0.25,4.05) {(b)\ \ Gauss's law at every site};
+\begin{scope}[shift={(1.05,2.55)}]
+ \draw[line width=0.6pt,black!35] (-1.0,0)--(1.0,0) (0,-0.92)--(0,0.92) (-0.6,-0.42)--(0.6,0.42);
+ \draw[line width=2pt,flux,-{Stealth[length=6pt]}] (0.27,0)--(1.0,0);
+ \draw[line width=2pt,flux,-{Stealth[length=6pt]}] (0,0.27)--(0,0.92);
+ \shade[ball color=red!78!black] (0,0) circle (0.25); \node[white,font=\bfseries\scriptsize] at (0,0) {$+2$};
+ \node[font=\scriptsize,text=ink] at (1.02,0.2) {$1$}; \node[font=\scriptsize,text=ink] at (0.18,0.98) {$1$};
+ \foreach \p in {(-0.95,0.17),(0.17,-0.88),(0.7,0.55),(-0.72,-0.32)} \node[font=\scriptsize,text=ink!45] at \p {$0$};
+\end{scope}
+\node[font=\footnotesize,text=ink,anchor=west,align=left] at (2.35,2.85) {$\displaystyle\operatorname{div}E_x=\nu_x-q_x$};
+\node[font=\scriptsize,text=ink!80,anchor=west,align=left] at (2.35,2.2) {flux out of a site $=$\\ nuclear charge $-$\\ electron excess};
+\begin{scope}[shift={(0.0,1.25)}]
+ \node[font=\scriptsize,text=ink,anchor=west] at (-0.2,0) {4 Dirac modes/site:};
+ \foreach \i/\c in {0/blue!45,1/blue!45,2/white,3/white}{\draw[ink!55,line width=0.5pt,fill=\c] (2.45+0.34*\i,-0.13) rectangle ++(0.27,0.27);}
+ \node[font=\scriptsize,text=ink,anchor=west] at (3.85,0) {$\Rightarrow q_x=n_x-2$};
+\end{scope}
+%-- (c)
+\node[box,minimum width=6.4cm,minimum height=1.65cm,anchor=north west] at (-0.4,0.55) {};
+\node[ptitle] at (-0.25,0.27) {(c)\ \ Each link is a quantum rotor};
+\begin{scope}[shift={(0.45,-0.45)}]
+ \draw[ink!70,line width=0.8pt] (0,0) circle (0.42);
+ \draw[flux,line width=1.2pt,-{Stealth[length=5pt]}] (0,0) -- (40:0.42);
+ \draw[ink!55,line width=0.5pt] (0.2,0) arc[start angle=0,end angle=40,radius=0.2];
+ \node[font=\tiny] at (0.31,0.1) {$\theta$};
+\end{scope}
+\node[font=\footnotesize,text=ink,anchor=west,align=left] at (1.05,-0.45) {$U_\ell=e^{i\theta_\ell}$,\quad $E_\ell=-i\,\partial/\partial\theta_\ell$\\ $\operatorname{spec}E_\ell=\mathbb Z$, untruncated};
+%-- (d)
+\node[box,minimum width=6.4cm,minimum height=1.85cm,anchor=north west] at (-0.4,-1.3) {};
+\node[ptitle] at (-0.25,-1.58) {(d)\ \ Wilson fermion hopping};
+\begin{scope}[shift={(0.0,-2.5)}]
+ \shade[ball color=black!30] (0,0) circle (0.11); \shade[ball color=black!30] (1.1,0) circle (0.11);
+ \draw[black!35,line width=0.6pt] (0.11,0)--(0.99,0);
+ \draw[ink!75,line width=0.7pt,-{Stealth[length=4.5pt]}] (0.1,0.14) to[bend left=40] (1.0,0.14);
+ \node[font=\scriptsize,text=ink] at (0.55,0.52) {$\psi^\dagger_xU_{xy}\psi_y$};
+\end{scope}
+\node[font=\footnotesize,text=ink,anchor=west,align=left] at (1.45,-2.5) {$h_W(U)=\sum_j\alpha_j v_j(U)+\beta M(U)$\\ $M(U)\ge m$: Wilson term is $\ge0$};
+%-- (e) positivity
+\node[box,minimum width=6.4cm,minimum height=1.85cm,anchor=north west] at (-0.4,-3.35) {};
+\node[ptitle] at (-0.25,-3.63) {(e)\ \ Why the bound holds};
+\node[font=\scriptsize,text=ink,anchor=north west,align=left,text width=6.1cm] at (-0.25,-3.85)
+ {Imaginary-time fermion determinants are positive ($C_5$ pseudo-unitarity and $M\ge m$), so sources and charge twists can only lower the partition function.};
+\end{scope}
+%========================= bottom strip ======================
+\begin{scope}[shift={(4.1,-6.35)}]
+ \node[draw=ink!30,rounded corners=4pt,fill=black!2.5,inner sep=6pt,font=\small,text=ink] (H) at (0,0)
+ {$\displaystyle H=\underbrace{\frac{g^2}{2a}\sum_{\ell}E_\ell^2}_{\text{electric}}
+ +\underbrace{\frac{1}{g^2a}\sum_{p}\bigl(1-\operatorname{Re}U_p\bigr)}_{\text{magnetic}}
+ +\underbrace{\mathrm d\Gamma\bigl(h_W(U)\bigr)}_{\text{electrons, positrons, pairs}}
+ \qquad \text{on the Gauss-law sector }\ \operatorname{div}E=\nu-q$};
+ \node[draw=red!55!black,line width=0.7pt,rounded corners=4pt,fill=red!3,inner sep=6pt,font=\small,text=ink,anchor=north] at ($(H.south)+(0,-0.25)$)
+ {\textbf{Theorem.}\ For every coupling $g^2>0$, mass $m\ge0$ and integer sources $\nu$:\quad
+ $\displaystyle E_\nu\;\ge\;E_{\mathrm{vac}}+m\,\Bigl|\sum_x\nu_x\Bigr|$,\ \ uniformly in volume and source positions.};
+\end{scope}
+\end{tikzpicture}
+\end{document}

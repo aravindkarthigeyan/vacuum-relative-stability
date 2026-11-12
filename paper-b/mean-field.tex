@@ -1,0 +1,559 @@
+% Independently audited replacement for Section 10.
+\section{Mean-field stability with a prescribed free-sea reference}
+\label{sec:meanfield}
+
+For the fully free-Wick-ordered, photon-free Hamiltonian specified earlier,
+one can prove a vacuum-relative bound $-CK$ on quasi-free states, including
+pair coherence and point nuclei.  The volume range is restricted by an
+explicit lower bound on $mL$ as well as the ultraviolet scale.  The result
+also holds on exactly neutral Slater determinants.  Mixed quasi-free states
+with the prescribed mean charge form a larger variational class; they must
+not be described as states in a single exact-charge sector.
+
+\subsection{Quasi-free states, charge, and the energy functional}
+
+In the finite sea representation let $\gamma$ be a one-particle density
+matrix with $0\le\gamma\le1$, and write
+\[
+ Q=\gamma-P_-,\qquad
+ \rho_Q(x)=-\tr_{\C^4}Q(x,x),\qquad
+ \mathcal G_Z=\{0\le\gamma\le1:\Tr Q=Z_{\rm tot}\}.
+\]
+It determines a unique gauge-invariant quasi-free state $\omega_\gamma$.
+Gauge invariance here means invariance under the global charge symmetry;
+the state may have nonzero electron--positron coherence $Q_{+-}$ in the
+free particle--hole representation.  It satisfies
+\[
+ \omega_\gamma(N_e-N_p)=\Tr Q,
+ \qquad
+ \operatorname{Var}_{\omega_\gamma}(N_e-N_p)
+ =\Tr\bigl(\gamma(1-\gamma)\bigr).
+\]
+Consequently $\gamma\in\mathcal G_Z$ imposes neutrality in expectation.
+It imposes exact neutrality precisely when $\gamma$ is a projection of
+rank $2M_L+Z_{\rm tot}$, in which case the state is a Slater determinant.
+Both classes obey $Z_{\rm tot}\le2M_L$.  No assertion below identifies the
+infimum over the relaxed class with the infimum over these projections.
+
+The elementary inequality $\gamma^2\le\gamma$ gives
+$Q^2\le Q_{++}-Q_{--}$, and hence
+\begin{equation}
+ \Tr(D_0Q)
+ =\Tr\bigl(|D_0|(Q_{++}-Q_{--})\bigr)
+ \ge\Tr(|D_0|Q^2)\ge m\Tr Q^2.
+ \label{eq:kin-mf}
+\end{equation}
+Also $-P_-\le Q\le P_+$ and, by evaluation on band-limited delta vectors,
+$|\rho_Q(x)|\le2d_L$.
+
+\begin{lemma}[Hartree--Fock energy for the specified Wick convention]
+\label{lem:hf-energy}
+For $H^{\rm C}_{\Lambda,L}=H_D+H_C$, with the full free-vacuum Wick ordering
+used in the main model, every $0\le\gamma\le1$ satisfies
+\begin{multline}
+ \omega_\gamma(H^{\rm C}_{\Lambda,L}(R,Z))
+ =\mathcal E_{R,Z}(\gamma)
+ :=\Tr(D_0Q)-\frac\alpha2\mathrm{Ex}(Q)
+       +\frac\alpha2D_L(\rho_Q,\rho_Q)\\
+       +\alpha D_L(\rho_Q,\nu)
+       +\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j),
+ \label{eq:hf-energy}
+\end{multline}
+where
+\[
+ \mathrm{Ex}(Q)=\iint G_L(x-y)\|Q(x,y)\|_{\HS}^2\dd x\dd y.
+\]
+This exchange expression uses the full zero-mean periodic Green function;
+it is not asserted to be nonnegative.
+\end{lemma}
+\begin{proof}
+The kinetic expectation is $\Tr(D_0Q)$.  The quasi-free Wick identity
+\eqref{eq:trial-wick} is valid also for mixed quasi-free states.  Its direct
+term is $D_L(\rho_Q,\rho_Q)$, whereas its exchange term is
+\[
+ \frac1V\sum_{k\ne0}\frac{4\pi}{|k|^2}\Tr(QT_{-k}QT_k)
+ =\iint G_L(x-y)\tr\bigl(Q(x,y)Q(y,x)\bigr)\dd x\dd y.
+\]
+Since $Q(y,x)=Q(x,y)^*$, this is $\mathrm{Ex}(Q)$.  Only finitely many
+Fourier coefficients contribute.  The linear nuclear coupling has the
+stated expectation.  This proves the formula and fixes its signs.
+\end{proof}
+
+The disappearance of a linear exchange self-energy in
+\eqref{eq:hf-energy} depends on full Wick ordering relative to $P_-$.
+It would not hold unchanged for a Hamiltonian with no normal ordering, or
+for density-product ordering with only a scalar vacuum subtraction.
+
+\subsection{A periodic Coulomb--Kato inequality with explicit constants}
+
+Periodic Coulomb--Kato estimates are established tools: see, in particular,
+Lemma~1 of Hainzl--Lewin--Solovej~\cite{HLSol2007}.  The following proof
+records an explicit constant for the zero-mean Green function used here.
+Their periodic potential is $W_L=G_L+\mu/L$, normalized to have minimum
+zero; their lemma gives a bounded $O(L^{-1})$ comparison with $1/|x|$ and
+a cutoff Coulomb--Dirac form constant tending to its infinite-volume
+value, which is at most $\pi/2$.  The additive constant below is an
+explicit adaptation, not a quoted constant from that result.
+
+\begin{lemma}[Periodic Coulomb--Kato inequality]
+\label{lem:pkato}
+Set
+\[
+ c_*:=6+\frac{3\pi\sqrt6}{2}<18.
+\]
+For every $L>0$, $y\in\T_L^3$, and
+$f\in H^{1/2}(\T_L^3;\C^4)$,
+\begin{equation}
+ \int_{\T_L^3}G_L(x-y)|f(x)|^2\dd x
+ \le\frac\pi2\langle f,|p|f\rangle
+       +\frac{c_*}{L}\|f\|^2.
+ \label{eq:pkato}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Translation reduces to $y=0$.  We first justify, without numerical evidence,
+the convenient comparison
+\begin{equation}
+ G_1(x)-|x|^{-1}<-\frac1{20}
+ \quad\text{on }[-1/2,1/2]^3,
+ \label{eq:ewald-certified}
+\end{equation}
+with the value at zero interpreted by continuity.  The heat representation
+of $G_1$, split at $t=1/36$, and Poisson summation give the Ewald identity
+\begin{equation}
+ G_1(x)=\sum_{n\in\Z^3}\frac{\operatorname{erfc}(3|x+n|)}{|x+n|}
+ +\frac1\pi\sum_{k\ne0}
+      \frac{e^{-\pi^2|k|^2/9}}{|k|^2}\cos(2\pi k\cdot x)
+ -\frac\pi9.
+ \label{eq:ewald-audit}
+\end{equation}
+Both sums converge absolutely away from the isolated displayed singularity.
+Here $\operatorname{erfc}(u)=\frac2{\sqrt\pi}\int_u^\infty e^{-v^2}\dd v$.
+The elementary bound
+$\operatorname{erfc}(u)\le e^{-u^2}/(\sqrt\pi u)$ gives, uniformly on the
+cell, the following bound for the nonzero real-space images:
+\begin{align}
+ I&:=\sum_{n\ne0}\frac{\operatorname{erfc}(3|x+n|)}{|x+n|}\nonumber\\
+ &\le\frac8{\sqrt\pi}(e^{-9/4}+e^{-9/2})
+       +\frac{32}{9\sqrt\pi}e^{-27/4}
+       +\frac{9e^{-81/4}}{1-e^{-36}}
+ <\frac8{15}.
+ \label{eq:ewald-real-bound}
+\end{align}
+Indeed the shell $|n|_\infty=1$ has $6,12,8$ points with respectively one,
+two, and three nonzero coordinates, whose distances from the cell are at
+least $1/2,\sqrt2/2,\sqrt3/2$.  For $|n|_\infty=j\ge2$ there are
+$24j^2+2$ points and $|x+n|\ge j-1/2$; their contribution is at most
+$9e^{-9(j-1/2)^2}$.  Successive exponents differ by at least $36$.
+For a fully rational check of the last strict inequality, use
+\[
+ z=\frac{53}{500},\qquad e^{-9/4}<z,\qquad\sqrt\pi>\frac{177}{100},
+\]
+and observe that
+\[
+ \frac{800}{177}(z+z^2)+\frac{3200}{1593}z^3
+       +\frac{9z^9}{1-z^{16}}<\frac8{15}.
+\]
+The exponential bound follows from
+$\sum_{j=0}^7(9/4)^j/j!>500/53$.
+
+For the absolute value of the reciprocal-space sum, set $t=669/2000$.
+The elementary bounds $\pi>157/50$ and
+\[
+ \sum_{j=0}^8\frac{(24649/22500)^j}{j!}>\frac{2000}{669}
+\]
+imply $e^{-\pi^2/9}<t$.  The multiplicities of $|k|^2$ in
+$[-2,2]^3\cap\Z^3\setminus\{0\}$ are
+\[
+ (s,N_s)=(1,6),(2,12),(3,8),(4,6),(5,24),
+          (6,24),(8,12),(9,24),(12,8).
+\]
+The remaining shell $|k|_\infty=j\ge3$ contributes at most $26t^{j^2}$
+before the factor $1/\pi$.  Thus
+\begin{align}
+ F&:=\frac1\pi\sum_{k\ne0}\frac{e^{-\pi^2|k|^2/9}}{|k|^2}\nonumber\\
+ &<\frac{50}{157}\left(
+ 6t+6t^2+\frac83t^3+\frac32t^4+\frac{24}{5}t^5+4t^6
+ +\frac32t^8+\frac83t^9+\frac23t^{12}
+ +\frac{26t^9}{1-t^7}\right)<\frac9{10}.
+ \label{eq:ewald-fourier-bound}
+\end{align}
+All displayed decimal-free comparisons are inequalities between rational
+numbers or follow from the stated finite Taylor sums.
+
+The function $r\mapsto\operatorname{erf}(3r)/r$ is decreasing.  Since
+$r\le\sqrt3/2$, the same complementary-error-function bound gives
+\[
+ \frac{\operatorname{erf}(3r)}r
+ \ge\frac2{\sqrt3}\operatorname{erf}(3\sqrt3/2)
+ >\frac{15}{13}\frac{2999}{3000}>\frac{23}{20}.
+\]
+Here we used $2/\sqrt3>15/13$,
+$3\sqrt{3\pi}/2>4$, and $z^3/4<1/3000$.
+Combining this with $\pi/9>1/3$,
+\eqref{eq:ewald-real-bound}, and \eqref{eq:ewald-fourier-bound} proves
+\eqref{eq:ewald-certified}, since
+$8/15+9/10-1/3-23/20=-1/20$.  In particular
+$G_L(x)\le1/|x|$ on the centered cell after scaling.
+
+We next give the localization argument, including the folding step.  Define
+the nonnegative Lipschitz function
+\[
+ g(t)=\begin{cases}
+ 1,&|t|\le1/6,\\
+ \cos\bigl(\frac{3\pi}4(|t|-1/6)\bigr),&1/6<|t|<5/6,\\
+ 0,&|t|\ge5/6,
+ \end{cases}
+\]
+and set $\phi(x)=\prod_{i=1}^3g(x_i/L)$,
+$\phi_n(x)=\phi(x-Ln)$.  The cosine--sine identity on each overlap gives
+$\sum_n\phi_n(x)^2=1$.  Lipschitz regularity is sufficient for multiplication
+on $H^{1/2}$ and for the integrable remainder below; smoothness is not needed.
+With $\mathcal C=[-L/2,L/2]^3$ and periodic extension of $f$, every point of
+$\mathcal C\cap\operatorname{supp}\phi_n$ with $n\ne0$ has $|x|\ge L/6$.
+Consequently the Euclidean Coulomb--Kato form inequality
+$|x|^{-1}\le(\pi/2)|p|$ (see \cite{Herbst1977}) gives
+\begin{equation}
+ \int_{\mathcal C}\frac{|f(x)|^2}{|x|}\dd x
+ \le\frac\pi2\langle\phi f,|p|_{\R^3}\phi f\rangle
+       +\frac6L\|f\|^2.
+ \label{eq:pkato-local}
+\end{equation}
+
+With the normalization of $|p|$ used here its torus quadratic form is
+\begin{equation}
+ \langle f,|p|f\rangle_{\T_L^3}
+ =\frac1{2\pi^2}\int_{\mathcal C}\dd x\int_{\R^3}\dd y\,
+            \frac{|f(x)-f(y)|^2}{|x-y|^4}.
+ \label{eq:torus-half-laplacian}
+\end{equation}
+The coefficient is checked on Fourier modes, or by periodizing the
+Euclidean quadratic form.  Folding the $x$ integral in the Euclidean form
+for $\phi f$ over cells, while translating $y$ by the same lattice vector,
+gives the exact identity
+\[
+ \langle\phi f,|p|_{\R^3}\phi f\rangle
+ =\langle f,|p|f\rangle_{\T_L^3}+R,
+\]
+where
+\[
+ R=\frac1{2\pi^2}\int_{\mathcal C}\dd x\int_{\R^3}\dd y\,
+ \frac{\sum_n(\phi_n(x)-\phi_n(y))^2
+             \operatorname{Re}\langle f(x),f(y)\rangle}{|x-y|^4}.
+\]
+This follows directly by expanding the squares and using
+$\sum_n\phi_n^2=1$.  The vector $\Phi(x)=(\phi_n(x))_n$ is a unit vector
+with nonnegative entries and
+\[
+ \sum_n|\nabla\phi_n(x)|^2\le\frac{3(3\pi/4)^2}{L^2}.
+\]
+Thus, with $a=3\pi\sqrt3/4$,
+\[
+ \sum_n(\phi_n(x)-\phi_n(y))^2
+ \le\min\{a^2|x-y|^2/L^2,2\}.
+\]
+Use $2|f(x)||f(y)|\le|f(x)|^2+|f(y)|^2$.  The two resulting integrals
+are equal after exchanging variables and folding: the kernel is symmetric
+and invariant under simultaneous lattice translations.  Therefore
+\begin{align*}
+ |R|&\le\frac{\|f\|^2}{2\pi^2}
+       \int_{\R^3}\frac{\min\{a^2|z|^2/L^2,2\}}{|z|^4}\dd z\\
+ &=\frac{4\sqrt2a}{\pi L}\|f\|^2
+  =\frac{3\sqrt6}{L}\|f\|^2.
+\end{align*}
+The identities can first be proved for smooth periodic $f$ and then extended
+by density.  Combining this estimate, \eqref{eq:pkato-local}, and
+$G_L\le1/|x|$ proves \eqref{eq:pkato} with the stated $c_*$.
+\end{proof}
+
+\begin{corollary}[Exchange bound]
+\label{cor:exchange}
+For every self-adjoint $Q$ on the cutoff one-particle space,
+\begin{equation}
+ \mathrm{Ex}(Q)
+ \le\frac\pi2\Tr(|p|Q^2)+\frac{c_*}{L}\Tr Q^2.
+ \label{eq:exchange}
+\end{equation}
+For $Q=\gamma-P_-$ with $0\le\gamma\le1$, the right side is at most
+$\bigl(\pi/2+c_*/(mL)\bigr)\Tr(D_0Q)$.
+\end{corollary}
+\begin{proof}
+Apply \eqref{eq:pkato} to $f(x)=Q(x,y)e_b$, sum over the spin index $b$,
+and integrate over $y$.  The two right-side expressions become
+$\Tr(|p|Q^2)$ and $\Tr Q^2$.  Then use $|p|\le|D_0|$ and
+\eqref{eq:kin-mf}.
+\end{proof}
+
+\subsection{The mean-field theorem and its volume range}
+
+\begin{theorem}[Mean-field relative stability with pairs and point nuclei]
+\label{thm:mf}
+Let $0\le\alpha<4/\pi$ and
+\[
+ \theta_L=1-\frac{\alpha\pi}4-\frac{\alpha c_*}{2mL},
+ \qquad c_*=6+\frac{3\pi\sqrt6}{2}.
+\]
+Assume $L\ge\Lambda_f^{-1}$ and
+\begin{equation}
+ L>\frac{\alpha c_*}{2m(1-\alpha\pi/4)},
+ \quad\text{equivalently }\theta_L>0.
+ \label{eq:mf-volume-range}
+\end{equation}
+For distinct point nuclei with integral $1\le Z_i\le Z_{\max}$ and nonempty
+$\mathcal G_Z$, every $\gamma\in\mathcal G_Z$ satisfies
+\begin{equation}
+ \mathcal E_{R,Z}(\gamma)
+ \ge\theta_L\Tr(D_0Q)-A^{\rm MF}_\Lambda K,
+ \qquad
+ A^{\rm MF}_\Lambda=C\alpha\Lambda_f(Z_{\max}+Z_{\max}^2),
+ \label{eq:mf-bound}
+\end{equation}
+with a universal finite constant $C$.  Without nuclei,
+\[
+ \mathcal E_0(\gamma)
+ \ge\theta_L\Tr(D_0Q)+\frac\alpha2D_L(\rho_Q,\rho_Q)\ge0,
+\]
+with equality only at $\gamma=P_-$.  Thus the source-free Hartree--Fock
+vacuum for this Wick-ordered model is exactly $P_-$ and has energy zero.
+Both the relaxed mean-charge infimum and the infimum over exactly neutral
+Slater determinants obey
+\begin{equation}
+ E^{\rm HF}(R,Z)-E^{\rm HF,\vac}_{\Lambda,L}
+ \ge-A^{\rm MF}_\Lambda K.
+ \label{eq:mf-relative}
+\end{equation}
+The constant in this relative bound is independent of $L$ within
+\eqref{eq:mf-volume-range}, of the nuclear positions, and of the pair
+coherence.  The assertion does not extend to all $L>0$.
+\end{theorem}
+\begin{proof}
+The exchange bound gives
+$\Tr(D_0Q)-\frac\alpha2\mathrm{Ex}(Q)\ge\theta_L\Tr(D_0Q)$.
+The remaining three terms of \eqref{eq:hf-energy} are the classical
+density-product electrostatic expression.  Apply the heat decomposition
+\eqref{eq:heat-identity}, now to the scalar density $\rho_Q$.
+Its square is nonnegative, $|\rho_Q|\le2d_L$, and
+$Z_{\rm tot}\le2d_LV$.  Exactly as in the operator estimate, this gives
+\[
+ \frac\alpha2D_L(\rho_Q,\rho_Q)+\alpha D_L(\rho_Q,\nu)
+   +\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j)
+ \ge-C\alpha\bigl(d_Ls Z_{\max}+s^{-1/2}Z_{\max}^2\bigr)K.
+\]
+Set $s=\Lambda_f^{-2}$ and use $d_L\le C\Lambda_f^3$ for
+$L\ge\Lambda_f^{-1}$.  This proves the estimate on the relaxed class,
+and therefore also on its subset of neutral projections.
+For $K=0$ retain the positive direct term.  Vanishing of the energy forces
+$\Tr(D_0Q)=0$, hence $Q=0$ by \eqref{eq:kin-mf}.  The free sea is itself
+an admissible neutral projection, so both vacuum infima equal zero.
+\end{proof}
+
+\begin{remark}[Scope, ordering, and prior work]
+\label{rem:mf-scope}
+\begin{enumerate}[label=(\alph*)]
+\item The volume term in the general many-body Coulomb lower bound came
+from bounding Wick-reordering corrections in operator norm.  On quasi-free
+states their exact expectation combines into the exchange functional,
+which is controlled by the kinetic energy.  This is why that volume term
+can be removed in the present variational class.
+\item For the physical coupling, \eqref{eq:mf-volume-range} is an explicit
+microscopic lower bound on $L$; it is not an assumption that can be omitted
+from the theorem.  The restriction $L\ge\Lambda_f^{-1}$ is independent of
+it.  The relative bound remains uniform as $L\to\infty$ at fixed cutoff.
+\item No restriction on $Z_{\max}\alpha$ is needed for this fixed-cutoff
+argument.  The price is $A^{\rm MF}_\Lambda=O(\alpha\Lambda_fZ_{\max}^2)$.
+A cutoff-uniform point-nucleus assertion requires new estimates and may
+require a subcritical charge condition.  The present proof provides none.
+\item The statement that $P_-$ is the Hartree--Fock vacuum is specific to
+the Hamiltonian fully Wick ordered relative to that projector.  The
+un-normal-ordered model of Hainzl--Lewin--Solovej~\cite{HLSol2007} instead
+constructs a self-consistent interacting vacuum and its associated BDF
+functional through a thermodynamic limit.  Their periodic Kato estimate
+is prior art, and their vacuum is not to be identified with $P_-$ by
+changing notation.  The stable polarized-vacuum results
+\cite{HLS2005,HLS2008} likewise require their stated reference operators
+and external-density assumptions.
+\item Bach--Barbaroux--Helffer--Siedentop~\cite{BBHS1998} already prove
+stability for a Hartree--Fock electron--positron model with point nuclei
+and classical magnetic fields, including physical charges up to $67$.
+Their reference splitting uses a Dirac operator with a configuration-dependent
+effective nuclear potential (and, in the magnetic theorem, the classical
+vector potential); it is not the fixed free-Wick-ordered torus Hamiltonian above.
+This section supplies an explicit estimate for the chosen cutoff and
+normalization, rather than a claim that stability with pairs and point
+nuclei was previously unknown.
+\item A lower bound on quasi-free expectations does not bound arbitrary
+correlated states: the variational inequality goes in the opposite
+direction. The correlated-state theorems above use an independent
+canonical comparison and their own effective-mass hypothesis.
+\end{enumerate}
+\end{remark}
+
+\subsection{Mean field with transverse photons}
+\label{subsec:mf-photons}
+
+Restrict to product states $\omega_\gamma\otimes\Phi$ in the
+positive-photon-mass model \eqref{eq:Hct}; entangled fermion--photon states
+are not included.  After the photon squeezing transformation of
+Lemma~\ref{lem:proca}, minimization over photon states is exact and yields
+\begin{equation}
+ \inf_\Phi(\omega_\gamma\otimes\Phi)(H^{(\delta\mu)})
+ =\mathcal E_{R,Z}(\gamma)-\mathcal M_{\delta\mu}(Q)
+       +E_\gamma(\delta\mu),
+ \label{eq:mf-photon}
+\end{equation}
+where
+\[
+ \mathcal M_{\delta\mu}(Q)
+ =\frac{e^2}{2V}\sum_{k,\lambda}
+       \frac{|\varepsilon_\lambda(k)\cdot\widehat{j_Q}(k)|^2}
+            {|k|^2+\delta\mu^2},
+ \qquad
+ j_Q(x)=\tr_{\C^4}(\boldsymbol{\mathsf a}Q(x,x)).
+\]
+The minimizing photon state is coherent in the squeezed representation;
+the original representation includes the corresponding fixed squeezing.
+
+\begin{proposition}[Mean-field relative stability with a sufficiently large bare photon mass]
+\label{prop:mf-heavy}
+Assume Theorem~\ref{thm:mf} and
+\[
+ \eta_L:=\frac{2e^2d_L}{m\delta\mu^2}<\theta_L.
+\]
+Every product state with $\gamma\in\mathcal G_Z$ then satisfies
+\[
+ (\omega_\gamma\otimes\Phi)(H^{(\delta\mu)})-E_\gamma(\delta\mu)
+ \ge(\theta_L-\eta_L)\Tr(D_0Q)-A^{\rm MF}_\Lambda K.
+\]
+The product-state vacuum energy is $E_\gamma(\delta\mu)$, attained at
+$P_-\otimes U^*\Omega_\gamma$.  This gives the relative bound $-A^{\rm MF}_\Lambda K$
+both in the relaxed mean-charge class and on exactly neutral Slaters
+tensored with photon states.
+\end{proposition}
+\begin{proof}
+The matrices $\mathsf a_i/2$ are orthonormal in the Hilbert--Schmidt inner
+product.  Bessel's inequality therefore gives, for each $4\times4$ matrix $M$,
+\[
+ \sum_i|\tr(\mathsf a_iM)|^2\le4\|M\|_{\HS}^2.
+\]
+At fixed $x$, the four band-limited spin delta vectors are mutually
+orthogonal with squared norm $d_L$.  A second application of Bessel gives
+\[
+ \sum_{a,b}|\langle\delta_x^a,Q\delta_x^b\rangle|^2
+ \le d_L\sum_b\|Q\delta_x^b\|^2.
+\]
+Integration uses the resolution of the identity by these delta vectors and
+proves
+\[
+ \int|j_Q(x)|^2\dd x
+ \le4\int\|Q(x,x)\|_{\HS}^2\dd x
+ \le4d_L\Tr Q^2
+ \le\frac{4d_L}{m}\Tr(D_0Q).
+\]
+Consequently
+$\mathcal M_{\delta\mu}(Q)\le
+e^2(2\delta\mu^2)^{-1}\int|j_Q|^2\le\eta_L\Tr(D_0Q)$.
+Apply Theorem~\ref{thm:mf} and use the free sea as the vacuum trial state.
+The estimate uses both spin and spatial Bessel inequalities.
+\end{proof}
+
+This is a coercivity statement for a positive bare $A^2$ coefficient in the
+modified model.  It does not determine a nonperturbative photon pole mass
+or prove a physical mass-renormalization condition.
+
+\begin{proposition}[Failure of strict kinetic absorption at the statically matched mass]
+\label{prop:ward-absorption-false}
+Fix $\alpha>0$, $m>0$, and positive cutoffs, and set
+$\delta\mu^2=\mu_{\rm ind}^2=2e^2\chi(0)$.
+There is no constant $\vartheta<1$, uniform for large $L$, such that
+\begin{equation}
+ \mathcal M_{\mu_{\rm ind}}(Q)
+ \le\vartheta\Tr(D_0Q)
+ \quad\text{for all exactly neutral Slater projectors }\gamma.
+ \label{eq:ward-absorption-false}
+\end{equation}
+In particular the proposed sufficient estimate with a coefficient
+$\vartheta_L<\theta_L\le1-\alpha\pi/4$ and an error $CK$ is false already
+at $K=0$.
+\end{proposition}
+\begin{proof}
+Take $L$ large enough that $2\pi/L\le\Lambda_\gamma$, so the photon mode
+used below is retained. Choose $q=2\pi e_1/L$, $\varepsilon=e_2$, and
+$A=P_f(\varepsilon\cdot\boldsymbol{\mathsf a})\cos(q\cdot x)P_f$.
+Let $X=P_+AP_-$ and define $B:P_-\mathfrak h_f\to P_+\mathfrak h_f$ in
+free eigenbases by
+\[
+ B_{ij}=\frac{X_{ij}}{E_i+|E_j|}.
+\]
+Regard $S=B-B^*$ as an anti-self-adjoint operator on the full one-particle
+space, and put
+\[
+ \gamma_t=e^{tS}P_-e^{-tS},\qquad Q_t=\gamma_t-P_-.
+\]
+These are exactly neutral Slater projectors for every real $t$.
+With
+\[
+ s_L=\sum_{i\in+,j\in-}\frac{|X_{ij}|^2}{E_i+|E_j|}
+     =\frac V2\chi_L(q;\varepsilon),
+\]
+the elementary expansion of the unitary rotation gives
+\[
+ \Tr(D_0Q_t)=t^2s_L+o(t^2),\qquad
+ J_t:=\Tr(AQ_t)=2ts_L+O(t^2).
+\]
+The first identity follows because the second-order diagonal blocks of
+$Q_t$ are $t^2BB^*$ and $-t^2B^*B$; the first-order off-diagonal block is
+$tB$.  Optimizing just the single real transverse field
+$A_{\rm cl}=-a\varepsilon\cos(q\cdot x)$ gives the lower bound
+\[
+ \mathcal M_{\delta\mu}(Q_t)
+ \ge\frac{e^2J_t^2}{V(|q|^2+\delta\mu^2)}.
+\]
+It follows that
+\begin{equation}
+ \liminf_{t\to0}
+ \frac{\mathcal M_{\delta\mu}(Q_t)}{\Tr(D_0Q_t)}
+ \ge\frac{2e^2\chi_L(q;\varepsilon)}{|q|^2+\delta\mu^2}.
+ \label{eq:ward-ratio}
+\end{equation}
+By Proposition~\ref{prop:response}, the right side tends to $1$ as
+$L\to\infty$ at the statically matched value.  For any fixed $\vartheta<1$, first
+choose $L$ so that this right side exceeds $\vartheta$, and then choose a
+sufficiently small nonzero $t$.  This contradicts
+\eqref{eq:ward-absorption-false}.  Since
+$\theta_L\le1-\alpha\pi/4<1$, the last assertion follows as well.
+\end{proof}
+
+\begin{remark}[The actual statically matched mean-field question]
+\label{rem:mf-photon-open}
+The preceding proposition converts the previously proposed strict
+absorption inequality from an open question to a disproved statement.
+It does not decide stability of the complete mean-field functional.
+The direct Coulomb term, exchange, and the correct interacting mean-field
+vacuum have to be retained in such an argument.
+
+At fixed cutoff the sufficient large-mass condition has continuum-volume
+ratio $\eta_L\to E_\Lambda/m$ at the static matching value, so it does not establish
+that case.  More importantly, Proposition~\ref{prop:ward-absorption-false}
+shows that merely improving it to a strict uniform kinetic absorption
+below one cannot close the argument.
+
+For a precise remaining question define, using the same charge class on
+both sides,
+\[
+ F_{R,Z}^{\delta\mu}(\gamma)
+ =\mathcal E_{R,Z}(\gamma)-\mathcal M_{\delta\mu}(Q),
+ \qquad
+ f_0^{\delta\mu}=\inf_{\gamma\in\mathcal G_0}F_0^{\delta\mu}(\gamma).
+\]
+The desired statically matched product-state statement is
+\[
+ \inf_{\gamma\in\mathcal G_Z}F_{R,Z}^{\mu_{\rm ind}}(\gamma)
+       -f_0^{\mu_{\rm ind}}\ge-C_\Lambda K,
+\]
+or its separate version with both infima restricted to the appropriate
+exact-charge projections.  Neither version is proved here.  In particular
+$f_0^{\mu_{\rm ind}}$ must not be set to zero using the large-mass theorem,
+whose hypothesis fails at this tuning.  These remain mean-field questions
+for a modified photon-mass model, not proofs of the original massless
+many-body QED assertion.
+\end{remark}

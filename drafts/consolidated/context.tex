@@ -1,0 +1,235 @@
+\section{Scope, comparison methods, and remaining questions}
+\label{context:scope}
+
+\paragraph{Relativistic matter and the degrees of freedom.}
+Lieb--Yau~\cite{LY1988} treat relativistic particle kinetic energy
+with Coulomb interactions and point nuclei, without a pair-creating
+Dirac field or dynamical photons. The quantized-field theorem of
+Lieb--Loss~\cite{LL2002} is a no-pair theory: its electron space
+uses the positive spectral subspace of a field-dependent Dirac
+operator. It admits fixed point nuclei and quantized photons but
+excludes positrons. At physical $\alpha$ their stated range includes
+$Z\le42$. Lieb's review~\cite{Lieb2002} explains these distinctions.
+The magnetic critical-charge result of
+Frank--Lieb--Seiringer~\cite{FLS2007} likewise does not add a
+pair-creating Dirac sea to this argument.
+
+J\"akel--Wreszinski~\cite{JW2018} consider finite-volume,
+ultraviolet-regularized Coulomb-gauge QED with the fermion and photon
+fields. Their finite-regulator vacuum-energy shift is allowed to
+depend on volume. It is not the point-nucleus comparison uniform
+in $K$ and volume proved in the present parameter ranges.
+No no-pair or fixed-volume lower bound is used here as a substitute
+for that comparison.
+
+\paragraph{Relation to Gaussian domination in lattice models.}
+Miyao's theorem~\cite{Miyao} concerns a half-filled Hubbard model on a
+bipartite lattice, with two spin species, positive-type density interactions,
+and quantized photons entering hopping amplitudes through Peierls phases.
+Its finite-volume Theorem~3.4 proves Gaussian domination for arbitrary real
+source shifts.  The proof uses a particle--hole transformation in one spin
+sector and conjugate fermionic factors.  The thermodynamic susceptibility
+theorem additionally assumes a summable interaction and yields
+$\chi_\beta(p)\leq\widehat U(p)^{-1}$ where $\widehat U(p)>0$.
+Unscreened Coulomb interactions do not satisfy that summability assumption.
+The spin-mixing Dirac kinetic energy, projected charge operators, Wick
+corrections, and fixed-charge projection in the present model require a
+separate argument.  Thus the determinant lemma proved here is the actual
+input; the lattice theorem provides methodological context rather than an
+application covering this Hamiltonian.
+
+Lieb--Siedentop~\cite{LS} already distinguish a positive density-product
+interaction from its normally ordered form and analyze the resulting
+quadratic term using a self-consistent choice of normal ordering.  Here
+the reference is the prescribed free sea, and the density-product
+rewriting retains its exact quadratic and scalar corrections.  Their
+renormalization construction is not being substituted for this fixed
+ordering.  The matter result of Bach--Barbaroux--Helffer--Siedentop~\cite{BBHS}
+concerns a Hartree--Fock functional with a classical magnetic field;
+it does not supply a lower bound over all correlated fermionic states
+and quantized photon states.
+
+\paragraph{Why projected densities need not commute.}
+For scalar functions $f,g$, the matrices $P_{\Lambda_f}fP_{\Lambda_f}$ and
+$P_{\Lambda_f}gP_{\Lambda_f}$ need not commute.  Accordingly, a Gaussian
+identity for a simultaneous exponential of several noncommuting charges
+would be unjustified.  The valid construction first writes the positive
+Coulomb quadratic form as $\frac12\sum_a u_a R_a^2$, with Hermitian $R_a$
+and $u_a>0$, and uses the identity
+\begin{equation}
+ e^{-\delta u_a(R_a-h_a)^2/2}
+ =\int_{\mathbb R}\frac{e^{-z^2/2}\,dz}{\sqrt{2\pi}}
+   e^{i\sqrt{\delta u_a}zR_a}
+   e^{-i\sqrt{\delta u_a}zh_a}
+ \label{context:hs}
+\end{equation}
+for each component separately.  The spectral theorem proves this
+single-operator identity.  The finite-dimensional Trotter formula then
+retains the order of all factors.  Positivity of their centered fermionic
+trace, including the charge-projection phase, is supplied by the
+positive-mass determinant lemma.  No commutation between different $R_a$
+is assumed.  This argument does not establish an operator-valued
+Graf--Schenker localization inequality.  The subsequent heat-kernel
+comparison concerns a prescribed classical nuclear measure and the
+bounded projected charge density.
+
+\paragraph{Finite sources versus linear response.}
+An alternative response argument would need control along the whole
+source path.  For a fixed charge sector, put
+$f(t)=\inf\sigma(H_0+tW)$, $0\leq t\leq1$.  This function is concave.
+With $\mu=-f''$ interpreted as its nonnegative distributional second
+derivative measure,
+\begin{equation}
+ f(1)=f(0)+f'_+(0)-\int_{(0,1)}(1-t)\,\mu(dt).
+ \label{context:response-path}
+\end{equation}
+At a simple isolated ground state $\psi_t$, its ordinary density is
+\[
+ -f''(t)=2\big\langle (W-\langle W\rangle_t)\psi_t,
+ (H_0+tW-f(t))^{-1}_{\perp}
+ (W-\langle W\rangle_t)\psi_t\big\rangle.
+\]
+Level crossings contribute atoms to $\mu$.  The example
+$H_0=\operatorname{diag}(0,\Delta)$,
+$W=\operatorname{diag}(0,-B)$, with $B>\Delta>0$, has zero response at
+$t=0$ but $f(1)=\Delta-B$.  Consequently a susceptibility bound only at
+the unsourced vacuum cannot replace finite-source domination.  Away
+from zero source, translation symmetry is also lost, so a diagonal
+Fourier bound need not control the full response matrix.  The canonical
+Gaussian-domination argument in this paper avoids these additional
+hypotheses within its stated positive-mass regime.
+
+\paragraph{The direction of a screened comparison.}
+For $k\ne0$, write
+\[
+ \frac{4\pi}{|k|^2}=\frac{4\pi}{|k|^2+\mu^2}+w_\mu(k),\qquad
+ w_\mu(k)=\frac{4\pi\mu^2}{|k|^2(|k|^2+\mu^2)}.
+\]
+The density-product remainder
+$R_\mu=\frac{\alpha}{2V}\sum_{k\ne0}w_\mu(k)\rho(-k)\rho(k)$
+is positive.  Its fully Wick-ordered counterpart need not be positive;
+the associated quadratic and scalar corrections must remain in the
+auxiliary screened Hamiltonian $\widetilde H_Y$ when writing the exact
+identity $H_C=\widetilde H_Y+R_\mu$.  If $e(t)$ is the ground energy of
+$\widetilde H_Y+tR_\mu$, the variational principle gives, for endpoint
+ground states,
+\begin{equation}
+ \langle R_\mu\rangle_C\leq e(1)-e(0)
+ \leq\langle R_\mu\rangle_Y.
+ \label{context:screen-direction}
+\end{equation}
+Thus an upper bound on the Coulomb-vacuum expectation is not an upper
+bound on the vacuum-energy difference that must be subtracted.  One
+needs a screened-vacuum bound or an appropriate bound along the
+interpolation.
+
+The required estimate also concerns an equal-time structure factor.
+For a translation-invariant simple ground state, use the conventions
+\[
+ S(k)=V^{-1}\langle\rho(-k)\rho(k)\rangle,
+ \qquad
+ \chi(k)=V^{-1}\langle\rho(-k)(H-E)^{-1}_{\perp}\rho(k)\rangle.
+\]
+Then $\langle R_\mu\rangle=\frac\alpha2\sum_k w_\mu(k)S(k)$.
+The hypothesis $S(k)\leq s|k|^2$, on the finite band of charge modes,
+gives $\langle R_\mu\rangle\leq C\alpha s\mu^2\Lambda_f V$ by the
+lattice bound for $\sum_{k\ne0}|k|^{-2}$.
+A bound $\chi(k)\leq s|k|^2$ alone does not imply this hypothesis.
+Indeed, with
+$F(k)=V^{-1}\langle\rho(-k)(H-E)\rho(k)\rangle$,
+Cauchy--Schwarz gives $S(k)^2\leq\chi(k)F(k)$.
+An additional estimate $F(k)\leq f|k|^2$ would suffice; it is not
+silently available for the projected interacting theory.  A lower
+spectral gap bounds $\chi$ in terms of $S$, in the opposite direction
+from the inference just ruled out.
+
+\paragraph{Vacuum normalization and source-species constants.}
+A common scalar vacuum subtraction cancels from every vacuum-relative
+energy.  In contrast, adding
+$\sum_{i=1}^K\varepsilon_{Z_i}(\Lambda_f)$ changes the source energy
+reference.  Such constants can be meaningful only if each nuclear
+species has an explicitly stated, independently fixed calibration or
+mass-renormalization condition.  They must be independent of the state,
+positions, volume, and number of nuclei.  Their introduction is an
+additional model choice for prescribed infinitely massive sources;
+it is distinct from removing the infinite classical self-energy of
+each point nucleus.  Defining the constants from the exact energy in
+each finite box would generally introduce forbidden volume dependence.
+Even a valid one-nucleus calibration would not establish a bound on
+many-nucleus cross terms. No additional nuclear mass-calibration
+subtraction is used in the momentum-cutoff theorems. The separate
+lattice theorem in Section~\ref{lat-section} explicitly prescribes
+individual electrostatic diagonals, using either the periodic Green
+function or its volume-independent infinite-lattice counterpart.
+
+\paragraph{Quantized photons and the energy reference.}
+Section~\ref{pe-section} extends the comparison to the original
+finite-mode quantized transverse field.  In real standing-wave
+coordinates its normally ordered free Hamiltonian is
+\[
+ H_\gamma=\frac12\sum_r
+ (-\partial_{X_r}^2+\omega_r^2X_r^2-\omega_r),\qquad
+ \omega_r=|k_r|>0.
+\]
+The free-sea current has zero trace, so the current coupling adds only
+Hermitian vector coefficients to the one-particle matrix.  The positive
+mass coefficient is unchanged.  Componentwise Gaussian integration,
+positive Mehler kernels, trace-norm Trotter convergence for a bounded
+coordinate truncation, and its form-controlled removal prove the
+canonical comparison with the \emph{interacting photon vacuum}.
+The oscillator zero-point subtraction is the same on both sides.
+No positive bare photon mass or fixed infrared decoupling is introduced.
+
+Every mode with $0<|k|\leq\Lambda_\gamma$ is retained; hence arbitrarily
+soft modes occur as $L\to\infty$.  The harmonic transverse $k=0$ sector
+is explicitly fixed, rather than eliminated by Coulomb gauge alone.
+The many-nucleus restriction $L\geq\Lambda_f^{-1}$ concerns the
+periodic source estimates, not a photon infrared cutoff; the
+one-nucleus estimate holds for every admissible box.  The fermion
+cutoff in canonical momentum is not gauge covariant.  This remains
+a specified regulated Hamiltonian, not a construction of renormalized,
+gauge-invariant continuum QED.
+
+In particular, a bound $E_\nu-E^{\rm vac}\geq-CK$ alone places no
+restriction on the absolute vacuum baseline: a common, source-independent
+scalar added to both Hamiltonians cancels in the difference.
+The momentum-cutoff relative theorem neither proves absolute vacuum
+extensivity nor establishes a thermodynamic limit with its given
+normalization. The compact lattice vacuum limit in
+Section~\ref{therm4-section} uses additional local cutting estimates.
+
+\paragraph{What the result does not settle.}
+The estimate now includes all correlated fermionic and photon states
+at the stated cutoffs.  The sufficient positivity condition on the
+effective mass is a condition on the bare parameters; it does not
+control removal of the fermion cutoff at fixed physical mass and
+charge.  BDF vacuum existence~\cite{HLS}
+and charge renormalization in the reduced BDF model~\cite{GLS} are
+results for different nonlinear mean-field functionals, not a
+renormalization construction for this many-body Hamiltonian.
+The Pauli--Villars construction with classical electromagnetic
+fields~\cite{GHLS} likewise does not provide a theorem with quantized
+transverse photons.
+
+A low-energy Pauli--Fierz or Coulomb approximation would require control
+of the relevant pair-production threshold and effective-operator
+remainders, with errors extensive in system size.  Stability of an
+effective Hamiltonian alone does not transfer to the original theory.
+Finally, a lower bound is not an existence proof for a thermodynamic
+limit, atomic binding, molecular binding, or crystalline equilibrium.
+Those questions require separate compactness, binding, and structural
+arguments. The lattice vacuum and open-source limits proved here have
+the explicit boundary conditions of Section~\ref{therm4-section};
+they do not assert the remaining periodic-source comparison.
+
+\paragraph{The scope of Fry's strong-field calculation.}
+Fry~\cite{Fry} studies a renormalized Euclidean fermion determinant
+in a specified class of static magnetic fields. Section IV of the
+revised manuscript explicitly leaves two assumptions to be established:
+the continuum limit of the lattice diamagnetic inequality and the
+asymptotic Pauli heat-kernel expansion. Its regularity and field-class
+conditions must also be retained. We therefore do not use that
+calculation as an unconditional instability theorem for the present
+Hamiltonian or as a no-go theorem for every calibrated,
+cutoff-uniform source-relative bound. The concrete limitation of
+our estimate is its explicit $a^{-1}$ or $\Lambda_f$ source cost.

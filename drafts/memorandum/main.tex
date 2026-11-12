@@ -1,0 +1,126 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{booktabs,longtable,array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{hypertexnames=false,colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,urlcolor=blue!45!black,
+ pdftitle={Stability of Cutoff QED with Pair Creation and Point Nuclei},
+ pdfauthor={Codex},pdfsubject={Proof attempt, explicit regulator obstructions, and research reports}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.35em}
+\setlist{topsep=0.4em,itemsep=0.25em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\C}{\mathbb C}
+\newcommand{\T}{\mathbb T}
+\newcommand{\id}{I}
+\newcommand{\vac}{\mathrm{vac}}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\dd}{\,\mathrm d}
+\title{\textbf{Stability of Cutoff QED with Pair Creation\\and Point Nuclei}\\[0.5em]
+\large A proof attempt, explicit obstructions, and technical reports}
+\author{Prepared by Codex\\
+\small with independent research reports from three collaborating agents}
+\date{27 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+For a fixed fermion momentum cutoff and massless transverse photons,
+exactly neutral trial states give
+\(E^{\vac}_{\Lambda,L}\le-c_\Lambda L^5+C_\Lambda L^3\).
+This disproves free-vacuum extensivity for that regulator; it does not
+settle stability relative to the interacting vacuum. We prove finite-volume
+self-adjointness, a matching lower-bound order, and extensive bounds with
+either fixed infrared decoupling or a positive bare transverse photon mass.
+These are specified cutoff models, not constructions of renormalized QED.
+
+For the fully free-Wick-ordered, photon-free model, an explicit periodic
+Coulomb--Kato estimate gives mean-field vacuum-relative stability
+\(-C_\Lambda K\), including exactly neutral Slaters with pair coherence
+and point nuclei, for \(\alpha<4/\pi\) and the stated range of box sizes.
+The all-box-size assertion fails under both specified nuclear self-energy
+conventions.
+
+\smallskip\noindent\emph{Further deductions (Sections 13--16).}
+Three next-step problems are resolved in their stated scopes.
+First, a unit point nucleus and a single coherent pair give
+\(E^{\rm HF}_{\Lambda,L}-E^{\rm HF,\vac}_{\Lambda,L}
+\le m-c_\alpha\Lambda_f\) at fixed admissible volume.
+Thus a cutoff-independent constant is impossible in this fixed-reference
+normalization, even at physical coupling.
+Second, exchange destabilizes the free sea at the static one-loop
+photon-mass matching: exactly neutral product states lower its energy
+by \(cL^3\). A strictly larger, exchange-dependent bare-mass threshold
+is necessary for free-sea minimality, but is not proved sufficient.
+Third, a canonical charge-sector comparison proves a genuine
+vacuum-relative bound and a relative correlation bound for screened
+lattice fermions, including pair terms and arbitrary correlated states.
+That theorem requires neither a gap nor small coupling. Its constants
+diverge as screening is removed. The subsequent primary paper
+\emph{Vacuum-relative stability and charge gaps in cutoff QED} resolves the unscreened
+many-body comparison in its positive-effective-mass regime, including
+photons. Physical renormalization and a controlled low-energy reduction
+remain unresolved.
+\end{abstract}
+\noindent\textbf{Status update, 29 October 2026.}
+Open-problem statements below describe the historical stage of this memo.
+For superseding results use
+\href{run:../vacuum-relative-stability-paper/vacuum-relative-stability.pdf}
+{\emph{Vacuum-relative stability and charge gaps in cutoff QED}}.
+The original pre-update sources and PDF are preserved in the archive
+\path{historical-memorandum-before-round2.zip}.
+
+\noindent\textbf{Status and provenance.}
+This is a mathematical research memorandum, not a claim of a completed
+nonperturbative construction of physical QED. Sections 1--8 preserve the
+initial write-up; Sections 9--12 audit and develop the supplied continuation.
+Sections 13--16 carry out further proof attempts and record three concrete
+outcomes, with independent checks by the collaborating agents.
+Appendices preserve the initial collaborating agents' technical
+reports: conclusions, supporting arguments, source checks, and limitations.
+The revised main text takes precedence where it sharpens those reports.
+These reports are research deliverables, not private internal deliberations.
+Statements proved directly below are distinguished from cited theorems and
+from proposed extensions.
+\clearpage
+\begingroup
+\small
+\setlength{\parskip}{0pt}
+\tableofcontents
+\endgroup
+\clearpage
+\input{paper}
+\clearpage
+\input{paper-part-three}
+\clearpage
+\input{next-uv}
+\input{next-photon-vacuum}
+\input{next-screened-lattice}
+\input{next-conclusions}
+\clearpage
+\input{references}
+\clearpage
+\appendix
+\input{appendix-finite-cutoff}
+\clearpage
+\input{appendix-qed-literature}
+\clearpage
+\input{appendix-relativistic-literature}
+\end{document}

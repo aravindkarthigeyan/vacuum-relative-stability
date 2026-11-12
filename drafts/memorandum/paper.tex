@@ -1,0 +1,411 @@
+\section{Exact model and assumptions}
+\label{sec:model}
+
+Set \(\hbar=c=1\), use Heaviside--Lorentz electromagnetic units, and write
+\begin{equation}
+e^2=4\pi\alpha.
+\end{equation}
+The parameters \(m>0\) and \(\alpha\) are initially \emph{bare parameters}.
+They may numerically be chosen as the electron mass and \(1/137\), but identifying
+them with measured parameters requires a separate renormalization argument.
+
+Let
+\begin{equation}
+\T_L^3=(\R/L\Z)^3,\qquad V=L^3,
+\end{equation}
+and define
+\begin{equation}
+\Gamma_{f,L}=\left\{p\in\frac{2\pi}{L}\Z^3:|p|\le\Lambda_f\right\},
+\qquad M_L=|\Gamma_{f,L}|.
+\end{equation}
+Let \(P_f\) be the corresponding scalar Fourier projection and
+\begin{equation}
+\mathfrak h_f=P_fL^2(\T_L^3;\C^4).
+\end{equation}
+Thus \(\dim\mathfrak h_f=4M_L\).
+
+Write the Dirac matrices as \(\mathsf a_1,\mathsf a_2,\mathsf a_3,\mathsf b\),
+to distinguish them from the fine-structure constant, and set
+\begin{equation}
+D_0=\boldsymbol{\mathsf a}\cdot(-i\nabla)+m\mathsf b,\qquad
+P_\pm=\mathbf1_{\R_\pm}(D_0)|_{\mathfrak h_f}.
+\end{equation}
+Each \(P_\pm\) has rank \(2M_L\). The electron and positron spaces are
+\begin{equation}
+\mathfrak h_e=P_+\mathfrak h_f,\qquad
+\mathfrak h_p=\overline{P_-\mathfrak h_f}.
+\end{equation}
+For photons, use
+\begin{equation}
+\begin{split}
+\Gamma_{\gamma,L}
+&=\left\{k\in\frac{2\pi}{L}\Z^3:0<|k|\le\Lambda_\gamma\right\},\\
+\mathfrak h_\gamma&=\ell^2(\Gamma_{\gamma,L}\times\{1,2\}).
+\end{split}
+\end{equation}
+The Hilbert space is
+\begin{equation}
+\mathcal H=
+\mathcal F_{\mathrm a}(\mathfrak h_e\oplus\mathfrak h_p)
+\otimes\mathcal F_{\mathrm s}(\mathfrak h_\gamma).
+\end{equation}
+
+The omission of the transverse \(k=0\) mode is an explicit infrared
+prescription. Coulomb gauge alone does not eliminate all harmonic
+vector-potential degrees of freedom on a torus; here that sector is fixed.
+
+The fermionic Fock space is finite-dimensional, but electron and positron
+numbers are not fixed:
+\begin{equation}
+0\le N_e,N_p\le2M_L.
+\end{equation}
+Consequently, allowing arbitrary numbers of pairs at fixed regulators means
+every pair number allowed by these finite capacities. There is no bound
+independent of \(L\) on that capacity.
+
+\subsection{Free fields, current, and pair terms}
+The free Hamiltonians are
+\begin{align}
+H_D&=\sum_{p,s}\sqrt{p^2+m^2}
+\left(b_{p,s}^\dagger b_{p,s}+d_{p,s}^\dagger d_{p,s}\right),\\
+H_\gamma&=\sum_{k,\lambda}|k|\,a_{k,\lambda}^\dagger a_{k,\lambda}.
+\end{align}
+Let \(\Omega\) denote the free electron--positron--photon vacuum. The cutoff
+Dirac field has its usual positive-energy annihilation and negative-energy
+creation parts:
+\begin{equation}
+\psi(x)=\sum_a u_a(x)b_a+\sum_b v_b(x)d_b^\dagger.
+\end{equation}
+Define dimensionless electric charge density and electron-number current by
+\begin{equation}
+\rho(x)=-:\!\psi^\dagger(x)\psi(x)\!:_\Omega,\qquad
+j_i(x)=:\!\psi^\dagger(x)\mathsf a_i\psi(x)\!:_\Omega.
+\end{equation}
+Both contain pair creation and annihilation terms.
+With real transverse polarizations,
+\begin{equation}
+A(x)=\sum_{k,\lambda}
+\frac{\varepsilon_\lambda(k)}{\sqrt{2V|k|}}
+\left(a_{k,\lambda}e^{ikx}+a_{k,\lambda}^\dagger e^{-ikx}\right),
+\end{equation}
+and
+\begin{equation}
+H_I=e\int_{\T_L^3}j(x)\cdot A(x)\dd x.
+\end{equation}
+The sign convention agrees with electron charge \(-e\); reversing the
+definition of \(j\) would reverse this displayed sign.
+
+\subsection{Point nuclei, Coulomb kernel, and self-energy convention}
+The nuclei are prescribed point sources:
+\begin{equation}
+\nu=\sum_{i=1}^K Z_i\delta_{R_i},\qquad
+Z_i\in\{1,\ldots,Z_{\max}\},
+\end{equation}
+with \(Z_{\max}=26\) allowed. Distinct nuclei must occupy distinct points
+modulo the torus. Coincident positive point nuclei have infinite mutual energy.
+
+Define the zero-mean periodic Coulomb Green function by
+\begin{equation}
+-\Delta G_L=4\pi(\delta_0-V^{-1}),\qquad \int_{\T_L^3}G_L=0.
+\end{equation}
+Its Fourier representation is
+\begin{equation}
+G_L(x)=\frac1V\sum_{q\ne0}\frac{4\pi}{|q|^2}e^{iqx},
+\end{equation}
+understood distributionally or by heat-kernel summation. Away from the
+origin it is a well-defined function, with local singularity \(1/|x|\).
+Put
+\begin{equation}
+D_L(f,g)=\frac1V\sum_{q\ne0}\frac{4\pi}{|q|^2}
+\overline{\widehat f(q)}\,\widehat g(q).
+\end{equation}
+The Coulomb Hamiltonian is
+\begin{align}
+H_C={}&
+\frac{\alpha}{2V}\sum_{q\ne0}\frac{4\pi}{|q|^2}
+:\!\rho_{-q}\rho_q\!:_\Omega
+\nonumber\\
+&+\frac{\alpha}{V}\sum_{q\ne0}\frac{4\pi}{|q|^2}
+\nu_{-q}\rho_q
++\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j).
+\label{eq:HC}
+\end{align}
+Here the first line means full fermionic Wick ordering of the four field
+operators relative to the \emph{fixed free vacuum}. Its distinction from the
+positive density-product expression will be controlled explicitly below.
+
+The fermionic densities have no Fourier components beyond \(2\Lambda_f\).
+Thus both fermionic terms in \eqref{eq:HC} are finite sums. The
+nuclear--nuclear term is not Fourier truncated.
+This preserves exact point-source nuclear repulsion. Nevertheless, the
+projected fermions cannot resolve nuclear Fourier components above
+\(2\Lambda_f\). That loss of resolution is a real consequence of the fermion
+regulator; it must not be mistaken for an unregularized Dirac--Coulomb
+interaction.
+
+The nuclear self-energy convention is as follows. Replace each
+\(\delta_{R_i}\) temporarily by a translated mollifier \(\eta_\epsilon\),
+subtract
+\begin{equation}
+\frac{\alpha}{2}\sum_i Z_i^2D_L(\eta_\epsilon,\eta_\epsilon),
+\label{eq:nuclear-self}
+\end{equation}
+and let \(\epsilon\downarrow0\). This removes the entire individual nuclear
+diagonal, leaving the last term of \eqref{eq:HC}. It fixes the finite part as
+well as removing the divergence. Other finite self-image conventions define
+slightly different finite-volume Hamiltonians.
+No subtraction depending on the electronic state, screening cloud, or
+inter-nuclear configuration is made.
+
+\subsection{Hamiltonian, gauge qualifications, and admissible sectors}
+The Hamiltonian studied below is
+\begin{equation}
+H_{\Lambda,L}(R,Z)=H_D+H_\gamma+H_I+H_C.
+\label{eq:H}
+\end{equation}
+At finite cutoffs no further counterterms are needed to define this operator,
+so \(H_{\mathrm{counterterms}}=0\) in the baseline model. Fixed mass
+counterterms and vacuum-energy-density counterterms can subsequently be
+included, with their contributions tracked.
+
+Formally, \eqref{eq:H} comes from the canonical Coulomb-gauge Hamiltonian by
+solving Gauss's law for the longitudinal electric field, Wick ordering,
+subtracting \eqref{eq:nuclear-self}, and imposing the stated spectral cutoffs.
+The longitudinal field energy produces
+\(\alpha D_L(\rho+\nu,\rho+\nu)/2\).
+A crucial qualification is that a \emph{fixed canonical-momentum fermion
+cutoff is not gauge covariant}. The reduced model retains transversality and
+exact global charge conservation, but not all identities of an unregularized
+gauge theory. The counterexample below exploits this distinction.
+
+For periodic boundaries, Gauss's law requires
+\begin{equation}
+Q_{\mathrm{total}}/e=Z_{\mathrm{tot}}-N_e+N_p=0,\qquad
+Z_{\mathrm{tot}}:=\sum_iZ_i.
+\label{eq:neutrality}
+\end{equation}
+The physical sector is therefore
+\begin{equation}
+\mathcal H_{Z_{\mathrm{tot}}}
+=\ker(N_e-N_p-Z_{\mathrm{tot}}).
+\end{equation}
+It is nonempty precisely when
+\begin{equation}
+Z_{\mathrm{tot}}\le2M_L.
+\label{eq:capacity}
+\end{equation}
+For nonintegral prescribed charges one must additionally require
+\(Z_{\mathrm{tot}}\in\Z\).
+Simply deleting the Coulomb zero mode while retaining nonneutral states
+would introduce a compensating-background interpretation. That is not the
+model used here. Finally,
+\begin{align}
+E_{\Lambda,L}(R,Z)
+&=\inf\sigma\left(H_{\Lambda,L}(R,Z)|_{\mathcal H_{Z_{\mathrm{tot}}}}\right),\\
+E^{\vac}_{\Lambda,L}
+&=\inf\sigma\left(H_{\Lambda,L}(0)|_{\mathcal H_0}\right).
+\end{align}
+Both use the same regulators and normal ordering.
+
+\section{Candidate theorem and the actual statements obtained}
+\label{sec:claims}
+The intended macroscopic theorem is
+\begin{equation}
+E_{\Lambda,L}(R,Z)-E^{\vac}_{\Lambda,L}\ge-C_\Lambda K.
+\tag{S}\label{eq:S}
+\end{equation}
+For the model above, the results established below are:
+\begin{enumerate}
+\item \textbf{Finite-regulator theorem.}
+For every finite \(L,\Lambda_f,\Lambda_\gamma\), every distinct nuclear
+configuration, and every nonempty charge sector, \eqref{eq:H} is
+self-adjoint, bounded below, and has a ground state.
+\item \textbf{Uniform lower bound.} For \(L\ge\Lambda_f^{-1}\),
+\begin{equation}
+H_{\Lambda,L}(R,Z)\ge
+-A_\Lambda K-B_\Lambda V-D_\Lambda VL^2.
+\label{eq:claimed-lower}
+\end{equation}
+The constants do not depend on nuclear positions, pair number, or photon number.
+\item \textbf{Failure of extensivity in free-vacuum normalization.}
+For every fixed \(\alpha>0\) and positive cutoffs,
+\begin{equation}
+E^{\vac}_{\Lambda,L}\le-c_\Lambda VL^2+C_\Lambda V
+\quad\text{for sufficiently large }L.
+\label{eq:claimed-trial}
+\end{equation}
+Hence
+\begin{equation}
+E_{\Lambda,L}\ge-C_\Lambda(K+V)
+\tag{W}\label{eq:W}
+\end{equation}
+is false in the baseline normalization, already for \(K=0\).
+\item \textbf{Extensive theorem with an additional infrared restriction.}
+If only photon modes with \(|k|\ge\kappa>0\) couple to the current, then
+\begin{equation}
+H_{\Lambda,L}^{(\kappa)}(R,Z)
+\ge-A_\Lambda K-B_{\Lambda,\kappa}V.
+\label{eq:claimed-ir}
+\end{equation}
+\item \textbf{Status of \eqref{eq:S}.}
+Equation \eqref{eq:claimed-trial} does not refute \eqref{eq:S}, since the
+same vacuum energy is subtracted. For \(L\ge L_0>0\), the proof below
+does not establish \eqref{eq:S}. For a statement covering all \(L>0\),
+the convention \eqref{eq:nuclear-self} gives an explicit counterexample
+in Section~\ref{sec:counterexamples}.
+\end{enumerate}
+All these direct cutoff estimates allow \(\alpha=1/137\); they require no
+small-coupling hypothesis.
+
+\section{Preliminary operator and exclusion lemmas}
+\label{sec:lemmas}
+\begin{lemma}[Self-adjointness and finite-volume boundedness]
+At fixed regulators and for a distinct nuclear configuration,
+\(H_{\Lambda,L}(R,Z)\) is self-adjoint on \(D(I\otimes H_\gamma)\), bounded
+below, and has compact resolvent on each nonempty conserved-charge sector.
+\end{lemma}
+\begin{proof}
+The fermionic Hilbert space is finite-dimensional. Every coefficient of a
+photon creation or annihilation operator in \(H_I\) is therefore bounded.
+The Coulomb terms are bounded fermionic operators plus a finite nuclear scalar.
+For each retained photon mode,
+\begin{equation}
+\|a_{k,\lambda}\Psi\|
+\le |k|^{-1/2}\|H_\gamma^{1/2}\Psi\|.
+\end{equation}
+The corresponding creation-operator estimate contains an additional
+multiple of \(\|\Psi\|\). Since there are finitely many modes, \(H_I\) is
+infinitesimally \(H_\gamma\)-bounded.
+Kato--Rellich therefore gives self-adjointness on
+\(D(H)=D(I\otimes H_\gamma)\), with the finite-photon vectors tensored
+with the fermionic space as a core.
+Boundedness below follows directly from the square-completion identity in
+Lemma~\ref{lem:square}. A finite collection of positive-frequency
+oscillators has compact resolvent. The linear field perturbation is compact
+relative to its resolvent, since it factors through the compact operator
+\((H_\gamma+1)^{-1/2}\). The resulting operator also has compact resolvent.
+Every nonempty conserved-charge sector consequently has a ground state.
+This proves finite-system existence, not uniform stability.
+\end{proof}
+
+\begin{lemma}[Exact local cutoff bounds]
+\label{lem:local}
+Write \(d_L=M_L/V\). Then
+\begin{equation}
+-2d_L I\le\rho(x)\le2d_L I,\qquad
+-2d_L I\le j_i(x)\le2d_L I,
+\label{eq:local-bounds}
+\end{equation}
+and
+\begin{equation}
+\sum_{i=1}^3j_i(x)^2\le12d_L^2I.
+\label{eq:current-square}
+\end{equation}
+For \(L\ge\Lambda_f^{-1}\), \(d_L\le C\Lambda_f^3\).
+\end{lemma}
+\begin{proof}
+The equal-point CAR are
+\begin{equation}
+\{\psi_a(x),\psi_b^\dagger(x)\}=d_L\delta_{ab}.
+\end{equation}
+After rescaling by \(d_L^{-1/2}\), these are four normalized fermionic modes.
+Thus \(\psi^\dagger\psi\) has spectrum in \([0,4d_L]\). Its free-sea
+expectation is \(2d_L\), proving the charge bound.
+Each \(\mathsf a_i\) has eigenvalues \(+1,+1,-1,-1\). Diagonalizing it in
+spin space proves the current bound and hence \eqref{eq:current-square}.
+The free-sea current vanishes because the momentum cutoff is symmetric.
+The bound on \(d_L\) follows by elementary lattice counting.
+These bounds include pair terms; they do not assume separate electron
+or positron number conservation.
+\end{proof}
+
+\begin{lemma}[Relativistic exclusion bounds with pairs]
+\label{lem:kinetic}
+For an arbitrary state, including a mixed fermionic state obtained by
+tracing out photons, its electron and positron one-particle density
+matrices satisfy \(0\le\gamma_e\le I\) and \(0\le\gamma_p\le I\).
+Embedding each in the appropriate four-spinor space gives
+\begin{equation}
+\Tr(|p|\gamma_s)\ge
+c\int_{\T_L^3}\rho_s(x)^{4/3}\dd x
+-\frac{C}{L}\Tr\gamma_s,\qquad s=e,p.
+\label{eq:LT}
+\end{equation}
+Also, \(H_D\ge m(N_e+N_p)\).
+\end{lemma}
+\begin{proof}
+The one-particle density bounds are consequences of the CAR.
+Let \(\Pi_E=\mathbf1_{\{|p|\le E\}}\). Fourier-mode counting gives
+\begin{equation}
+\tr_{\C^4}\Pi_E(x,x)\le C(E+L^{-1})^3.
+\end{equation}
+For \(0\le\gamma\le I\), splitting \(\gamma^{1/2}\) with \(\Pi_E\) and
+\(1-\Pi_E\), and applying the triangle inequality to its evaluation
+vectors, gives
+\begin{equation}
+\rho_{>E}(x)\ge
+\left(\sqrt{\rho(x)}
+-\sqrt{C(E+L^{-1})^3}\right)_+^2.
+\end{equation}
+Integrating in \(E\), using
+\begin{equation}
+\Tr(|p|\gamma)=\int_0^\infty\int_{\T_L^3}\rho_{>E}(x)\dd x\dd E,
+\end{equation}
+proves \eqref{eq:LT}, with universal constants for fixed spin dimension.
+The rest-energy estimate follows from \(\sqrt{p^2+m^2}\ge m\).
+\end{proof}
+There is an important limitation: \(\rho(x)\) is not simply the difference
+of the electron and positron number densities. It also contains anomalous
+pair coherences. In the equivalent finite Dirac-sea representation, let
+\(\gamma\) be the full one-particle density matrix and \(Q=\gamma-P_-\).
+Since \(\gamma^2\le\gamma\),
+\begin{equation}
+Q^2\le Q_{++}-Q_{--},
+\label{eq:Q-square}
+\end{equation}
+where \(Q_{\pm\pm}=P_\pm QP_\pm\), and
+\begin{equation}
+\langle H_D\rangle
+=\Tr\bigl(|D_0|(Q_{++}-Q_{--})\bigr)
+\ge m\Tr Q^2.
+\label{eq:coherence}
+\end{equation}
+Indeed, the difference between the right and left sides of
+\eqref{eq:Q-square} is \(\gamma-\gamma^2\).
+Thus kinetic energy controls pair coherence, but an arbitrary interacting
+state's two-particle correlations are not determined by \(Q\).
+A Hartree--Fock or BDF estimate cannot be transferred merely by inserting this \(Q\).
+
+\begin{lemma}[Valid photon square completion]
+\label{lem:square}
+Let \(B\) be a bounded fermionic operator, commuting with a photon
+oscillator \(a\). Then, as quadratic forms,
+\begin{equation}
+\omega a^\dagger a+a^\dagger B+B^\dagger a
+=
+\omega\left(a+\omega^{-1}B\right)^\dagger
+\left(a+\omega^{-1}B\right)
+-\omega^{-1}B^\dagger B.
+\label{eq:square}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Expand the right side, using commutation between the fermion and photon
+factors. No commutativity between different fermionic currents is needed.
+\end{proof}
+This does not assert that the shifted oscillators form a canonical bosonic
+family. For example,
+\begin{equation}
+[a+\omega^{-1}B,a^\dagger+\omega^{-1}B^\dagger]
+=1+\omega^{-2}[B,B^\dagger].
+\end{equation}
+Likewise,
+\begin{equation}
+[c_1^\dagger c_2,c_2^\dagger c_1]
+=c_1^\dagger c_1-c_2^\dagger c_2\ne0.
+\end{equation}
+Consequently, replacing even fermionic expressions by commuting symbols
+does not justify an exact unitary photon decoupling. The inequality from
+\eqref{eq:square} is sufficient for our lower bound.
+
+\input{paper-part-two}

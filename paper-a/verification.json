@@ -1,0 +1,12 @@
+{
+  "pdf": "paper-a-lattice.pdf",
+  "pages": 12,
+  "bytes": 415085,
+  "sha256": "1d1ffcf31ce34de6080d6f85d64a007630efa41f80c4305a31ff652e2aff35bc",
+  "title": "Vacuum-relative stability and charge gaps in compact Hamiltonian lattice QED",
+  "blank_pages": [],
+  "unresolved_references": false,
+  "compiler_diagnostics": [],
+  "contact_sheets": 2,
+  "text_sha256": "17913f12a4b7a4ba6e21e9eb4c1ecc4aaaa4f495fb9657b206bb62e9685fef7f"
+}

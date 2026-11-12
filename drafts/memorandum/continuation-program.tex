@@ -1,0 +1,227 @@
+\section{Continuation III: a sufficient relative correlation estimate}
+\label{sec:reduction}
+
+Consider the photon-free model \(H^{\rm C}_{\Lambda,L}\) of
+Lemma~\ref{lem:hf-energy}, on the exact neutral sector. Define
+\begin{align*}
+E^{\rm MB}(R,Z)
+&=\inf\sigma\bigl(H^{\rm C}_{\Lambda,L}(R,Z)|_{\mathcal H_{Z_{\rm tot}}}\bigr),\\
+E^{\rm HF}(R,Z)
+&=\inf_{\substack{\gamma^2=\gamma\\
+\rank\gamma=2M_L+Z_{\rm tot}}}\mathcal E_{R,Z}(\gamma).
+\end{align*}
+The Hartree--Fock infimum here is over exact-charge Slater determinants;
+it is not the larger mean-charge relaxation. Set
+\begin{equation}
+c(R,Z)=E^{\rm HF}(R,Z)-E^{\rm MB}(R,Z)\ge0,
+\end{equation}
+and write \(c(0)\) for the case without nuclei.
+
+\begin{proposition}[Exact identity and a sufficient comparison]
+\label{prop:reduction}
+Under the box-size and coupling hypotheses of Theorem~\ref{thm:mf},
+\begin{align}
+E^{\rm MB}(R,Z)-E^{\rm MB,\vac}
+={}&[E^{\rm HF}(R,Z)-E^{\rm HF,\vac}]
+-[c(R,Z)-c(0)]
+\nonumber\\
+\ge{}&-A^{\rm MF}_\Lambda K-[c(R,Z)-c(0)].
+\label{eq:reduction}
+\end{align}
+Moreover \(c(0)=-E^{\rm MB,\vac}\in[0,B_\Lambda V]\).
+Consequently the photon-free primary bound \eqref{eq:S} follows from
+\begin{equation}
+c(R,Z)\le c(0)+C_\Lambda K.
+\label{eq:rel-corr}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The equality is the definition of \(c\), and the lower bound uses
+Theorem~\ref{thm:mf} restricted to the exact-charge Slater class.
+Its vacuum energy is zero because this class contains \(P_-\).
+The free-vacuum trial gives \(E^{\rm MB,\vac}\le0\), while
+\eqref{eq:full-coulomb-bound}, with \(H_D\ge0\) and \(K=0\), gives
+\(E^{\rm MB,\vac}\ge-B_\Lambda V\).
+\end{proof}
+
+\begin{remark}[Sufficiency is not equivalence]
+Equation~\eqref{eq:reduction} is exact, but
+\eqref{eq:rel-corr} is a sufficient estimate, not a necessary condition
+deduced from \eqref{eq:S}. The Hartree--Fock nuclear energy can itself be
+large and positive, for example near nuclear collisions. It may compensate
+a larger correlation-energy difference. There is no proved assertion here
+that either correlation energy has a specific asymptotic density.
+Separate extensive error bounds do not give the cancellation in
+\eqref{eq:rel-corr}.
+\end{remark}
+
+\subsection{What existing correlation and gap results do not yet supply}
+The correlation estimates of Bach and Graf--Solovej
+\cite{Bach1992,GS1994} are useful precedents for controlling the discrepancy
+between many-body and Hartree--Fock energies in Coulomb systems.
+Applying them to this filled-sea reference, and then controlling the
+\emph{difference} of errors with and without nuclei, requires new estimates.
+Their conclusions are not already \eqref{eq:rel-corr}.
+
+De Roeck--Salmhofer \cite{DRS2019} prove persistence of a spectral gap
+uniformly in the size of a fermionic lattice, for a gapped free Hamiltonian
+and sufficiently weak interactions satisfying suitable decay hypotheses.
+A purely fermionic lattice model with a fixed Yukawa screening length is
+a plausible intermediate problem once those hypotheses and interaction
+norms are verified. Removing screening is a separate limit: the relevant
+decay constants need not remain bounded.
+
+Even a uniform source-free gap does not establish either of the two
+configuration-uniform Feshbach inputs in Section~\ref{sec:effective}.
+Arbitrarily clustered sources can produce a strong external potential.
+One still needs control of the relevant charged sectors and defects,
+as well as an extensive bound on the virtual-pair correction.
+Gap persistence alone does not give \eqref{eq:rel-corr}.
+
+Global neutrality also does not provide a decomposition into localized
+neutral objects with controlled dipole moments. If such a decomposition
+were independently proved, dipole interactions could have an \(r^{-3}\)
+tail. In three dimensions its absolute radial integral is logarithmic at
+large distances. That is an infrared summability problem, and must not
+be identified with the ultraviolet logarithm in charge renormalization.
+
+\subsection{Gauge-covariant lattice regularization and gluing}
+A gauge-covariant Hamiltonian lattice regularization is a reasonable
+framework to investigate, but its kinematic and physical Hilbert spaces
+must be distinguished. Site fermions and link variables give a kinematic
+tensor product. The physical space is constrained by
+\begin{equation}
+\mathcal H_{\rm phys}
+=\bigcap_x\ker\bigl[(\operatorname{div}E)_x-\rho_x-\nu_x\bigr].
+\end{equation}
+It does not in general factor as an ordinary tensor product across a
+spatial boundary. Gluing must keep track of boundary electric-flux
+sectors, or use an enlarged Hilbert space followed by the constraints
+\cite{KS1975,Donnelly2014}. Gauge links and unbounded electric-field
+operators also lie outside the purely fermionic setting of
+\cite{DRS2019}.
+
+With unitary link variables, a finite-range lattice hopping Hamiltonian
+has a lower bound proportional to the number of sites; positive electric
+and magnetic field energies can help preserve that coarse estimate.
+This observation does not compare the source energy with the actual
+interacting vacuum.
+
+Exact lattice gauge covariance supplies the corresponding identities,
+but does not make a spatially constant vector potential on a finite
+torus gauge trivial. Holonomies and boundary conditions must be treated.
+The field-dependent no-pair projection of Lieb--Loss \cite{LL2002}
+changes the matter Hilbert space; it is not a regulator-equivalent
+replacement for full pair-producing QED. The Pauli--Villars construction
+of \cite{GHLS2013} concerns a Dirac vacuum with classical fields and small
+external sources, not quantized-photon many-body stability.
+
+\subsection{Scope of the ultraviolet question}
+A Landau scale is a useful warning about the ultraviolet problem,
+not a substitute for a constructive theorem. In the reduced, exchange-free
+BDF setting, a charge-renormalization relation of the form
+\begin{equation}
+\alpha_{\rm phys}
+=\frac{\alpha_{\rm bare}}{1+\alpha_{\rm bare} B_\Lambda},
+\qquad
+\alpha_{\rm bare}
+=\frac{\alpha_{\rm phys}}{1-\alpha_{\rm phys}B_\Lambda},
+\end{equation}
+with \(B_\Lambda\sim(2/3\pi)\log(\Lambda/m)\), illustrates the restriction
+\(\alpha_{\rm phys}B_\Lambda<1\) for positive bare coupling
+\cite{HLS2005,GLS2009}. The associated exponential scale is model-specific and
+based on the indicated asymptotics. It neither proves a full-QED Landau
+pole nor establishes uniform stability up to \(m\exp(c/\alpha)\).
+For this project, every proposed cutoff window should be stated explicitly
+and its uniform estimates proved within a specified model.
+
+\section{Status at the start of the further proof attempts}
+\label{sec:status}
+
+The table records the position after the audit of Sections 9--11.
+Sections~\ref{uv-section}--\ref{sl-sec} subsequently settle three of
+the proposed next steps in their specified models.
+Section~\ref{next-status} gives the current conclusions.
+
+\small
+\noindent
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.50\linewidth}
+>{\raggedright\arraybackslash}p{0.44\linewidth}@{}}
+\toprule
+Statement & Audited status\\
+\midrule
+Finite-regulator self-adjointness and ground states
+& Proved; Section~\ref{sec:lemmas}.\\[0.45em]
+Massless baseline: lower bound and \(L^5\) vacuum trial
+& Proved for the fixed momentum cutoff; Sections~\ref{sec:lower-proof}--\ref{sec:counterexamples}.\\[0.45em]
+Free-sea static susceptibility and soft-momentum coefficient
+& Proved; physical photon pole mass not identified.\\[0.45em]
+Extensive bound with a positive bare photon-mass term
+& Proved for the modified model; Theorem~\ref{thm:ct}.\\[0.45em]
+Small-box failure under the two stated self-energy conventions
+& Proved analytically; Remark~\ref{rem:madelung}.\\[0.45em]
+Periodic Coulomb--Kato constant and Green-function remainder
+& Explicit analytic bounds; Lemma~\ref{lem:pkato}.\\[0.45em]
+Photon-free mean-field relative bound with point nuclei and pair coherence
+& Proved for the stated coupling and box-size range; Theorem~\ref{thm:mf}.\\[0.45em]
+Product mean field with a sufficiently large bare photon mass
+& Proved with improved current estimate; Proposition~\ref{prop:mf-heavy}.\\[0.45em]
+Uniform strict kinetic absorption at the one-loop mass tuning
+& False: neutral Slater perturbations approach ratio one;
+Remark~\ref{rem:mf-photon-open}.\\[0.45em]
+Vacuum-relative theorem at that tuning
+& Unresolved; failure of the preceding sufficient route does not refute it.\\[0.45em]
+Many-body relative theorem from a relative correlation bound
+& Historical reduction; the primary paper now proves the comparison
+in its positive-effective-mass regime.\\[0.45em]
+Cutoff-uniform stability, thermodynamic limit, binding, crystals
+& Require additional arguments within each specified model.\\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\subsection{Literature comparison and priority}
+The finite-cutoff torus mean-field argument is presented as a direct
+adaptation, with no claim of priority. In particular, the periodic
+Coulomb comparison and Kato-type machinery already have substantial
+precedent in Lemma~1 of Hainzl--Lewin--Solovej \cite{HLSol2007}.
+Their periodic Coulomb kernel has an added constant chosen to be
+nonnegative. They begin with symmetrized charge density rather than our
+fixed free-vacuum Wick ordering, construct a self-consistent
+Hartree--Fock vacuum, and derive the sea-relative BDF functional by
+subtracting that vacuum. Their thermodynamic external-field statement
+uses regular charge densities, and is not the arbitrary-\(K\),
+point-source theorem asserted here.
+
+Bach--Barbaroux--Helffer--Siedentop \cite{BBHS1998} include pair degrees of
+freedom in generalized Hartree--Fock theory, point Coulomb nuclei, and
+classical magnetic fields. Their splitting uses the positive spectral
+space of an effective nuclear-field Dirac operator, and their magnetic
+formulation also depends on the field. Their normal-ordering reference
+therefore differs from the fixed \(P_-(D_0)\) reference used here.
+This distinction prevents simply reading their theorem as our
+fixed-vacuum comparison; it does not justify a claim that the present
+stability result is new.
+
+Frank--Lieb--Seiringer \cite{FLS2007} establish critical-charge
+pseudorelativistic stability in magnetic fields. Their scalar
+one-particle kinetic operator is not a quantized Dirac field with pairs.
+These results should guide a cutoff-uniform investigation without being
+substituted for the required theorem.
+
+\subsection{Questions taken up in the following sections}
+\begin{enumerate}
+\item Could the photon-free mean-field bound be made cutoff independent
+under subcritical point charges? Theorem~\ref{uv-theorem} disproves this
+for the fixed free-Wick model, already with one unit nucleus.
+\item Does a screened lattice model satisfy the relative energy and
+correlation estimates? Theorem~\ref{sl-relative-theorem} proves both by
+an exact-sector comparison, without a gap-persistence argument.
+\item What is the vacuum at the one-loop static photon tuning?
+Theorem~\ref{pv-instability-theorem} proves that it is not the free sea;
+exchange gives an extensive variational improvement. Construction of
+the actual reference vacuum remains a further problem.
+\item If adopting gauge links, develop gluing with the Gauss-law
+boundary-flux constraints. Add quantized photons only with explicit
+control of their gapless sectors and of dressing errors.
+\end{enumerate}

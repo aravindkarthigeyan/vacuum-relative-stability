@@ -1,0 +1,627 @@
+\section{Detailed lower-bound proof}
+\label{sec:lower-proof}
+
+\subsection{Electrostatic estimate with exact point nuclei}
+First separate the Coulomb operator before full Wick ordering:
+\begin{equation}
+H_C^{\mathrm{dens}}=
+\frac{\alpha}{2}D_L(\rho,\rho)+\alpha D_L(\rho,\nu)
++\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j).
+\label{eq:density-coulomb}
+\end{equation}
+The first term is positive, but the other terms require a uniform estimate.
+
+Fix \(s>0\), eventually \(s=\Lambda_f^{-2}\), and write
+\begin{equation}
+G_{L,s}=e^{s\Delta}G_L,\qquad
+h_{L,s}=G_L-G_{L,s},\qquad \nu_s=e^{s\Delta}\nu.
+\end{equation}
+If \(p_{L,t}\) denotes the torus heat kernel, then
+\begin{equation}
+h_{L,s}(x)=4\pi\int_0^s\bigl(p_{L,t}(x)-V^{-1}\bigr)\dd t.
+\end{equation}
+Positivity and unit integral of the heat kernel imply
+\begin{equation}
+h_{L,s}(x)\ge-\frac{4\pi s}{V},\qquad
+\|h_{L,s}\|_{L^1}\le8\pi s.
+\label{eq:heat-bounds}
+\end{equation}
+A lattice-shell estimate gives, uniformly in \(L\),
+\begin{equation}
+G_{L,2s}(0)=\frac1V\sum_{q\ne0}
+\frac{4\pi e^{-2s|q|^2}}{|q|^2}\le Cs^{-1/2}.
+\label{eq:heat-self}
+\end{equation}
+After writing \(q=2\pi n/L\), this reduces to
+\(\sum_{n\ne0}|n|^{-2}e^{-a|n|^2}\le C a^{-1/2}\).
+Counting lattice points in successive shells proves this estimate.
+
+An exact rearrangement of \eqref{eq:density-coulomb} is
+\begin{align}
+H_C^{\mathrm{dens}}={}&
+\frac{\alpha}{2}D_L(\rho+\nu_s,\rho+\nu_s)
+\nonumber\\
+&+\alpha D_L(\rho,\nu-\nu_s)
+\nonumber\\
+&+\alpha\sum_{i<j}Z_iZ_jh_{L,2s}(R_i-R_j)
+\nonumber\\
+&-\frac{\alpha}{2}G_{L,2s}(0)\sum_iZ_i^2.
+\label{eq:heat-identity}
+\end{align}
+The first line is positive. Heat smoothing here is solely an identity used
+in the proof; it does not replace the point-source Hamiltonian.
+By \eqref{eq:local-bounds} and \eqref{eq:heat-bounds},
+\begin{equation}
+\left|D_L(\rho,\nu-\nu_s)\right|
+\le16\pi d_Ls Z_{\mathrm{tot}}.
+\label{eq:cross-heat}
+\end{equation}
+The absolute value denotes the corresponding operator bound. The third
+line of \eqref{eq:heat-identity} is bounded below by
+\begin{equation}
+-\frac{4\pi\alpha s}{V}Z_{\mathrm{tot}}^2.
+\end{equation}
+Admissibility \eqref{eq:capacity} gives
+\begin{equation}
+\frac{Z_{\mathrm{tot}}^2}{V}\le2d_LZ_{\mathrm{tot}}.
+\end{equation}
+Finally, \(\sum_iZ_i^2\le Z_{\max}Z_{\mathrm{tot}}\le Z_{\max}^2K\).
+Combining these estimates,
+\begin{equation}
+H_C^{\mathrm{dens}}\ge
+-C\alpha\left(d_LsZ_{\max}+s^{-1/2}Z_{\max}^2\right)K.
+\end{equation}
+For \(L\ge\Lambda_f^{-1}\) and \(s=\Lambda_f^{-2}\),
+\begin{equation}
+H_C^{\mathrm{dens}}\ge-A_\Lambda K,\qquad
+A_\Lambda\le C\alpha\Lambda_f(Z_{\max}+Z_{\max}^2).
+\label{eq:electrostatic-bound}
+\end{equation}
+This is an actual uniform electrostatic estimate, including arbitrarily
+close distinct nuclei.
+
+\subsection{Cost of full Wick ordering}
+We next account for full Wick ordering. This cannot simply be ignored.
+In the finite sea representation define
+\begin{equation}
+n(A)=c^\dagger Ac-\Tr(P_-A).
+\end{equation}
+For one-particle matrices \(A,B\), Wick expansion gives
+\begin{equation}
+\begin{split}
+n(A)n(B)={}&W(A,B)+n(M_{A,B})\\
+&+\Tr\bigl(P_-A(1-P_-)B\bigr),
+\end{split}
+\label{eq:wick-identity}
+\end{equation}
+where \(W(A,B)\) denotes the fully Wick-ordered quartic expression and
+\begin{equation}
+M_{A,B}=AB-AP_-B-BP_-A.
+\end{equation}
+Equation \eqref{eq:wick-identity} follows directly by contracting the four
+CAR operators.
+
+For the compressed Fourier multipliers
+\(T_q=P_fe^{-iqx}P_f\otimes I_{\C^4}\), one has \(\|T_q\|\le1\).
+Thus the difference in \eqref{eq:wick-identity} has norm at most \(CM_L\).
+For example, \(\|M_{A,B}\|\le3\) when \(\|A\|,\|B\|\le1\),
+\(\|n(M_{A,B})\|\le8M_L\|M_{A,B}\|\), and the remaining trace has
+absolute value at most \(4M_L\).
+Moreover,
+\begin{equation}
+\frac1V\sum_{0<|q|\le2\Lambda_f}\frac{4\pi}{|q|^2}
+\le C\Lambda_f.
+\label{eq:coulomb-mode-sum}
+\end{equation}
+Therefore
+\begin{equation}
+\|H_C-H_C^{\mathrm{dens}}\|
+\le C\alpha M_L\Lambda_f\le B_\Lambda V,\qquad
+B_\Lambda\le C\alpha\Lambda_f^4,
+\end{equation}
+and
+\begin{equation}
+H_C\ge-A_\Lambda K-B_\Lambda V.
+\label{eq:full-coulomb-bound}
+\end{equation}
+This controls the complete Coulomb interaction over all allowed pair
+sectors. The volume term is a fixed consequence of the chosen ordering,
+not a state-dependent subtraction.
+
+\subsection{Transverse field and the infrared loss}
+For the transverse field, \eqref{eq:square} gives
+\begin{equation}
+H_\gamma+H_I\ge
+-\frac{e^2}{2V}\sum_{k,\lambda}
+\frac{(\varepsilon_\lambda(k)\cdot j_k)^\dagger
+(\varepsilon_\lambda(k)\cdot j_k)}{|k|^2}.
+\label{eq:photon-current}
+\end{equation}
+Suppose every coupled photon mode satisfies \(|k|\ge k_{\min}\).
+Polarization projection and Parseval yield
+\begin{align}
+H_\gamma+H_I
+&\ge-\frac{e^2}{2k_{\min}^2}
+\int_{\T_L^3}\sum_i j_i(x)^2\dd x
+\nonumber\\
+&\ge-\frac{6e^2d_L^2V}{k_{\min}^2}.
+\label{eq:photon-bound}
+\end{align}
+The Parseval identity is an operator quadratic-form identity for a finite
+Fourier polynomial; it does not require commuting current components.
+
+For ordinary torus photons, \(k_{\min}=2\pi/L\). Since \(H_D\ge0\),
+\eqref{eq:full-coulomb-bound}--\eqref{eq:photon-bound} prove
+\begin{equation}
+H_{\Lambda,L}\ge-A_\Lambda K-B_\Lambda V-D_\Lambda VL^2,
+\qquad D_\Lambda\le C\alpha\Lambda_f^6.
+\label{eq:lower-final}
+\end{equation}
+For an additional fixed infrared cutoff \(k_{\min}\ge\kappa>0\), they instead
+prove
+\begin{equation}
+H_{\Lambda,L}^{(\kappa)}
+\ge-A_\Lambda K-
+\left(B_\Lambda+C\alpha\Lambda_f^6\kappa^{-2}\right)V.
+\label{eq:ir-final}
+\end{equation}
+This proof is nonperturbative. It controls arbitrary photon occupation and
+every admissible pair sector. Its failure to be extensive without \(\kappa\)
+is not merely a weakness of the estimate.
+
+\section{Counterexamples, failed comparisons, and stress tests}
+\label{sec:counterexamples}
+
+\subsection{A neutral-current counterexample at large volume}
+Set \(K=0\). Work in the equivalent finite bare-Dirac CAR representation.
+The free sea \(P_-\) has rank \(2M_L\).
+Let
+\begin{equation}
+q=\frac{2\pi}{L},\qquad C_L=P_f\cos(qx_1)P_f
+\end{equation}
+on the scalar cutoff space. Define \(S_L=\sign(C_L)\), taking
+\(\sign(0)=+1\). Then \(S_L\) is a self-adjoint unitary.
+Define the one-particle projector
+\begin{equation}
+\gamma_L=\frac12\left(I+\mathsf a_2S_L\right).
+\label{eq:trial-projector}
+\end{equation}
+The spatial and spin operators commute, so \(\gamma_L^2=\gamma_L\).
+Since \(\tr_{\C^4}\mathsf a_2=0\), \(\rank\gamma_L=2M_L\).
+Its Slater determinant therefore belongs to the \emph{exact neutral charge
+sector}, not merely a state of zero expected charge.
+Its mean charge density vanishes pointwise:
+\begin{equation}
+\tr_{\C^4}\gamma_L(x,x)=2M_L/V
+=\tr_{\C^4}P_-(x,x).
+\label{eq:trial-charge}
+\end{equation}
+Its transverse current, however, is macroscopic:
+\begin{align}
+J_L&:=\int_{\T_L^3}\cos(qx_1)\langle j_2(x)\rangle\dd x
+\nonumber\\
+&=\Tr\bigl((\gamma_L-P_-)\mathsf a_2C_L\bigr)
+=2\Tr|C_L|.
+\label{eq:trial-current}
+\end{align}
+The free-sea contribution vanishes because \(C_L\) has zero momentum
+diagonal. Since \(\|C_L\|\le1\),
+\begin{align}
+J_L&\ge2\Tr C_L^2
+\nonumber\\
+&=\#\{p\in\Gamma_{f,L}:p+qe_1\in\Gamma_{f,L}\}
+\nonumber\\
+&\ge c_{\Lambda_f}V
+\label{eq:trial-current-size}
+\end{align}
+for sufficiently large \(L\). The last inequality follows by counting
+points away from the boundary of the cutoff ball.
+
+The free fermionic energy obeys
+\begin{equation}
+\langle H_D\rangle\le4M_L\sqrt{\Lambda_f^2+m^2}\le C_\Lambda V.
+\label{eq:trial-free}
+\end{equation}
+The Coulomb energy is also only \(O(V)\), including charge fluctuations.
+To see this directly for full Wick ordering, put \(Q_L=\gamma_L-P_-\).
+Quasifree Wick expansion gives
+\begin{equation}
+\begin{split}
+\langle:\rho_{-k}\rho_k:\rangle
+={}&\Tr(Q_LT_{-k})\Tr(Q_LT_k)\\
+&-\Tr(Q_LT_{-k}Q_LT_k).
+\end{split}
+\label{eq:trial-wick}
+\end{equation}
+The first term vanishes by \eqref{eq:trial-charge}. Also,
+\begin{equation}
+\left|\Tr(Q_LT_{-k}Q_LT_k)\right|
+\le\|Q_L\|_{\HS}^2\le4M_L.
+\end{equation}
+Using \eqref{eq:coulomb-mode-sum},
+\begin{equation}
+|\langle H_C\rangle|\le C_\Lambda V.
+\label{eq:trial-coulomb}
+\end{equation}
+Now take a product with a photon coherent state whose mean vector potential is
+\begin{equation}
+A(x)=a\,e_2\cos(qx_1).
+\end{equation}
+This field is transverse. Its modes are retained once \(q\le\Lambda_\gamma\).
+Its photon energy and current coupling are
+\begin{equation}
+\frac14Vq^2a^2+eaJ_L.
+\end{equation}
+Minimizing in \(a\) gives
+\begin{equation}
+-\frac{e^2J_L^2}{Vq^2}\le-c_\Lambda e^2VL^2.
+\label{eq:trial-gain}
+\end{equation}
+Combining \eqref{eq:trial-free}, \eqref{eq:trial-coulomb}, and
+\eqref{eq:trial-gain} proves
+\begin{equation}
+\boxed{E^{\vac}_{\Lambda,L}\le-c_\Lambda L^5+C_\Lambda L^3.}
+\label{eq:vacuum-instability}
+\end{equation}
+Here \(c_\Lambda>0\) for any fixed nonzero coupling.
+
+Every trial state is a legitimate finite-volume Fock-space state. Its
+photon occupation can be large, but no photon-number restriction was
+imposed. Total charge is exactly zero, and Coulomb fluctuations have been
+included.
+The optimized vector potential is \(O(L^2)\), while its magnetic field is
+\(O(L)\). A momentum cutoff alone does not exclude these large fields.
+Thus calling the model low-energy QED cannot remove this counterexample
+unless an additional field or energy restriction is explicitly imposed.
+Fixed mass counterterms contribute only \(O(V)\) to these states. A fixed
+vacuum-energy-density counterterm also contributes \(O(V)\). A fixed
+nonzero charge renormalization changes the coefficient in
+\eqref{eq:vacuum-instability}, not its \(L^5\) behavior.
+
+\subsection{What the construction proves and what it does not}
+Equation \eqref{eq:vacuum-instability} disproves \eqref{eq:W} in the stated
+normalization. It also prevents an ordinary finite vacuum-energy density
+for this regulator. It does not prove \(E(R,Z)-E^{\vac}<-CK\).
+Subtracting the exact interacting vacuum energy removes the common
+superextensive term. A comparison between the nuclear and vacuum ground
+states is still needed.
+That is the precise missing step in the primary proof:
+\begin{quote}
+Control the energy change caused by nuclei relative to the actual
+interacting vacuum, uniformly in \(L\).
+\end{quote}
+Separate lower bounds on both systems do not provide that comparison.
+Even bounds
+\begin{equation}
+E(R,Z)\ge-AK-BV,\qquad -BV\le E^{\vac}\le0
+\end{equation}
+would imply only \(E(R,Z)-E^{\vac}\ge-AK-BV\), not \(-CK\).
+
+\subsection{A separate all-\texorpdfstring{\(L\)}{L} counterexample}
+Under convention \eqref{eq:nuclear-self}, choose \(L\) small enough that
+only fermion momentum \(p=0\) remains and no nonzero photon mode is retained.
+Take two nuclei with \(K=2\) and \(Z_1=Z_2=1\).
+Neutrality forces occupation of both electron spin states and no positrons.
+All nonzero Fourier components of the fermion density vanish, so
+\begin{equation}
+E_{\Lambda,L}(R,Z)-E^{\vac}_{\Lambda,L}
+=2m+\alpha G_L(R_1-R_2).
+\label{eq:small-box}
+\end{equation}
+The zero-mean Green function \(G_1\) is positive near its singularity and
+therefore negative somewhere else. Choose \(r_0\ne0\) with \(G_1(r_0)<0\).
+Since \(G_L(Lr_0)=L^{-1}G_1(r_0)\), taking \(R_1-R_2=Lr_0\) gives
+\begin{equation}
+E_{\Lambda,L}-E^{\vac}_{\Lambda,L}\longrightarrow-\infty
+\quad(L\downarrow0)
+\end{equation}
+at fixed \(K=2\).
+Thus the literal theorem covering every box size is false for this
+convention. This is a periodic small-box effect, not a macroscopic collapse
+mechanism. A meaningful macroscopic formulation should impose
+\(L\ge L_0>0\) and specify its finite self-energy convention.
+
+\clearpage
+\subsection{The requested stress tests}
+\small
+\noindent
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.28\textwidth}>{\raggedright\arraybackslash}p{0.67\textwidth}@{}}
+\toprule
+Potential obstruction & Outcome in the stated model\\
+\midrule
+Point-Coulomb singularities &
+Finite fermion projection makes the external operator bounded; nuclear
+pair singularities remain positive. This provides no cutoff-independent
+Coulomb estimate.\\[0.6em]
+Collective nuclear concentration &
+The heat-kernel estimate controls all distinct configurations uniformly
+at fixed cutoff.\\[0.6em]
+Incorrect negative-energy quantization &
+Using \(d\Gamma(D_0)\) without filling and subtracting the sea is not our
+positive electron--positron Hamiltonian; without a cutoff it is already
+unbounded below.\\[0.6em]
+Unlimited pair production &
+At fixed cutoff, capacity is finite. Its growth as \(O(V)\) does not prevent
+the \(O(-L^5)\) photon-current mechanism.\\[0.6em]
+Vacuum polarization &
+Included through the full Fock-space interactions, but no uniform estimate
+relative to the interacting vacuum has been obtained.\\[0.6em]
+Transverse magnetic interactions &
+They produce the explicit obstruction \eqref{eq:vacuum-instability}.\\[0.6em]
+UV and IR limits &
+The constants diverge with \(\Lambda_f\); removing the auxiliary photon
+infrared cutoff destroys estimate \eqref{eq:ir-final}.\\[0.6em]
+Charge and Gauss constraints &
+Exactly enforced through \eqref{eq:neutrality}--\eqref{eq:capacity};
+neither counterexample uses a forbidden charge sector.\\[0.6em]
+Finite-system versus extensive stability &
+Every finite system is bounded below, while its lower spectral bound can
+behave as \(-L^5\).\\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\section{What the required literature actually establishes}
+\label{sec:literature}
+\subsection{Lieb--Yau (1988)}
+Their model has fixed-number fermionic electrons with kinetic energy
+\(\sqrt{p^2+m^2}-m\), point nuclei, and Coulomb interactions. It has no
+positrons, pair creation, or photons. Their sufficient stability conditions
+include
+\begin{equation}
+Z\alpha\le2/\pi,\qquad \alpha<1/(47q),
+\end{equation}
+where \(q\) is spin degeneracy. For \(q=2\), physical \(\alpha\) and \(Z\le26\)
+satisfy these conditions. This is a rigorous stability theorem for a
+different many-body Hamiltonian~\cite{LY1988}.
+
+The sharp one-center obstruction in that model is transparent. If
+\(\nu>2/\pi\), sharpness of the relativistic Coulomb inequality gives \(f\)
+with
+\begin{equation}
+\langle f,(|p|-\nu/|x|)f\rangle<0.
+\end{equation}
+For \(f_t(x)=t^{3/2}f(tx)\),
+\begin{equation}
+\begin{split}
+&\langle f_t,(\sqrt{p^2+m^2}-m-\nu/|x|)f_t\rangle\\
+&\hspace{1em}=
+t\langle f,(|p|-\nu/|x|)f\rangle+o(t),
+\end{split}
+\end{equation}
+which tends to \(-\infty\). This scaling is excluded by a fixed momentum cutoff.
+
+\subsection{Lieb--Loss (2002)}
+Their model includes point nuclei and ultraviolet-cutoff quantized photons,
+but is explicitly \emph{no-pair}. Electrons are restricted using the positive
+spectral subspace of the field-dependent Dirac operator \(D(A)\). They prove
+stability at \(\alpha=1/137\) for \(Z\le42\), so iron is included. The
+field-dependent projection is substantive: it cannot be replaced by a fixed
+free projection or by unrestricted electron--positron Fock space~\cite{LL2002}.
+
+\subsection{Lieb (2002)}
+This survey distinguishes stability of individual systems, stability of the
+second kind, and thermodynamic questions. Its relativistic quantized-field
+discussion concerns a positive-subspace model, not a proof for pair-producing
+full QED~\cite{Lieb2002}.
+
+\subsection{J\"akel--Wreszinski (2018)}
+Their finite-torus cutoff model includes electrons, positrons, pair terms,
+and quantized photons, but no external nuclei. Their stated bound is
+\begin{equation}
+H(\Lambda,V)+\mu(\Lambda,V)I\ge0
+\end{equation}
+for a finite volume-dependent \(\mu\). It does not establish \(\mu=O(V)\),
+nor a nuclear energy bound relative to the interacting vacuum. Thus its
+statement does not contradict \eqref{eq:vacuum-instability}. Our
+finite-regulator lemma independently proves the semiboundedness needed here,
+without importing formal photon-displacement identities~\cite{JW2018}.
+
+\subsection{Hainzl--Lewin--S\'er\'e: polarized BDF vacua}
+In a no-photon quasifree/mean-field setting, their variational estimates
+include, for finite cutoff and \(0\le\alpha<4/\pi\),
+\begin{equation}
+\begin{split}
+\mathcal E(Q)\ge{}&
+(1-\alpha\pi/4)\Tr_{P_-}(D_0Q)\\
+&+\frac{\alpha}{2}D(\rho_Q-n,\rho_Q-n)
+-\frac{\alpha}{2}D(n,n).
+\end{split}
+\label{eq:BDF}
+\end{equation}
+They establish polarized-vacuum minimizers under the stated hypotheses.
+The external density belongs to Coulomb space; a literal delta has infinite
+Coulomb self-energy. At finite fermion cutoff the external coupling can be
+represented using a filtered source, but nuclear repulsion and uniformity
+still require separate work. Most importantly, a lower bound on a restricted
+quasifree variational class is not a lower bound on arbitrary correlated
+Fock states~\cite{HLS2004,HLS2005}.
+
+\subsection{Point-nucleus Dirac--Coulomb theory}
+For \(D_0-\nu/|x|\), essential self-adjointness on the usual punctured smooth
+core holds through \(\nu=\sqrt3/2\). For \(\sqrt3/2<\nu<1\), a distinguished
+extension exists with domain in \(H^{1/2}\). General multicenter
+distinguished-extension results apply when each atomic charge weight is
+below one. These operators still possess a negative continuum;
+self-adjointness is not semiboundedness or matter stability. Distinct
+iron-or-lighter nuclei are individually subcritical, while coalescence
+combines their singular weights~\cite{ELS2021}.
+These results address complementary pieces. None supplies the missing
+full-Fock, massless-photon, vacuum-relative comparison in \eqref{eq:S}.
+
+\section{Low-energy reduction: controlled steps and missing inputs}
+\label{sec:effective}
+For the free dispersion there is a useful rigorous estimate:
+\begin{equation}
+0\le\frac{p^2}{2m}-\bigl(\sqrt{p^2+m^2}-m\bigr)
+\le\frac{p^4}{8m^3}.
+\label{eq:dispersion}
+\end{equation}
+It follows from Taylor's theorem for \(\sqrt{1+x}\), or directly by
+integrating its second derivative for \(x\ge0\).
+On an \(N\)-electron subspace with every \(|p|\le p_*\),
+\begin{equation}
+\left\|\sum_{i=1}^N\left[
+\frac{p_i^2}{2m}-\bigl(\sqrt{p_i^2+m^2}-m\bigr)
+\right]\right\|
+\le\frac{Np_*^4}{8m^3}.
+\label{eq:free-error}
+\end{equation}
+This is an extensive free-particle error bound. It does not control pair
+creation, strong fields, or radiative corrections.
+
+For the interacting problem, let \(\Pi\) project onto a chosen no-positron
+subspace and \(\Pi^\perp=1-\Pi\). Whenever the complementary resolvent
+exists, the exact Feshbach operator is
+\begin{equation}
+\begin{split}
+F_\Pi(H-z)={}&\Pi(H-z)\Pi\\
+&-\Pi H\Pi^\perp
+\left[\Pi^\perp(H-z)\Pi^\perp\right]^{-1}
+\Pi^\perp H\Pi.
+\end{split}
+\label{eq:feshbach}
+\end{equation}
+If one could prove
+\begin{equation}
+\Pi^\perp(H-z)\Pi^\perp\ge g\Pi^\perp,\qquad g>0,
+\label{eq:gap}
+\end{equation}
+then, on the appropriate quadratic-form domain,
+\begin{equation}
+\begin{split}
+0\le{}&
+\Pi H\Pi^\perp
+\left[\Pi^\perp(H-z)\Pi^\perp\right]^{-1}
+\Pi^\perp H\Pi\\
+\le{}&g^{-1}\Pi H\Pi^\perp H\Pi.
+\end{split}
+\label{eq:feshbach-bound}
+\end{equation}
+This identifies two concrete missing inputs:
+\begin{itemize}
+\item a pair-sector gap \(g\) uniform in admissible nuclear configurations
+and system size;
+\item a bound on the virtual-pair correction that is extensive, rather than
+an operator-norm estimate growing uncontrollably with volume.
+\end{itemize}
+A statement that energies lie below \(2m\) is insufficient. One must
+specify the reference energy and prove the interacting threshold. Soft
+photons remove a global spectral gap above the ground state, although they
+do not by themselves eliminate the free pair-production threshold. A
+separately established gap to states containing additional pairs could
+still be useful.
+
+After suitable block diagonalization and parameter matching, the expected
+leading effective Hamiltonian is
+\begin{equation}
+H_{\mathrm{PF}}=
+\sum_{i=1}^N
+\frac{\left[\boldsymbol\sigma_i\cdot
+(-i\nabla_i+e_{\mathrm{phys}}A(x_i))\right]^2}
+{2m_{\mathrm{phys}}}
++V_C^{\mathrm{phys}}+H_\gamma,
+\label{eq:PF}
+\end{equation}
+with relativistic and radiative corrections.
+Equation \eqref{eq:PF} is a \emph{target effective description}, not a
+consequence proved here. Controlling its remainder requires estimates on
+covariant momenta, field strengths, and virtual-pair terms. A bound on
+photon momentum alone does not bound field amplitude.
+
+There are rigorous reductions in restricted models.
+Hainzl--Lewin--S\'er\'e prove a nonrelativistic limit from BDF to
+Hartree--Fock for fixed particle number and suitable external densities
+and cutoff scaling. That is a no-photon mean-field result, not a
+full-QED-to-Pauli--Fierz theorem with macroscopic error
+control~\cite{HLS2008}. Arai's Dirac--Maxwell limit is another restricted
+bridge: it concerns one Dirac particle coupled to photon Fock space,
+rather than a quantized Dirac field with pair creation~\cite{Arai2003}.
+
+To transfer effective-theory stability back to full QED, one would need both:
+\begin{enumerate}
+\item a lower comparison of the effective operator with a stable Coulomb
+or Pauli--Fierz Hamiltonian, with error at most \(CK\);
+\item control of the complementary pair sector, so that lower-energy
+states have not been excluded by the reduction.
+\end{enumerate}
+A stable effective Hamiltonian alone provides neither requirement.
+
+\section{Strongest justified partial conclusions and further requirements}
+\label{sec:conclusions}
+For the explicit massless, fixed-momentum-cutoff model, the strongest
+global estimate established here is
+\begin{equation}
+\boxed{
+E_{\Lambda,L}(R,Z)\ge
+-A_\Lambda K-B_\Lambda L^3-D_\Lambda L^5,\qquad
+L\ge\Lambda_f^{-1}.}
+\end{equation}
+The power \(L^5\) is necessary in free-vacuum normalization because of
+the matching vacuum trial construction.
+For the model with fixed infrared cutoff in the current coupling,
+\begin{equation}
+\boxed{
+E_{\Lambda,L}^{(\kappa)}(R,Z)
+\ge-A_\Lambda K-B_{\Lambda,\kappa}L^3.}
+\end{equation}
+This is a genuine extensive theorem with point nuclei, quantized photons,
+and pair creation. It is stronger than finite-volume boundedness, but it
+requires an additional regulator.
+
+Since the free vacuum has expectation zero in the no-nucleus Hamiltonian,
+\(E_{\Lambda,L}^{\vac,(\kappa)}\le0\). Consequently,
+\begin{equation}
+E_{\Lambda,L}^{(\kappa)}(R,Z)
+-E_{\Lambda,L}^{\vac,(\kappa)}
+\ge-A_\Lambda K-B_{\Lambda,\kappa}L^3.
+\end{equation}
+If one additionally imposes a positive lower nuclear density
+\(K/V\ge\rho_*>0\), this implies
+\begin{equation}
+E^{(\kappa)}-E^{\vac,(\kappa)}
+\ge-\left(A_\Lambda+B_{\Lambda,\kappa}/\rho_*\right)K.
+\end{equation}
+That conditional result does not cover arbitrarily dilute systems or
+removal of \(\kappa\).
+
+\subsection{Changing the ultraviolet cutoff at fixed physical parameters}
+Our estimates grow roughly as \(\Lambda_f\), \(\Lambda_f^4\), and
+\(\Lambda_f^6\). No cutoff-uniform conclusion follows. A nonperturbative
+mass-and-charge matching procedure and a regulator preserving the
+necessary gauge structure are additional requirements.
+
+\subsection{Thermodynamic limit}
+For the baseline model in free-vacuum normalization,
+\begin{equation}
+E^{\vac}_{\Lambda,L}/V\le-c_\Lambda L^2+C_\Lambda,
+\end{equation}
+so a finite vacuum-energy density fails. Subtracting the exact finite-volume
+vacuum energy poses a different thermodynamic problem. Even the extensive
+bound with \(\kappa>0\) does not by itself prove convergence; upper bounds,
+screening, boundary control, and suitable subadditivity are also needed.
+
+\subsection{Atoms and molecules}
+Finite-box ground states follow from compact resolvent. Infinite-volume
+bound states require binding inequalities and infrared compactness;
+molecular binding additionally requires comparison with separated
+clusters. None follows from a lower stability bound alone.
+
+\subsection{Equilibrium crystals}
+These require minimizing over nuclear configurations, proving binding and
+a selected positive density, and establishing crystalline order and
+mechanical stability. An energetic lower bound contains no such structural
+information.
+
+\subsection{Requirements for a physical proof}
+For the intended physical theorem, a promising program must begin by
+addressing two distinct issues. First, choose and analyze a regulator
+that controls large transverse fields without the fixed-momentum-cutoff
+pathology demonstrated above. Second, prove a localized comparison with
+the \emph{interacting} vacuum that charges the energy change to the nuclei
+rather than to the whole volume.
+The required theorem would then have to control pair-sector spectral
+thresholds, vacuum polarization, and low-energy reduction errors uniformly
+in system size. Those are substantive missing estimates. The no-pair
+and BDF theorems provide useful components, but combining their conclusions
+does not constitute a proof for the full model requested here.

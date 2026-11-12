@@ -1,0 +1,98 @@
+\section{Statements, normalization, and the scope of the comparison}
+\label{b-introduction}
+
+The question addressed here is whether adding finitely many prescribed
+positive sources can lower the ground energy of a cutoff QED model
+by more than a constant times their number, after subtracting the
+\emph{same model's interacting neutral vacuum}. This is distinct from
+an absolute lower bound in the free-vacuum normalization. We prove a
+relative theorem for a sharply specified momentum regulator, while
+also proving that this regulator has a superextensive absolute
+vacuum energy. Both conclusions concern the same Hamiltonian.
+
+The model has finite fermionic one-particle dimension and finitely
+many nonzero photon modes in a torus, but unbounded photon occupation.
+Its fermionic Fock space permits arbitrary electron--positron pair
+creation up to the regulator's finite capacity. A sea representation
+on $\bigwedge\mathfrak h$ is unitarily equivalent to the electron and
+positron Fock representation; it is not an unbounded-below
+first-quantized Dirac prescription. The exact conserved quantity is
+the electron excess, including the prescribed nuclear charge in the
+neutrality condition. A mean-charge condition on a mixed quasi-free
+state is distinguished from membership in one exact charge sector.
+
+The fermion band is fixed independently of the electromagnetic
+field. Local multiplication by a gauge phase generally does not
+preserve it. Thus this is a Coulomb-gauge cutoff Hamiltonian with
+an imposed global Gauss constraint, not a locally gauge-covariant
+continuum construction. The harmonic transverse zero mode is
+explicitly omitted; Coulomb gauge by itself does not remove that
+degree of freedom. These choices are relevant to the counterexamples.
+
+In the full free-sea Wick model the source-free Hamiltonian can be
+rewritten as a positive sum of centered charge-density squares plus
+a one-body Dirac operator and a fixed scalar. The one-body mass is
+\[
+ M_{\rm eff}(p)=m-\frac{\alpha}{2L^3}
+ \sum_{\substack{r\in(2\pi/L)\Z^3,\ |r|\le\Lambda_f\\r\ne p}}
+ \frac{4\pi}{|p-r|^2}\frac{m}{\sqrt{m^2+|r|^2}}.
+\]
+When $M_{\rm eff}\ge m_*I>0$, the centered fermion trace in a
+real photon-coordinate history and arbitrary scalar auxiliary-field
+kicks is positive. Its transfer eigenvalues lie outside an explicit
+annulus. A canonical Fourier estimate then preserves the desired
+charge sector rather than using a grand-canonical bound in its place.
+The proofs below do not replace noncommuting density operators by
+classical variables.
+
+For distinct point nuclei, integral $1\le Z_i\le Z_{\max}$,
+$Z_{\rm tot}\le2M_L$, and $L\ge\Lambda_f^{-1}$, the resulting
+full-field inequality is
+\begin{equation}
+ E(R,Z)-E^{\vac}\ge m_*Z_{\rm tot}
+ -\alpha\Lambda_f\left[
+ 20\pi(1+1/\pi)^3Z_{\max}
+ +\frac{13}{4\pi^{3/2}}Z_{\max}^2\right]K.
+ \label{b-headline}
+\end{equation}
+The proof is Theorem~\ref{pe-full-theorem} with the strengthening
+of Theorem~\ref{thm:mass-gap-charge}. A single nucleus instead obeys
+$E_Z-E^{\vac}\ge m_*Z-13\alpha\Lambda_fZ^2/\pi^2$ for every
+admissible box. Nuclear deltas are preserved in the source definition
+and in the exact nuclear repulsion. Compression of their coupling
+to the fermion band regularizes the potential seen by the field.
+The entire individual periodic nuclear diagonal is subtracted by a
+fixed prescription. No state-dependent or configuration-dependent
+subtraction is used.
+
+One simple sufficient mass condition is
+$13\alpha\Lambda_f<\pi^2m$. Section~\ref{sec:mass-gap-round2}
+proves a larger all-volume window, including
+$\Lambda_f/m<5168.21$ at $\alpha=1/137$, as an evaluation of an
+explicit inequality. A continuum logarithmic coefficient is proved
+with a mesh error, and a coarse-box example shows why that error
+cannot be omitted uniformly. Density-product ordering removes this
+particular mass-window restriction by changing a definite one-body
+operator, not merely a scalar normalization.
+
+An absolute extensive statement would instead read
+\begin{equation}
+ H_{\Lambda,L}(R,Z)\ge-C_\Lambda(K+L^3).
+ \tag{W}\label{eq:W}
+\end{equation}
+Section~\ref{sec:counterexamples} disproves it for the bare momentum
+regulator with massless photons in its specified free-vacuum normalization. A
+fixed positive transverse photon-mass deformation restores such a
+bound, with the squeezing constant retained. Static susceptibility
+matching and its Ward-identity interpretation are treated separately
+from this operator theorem. The subsequent mean-field sections prove
+two further obstructions and carefully distinguish their reference
+vacua from the unrestricted correlated vacuum used in
+\eqref{b-headline}.
+
+Notation in the variational sections uses $P_-=P$, $P_+=I-P$,
+$\Gamma_{f,L}=\Gamma_{\Lambda_f,L}$, and $\mathfrak h_f=\mathfrak h$.
+There, a one-particle symbol $Q=\gamma-P_-$ is a sea-relative density
+matrix; elsewhere the conserved Fock charge is $Q=N-2M_L$.
+Their meanings are stated where they are used. All bare parameters
+are fixed unless a limit is explicitly declared.

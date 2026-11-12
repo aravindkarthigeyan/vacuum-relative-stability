@@ -1,0 +1,95 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage{booktabs,array,enumitem,xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+urlcolor=blue!45!black,pdftitle={Vacuum-relative stability and regulator obstructions in momentum-cutoff QED},pdfauthor={}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.3em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathbb T}
+\newcommand{\id}{I}
+\newcommand{\vac}{\mathrm{vac}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\Ex}{\operatorname{Ex}}
+\newcommand{\F}{\mathcal F}
+\newcommand{\hf}{h_{\mathrm{eff}}}
+\title{\textbf{Vacuum-relative stability and regulator obstructions\\
+in momentum-cutoff QED}\\[0.5em]
+\large Canonical Gaussian domination, point nuclei, and the limitations of free-vacuum matching}
+\author{}
+\date{Review draft, 29 October 2026}
+\begin{document}
+\maketitle
+\begin{center}
+\small AI-tool disclosure: Opus 5.5 + Astra 6\\
+Human author metadata has not been supplied.
+\end{center}
+\begin{abstract}
+We study a specified sharp-momentum-cutoff Hamiltonian with one massive
+Dirac field, pair creation, quantized transverse photons, and static
+continuum point nuclei. The Coulomb zero mode is omitted, total
+neutrality is imposed, and the harmonic transverse photon mode is
+fixed and omitted. For full four-field Wick ordering relative to the
+free Dirac sea, positivity of an explicitly computed effective mass
+gives canonical Gaussian domination and a charge gap. Completing
+source squares and using heat-kernel electrostatics yields
+$E(R,Z)-E^{\rm vac}\ge m_*\sum_iZ_i-C_\Lambda K$, uniformly in
+admissible nuclear configurations and in volumes above a specified
+lower bound. The photon proof includes trace-norm product convergence
+and removal of a photon-coordinate truncation. Density-product
+ordering gives a different Hamiltonian for which the positive-mass
+condition is automatic at every finite cutoff.
+
+These relative theorems coexist with explicit regulator obstructions.
+The bare model with massless photons has vacuum trial energies of order $-L^5$;
+an all-volume many-nucleus bound fails in small boxes; a fixed-reference
+photon-free mean-field energy with one unit point nucleus decreases
+linearly with the fermion cutoff; and exchange destabilizes the free
+sea at the statically matched positive photon-mass coefficient.
+A fixed positive bare transverse $A^2$ term restores an extensive
+absolute lower bound, but neither its presence nor the static matching
+calculation constructs renormalized massless QED. Proofs of these comparisons and counterexamples are included. No cutoff-uniform physical
+renormalization, thermodynamic limit for the massless momentum
+regulator, or dynamical nonrelativistic reduction is asserted.
+\end{abstract}
+\noindent\textbf{Review status.}
+This is a mathematical research draft prepared with the disclosed tools.
+Human authorship, responsibility, and publication metadata remain unset.
+Internal proof audits do not replace specialist review or formal proof
+verification. No priority claim is made.
+\clearpage
+\tableofcontents
+\clearpage
+\input{introduction}
+\input{proof}
+\input{photon-extension}
+\input{mass-gap}
+\input{absolute-bounds}
+\input{vacuum-obstruction}
+\input{static-response}
+\input{mean-field}
+\input{ultraviolet-obstruction}
+\input{exchange-instability}
+\input{interpretation}
+\appendix
+\input{free-dielectric}
+\input{references}
+\end{document}

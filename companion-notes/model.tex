@@ -1,0 +1,97 @@
+\section{The specified lattice Hamiltonian}
+\label{notes-model}
+
+We use the spatial Wilson Hamiltonian of the compact $U(1)$
+framework~\cite{KogutSusskind,Zache}, with continuous time and untruncated
+electric rotors. Let $X=(\Z/n\Z)^3$, $n\ge3$, $N=n^3$, and let
+$\mathcal E$ be its $3N$ positively oriented links.
+The lattice spacing is $a>0$, coupling $g^2>0$, bare mass $m\ge0$,
+and Wilson parameter $r\ge0$. The Hilbert space is
+\[
+ \mathcal H=L^2(U(1)^{\mathcal E},dU)\otimes
+ \mathcal F_a(\ell^2(X)\otimes\C^4).
+\]
+All Haar measures are normalized. A link variable is
+$U_\ell=e^{i\varphi_\ell}$ and $E_\ell=-i\partial_{\varphi_\ell}$
+has integer spectrum. With one plaquette for each $x,j<k$, set
+\[
+ H_E=\frac{g^2}{2a}\sum_\ell E_\ell^2,\qquad
+ H_B=\frac1{g^2a}\sum_p(1-\operatorname{Re}U_p).
+\]
+The four Hermitian Dirac matrices $\alpha_j,\beta$ anticommute
+pairwise and square to $I$. Spatial operators commute with them.
+The negatively charged fermion convention is
+\begin{align}
+ (T_j(U)f)(x)&=\overline{U_{xj}}f(x+e_j),&
+ v_j(U)&=\frac{T_j(U)-T_j(U)^*}{2ia},\label{lat-hopping}\\
+ M(U)&=m+\frac r{2a}\sum_j(2-T_j(U)-T_j(U)^*),&&\label{lat-wilson-mass}\\
+ h_W(U)&=\sum_j\alpha_jv_j(U)+\beta M(U),&
+ H&=H_E+H_B+d\Gamma(h_W(U)).\label{lat-hamiltonian}
+\end{align}
+Each $T_j$ is unitary, so
+$M(U)\ge mI$ and $\|h_W(U)\|\le h_*:=m+(3+6r)/a$.
+The entire raw bilinear $d\Gamma(h_W(U))$ is retained.
+Changing to electron--positron variables retains its link-dependent
+scalar sea term. Dropping that term defines a different Hamiltonian.
+
+Let $q_x=\sum_{s=1}^4c_{xs}^*c_{xs}-2$, so that
+$q_x\in\{-2,-1,0,1,2\}$ and physical fermion charge is $-gq_x$.
+The strongly commuting Gauss generators are
+\[
+ G_x=\sum_j(E_{xj}-E_{x-e_j,j})+q_x,\qquad
+ \mathcal H_\nu=\{\Psi:G_x\Psi=\nu_x\Psi\ \text{for all }x\}.
+\]
+Sources are integer valued. A sector is nonempty precisely when
+$|\sum_x\nu_x|\le2N$: necessity follows by summing Gauss's law;
+for sufficiency choose occupations with that total and route the
+remaining zero-sum integer function along a spanning tree.
+For nuclei $\nu_x=\sum_i Z_i\mathbf1_{\{x=R_i\}}$.
+Write $E_\nu=\inf\sigma(H|_{\mathcal H_\nu})$ and $E_0$ for the
+physical interacting vacuum. There is no extra global-flux restriction.
+
+\begin{lemma}[Realization and elementary energy bounds]\label{lat-realization}
+The Hamiltonian is self-adjoint on $D(H_E)$, has compact resolvent,
+and has trace-class heat semigroup for every positive time. These
+properties hold in every admissible Gauss sector. Moreover,
+\[
+ H\ge-2Nh_*,\qquad
+ E_0\le-2N(m+3r/a)+\frac{3N}{g^2a}.
+\]
+\end{lemma}
+\begin{proof}
+The remaining terms are bounded matrix multipliers, so bounded
+perturbation of the torus Laplacian proves all operator assertions,
+including the heat-trace comparison. The matrix
+$C_5=\alpha_1\alpha_2\alpha_3\beta$ anticommutes with $h_W$,
+whose eigenvalues therefore come in opposite pairs.
+The least fermionic Fock energy at fixed $U$ is
+$-\frac12\Tr|h_W(U)|\ge-2Nh_*$. For the upper bound use a constant
+link wavefunction and fill the two negative-$\beta$ spinors at every
+site. It is a physical vacuum trial state with zero electric energy,
+zero hopping expectation, and the displayed mass and magnetic energies.
+\end{proof}
+
+\begin{theorem}[Source comparison recalled from Paper A]\label{lat-main}
+For every admissible integer source and the above parameters,
+\[
+ E_\nu\ge E_0+m\left|\sum_x\nu_x\right|.
+\]
+This includes source electric self-energy. With the individual
+periodic lattice Coulomb diagonals subtracted, positive nuclei
+satisfy a lower bound $-C_aK$ relative to the same vacuum,
+uniformly in volume and positions.
+\end{theorem}
+The proof, including the finite combinatorial factor at positive
+temperature, is in Paper A~\cite{PaperA}. Its inputs are the centered
+fermion determinant, $C_5$ pseudo-unitarity, $\beta$-form decrease,
+the positive electric heat kernel, and exact local Gauss projection.
+Sections below prove the separate static comparisons and obstructions;
+they do not infer a neutral pair gap from this net-charge theorem.
+
+For the self-energy statement, the convention is
+$S_n=\frac{g^2}{2a}G_n(0)\sum_iZ_i^2$ with
+$G_n(0)=n^{-3}\sum_{k\ne0}[4\sum_j\sin^2(\pi k_j/n)]^{-1}$.
+The elementary uniform bound $G_n(0)\le13/16$ gives
+$E_\nu-S_n-E_0\ge m\sum_iZ_i-(13g^2/(32a))Z_{\max}^2K$.
+This specifies the comparison used for the clover variant; no
+configuration-dependent subtraction is introduced.

@@ -1,0 +1,75 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage{booktabs,array,enumitem,xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+urlcolor=blue!45!black,pdftitle={Low-energy matching and vacuum obstructions in Hamiltonian lattice QED},
+pdfauthor={}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.3em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathbb T}
+\newcommand{\id}{I}
+\newcommand{\vac}{\mathrm{vac}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\Ex}{\operatorname{Ex}}
+\newcommand{\F}{\mathcal F}
+\newcommand{\hf}{h_{\mathrm{eff}}}
+
+\title{\textbf{Low-energy matching and vacuum obstructions\\
+in Hamiltonian lattice QED}\\[0.4em]
+\large Companion notes to the vacuum-relative stability theorem}
+\author{}
+\date{Review draft, 29 October 2026}
+\begin{document}
+\maketitle
+\begin{center}\small
+Research-tool credits: Opus 5.5 + Astra 6\\
+Human author metadata has not been supplied.
+\end{center}
+\begin{abstract}
+These notes collect the proved static comparisons and failed estimates
+that delimit a proposed nonrelativistic reduction of compact Hamiltonian
+lattice QED. A frozen-link Schur-complement argument gives a
+charge-extensive spectral error, with Wilson kinetic and magnetic
+coefficients stated explicitly. A bounded clover correction preserves
+the vacuum-relative positivity argument under a sufficient mass condition.
+For dynamical links, Gauss-preserving electric localization is controlled,
+but source-only bounds on bare electric tails and bare pair number
+fail in the vacuum. We prove these obstructions, valid estimates with
+volume terms, and the exact additional Schur-complement assumptions
+needed for a dynamical reduction. No neutral pair gap, effective
+many-electron Hamiltonian with source-relative error, or continuum
+limit is claimed.
+\end{abstract}
+\noindent\textbf{Scope.}
+This is the companion to Paper A~\cite{PaperA}; the full compact-link
+source comparison is recalled with an explicit reference below.
+The remaining results here reproduce the audited arguments of the
+consolidated research draft. Internal checks are not external peer review,
+and no priority claim is made.
+\tableofcontents
+\input{model}
+\input{low-energy-matching}
+\input{electric-localization}
+\input{source-relative-remainders}
+\input{scope}
+\input{references}
+\end{document}

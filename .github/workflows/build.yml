@@ -1,0 +1,85 @@
+name: Build and verify
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build, axiom audit, README check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+        working-directory: lean
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Free runner disk space
+        working-directory: .
+        run: |
+          set -Eeuo pipefail
+          # Only remove preinstalled, unused SDKs on disposable hosted runners.
+          if [[ "${RUNNER_ENVIRONMENT:-}" == github-hosted ]]; then
+            sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
+            sudo docker image prune --all --force > /dev/null || true
+          fi
+          df -h .
+
+      - name: Install elan
+        run: |
+          set -Eeuo pipefail
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          bash "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Show toolchain
+        run: |
+          cat lean-toolchain
+          lake --version
+          lean --version
+
+      - name: Restore Mathlib cache archive
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/mathlib
+          key: build-mathlib-${{ runner.os }}-${{ hashFiles('lean/lake-manifest.json', 'lean/lean-toolchain') }}
+          restore-keys: |
+            build-mathlib-${{ runner.os }}-
+            comparator-mathlib-${{ runner.os }}-
+
+      - name: Fetch dependencies and the Mathlib build cache
+        run: lake exe cache get
+
+      - name: Build
+        run: lake build
+
+      - name: Axiom and sorry audit (every declaration outside Audit/)
+        run: lake env lean scripts/AxiomAudit.lean
+
+      - name: Per-theorem axiom report
+        run: lake env lean scripts/PrintAxioms.lean
+
+      - name: Check status manifest and generated README sections
+        working-directory: .
+        run: python3 -I scripts/update_readme.py --check
+
+      - name: Upload audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: axiom-audit
+          path: lean/.lake/axiom-audit.json
+          if-no-files-found: ignore

@@ -1,0 +1,430 @@
+\section{Canonical Gaussian domination with quantized transverse photons}
+\label{pe-section}
+
+This section extends the determinant argument to the full cutoff
+Hamiltonian, including its quantized transverse photons. The photon
+integration is justified first for a bounded coordinate truncation and
+then removed by quadratic-form estimates. The reference energy is the
+actual interacting neutral vacuum. No extensivity assumption about that
+vacuum is used.
+
+The sufficient restriction is
+\begin{equation}
+m_*:=m-\frac{13\alpha}{\pi^2}\Lambda_f>0.
+\label{pe-mass-condition}
+\end{equation}
+It is a restriction on the bare parameters and the fixed fermionic
+cutoff, not a mass-renormalization statement. The photon cutoff is any
+finite \(\Lambda_\gamma\). The nuclear self-energy convention remains
+that of Section~\ref{sec:model}. We now specify the photon regulator.
+Take all transverse modes \(0<|k|\le\Lambda_\gamma\), two polarizations
+\(\varepsilon_\lambda(k)\perp k\), and \(\omega_k=|k|\):
+\begin{align}
+H_\gamma&=\sum_{k,\lambda}\omega_k a^\dagger_{k,\lambda}a_{k,\lambda},
+\\
+A(y)&=\frac1{\sqrt V}\sum_{k,\lambda}
+\frac{\varepsilon_\lambda(k)}{\sqrt{2\omega_k}}
+\left(a_{k,\lambda}e^{ik\cdot y}
++a^\dagger_{k,\lambda}e^{-ik\cdot y}\right),\\
+H_I&=e\int_{\T_L^3}:\!\psi^\dagger(y)\boldsymbol{\mathsf a}
+\psi(y)\!:_P\cdot A(y)\,\dd y,\qquad e^2=4\pi\alpha .
+\label{pe-field-definition}
+\end{align}
+Here \(y\) is spatial position; \(x\) below denotes photon coordinates.
+The harmonic transverse \(k=0\) mode is explicitly fixed and omitted,
+an additional convention not implied by Coulomb gauge alone.
+There is no further infrared decoupling: the smallest retained
+frequency, when present, is \(2\pi/L\). The Hilbert space is
+\(\F\otimes\F_{\rm sym}(\mathfrak h_{\gamma,L})\).
+We write \(H_0\) within this section for the full source-free Hamiltonian,
+and \(E^{\vac}_{\Lambda,L}\) for its interacting neutral ground energy.
+The current matrices on the finite fermion space are bounded, so
+\(H_I\) is infinitesimally \(H_\gamma\)-bounded: for each retained mode,
+\(\|a_k\Psi\|\le\omega_k^{-1/2}\|H_\gamma^{1/2}\Psi\|\) and
+\(\|a_k^\dagger\Psi\|^2=\|a_k\Psi\|^2+\|\Psi\|^2\);
+the scalar inequality \(\sqrt t\le\varepsilon t+(4\varepsilon)^{-1}\)
+then gives the required relative bound after summing finitely many modes.
+Kato--Rellich gives
+self-adjointness on \(D(H_\gamma)\); the oscillator form estimates
+below prove a lower bound and compact resolvent at each fixed regulator.
+
+\subsection{Exact matching to the ordering algebra}
+Set \(h_L=\hf\), \(C_L=C\), and
+\(\kappa_L=\kappa_{\Lambda,L}\) from Section~\ref{sec:ordering}.
+Lemmas~\ref{lem:wick} and \ref{lem:mass} give the exact full-field identity
+\begin{equation}
+H_0=H_\gamma+C_L+\mathrm d\Gamma(h_L)+H_I
++\frac\alpha{2V}\sum_{k\ne0}v_k\rho_{-k}\rho_k.
+\label{pe-wick}
+\end{equation}
+In particular,
+\begin{equation}
+h_L=\sum_{j=1}^3\mathsf a_jv_j+\mathsf b M,
+\qquad M\ge m_*I>0,\qquad \Tr h_L=0.
+\label{pe-positive-mass}
+\end{equation}
+There are no additional ordering changes in this section.
+For the scalar Hubbard--Stratonovich variables use
+\(\widehat\rho(F)=\mathrm d\Gamma(F)-\Tr F/2\),
+where \(F\) is Hermitian and spin scalar. This is the opposite
+sign to physical charge density, absorbed into the source shifts.
+The Coulomb operator is the finite sum of positive real squares
+in \eqref{eq:squares}. Below \(d=4M_L\) and \(Q=N-d/2\).
+
+\subsection{Positivity for arbitrary real photon-coordinate histories}
+
+\begin{lemma}[Centered CAR trace with vector potentials and scalar kicks]
+\label{pe-trace-positive}
+Let
+\[
+h_j=\sum_{i=1}^3\mathsf a_i P_{i,j}+\mathsf b M_j,
+\qquad M_j\ge m_*I>0,
+\]
+with Hermitian spatial coefficients. Let \(s_j\ge0\), with
+\(\sum_js_j>0\), and let the kicks be arbitrary exponentials of
+\(i\widehat\rho(F)\), with Hermitian spin-scalar \(F\), together
+with an arbitrary charge twist \(e^{i\theta Q}\). The CAR trace of
+the resulting ordered product of the free factors
+\(e^{-s_jd\Gamma(h_j)}\) and these centered kicks is strictly positive.
+\end{lemma}
+
+\begin{proof}
+Represent the one-particle product by an ODE
+\(U'=-A(t)U\). On free intervals \(A=h_j\); on kick intervals
+\(A=i\Phi(t)\), with \(\Phi\) Hermitian and spin scalar.
+The charge twist is one more scalar kick. Equivalently the two types
+can be combined as \(A=c(t)h(t)+i\Phi(t)\), with \(c\ge0\) and
+positive total free time. Set
+\(\mathsf C_5=\mathsf a_1\mathsf a_2\mathsf a_3\mathsf b\).
+It is Hermitian and unitary, anticommutes with all the \(h_j\), and
+commutes with every \(\Phi\). Consequently
+\[
+A^*\mathsf C_5+\mathsf C_5A=0,
+\qquad U^*\mathsf C_5U=\mathsf C_5.
+\]
+The finite-dimensional CAR trace identity gives the centered trace as
+\[
+z=\exp\left(\frac12\int\operatorname{Tr}A(t)\,dt\right)
+       \det(I+U).
+\]
+The exponential is precisely the scalar supplied by the centered kicks,
+including \(e^{-i\theta d/2}\). Since \(\operatorname{Tr}h_j=0\),
+\(\int\operatorname{Tr}A\) is purely imaginary. Pseudo-unitarity and
+\(\det U=\exp(-\int\operatorname{Tr}A)\) therefore imply \(z=\bar z\).
+
+This real trace cannot vanish. Otherwise \(Uv=-v\) for some nonzero
+\(v\), and the corresponding ODE solution \(f\) is antiperiodic.
+Taking the real part after multiplication by \(\mathsf b\) and
+integration gives
+\[
+0=\operatorname{Re}\int f^*\mathsf b(\partial_t+A)f\,dt
+  =\int c(t)f(t)^*M(t)f(t)\,dt>0.
+\]
+The derivative contributes only the vanishing endpoint difference.
+The matrices \(\mathsf b\mathsf a_iP_{i,j}\) and
+\(i\mathsf b\Phi\) are anti-Hermitian. The strict last inequality
+uses invertibility of ODE propagation and positive total free time.
+Finally deform all kicks to zero and deform the spatial matrices
+\(P_{i,j}\) to zero and the positive \(M_j\) to \(m_*I\). The
+argument excludes zeros throughout these continuous deformations.
+At the endpoint the centered trace is
+\(\det(I+e^{-\mathsf b m_*\sum_js_j})>0\), proving positivity.
+\end{proof}
+
+Real transverse vector potentials satisfy exactly the hypotheses of
+this lemma: adding \(eP_f\boldsymbol{\mathsf a}\cdot A P_f\)
+changes only the Hermitian \(P_{i,j}\), not \(M\). The proof needs
+neither spatial locality of the momentum projection nor a photon gap
+uniform in volume.
+
+\subsection{Trace convergence for the bounded coordinate truncation}
+
+Use standing-wave photon modes. Choose
+\(\varepsilon_\lambda(-k)=\varepsilon_\lambda(k)\).
+For each pair \(k,-k\), the unitary combinations
+\(b_c=(a_k+a_{-k})/\sqrt2\) and
+\(b_s=i(a_k-a_{-k})/\sqrt2\) make the vector potential a real
+cosine/sine linear combination of \(b_c+b_c^\dagger\) and
+\(b_s+b_s^\dagger\).
+The equal frequencies preserve the oscillator Hamiltonian.
+Its finite-mode Fock representation is therefore
+\begin{equation}
+H_\gamma=\frac12\sum_{a=1}^{d_\gamma}
+  (-\partial_{x_a}^2+\omega_a^2x_a^2-\omega_a),
+\qquad \omega_a>0,
+\label{pe-oscillator}
+\end{equation}
+and the vector potential is linear in the real coordinates \(x_a\).
+If no photon modes are retained the following photon integrals are
+absent. Its Mehler heat kernel is strictly positive. The current
+coupling is the multiplication operator
+\(e\,d\Gamma(V(x))\), where
+\(V(x)=P_f\boldsymbol{\mathsf a}\cdot A(x)P_f\).
+There is no additional Wick scalar: \(\operatorname{Tr}(PV(x))=0\)
+by the nonzero photon momenta and the symmetric free cutoff.
+
+Choose a real continuous function \(0\le\chi_R\le1\), equal to one
+on \(|x|\le R\) and zero on \(|x|\ge2R\). Replacing the coupling
+by \(e\chi_R(x)d\Gamma(V(x))\) makes its matrix potential bounded.
+Every truncated instantaneous one-body matrix still satisfies
+\eqref{pe-positive-mass}.
+
+\begin{lemma}[Trace-norm product formula used here]
+\label{pe-trotter}
+Let \(A\ge0\), with \(e^{-tA}\) trace class for every \(t>0\),
+and let \(B_0,\ldots,B_J\) be bounded self-adjoint operators. Then,
+for every \(b>0\),
+\[
+\left(e^{-bA/n}\prod_{j=0}^J e^{-bB_j/n}\right)^n
+\longrightarrow e^{-b(A+\sum_jB_j)}
+\quad\text{in trace norm}.
+\]
+The same holds after multiplication by a bounded charge projection.
+\end{lemma}
+
+\begin{proof}
+For one bounded perturbation \(B\), expand both the product and the
+bounded-perturbation Dyson series in powers of \(B\). If
+\(s_0+\cdots+s_k=b\), Schatten H\"older gives
+\[
+\|e^{-s_0A}B e^{-s_1A}\cdots B e^{-s_kA}\|_1
+\le\|B\|^k\operatorname{Tr}(e^{-bA}).
+\]
+The Schatten exponents are \(b/s_j\), with exponent infinity at
+\(s_j=0\). The series tails are thus uniformly dominated by the
+exponential series \(\operatorname{Tr}(e^{-bA})e^{b\|B\|}\).
+At each fixed order, the terms with distinct product times are Riemann
+sums for the time-ordered Dyson integral. The integrand is trace-norm
+continuous in the interior of the time simplex; its boundary has
+measure zero and the displayed bound controls boundary strips. Terms
+with coincident times have total weight tending to zero. This proves
+trace-norm convergence, since the Dyson series is the semigroup of the
+bounded perturbation \(A+B\).
+
+For several bounded \(B_j\), replacing
+\(e^{-b\sum_jB_j/n}\) by \(\prod_je^{-bB_j/n}\) has operator-norm
+error \(O(n^{-2})\), by the power series of bounded exponentials.
+A telescoping sum, with the same Schatten H\"older estimate for the
+intervening heat factors, bounds the total trace-norm error by
+\(O(n^{-1})\operatorname{Tr}(e^{-bA})\) times a fixed exponential
+in \(b\sum_j\|B_j\|\). Multiplication by a bounded projection
+preserves convergence.
+\end{proof}
+
+\begin{proposition}[Canonical domination at bounded photon coordinates]
+\label{pe-truncated-domination}
+For the truncated coupling consider
+\[
+\mathcal H_R(\eta)=H_\gamma+C_L+
+d\Gamma\bigl(h_L+e\chi_R(x)V(x)\bigr)
++\sum_{j=1}^J a_j\bigl(\widehat\rho(F_j)+\eta_j\bigr)^2,
+\]
+where \(a_j\ge0\), \(F_j\) are Hermitian spin-scalar matrices, and
+\(\eta_j\in\mathbb R\). For every admissible integer \(q\) and
+every inverse temperature \(b>0\),
+\begin{equation}
+\operatorname{Tr}_{Q=q}e^{-b\mathcal H_R(\eta)}
+\le\operatorname{Tr}_{Q=0}e^{-b\mathcal H_R(0)}.
+\label{pe-thermal-domination}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Use Lemma~\ref{pe-trotter} with the oscillator as \(A\), the bounded
+fermionic matrix potential as \(B_0\), and one bounded density square
+for each remaining \(B_j\). At each product step use the exact scalar
+Gaussian identity
+\[
+e^{-t a(X+\eta)^2}
+=\frac1{\sqrt{2\pi}}\int_{\mathbb R}e^{-s^2/2}
+          e^{i\sqrt{2ta}s(X+\eta)}\,ds.
+\]
+No commutation between different \(X\)'s is assumed. The separate
+product factors handle that issue.
+
+Write the canonical projection as
+\(P_q=(2\pi)^{-1}\int_0^{2\pi}e^{i\theta(Q-q)}d\theta\).
+The trace of each finite product is then an integral over oscillator
+coordinates, scalar Gaussian variables, and \(\theta\). Its photon
+weight is a cyclic product of positive Mehler kernels. After removing
+the source phase and \(e^{-iq\theta}\), the remaining fermionic
+integrand is strictly positive by Lemma~\ref{pe-trace-positive}.
+Both removed factors have modulus one. The triangle inequality
+therefore bounds the absolute value of the finite-product canonical
+trace by the corresponding neutral, zero-source finite-product trace.
+
+These integrals are legitimate ordinary finite-dimensional integrals.
+The scalar kicks are unitary and the fermionic matrix potential is
+bounded, so its trace is bounded uniformly in all Gaussian variables
+by the finite CAR dimension times a fixed exponential. The cyclic
+Mehler weight integrates to the finite oscillator partition function.
+Lemma~\ref{pe-trotter} permits passage to the actual partition functions.
+The left partition function is positive, giving
+\eqref{pe-thermal-domination}.
+\end{proof}
+
+\subsection{Removal of the photon-coordinate truncation}
+
+Let \(\mathcal H(\eta)\) denote the same Hamiltonian with
+\(\chi_R=1\). At fixed volume and cutoffs there is a finite constant
+\(C_1\) such that
+\(\|e\,d\Gamma(V(x))\|\le C_1|x|\). Therefore
+\begin{equation}
+|\langle\Psi,(\mathcal H_R(\eta)-\mathcal H(\eta))\Psi\rangle|
+\le\frac{C_1}{R}\langle\Psi,|x|^2\Psi\rangle.
+\label{pe-form-error}
+\end{equation}
+Here is an explicit bound, including its charge-sector uniformity.
+Write \(c_\gamma=\frac12\sum_a\omega_a\) and
+\(\omega_*=\min_a\omega_a>0\). As quadratic forms,
+\[
+|x|^2\le\frac2{\omega_*^2}(H_\gamma+c_\gamma),\qquad
+C_1|x|\le\frac{\omega_*^2}{4}|x|^2+\frac{C_1^2}{\omega_*^2}.
+\]
+Because all shifted density squares are positive, one may choose
+\[
+C_2=|C_L|+\|\mathrm d\Gamma(h_L)\|
++\frac{c_\gamma}{2}+\frac{C_1^2}{\omega_*^2}
+\]
+so that
+\(\mathcal H_R(\eta),\mathcal H(\eta)\ge H_\gamma/2-C_2\).
+This \(C_2\) is independent of \(R\), the charge sector, and the
+source shifts \(\eta\) in the completed-square Hamiltonian.
+Set \(\epsilon_R=2C_1/(R\omega_*^2)\) and
+\(B=2C_2+c_\gamma\). Equation~\eqref{pe-form-error} gives
+\begin{align}
+\mathcal H_R(\eta)&\ge(1-2\epsilon_R)\mathcal H(\eta)-\epsilon_R B,\\
+\mathcal H(\eta)&\ge(1-2\epsilon_R)\mathcal H_R(\eta)-\epsilon_R B.
+\label{pe-explicit-squeeze}
+\end{align}
+For \(2\epsilon_R<1\), taking infima in each sector squeezes its
+ground energy between quantities converging to the untruncated energy.
+The common form domain is that of \(H_\gamma^{1/2}\), tensored with
+the finite fermion space. Its compact embedding and the lower bound
+give compact resolvent; the min--max principle bounds eigenvalues below
+by those of \(H_\gamma/2-C_2\), giving trace-class heat semigroups.
+If there are no photon modes, no truncation argument is needed.
+
+First taking \(b\to\infty\) in \eqref{pe-thermal-domination}, and
+then \(R\to\infty\), proves the exact ground-energy domination
+\begin{equation}
+\inf\sigma\bigl(\mathcal H(\eta)|_{Q=q}\bigr)
+\ge\inf\sigma\bigl(\mathcal H(0)|_{Q=0}\bigr).
+\label{pe-ground-domination}
+\end{equation}
+No limit uniform in \(L\) is required in this truncation argument:
+the comparison has no truncation-dependent error before its removal,
+and \eqref{pe-ground-domination} is then an exact statement at each
+volume.
+
+\subsection{One nucleus and the uniform many-nucleus bound}
+
+Let \(D_L^{\rm band}\) be the Coulomb form restricted to
+\(0<|k|\le2\Lambda_f\). Completing the density squares and using
+\eqref{pe-ground-domination} yields, for any prescribed source \(\nu\),
+\begin{equation}
+\inf\sigma\bigl((H_0+\alpha D_L(\rho,\nu))|_{Q=q}\bigr)
+\ge E^{\rm vac}_{\Lambda,L}
+ -\frac\alpha2D_L^{\rm band}(\nu,\nu).
+\label{pe-band-response}
+\end{equation}
+The reference on the right includes the photon interaction and all
+Coulomb density squares. In particular, for a single point nucleus
+of charge \(Z\) and the physical sector \(q=Z\),
+\begin{equation}
+E_{\Lambda,L}(R,Z)-E^{\rm vac}_{\Lambda,L}
+\ge-\frac\alpha2\kappa_L Z^2
+\ge-\frac{13\alpha}{\pi^2}\Lambda_f Z^2.
+\label{pe-one-nucleus}
+\end{equation}
+This holds for every admissible sector and every \(L>0\).
+
+For many nuclei, the direct band self-energy estimate alone should not
+be used to discard the nuclear cross terms. Instead let \(p_t\) be
+the periodic heat kernel and split
+\begin{align*}
+G_L^{\rm short}(x)&=4\pi\int_0^s p_t(x)\,dt-\frac{4\pi s}{V},\\
+G_L^{\rm long}(x)&=\frac1V\sum_{k\ne0}
+             \frac{4\pi e^{-s|k|^2}}{|k|^2}e^{ikx}.
+\end{align*}
+Both Fourier coefficient families are nonnegative. Split the
+source-free density squares accordingly, and apply
+\eqref{pe-ground-domination} with shifts only in the long-range
+squares. The short-range source-free squares remain present throughout
+the comparison. Thus the long-range source and nuclear terms together
+are bounded below, relative to the same vacuum, by
+\[
+-\frac\alpha2G_L^{\rm long}(0)\sum_iZ_i^2.
+\]
+Indeed, completing the band squares costs at most
+\(\alpha D_L^{\rm long}(\nu,\nu)/2\); the full long-range nuclear
+cross terms cancel this quantity except for the individual diagonals.
+Using the full long-range form only weakens the band estimate, because
+the omitted Fourier tail is nonnegative.
+
+For the short-range terms, \(\|\rho(x)\|\le2d_L\), where
+\(d_L=M_L/V\), and
+\(\|G_L^{\rm short}\|_{L^1}\le8\pi s\). Therefore their external
+coupling is bounded below by \(-16\pi\alpha d_LsZ_{\rm tot}\).
+Positivity of the heat kernel gives the nuclear lower bound
+\[
+\alpha\sum_{i<j}Z_iZ_jG_L^{\rm short}(R_i-R_j)
+\ge-\frac{2\pi\alpha s}{V}Z_{\rm tot}^2
+\ge-4\pi\alpha d_LsZ_{\rm tot},
+\]
+where the last step uses the exact neutrality capacity
+\(Z_{\rm tot}\le2M_L\). Finally the same cubic-shell estimate as
+above gives
+\[
+G_L^{\rm long}(0)
+\le\frac{26}{\pi L}\sum_{j\ge1}
+           e^{-4\pi^2sj^2/L^2}
+\le\frac{13}{2\pi^{3/2}\sqrt s}.
+\]
+Combining the estimates proves
+\begin{equation}
+E_{\Lambda,L}(R,Z)-E^{\rm vac}_{\Lambda,L}
+\ge-20\pi\alpha d_LsZ_{\rm tot}
+ -\frac{13\alpha}{4\pi^{3/2}\sqrt s}\sum_iZ_i^2.
+\label{pe-heat-bound}
+\end{equation}
+
+\begin{theorem}[Full cutoff relative stability in a specified cutoff window]
+\label{pe-full-theorem}
+Assume \eqref{pe-mass-condition}, \(L\ge\Lambda_f^{-1}\), finite
+photon cutoff, distinct point nuclei, \(1\le Z_i\le Z_{\max}\),
+and the exact neutral-sector admissibility condition
+\(Z_{\rm tot}\le2M_L\). For the Hamiltonian of Section~\ref{sec:model}
+with the photon terms \eqref{pe-field-definition}, including pair
+creation and quantized photons,
+\begin{equation}
+E_{\Lambda,L}(R,Z)-E^{\rm vac}_{\Lambda,L}
+\ge-\alpha\Lambda_f
+\left[20\pi\left(1+\frac1\pi\right)^3Z_{\max}
+ +\frac{13}{4\pi^{3/2}}Z_{\max}^2\right]K.
+\label{pe-full-bound}
+\end{equation}
+There is no restriction on the photon number or on the number of pairs
+other than the finite fermionic capacity.
+\end{theorem}
+
+\begin{proof}
+Choose \(s=\Lambda_f^{-2}\) in \eqref{pe-heat-bound} and use
+\[
+d_L\le\left(\frac{\Lambda_f}{\pi}+\frac1L\right)^3
+\le\left(1+\frac1\pi\right)^3\Lambda_f^3,
+\qquad Z_{\rm tot}\le Z_{\max}K,
+\qquad \sum_iZ_i^2\le Z_{\max}^2K.
+\]
+\end{proof}
+
+Gaussian domination compares with the same interacting vacuum and
+does not by itself prove its absolute extensivity.
+It supplies neither a thermodynamic limit nor an ultraviolet limit.
+Positive effective mass is the hypothesis of this proof; the displayed
+linear cutoff restriction is only one sufficient criterion.
+Later sections discuss other orderings and stronger criteria.
+The result concerns the specified
+fixed momentum cutoff and Wick prescription, and does not identify
+physical renormalized masses or charges. Point-nucleus repulsion and
+the fixed individual-self-energy subtraction have been preserved.

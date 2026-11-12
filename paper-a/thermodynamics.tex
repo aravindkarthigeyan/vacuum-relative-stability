@@ -1,0 +1,359 @@
+\section{Thermodynamic limits at fixed spacing}
+\label{sec:thermo}
+
+All parameters are fixed in this section. We distinguish
+unrestricted open-graph minima, physical zero-exterior-flux
+open minima, and periodic physical minima.
+
+\subsection{Open graphs and a bounded cutting estimate}
+
+For a rectangular $Y\subset\mathbb Z^3$, keep internal links and
+plaquettes. The open fermion matrix is $m\beta+\sum_{e\subset Y}h_e$,
+where for $e=(x,y=x+e_j)$
+\begin{equation}
+ h_e=\frac{\alpha_j}{2ia}
+ (\overline U_e|x\rangle\langle y|-U_e|y\rangle\langle x|)
+ +\frac{r\beta}{2a}
+ (|x\rangle-U_e|y\rangle)(\langle x|-\overline U_e\langle y|).
+ \label{eq:open-edge}
+\end{equation}
+The Wilson diagonal at $x$ is $m+r\deg_Y(x)/(2a)$,
+not the periodic value at boundary sites. Its mass coefficient
+is still at least $m$. Denote the auxiliary minimum by
+$e_{\rm op}(Y)$ and the physical minimum with
+$\diver_YE+q=\eta$ by $E_Y^{\rm op}(\eta)$.
+There are no exterior link rotors: this convention fixes exterior
+flux to zero.
+
+The proof of Theorem~\ref{thm:main} applies on this finite graph:
+its incidence matrix replaces the periodic one, the Wilson mass
+is positive, and the internal rotor kernels are unchanged.
+For connected $Y$ the admissibility condition is
+$|\sum_Y\eta|\le2|Y|$, and
+\begin{equation}
+ e_{\rm op}(Y)=E_Y^{\rm op}(0),\qquad
+ E_Y^{\rm op}(\eta)\ge e_{\rm op}(Y)+m|\sum_Y\eta|.
+ \label{eq:open-comparison}
+\end{equation}
+The empty-link case is the same finite-CAR argument.
+Uniformly for rectangles of degree at most six,
+\begin{equation}
+ -2h_*|Y|\le e_{\rm op}(Y)\le3|Y|/(g^2a).
+ \label{eq:open-extensive}
+\end{equation}
+The upper trial has zero electric flux and two negative-$\beta$
+spinors at every site; discard its nonpositive fermion energy.
+
+\begin{lemma}[Cutting with retained rotors]
+\label{lem:cut}
+Select rectangular open blocks partitioning the sites of a cubic
+graph. Let $\mathcal C$ be all original links not internal to
+these open blocks, including periodic closing links even when
+both endpoints lie in the same block, and put $n_c=|\mathcal C|$.
+On the original auxiliary space define
+\[
+ H_{\rm cut}=\sum_B H_B^{\rm op}
+                       +c_E\sum_{e\in\mathcal C}E_e^2,
+ \qquad c_E=g^2/(2a).
+\]
+Then
+\begin{equation}
+ \|H-H_{\rm cut}\|\le Bn_c,\qquad
+ B=(4r+2+8/g^2)/a,
+ \label{eq:cut-bound}
+\end{equation}
+and the cut auxiliary minimum equals $\sum_B e_{\rm op}(B)$.
+The same statement holds when adjoining periodic closing links
+to an open cube, after adding their free rotor factors.
+\end{lemma}
+\begin{proof}
+The endpoint matrix \eqref{eq:open-edge} has norm at most
+$r/a+1/(2a)$ and anticommutes with $C_5$. Its eight-dimensional
+spectrum is paired, so
+$\|d\Gamma(h_e)\|=\frac12\Tr|h_e|\le(4r+2)/a$.
+A plaquette multiplier has norm at most $2/(g^2a)$ and a link
+meets at most four plaquettes. Remove the cut fermion terms and
+every plaquette meeting a cut link; counting a plaquette more
+than once only enlarges the estimate.
+The unbounded electric term on each cut link is retained as an
+independent $L^2(U(1))$ rotor with minimum zero.
+Even fermion operators on disjoint blocks commute under the graded
+Fock decomposition, so their unrestricted minima add.
+The variational principle gives the claimed spectral comparison.
+\end{proof}
+
+\subsection{The vacuum limit}
+
+Write $Q_n=\{0,\ldots,n-1\}^3$, $e_{\rm op}(n)=e_{\rm op}(Q_n)$,
+and let $E_0^{\rm per}(n)$ be the physical periodic vacuum energy.
+
+\begin{theorem}[Vacuum thermodynamic limit]
+\label{thm:vacuum-limit}
+The finite limit
+\begin{equation}
+ e_{\vac}=\lim_{n\to\infty}\frac{e_{\rm op}(n)}{n^3}
+         =\lim_{n\to\infty}\frac{E_0^{\rm per}(n)}{n^3}
+ \label{eq:vacuum-limit}
+\end{equation}
+exists, and for every integer $\ell\ge3$,
+\begin{equation}
+ \left|e_{\vac}-\frac{e_{\rm op}(\ell)}{\ell^3}\right|
+ \le\frac{3B}{\ell},\qquad
+ \left|e_{\vac}-\frac{E_0^{\rm per}(\ell)}{\ell^3}\right|
+ \le\frac{6B}{\ell}.
+ \label{eq:vacuum-rate}
+\end{equation}
+Physical energy per spatial volume is $e_{\vac}/a^3$.
+\end{theorem}
+\begin{proof}
+For $n=k\ell$, cutting an open cube into $k^3$ cubes removes
+$3(k-1)n^2\le3n^3/\ell$ links. Hence
+$|e_{\rm op}(n)-k^3e_{\rm op}(\ell)|\le3Bn^3/\ell$.
+For arbitrary $n$, subdivide each coordinate into intervals of
+length $\ell$ and one possible remainder. Remainder boxes contain
+at most $3\ell n^2$ sites; their energies obey
+\eqref{eq:open-extensive}. The cut-link count is at most
+$3n^3/\ell$. Thus at every fixed $\ell$,
+\[
+ \frac{e_{\rm op}(\ell)}{\ell^3}-\frac{3B}{\ell}
+ \le\liminf_n\frac{e_{\rm op}(n)}{n^3}
+ \le\limsup_n\frac{e_{\rm op}(n)}{n^3}
+ \le\frac{e_{\rm op}(\ell)}{\ell^3}+\frac{3B}{\ell}.
+\]
+The limsup--liminf difference is at most $6B/\ell$ for every
+$\ell$, proving existence and the first estimate.
+Closing an open $n$-cube adds $3n^2$ links. Lemma~\ref{lem:cut}
+gives $|E_{\rm aux}^{\rm per}(n)-e_{\rm op}(n)|\le3Bn^2$.
+Theorem~\ref{thm:main} identifies
+$E_{\rm aux}^{\rm per}(n)=E_0^{\rm per}(n)$, completing the proof.
+\end{proof}
+
+This cutting proof concerns the auxiliary tensor product.
+It does not set the boundary flux of an arbitrary physical
+state to zero.
+
+\subsection{A fixed periodic source cell}
+
+Choose a cubic period cell of side $p\ge1$, with $V_c=p^3$ sites,
+$K_c\ge1$ labeled positive nuclei and charge $Z_c\le2V_c$.
+A rectangular period can be replaced by a cubic supercell.
+All periodic source sizes satisfy $n\in p\mathbb N$ and $n\ge3$.
+Choose integers $q_x^{(c)}\in\{0,1,2\}$ with total $Z_c$
+and an internal integer flow
+\begin{equation}
+ \diver F=\nu-q^{(c)},\qquad
+ \mathcal F_c=\sum_{e\ {\rm in\ cell}}F_e^2.
+ \label{eq:cell-flow}
+\end{equation}
+A spanning tree provides it; a one-site cell has zero right side.
+Set $\mu=m+3r/a$ and $\rho=Z_c/V_c$.
+
+\begin{proposition}[Fixed-cell relative bounds]
+\label{prop:cell}
+For $N_c=(n/p)^3$, $K=K_cN_c$ and $Z_{\rm tot}=Z_cN_c$,
+\begin{equation}
+ 0\le E_\nu^{\rm per}(n)-E_0^{\rm per}(n)-mZ_{\rm tot}
+ \le C_{\rm cell}K,
+ \label{eq:cell-bound}
+\end{equation}
+where
+\begin{equation}
+ C_{\rm cell}
+ =\frac{3rZ_c+(6+6r+3/g^2)V_c+(g^2/2)\mathcal F_c}{aK_c}.
+ \label{eq:cell-constant}
+\end{equation}
+The constant may depend on the cell and its screening flow.
+Every periodic source ground state also satisfies
+\begin{equation}
+ \langle H_E\rangle\le A_c n^3,\qquad
+ A_c=2(h_*-\mu)+\mu\rho+c_E\mathcal F_c/V_c+3/(g^2a).
+ \label{eq:electric-budget}
+\end{equation}
+\end{proposition}
+\begin{proof}
+Repeat the cell flow, put intercell links in electric flux zero,
+and occupy the two negative-$\beta$ spinors plus
+$q_x^{(c)}$ positive-$\beta$ spinors at each site.
+All Gauss constraints hold and hopping expectations vanish.
+Its periodic energy is at most
+\begin{equation}
+ -2\mu n^3+\mu Z_{\rm tot}
+                 +c_EN_c\mathcal F_c+3n^3/(g^2a).
+ \label{eq:cell-trial}
+\end{equation}
+Subtract $E_0^{\rm per}\ge-2h_*n^3$ and $mZ_{\rm tot}$
+to obtain the upper bound. The lower bound is
+\eqref{eq:main}. Finally $H_B\ge0$ and the fermion lower bound
+give $\langle H_E\rangle\le E_\nu^{\rm per}+2h_*n^3$;
+insert \eqref{eq:cell-trial}.
+\end{proof}
+
+The budget \eqref{eq:electric-budget} is absolute and extensive,
+not a bound on electric excitations relative to the vacuum.
+On an open rectangular union of complete cells, the same trial
+gives
+\begin{equation}
+ E_Y^{\rm op}(\nu)\le
+ \left[-2m+m\rho+c_E\mathcal F_c/V_c+3/(g^2a)\right]|Y|.
+ \label{eq:open-cell-trial}
+\end{equation}
+Indeed the site's diagonal expectation is
+$(q_x^{(c)}-2)(m+r\deg_Y(x)/(2a))\le(q_x^{(c)}-2)m$.
+
+\begin{theorem}[Open zero-flux source limit]
+\label{thm:open-source}
+For each fixed cell as above,
+\begin{equation}
+ e_\nu^{\rm op}
+ =\lim_{\substack{n\to\infty\\p\mid n}}
+       \frac{E_{Q_n}^{\rm op}(\nu)}{n^3}
+ =\inf_{\substack{\ell\in p\mathbb N\\\ell\ge3}}
+   \left\{\frac{E_{Q_\ell}^{\rm op}(\nu)}{\ell^3}
+                      +\frac{3B}{\ell}\right\}
+ \label{eq:open-source-limit}
+\end{equation}
+exists and is finite. In addition,
+\begin{equation}
+ e_{\vac}+m\rho
+ \le\liminf_{\substack{n\to\infty\\p\mid n}}\frac{E_\nu^{\rm per}(n)}{n^3}
+ \le\limsup_{\substack{n\to\infty\\p\mid n}}\frac{E_\nu^{\rm per}(n)}{n^3}
+ \le e_\nu^{\rm op}.
+ \label{eq:periodic-bracket}
+\end{equation}
+\end{theorem}
+\begin{proof}
+Take products of zero-exterior-flux physical block ground states
+and give newly joining rotors electric flux zero. This state
+satisfies all source Gauss constraints on the joined graph.
+Lemma~\ref{lem:cut} gives the upper almost-subadditivity
+\[
+ E_{Q_{k\ell}}^{\rm op}(\nu)
+ \le k^3E_{Q_\ell}^{\rm op}(\nu)+3B(k\ell)^3/\ell.
+\]
+For general $n,\ell\in p\mathbb N$, the rectangular remainders
+are unions of whole admissible cells. Their trial energy is
+$O(\ell n^2)$ by \eqref{eq:open-cell-trial}. Consequently
+the limsup of $E_{Q_n}^{\rm op}(\nu)/n^3$ is at most
+$E_{Q_\ell}^{\rm op}(\nu)/\ell^3+3B/\ell$ for every fixed
+compatible $\ell$. Let $\gamma$ be their infimum.
+By definition $E_{Q_n}^{\rm op}(\nu)/n^3+3B/n\ge\gamma$;
+hence the liminf is at least $\gamma$ and the limsup at most
+$\gamma$. The extensive lower bound makes the limit finite.
+Only one-sided almost-subadditivity was used.
+
+Adjoining zero-flux closing rotors gives
+$E_\nu^{\rm per}(n)\le E_{Q_n}^{\rm op}(\nu)+3Bn^2$.
+This proves the last inequality in \eqref{eq:periodic-bracket}.
+Its first follows from the charge-cost and vacuum-limit theorems.
+\end{proof}
+
+Thus the \emph{open-boundary} relative energy per nucleus has
+limit $(V_c/K_c)(e_\nu^{\rm op}-e_{\vac})$.
+A fixed subtraction $S_\infty$ subtracts its fixed density.
+The periodic subtraction $S_n$ has the same limiting density:
+$\G_n(0)\to\G_\infty(0)$ by ordinary Fourier Riemann convergence
+away from zero and the uniform $O(\delta)$ shell bound within
+$0<|k|\le\delta n$, followed by $\delta\downarrow0$.
+
+\subsection{The periodic-source question}
+
+We state precisely why \eqref{eq:periodic-bracket} is not yet
+a periodic-source limit theorem. For a cut set $\mathcal C$,
+orient each cut link once, write $f\in\mathbb Z^{\mathcal C}$,
+and let $b_B(f)_x$ be its signed outgoing flux at a boundary
+site $x$ of block $B$. Internal Gauss law becomes
+$\diver_BE+q=\nu|_B-b_B(f)$.
+Diagonalizing the retained free cut rotors gives the exact comparison
+\begin{equation}
+ \left|E_\nu-\inf_f
+ \left\{\sum_B E_B^{\rm op}(\nu|_B-b_B(f))
+                           +c_E\sum_{e\in\mathcal C}f_e^2\right\}\right|
+ \le B|\mathcal C|.
+ \label{eq:flux-decomposition}
+\end{equation}
+An empty block sector has energy $+\infty$.
+At fixed $f$ the physical space of the cut Hamiltonian is the
+tensor product of the displayed block sectors. The direct sum
+over $f$ gives its minimum, and the bounded-cut estimate proves
+\eqref{eq:flux-decomposition}. This step retains the constraints;
+replacing all block energies by their vacuum minima would lose
+the source comparison.
+
+A sufficient additional hypothesis on commensurate cubes is
+\begin{equation}
+ E_B^{\rm op}(\nu-b_B(f))\ge E_B^{\rm op}(\nu)
+      -C_\partial|\partial_{\rm links}B|
+      -C_f\sum_{e\in\partial_{\rm links}B}f_e^2,
+ \tag{BF}\label{eq:bf}
+\end{equation}
+with finite constants independent of side and flux, whenever
+the left sector is admissible. Boundary links here are counted
+as incidences, so a link shared by two blocks occurs twice.
+Hypothesis (BF) is \emph{not proved}.
+
+For clarity, its sufficiency can be checked without a restrictive
+smallness condition on $C_f$. Average the grid of $\ell$-cubes
+over translations by whole period cells. If $\ell\mid n$, a
+given link is cut with probability at most $p/\ell$.
+By \eqref{eq:electric-budget}, some grid therefore obeys
+\[
+ \left\langle\sum_{\rm cut}E_e^2\right\rangle
+       \le pA_cn^3/(c_E\ell).
+\]
+There are $3n^3/\ell$ cut links. Applying (BF) in the state's
+flux decomposition would give
+\begin{equation}
+ \frac{E_\nu^{\rm per}(n)}{n^3}\ge
+ \frac{E_{Q_\ell}^{\rm op}(\nu)}{\ell^3}
+ -\frac{3B+6C_\partial}{\ell}
+ -\frac{(2C_f-c_E)_+pA_c}{c_E\ell}.
+ \label{eq:conditional}
+\end{equation}
+For general compatible $n$, use whole-cell rectangular
+remainders and average the global origin. Cut probability is
+at most $p/\ell+p/n$; the remaining $O(\ell n^2)$ sites have
+the absolute extensive lower bound. Thus \eqref{eq:conditional}
+persists for the liminf at fixed $\ell$. Sending $\ell\to\infty$
+would prove equality of the periodic and open limits.
+Any finite $C_f$ suffices. Direct absorption without averaging
+would instead require $2C_f\le c_E$, because of double incidence.
+
+Admissibility in such a comparison matters. For example take
+$\nu_x=4$ on even $x_1$ layers and zero on odd layers. Its mean
+is the admissible value two per site. An odd $\ell$-cube starting
+on an even layer has total source charge
+$2\ell^3+2\ell^2>2|B|$, so its zero-flux sector is empty.
+Yet $q_x=2$, internal $E_{x,1}=(-1)^{x_1}$, other components
+zero, and outward flux $+1$ on both $x_1$ faces give a
+finite-energy state. No finite boundary cost compares this
+state to the empty zero-flux sector. Whole-cell cubes avoid
+this obstruction but do not by themselves establish (BF).
+
+The averaging estimate controls exposed electric energy; it
+does not repair the block Gauss sectors. The Graf--Schenker
+continuum Coulomb localization inequality, as stated in
+\cite[Theorem 2]{ThermoII}, likewise does not supply (BF) for
+compact integer fluxes. The periodic-source limit remains
+conditional on a screening or gluing input of this kind.
+
+\subsection{Limits of the conclusions}
+
+The results are for a fixed spatial regulator with nonnegative
+\emph{bare} Wilson mass. They do not establish that a
+renormalization trajectory with fixed physical parameters stays
+in that range. The self-energy bound diverges as $a^{-1}$.
+There is no construction of renormalized continuum QED or
+cutoff-uniform stability constant.
+Compact gauge rotors provide a different finite regulator from
+a transverse photon Fock-space momentum cutoff. No Coulomb-phase
+or gapless-photon assertion is needed.
+
+The electric kernel used here is that of the unshifted rotor.
+Additional flux projections, nonintegral background electric
+shifts, or finite electric truncations need not preserve the
+positive measure in the proof and are not covered.
+The charge gap compares different total-charge sectors; binding,
+neutral pair gaps and crystal equilibrium require further
+arguments. Finally, thermodynamic limits for the vacuum and for
+open zero-flux sources do not imply the unproved periodic-source
+limit. These distinctions are part of the theorem's scope.

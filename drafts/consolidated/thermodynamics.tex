@@ -1,0 +1,473 @@
+\section{Thermodynamic limits and the boundary-flux obstruction}
+\label{therm4-section}
+
+Throughout this section $a>0$, $g^2>0$, $m\ge0$, and $r\ge0$ are
+fixed.  Energies use the raw Hamiltonian \eqref{lat-hamiltonian}.
+We prove a vacuum thermodynamic limit, explicit fixed-cell relative
+bounds, and an open-boundary thermodynamic limit for periodic sources.
+For periodic source boundary conditions we give an exact reduction to
+boundary-flux sectors and identify the additional comparison still
+needed.  All gauge rotors remain untruncated.
+
+\subsection{Open graphs and the cost of cutting a link}
+
+For a finite rectangular set $Y\subset\mathbb Z^3$, retain its internal
+nearest-neighbour links and internal plaquettes.  The open Hamiltonian
+$H_Y^{\rm op}$ has these gauge terms and the fermion matrix
+\begin{align}
+ h_Y(U)&=m\beta+\sum_{e=(x,x+e_j)\subset Y}h_e(U),\nonumber\\
+ h_e(U)&=\frac{\alpha_j}{2ia}
+ \bigl(\overline U_e|x\rangle\langle y|-U_e|y\rangle\langle x|\bigr)
+ +\frac{r\beta}{2a}
+ (|x\rangle-U_e|y\rangle)(\langle x|-\overline U_e\langle y|).
+ \label{therm4-open-matrix}
+\end{align}
+The one-particle spatial matrices act trivially on spin.  In particular,
+the Wilson diagonal at $x$ is $m+r\deg_Y(x)/(2a)$.
+It is not the periodic diagonal $m+3r/a$ at a boundary.
+The Wilson mass remains at least $m$ because every link contribution
+to it is positive.  The bound $\|h_Y(U)\|\le h_*$ from
+\eqref{lat-mass-positive} remains valid when the degree is at most six.
+
+Write $e_{\rm op}(Y)$ for the unrestricted auxiliary ground energy.
+For an integer source $\eta:Y\to\mathbb Z$, write
+$E_Y^{\rm op}(\eta)$ for the ground energy subject to
+\[
+ \operatorname{div}_Y E+q=\eta.
+\]
+This is the zero-exterior-flux convention; there are no exterior link
+rotors in $H_Y^{\rm op}$.  The sector is nonempty precisely when
+$|\sum_Y\eta|\le2|Y|$, for connected $Y$.
+The determinant and gauge-bridge proof of Theorem~\ref{lat-main} applies
+to this graph without alteration: the incidence matrix replaces the
+periodic divergence, $M_Y(U)\ge m$, and the internal-link heat kernels
+are positive.  Its global-angle argument likewise gives
+\begin{equation}
+ e_{\rm op}(Y)=E_Y^{\rm op}(0),\qquad
+ E_Y^{\rm op}(\eta)\ge e_{\rm op}(Y)+m\left|\sum_Y\eta\right|.
+ \label{therm4-open-comparison}
+\end{equation}
+Self-adjointness, compact resolvent, and finite heat traces follow as
+before, including a graph with no links.  Uniform extensive bounds are
+\begin{equation}
+ -2h_*|Y|\le e_{\rm op}(Y)\le\frac{3}{g^2a}|Y|.
+ \label{therm4-open-extensive}
+\end{equation}
+For the upper bound take all internal electric fields zero and two
+negative-$\beta$ spinors per site.  The negative fermionic expectation
+may be discarded and there are at most $3|Y|$ plaquettes.
+
+\begin{lemma}[Bounded cutting cost with explicit rotor factors]
+\label{therm4-cut}
+Let a finite cubic lattice graph be partitioned into rectangular
+open blocks, and let $\mathcal C$ contain all $n_c$ original links
+not internal to those open blocks. This includes periodic closing
+links, even when both endpoints belong to the same selected block.
+On the original auxiliary Hilbert space, define
+\[
+ H_{\rm cut}=\sum_B H_B^{\rm op}
+                 +\frac{g^2}{2a}\sum_{e\in\mathcal C}E_e^2.
+\]
+The last summands act on independent copies of $L^2(U(1))$.
+Then
+\begin{equation}
+ H-H_{\rm cut}=V_{\mathcal C},\qquad
+ \|V_{\mathcal C}\|\le Bn_c,\qquad
+ B=\frac{4r+2+8/g^2}{a}.
+ \label{therm4-cut-norm}
+\end{equation}
+Consequently the unrestricted ground energies differ by at most
+$Bn_c$, and $\inf\sigma(H_{\rm cut})=\sum_B e_{\rm op}(B)$.
+The same comparison applies when adding periodic closing links to an
+open cube, after adjoining their free rotor factors.
+\end{lemma}
+\begin{proof}
+The eight-dimensional endpoint matrix in \eqref{therm4-open-matrix}
+has norm at most $r/a+1/(2a)$.  It anticommutes with $C_5$.
+Its opposite eigenvalue pairs imply
+\[
+ \|d\Gamma(h_e)\|=\tfrac12\operatorname{Tr}|h_e|
+ \le4\|h_e\|\le(4r+2)/a.
+\]
+A plaquette multiplier has norm at most $2/(g^2a)$, and a link meets
+at most four plaquettes.  Remove each cut link's fermionic term and
+every plaquette touching a cut link.  Counting a removed plaquette
+more than once only enlarges the stated norm bound.
+The unbounded electric term on a cut link is retained, not estimated
+in norm or discarded.  Its independent rotor has ground energy zero.
+Even fermion operators on distinct blocks commute under the canonical
+graded Fock-space tensor decomposition.  Thus the block ground
+energies and the free-rotor minima add.  The bounded-perturbation
+variational principle proves the claim.
+\end{proof}
+
+\subsection{The physical vacuum thermodynamic limit}
+
+Let $Q_n=\{0,\ldots,n-1\}^3$, $e_{\rm op}(n)=e_{\rm op}(Q_n)$, and
+let $E_0^{\rm per}(n)$ be the physical vacuum energy on the $n^3$ torus.
+
+\begin{theorem}[Vacuum limit with a finite-size estimate]
+\label{therm4-vacuum-limit}
+The finite limit
+\begin{equation}
+ e_{\rm vac}=\lim_{n\to\infty}\frac{e_{\rm op}(n)}{n^3}
+            =\lim_{n\to\infty}\frac{E_0^{\rm per}(n)}{n^3}
+ \label{therm4-vacuum-limit-eq}
+\end{equation}
+exists.  For every integer $\ell\ge3$,
+\begin{equation}
+ \left|e_{\rm vac}-\frac{e_{\rm op}(\ell)}{\ell^3}\right|
+ \le\frac{3B}{\ell},\qquad
+ \left|e_{\rm vac}-\frac{E_0^{\rm per}(\ell)}{\ell^3}\right|
+ \le\frac{6B}{\ell}.
+ \label{therm4-vacuum-rate}
+\end{equation}
+Physical energy per spatial volume is $e_{\rm vac}/a^3$.
+\end{theorem}
+\begin{proof}
+For $n=k\ell$, cutting the open cube into $k^3$ cubes removes
+$3(k-1)n^2\le3n^3/\ell$ links.  Lemma~\ref{therm4-cut} gives
+\[
+ |e_{\rm op}(n)-k^3e_{\rm op}(\ell)|\le3Bn^3/\ell.
+\]
+For arbitrary $n$, subdivide each coordinate into intervals of length
+$\ell$ and one possible remainder.  The remaining rectangular boxes
+contain at most $3\ell n^2$ sites.  Their energies are bounded in
+absolute value by a fixed constant times that site count, by
+\eqref{therm4-open-extensive}.  The number of cut links is at most
+$3n^3/\ell$.  Therefore, at every fixed $\ell$,
+\[
+ \frac{e_{\rm op}(\ell)}{\ell^3}-\frac{3B}{\ell}
+ \le\liminf_n\frac{e_{\rm op}(n)}{n^3}
+ \le\limsup_n\frac{e_{\rm op}(n)}{n^3}
+ \le\frac{e_{\rm op}(\ell)}{\ell^3}+\frac{3B}{\ell}.
+\]
+The difference of limsup and liminf is at most $6B/\ell$ for every
+$\ell$, hence is zero.  This also proves the first finite-size bound.
+
+Closing an open $n$-cube adds $3n^2$ links and their incident
+plaquettes.  Adjoin their free electric rotors and use
+Lemma~\ref{therm4-cut} to obtain
+\[
+ |E_{\rm aux}^{\rm per}(n)-e_{\rm op}(n)|\le3Bn^2.
+\]
+Theorem~\ref{lat-main} identifies the unrestricted periodic minimum
+with the physical vacuum minimum: $E_{\rm aux}^{\rm per}=E_0^{\rm per}$.
+This proves the remaining assertions.
+\end{proof}
+
+The cutting argument concerns the auxiliary tensor product.
+It does not factor the Gauss-constrained physical space or presume
+that an arbitrary physical boundary flux can be set to zero.
+
+\subsection{A fixed periodic nuclear cell}
+
+Choose a cubic period cell of side $p\ge1$, with $V_c=p^3$ sites,
+$K_c\ge1$ labeled positive nuclei, and total charge
+$Z_c\le2V_c$.  A rectangular period can be replaced by a cubic
+supercell.  Denote the periodically repeated site source by $\nu$.
+All periodic source volumes below have $n\in p\mathbb N$ and $n\ge3$.
+Choose integers $q_x^{(c)}\in\{0,1,2\}$ with sum $Z_c$ and an
+integer flow $F$ on internal cell links such that
+\begin{equation}
+ \operatorname{div}F=\nu-q^{(c)},\qquad
+ \mathcal F_c=\sum_{e\ {\rm in\ cell}}F_e^2<\infty.
+ \label{therm4-cell-flow}
+\end{equation}
+A spanning tree supplies the flow.  For a one-site cell its right-hand
+side is zero.  The trial flow has no boundary flux.
+Set $\mu=m+3r/a$, $\rho=Z_c/V_c$, and $c_E=g^2/(2a)$.
+
+\begin{proposition}[Two-sided fixed-cell relative bounds]
+\label{therm4-cell-bounds}
+If $N_c=(n/p)^3$, $K=K_cN_c$, and $Z_{\rm tot}=Z_cN_c$, then
+\begin{equation}
+ 0\le E_\nu^{\rm per}(n)-E_0^{\rm per}(n)-mZ_{\rm tot}
+       \le C_{\rm cell}K,
+ \label{therm4-cell-relative}
+\end{equation}
+where one admissible constant is
+\begin{equation}
+ C_{\rm cell}=
+ \frac{3rZ_c+(6+6r+3/g^2)V_c+(g^2/2)\mathcal F_c}{aK_c}.
+ \label{therm4-cell-constant}
+\end{equation}
+Every ground state in this periodic source sector obeys the absolute
+electric-energy budget
+\begin{equation}
+ \langle H_E\rangle\le A_c n^3,\qquad
+ A_c=2(h_*-\mu)+\mu\rho
+            +c_E\mathcal F_c/V_c+3/(g^2a).
+ \label{therm4-electric-budget}
+\end{equation}
+These constants depend on the fixed cell; they are not estimates
+uniform over arbitrary dilute or nonperiodic source arrangements.
+\end{proposition}
+\begin{proof}
+Repeat the cell flow, assign all intercell links electric flux zero,
+and occupy two negative-$\beta$ spinors and $q_x^{(c)}$ positive-$\beta$
+spinors at each site.  This state satisfies every local Gauss
+constraint.  Its hopping expectations vanish.  Its periodic energy is
+at most
+\begin{equation}
+ -2\mu n^3+\mu Z_{\rm tot}
+       +c_E N_c\mathcal F_c+3n^3/(g^2a).
+ \label{therm4-cell-trial}
+\end{equation}
+Subtract $E_0^{\rm per}\ge-2h_*n^3$ and $mZ_{\rm tot}$ to obtain the
+upper bound.  The lower bound is Corollary~\ref{lat-rest-energy}.
+Finally $H_B\ge0$ and $d\Gamma(h_W)\ge-2h_*n^3$ imply
+$\langle H_E\rangle\le E_\nu^{\rm per}+2h_*n^3$; insert
+\eqref{therm4-cell-trial}.  The budget is absolute and extensive.
+It is not an estimate of electric fluctuations relative to the
+interacting vacuum proportional to the number of localized defects.
+\end{proof}
+
+The same cell trial state on an open union of complete cells gives
+\begin{equation}
+ E_Y^{\rm op}(\nu)\le -2m|Y|+m\rho|Y|
+     +\bigl(c_E\mathcal F_c/V_c+3/(g^2a)\bigr)|Y|.
+ \label{therm4-open-source-upper}
+\end{equation}
+Here each site's fermionic diagonal expectation is
+$(q_x^{(c)}-2)(m+r\deg_Y(x)/(2a))\le(q_x^{(c)}-2)m$.
+This supplies a uniform extensive bound for all rectangular unions
+of whole cells, including boundary remainders.
+
+\begin{theorem}[Open zero-flux source thermodynamic limit]
+\label{therm4-open-source-limit}
+For every such fixed cell the limit
+\begin{equation}
+ e_\nu^{\rm op}=\lim_{\substack{n\to\infty\\p\mid n}}
+                   \frac{E_{Q_n}^{\rm op}(\nu)}{n^3}
+ =\inf_{\substack{\ell\in p\mathbb N\\\ell\ge3}}
+       \left\{\frac{E_{Q_\ell}^{\rm op}(\nu)}{\ell^3}
+                    +\frac{3B}{\ell}\right\}
+ \label{therm4-open-source-limit-eq}
+\end{equation}
+exists and is finite.  Also
+\begin{equation}
+ e_{\rm vac}+m\rho
+ \le\liminf_{\substack{n\to\infty\\p\mid n}}
+                     \frac{E_\nu^{\rm per}(n)}{n^3}
+ \le\limsup_{\substack{n\to\infty\\p\mid n}}
+                     \frac{E_\nu^{\rm per}(n)}{n^3}
+ \le e_\nu^{\rm op}.
+ \label{therm4-periodic-bracket}
+\end{equation}
+In particular the open-boundary relative energy per nucleus has the
+limit $(V_c/K_c)(e_\nu^{\rm op}-e_{\rm vac})$.
+\end{theorem}
+\begin{proof}
+Take a product of physical zero-flux block ground states and put the
+new crossing rotors in their zero-flux states.  The product satisfies
+the source Gauss constraints on the joined graph exactly.  The
+bounded coupling estimate gives the one-sided almost-subadditivity
+\[
+ E_{Q_{k\ell}}^{\rm op}(\nu)
+ \le k^3E_{Q_\ell}^{\rm op}(\nu)+3B(k\ell)^3/\ell.
+\]
+For any $n,\ell\in p\mathbb N$, subdivide as in the vacuum proof.
+Every remainder has side lengths divisible by $p$, so it is a union
+of admissible complete cells.  Its physical trial energy is
+$O(\ell n^2)$ by \eqref{therm4-open-source-upper}.  Thus
+\[
+ \limsup_{\substack{n\to\infty\\p\mid n}}
+ \frac{E_{Q_n}^{\rm op}(\nu)}{n^3}
+ \le\frac{E_{Q_\ell}^{\rm op}(\nu)}{\ell^3}+\frac{3B}{\ell}
+\]
+for every fixed admissible $\ell$.  Let $\gamma$ be the infimum on
+the right of \eqref{therm4-open-source-limit-eq}.  By its definition,
+$E_{Q_n}^{\rm op}(\nu)/n^3+3B/n\ge\gamma$.  Hence the liminf is
+at least $\gamma$ and the preceding limsup is at most $\gamma$.
+The extensive lower bound makes this a finite number.
+Only upper almost-subadditivity was needed.
+
+Adjoining zero-flux closing rotors to an open physical state gives
+$E_\nu^{\rm per}(n)\le E_{Q_n}^{\rm op}(\nu)+3Bn^2$.
+The lower bound in \eqref{therm4-periodic-bracket} follows from the
+periodic charge-cost theorem and Theorem~\ref{therm4-vacuum-limit}.
+\end{proof}
+
+An independently prescribed per-species subtraction
+$S_\infty=N_c c_E\mathcal G_\infty(0)\sum_{i\in{\rm cell}}Z_i^2$
+simply subtracts its fixed density from these limits and bounds.
+The periodic prescription $S_n$ has the same limiting density.
+Indeed $\mathcal G_n(0)\to\mathcal G_\infty(0)$: away from the origin
+the Fourier sum is a Riemann sum, while on $0<|k|\le\delta n$
+the shell argument in Lemma~\ref{lat-green-bound} bounds its
+contribution by $C\delta$ uniformly in $n$; the corresponding integral
+has the same integrable $|t|^{-2}$ control.  First let $n\to\infty$
+off this ball and then let $\delta\downarrow0$.
+
+\subsection{The exact boundary-flux reduction}
+
+For a partition into blocks, orient every cut link once.  For
+$f\in\mathbb Z^{\mathcal C}$ define the outward flux function at a
+boundary site of $B$ by
+\[
+ b_B(f)_x=\sum_{\substack{e\in\mathcal C\\e\ {\rm leaves}\ B\ {\rm at}\ x}}
+ f_e-\sum_{\substack{e\in\mathcal C\\e\ {\rm enters}\ B\ {\rm at}\ x}}f_e.
+\]
+Inside this block Gauss's law becomes
+$\operatorname{div}_BE+q=\nu|_B-b_B(f)$.
+Set a sector energy to $+\infty$ if its sector is empty.
+
+\begin{proposition}[Cutting identity for constrained minima]
+\label{therm4-flux-identity}
+With the preceding conventions,
+\begin{equation}
+ \left|E_\nu-
+ \inf_{f\in\mathbb Z^{\mathcal C}}
+ \left\{\sum_B E_B^{\rm op}(\nu|_B-b_B(f))
+                         +c_E\sum_{e\in\mathcal C}f_e^2\right\}
+ \right|\le Bn_c.
+ \label{therm4-flux-identity-eq}
+\end{equation}
+Only fluxes satisfying
+$|\sum_{x\in B}(\nu_x-b_B(f)_x)|\le2|B|$ in each individual block contribute
+finite block energies.
+\end{proposition}
+\begin{proof}
+The cut Hamiltonian of Lemma~\ref{therm4-cut} still commutes with
+every original Gauss generator.  Its cut rotors have a simultaneous
+integer electric basis.  At fixed $f$, its physical subspace is the
+tensor product of the block sectors with sources $\nu|_B-b_B(f)$,
+and its energy is the sum displayed in \eqref{therm4-flux-identity-eq}.
+The direct sum over $f$ proves the formula for the cut minimum.
+The bounded operator $V_{\mathcal C}$ also preserves the original
+Gauss sector, so the variational comparison proves the inequality.
+\end{proof}
+
+Thus cutting a source-sector state produces different block sources,
+not necessarily the zero-flux sectors used in
+Theorem~\ref{therm4-open-source-limit}.  Vacuum domination bounds such a
+block by its vacuum energy and net-charge cost.  Combined with a cell
+upper bound, this loses an error proportional to the block volume;
+it does not supply the boundary estimate needed below.
+
+\begin{proposition}[Admissibility obstruction to an unrestricted
+boundary-flux lemma]
+\label{therm4-admissibility-obstruction}
+An inequality comparing every $E_B^{\rm op}(\nu-b_B(f))$ with
+$E_B^{\rm op}(\nu)$ at a finite boundary cost is false unless
+admissibility of the zero-flux comparison sector is imposed.
+This failure occurs for a periodic source of admissible mean density
+and individual nuclear charge four.
+\end{proposition}
+\begin{proof}
+Take $\nu_x=4$ on even $x_1$ layers and zero on odd layers.
+Its mean is two per site, so a compatible even torus is admissible.
+Take a cube of odd side $\ell$ starting on an even layer.  Its source
+charge is $2\ell^3+2\ell^2>2|B|$, so $E_B^{\rm op}(\nu)=+\infty$.
+On the other hand choose $q_x=2$ everywhere, and internal electric
+fields $E_{x,1}=(-1)^{x_1}$, with the other components zero.
+The required exterior outward flux is $+1$ on both $x_1$ faces
+and zero on the other faces.  Its sum is $2\ell^2$ and
+$\nu-b_B(f)$ has total charge $2|B|$.  The displayed occupation
+and internal electric eigenvector satisfy Gauss's law, and have
+finite energy.  No finite multiple of boundary area and
+$\sum f_e^2$ repairs the claimed comparison with $+\infty$.
+\end{proof}
+
+Commensurate boxes containing complete period cells avoid this
+particular obstruction.  The example does not disprove a suitably
+restricted boundary-screening inequality for them.
+
+\subsection{What averaging proves, and what it still requires}
+
+The following is a precise sufficient condition, not an established
+property of the Wilson Hamiltonian.
+For every commensurate cube $B$ of side $\ell$, suppose constants
+$0\le C_\partial,C_f<\infty$, independent of $\ell$ and of integer boundary
+flux, obey
+\begin{equation}
+ E_B^{\rm op}(\nu-b_B(f))
+ \ge E_B^{\rm op}(\nu)
+       -C_\partial|\partial_{\rm links}B|
+       -C_f\sum_{e\in\partial_{\rm links}B}f_e^2.
+ \tag{BF}\label{therm4-boundary-hypothesis}
+\end{equation}
+Here $\partial_{\rm links}B$ counts external link incidences, and
+the left sector is assumed admissible.  At a shared cut link each
+of its two incidences occurs in this convention.
+
+\begin{proposition}[Conditional periodic-source limit; cut averaging]
+\label{therm4-conditional-periodic}
+If \eqref{therm4-boundary-hypothesis} holds for the fixed cell, then
+\[
+ \lim_{\substack{n\to\infty\\p\mid n}}
+       E_\nu^{\rm per}(n)/n^3=e_\nu^{\rm op}.
+\]
+It suffices that $C_f$ be finite; the restriction $C_f<c_E$ is
+unnecessary when averaged cut energies are used.
+\end{proposition}
+\begin{proof}
+First let $n$ be divisible by a fixed commensurate $\ell$.
+Translate the cut grid by multiples of $p$.  A given link is cut with
+probability at most $p/\ell$.  For a periodic source ground state,
+\eqref{therm4-electric-budget} therefore gives a grid with
+\begin{equation}
+ \left\langle\sum_{e\in\mathcal C}E_e^2\right\rangle
+ \le\frac{pA_c}{c_E\ell}n^3.
+ \label{therm4-cut-average}
+\end{equation}
+All resulting cubes have the same period-cell phase and
+$n_c=3n^3/\ell$.  Apply (BF) in the cut-flux decomposition of the
+state.  The sum of boundary incidences is $2n_c$, and a squared
+cut flux is also counted twice.  Restoring the bounded cut terms
+gives
+\begin{equation}
+ \frac{E_\nu^{\rm per}(n)}{n^3}
+ \ge\frac{E_{Q_\ell}^{\rm op}(\nu)}{\ell^3}
+ -\frac{3B+6C_\partial}{\ell}
+ -\frac{(2C_f-c_E)_+pA_c}{c_E\ell}.
+ \label{therm4-conditional-bound}
+\end{equation}
+If one instead absorbs the boundary-flux term without averaging,
+the incidence convention requires $2C_f\le c_E$, not merely
+$C_f<c_E$.
+
+For arbitrary $n\in p\mathbb N$, use full $\ell$-cubes and
+rectangular remainders, all with side lengths divisible by $p$.
+Average the origin over all translations by complete cells.
+In each direction there are $\lceil n/\ell\rceil$ cut planes, so
+the probability that a link is cut is at most
+$p/\ell+p/n$.  The leftover site count is $O(\ell n^2)$.
+Use (BF) only in full cubes and the lower bound
+$H_Y^{\rm op}\ge-2h_*|Y|$ in the leftover blocks.  This adds a
+vanishing error after division by $n^3$ and passage $n\to\infty$
+at fixed $\ell$.  Thus \eqref{therm4-conditional-bound} holds for
+the liminf along all compatible sizes.
+Let $\ell\to\infty$ through multiples of $p$ and use
+Theorem~\ref{therm4-open-source-limit}; its periodic upper bound
+supplies the matching limsup.
+\end{proof}
+
+The elementary averaging estimate \eqref{therm4-cut-average} is
+unconditional.  It controls how much electric energy is exposed by
+a cut, but it does not change a block's Gauss sector.  Inequality
+(BF), or another argument with the same boundary-scale consequence,
+remains unproved here.
+
+The Coulomb thermodynamic framework of
+Hainzl--Lewin--Solovej~\cite{HLSThermoI,HLSThermoII} has different
+localization hypotheses. The Graf--Schenker inequality stated in
+\cite[Theorem~2]{HLSThermoII} averages localized continuum point-charge
+$1/|x-y|$ energies over translated and rotated simplices, with an
+error of order $\ell^{-1}\sum_i z_i^2$.  Their periodic-crystal
+application has nonrelativistic quantum electrons and static
+classical nuclei.  It does not include compact electric rotors or
+the integer-flux physical-sector decomposition above.  Eliminating
+the longitudinal energy in this model leaves a charge-dependent
+allowed transverse-flux space, as already noted after
+\eqref{lat-longitudinal-split}.  Consequently the continuum
+electrostatic localization inequality cannot simply replace (BF).
+An appropriate lattice screening or gluing theorem would be new
+input to the present proof.
+
+We have therefore proved a physical vacuum limit, two-sided fixed-cell
+bounds, and an open zero-flux source limit.  Equality with a periodic
+source limit is conditional on the explicitly stated boundary
+comparison.  None of these fixed-$a$ results supplies a continuum
+limit, binding, a neutral excitation gap, or crystalline order.

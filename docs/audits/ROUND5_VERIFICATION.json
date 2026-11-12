@@ -1,0 +1,33 @@
+{
+  "papers": [
+    {
+      "project": "paper-a-lattice",
+      "pages": 12,
+      "source_archive_matches_current_files": true,
+      "clean_extraction_compile": "passed"
+    },
+    {
+      "project": "paper-b-momentum",
+      "pages": 57,
+      "source_archive_matches_current_files": true,
+      "clean_extraction_compile": "passed"
+    },
+    {
+      "project": "companion-notes",
+      "pages": 20,
+      "source_archive_matches_current_files": true,
+      "clean_extraction_compile": "passed"
+    }
+  ],
+  "lean": {
+    "project_theorems": 23,
+    "all_declared_theorems_audited": true,
+    "only_standard_foundational_axioms": true,
+    "no_custom_axioms_or_proof_holes": true,
+    "source_checksums_verified": 14,
+    "independent_root_build_and_audit": "passed",
+    "coverage": "partial; see lean-core/README.md"
+  },
+  "preserved_earlier_tex_and_pdf_files": 32,
+  "submitted": false
+}

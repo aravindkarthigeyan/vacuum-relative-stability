@@ -1,0 +1,2 @@
+min E_nu - E_0             : 0.11137650412315825
+min E_nu - E_0 - m|sum nu| : 0.11137650412315825 (theorem predicts >= 0)

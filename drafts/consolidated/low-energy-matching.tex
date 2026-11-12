@@ -1,0 +1,499 @@
+\section{A proved frozen-link reduction and its physical matching limits}
+\label{nr4-section}
+
+This section proves a nonrelativistic spectral comparison for arbitrary
+\emph{fixed} links, identifies the kinetic and magnetic coefficients of
+its target, and states explicit scale requirements for a proposed atomic
+application. It also constructs a bounded magnetic clover modification
+which preserves the determinant argument under an explicit hypothesis.
+The frozen-link theorem is not a reduction of the quantized-link
+Hamiltonian in a nuclear Gauss sector. In particular, its reference
+vacuum uses exactly the same frozen links as its charged state.
+
+\subsection{The exact static spectral theorem}
+\label{nr4-static}
+
+Use the lattice operators of \eqref{lat-hopping}--\eqref{lat-wilson-mass},
+with $m>0$. At a fixed configuration $U$, put
+\[
+ R=M(U)-mI\ge0,\qquad S=\sum_{j=1}^3\sigma_jv_j(U),\qquad
+ K(U)=R+\frac{S^2}{2m}.
+\]
+These act on the spatial two-spinor space of dimension $2N$.
+In the standard Dirac representation,
+\begin{equation}
+ h_W(U)=\begin{pmatrix}m+R&S\\S&-m-R\end{pmatrix}.
+ \label{nr4-block}
+\end{equation}
+No commutation of $R$ and $S$ is assumed. Write $w=\|R\|$ and
+$s=\|S\|$; the uniform bounds $w\le6r/a$, $s\le3/a$ will suffice.
+
+\begin{theorem}[Frozen-link eigenvalues, with a low-energy refinement]
+\label{nr4-static-theorem}
+The positive eigenvalues of \eqref{nr4-block} are $m+e_j$, in increasing
+order with multiplicity, $j=1,\ldots,2N$, and its negative eigenvalues
+are their opposites. If $k_j$ are the ordered eigenvalues of $K(U)$, then
+\begin{equation}
+ 0\le e_j\le k_j,\qquad
+ 0\le k_j-e_j\le
+ \min\left\{\frac{s^2w}{2m^2}+\frac{s^4}{8m^3},\,
+                   \frac{k_j(w+k_j)}{2m}\right\}.
+ \label{nr4-static-error}
+\end{equation}
+The first bound is uniform over the whole band and satisfies
+\begin{equation}
+ \delta:=\frac{s^2w}{2m^2}+\frac{s^4}{8m^3}
+ \le\frac{27r}{m^2a^3}+\frac{81}{8m^3a^4}.
+ \label{nr4-delta}
+\end{equation}
+The second bound controls the relative error on a specified low-energy
+part of the spectrum. Both are independent of the number of sites.
+\end{theorem}
+\begin{proof}
+For $-m<\lambda<m$, the lower diagonal block of $h_W-\lambda$ is
+strictly negative and invertible. Its Schur complement is
+\[
+ m+R-\lambda+S(m+R+\lambda)^{-1}S>0.
+\]
+Thus there is no spectrum in $(-m,m)$. The matrix $\tau_y$ on the two
+Dirac blocks anticommutes with \eqref{nr4-block}; hence the spectrum
+has $2N$ opposite pairs. Eliminating the lower spinor at
+$\lambda=m+e$, $e\ge0$, gives the exact equation
+\begin{equation}
+ A(e)u=eu,\qquad A(e)=R+S(2m+R+e)^{-1}S.
+ \label{nr4-schur}
+\end{equation}
+Each ordered eigenvalue $a_j(e)$ of $A(e)$ is continuous and
+nonincreasing. Therefore $a_j(e)-e$ is strictly decreasing, is
+nonnegative at zero, and is negative for large $e$. Its unique zero
+is $e_j$; this identification, including multiplicity, also follows
+from Schur-complement inertia. Since $0\le A(e)\le K$, the roots
+satisfy $0\le e_j\le k_j\le w+s^2/(2m)=:Q$.
+
+For $0\le e\le Q$, functional calculus gives
+\[
+ 0\le K-A(e)
+ =S\left[(2m)^{-1}-(2m+R+e)^{-1}\right]S
+ \le\frac{s^2(w+Q)}{4m^2}I=\delta I.
+\]
+Eigenvalue monotonicity proves the first error estimate. For the
+refinement, the simpler lower bound on the resolvent yields
+\[
+ A(e)\ge R+\frac{S^2}{2m+w+e}
+ \ge\frac{2m}{2m+w+e}K.
+\]
+At the $j$th root this implies
+$e_j\ge2mk_j/(2m+w+e_j)$, and hence
+\[
+ k_j-e_j\le\frac{e_j(w+e_j)}{2m}
+             \le\frac{k_j(w+k_j)}{2m}.
+\]
+No simultaneous diagonalization has been used.
+\end{proof}
+
+\begin{corollary}[Exact vacuum subtraction at fixed links]
+\label{nr4-static-charge}
+Let $E_q^{\rm stat}(U)$ be the bottom of $d\Gamma(h_W(U))$ in the
+sector $Q=q$, and let $E_0^{\rm stat}(U)$ be its filled-negative-band
+energy. For $|q|\le2N$,
+\begin{equation}
+ E_q^{\rm stat}(U)-E_0^{\rm stat}(U)
+ =|q|m+\sum_{j=1}^{|q|}e_j.
+ \label{nr4-static-occupation}
+\end{equation}
+In particular,
+\begin{equation}
+ 0\le |q|m+\sum_{j=1}^{|q|}k_j
+        -[E_q^{\rm stat}(U)-E_0^{\rm stat}(U)]\le |q|\delta.
+ \label{nr4-static-charge-error}
+\end{equation}
+If $k_{|q|}\le E_*$, the upper bound improves to
+\begin{equation}
+ \frac{w+E_*}{2m}\sum_{j=1}^{|q|}k_j.
+ \label{nr4-low-window}
+\end{equation}
+For $q=0$ both sides of the comparison vanish. A nontrivial neutral
+particle--hole excitation in this quadratic static problem costs at
+least $2m$.
+\end{corollary}
+\begin{proof}
+Filling the negative levels minimizes the unconstrained quadratic
+Hamiltonian. Adding $q>0$ fills its lowest $q$ positive levels;
+removing $|q|$ particles creates the $|q|$ cheapest holes. Spectral
+pairing gives \eqref{nr4-static-occupation}; adding further pairs only
+increases the energy. Sum \eqref{nr4-static-error}. A neutral excitation
+contains at least one positive particle and one negative-band hole,
+each costing at least $m$.
+\end{proof}
+
+The exact lattice Pauli term retained by this theorem is
+\begin{equation}
+ K(U)=R+\frac1{2m}\left\{\sum_jv_j^2+
+ i\sum_{j<k}\epsilon_{jk\ell}\sigma_\ell[v_j,v_k]\right\}.
+ \label{nr4-pauli}
+\end{equation}
+This follows by multiplying Pauli matrices. The entire expression
+inside braces is $S^2\ge0$, even for rough links. The leading Wilson
+Laplacian $R$ cannot be omitted.
+
+\subsection{Rest, kinetic, and magnetic matching}
+\label{nr4-matching}
+
+At $U=1$ the exact dispersion is
+\begin{equation}
+ E(p)=\sqrt{[m+R(p)]^2+|v(p)|^2},\quad
+ R(p)=\frac r a\sum_j(1-\cos ap_j),\quad
+ v_j(p)=\frac{\sin ap_j}{a}.
+ \label{nr4-dispersion}
+\end{equation}
+At fixed $m,a,r$, its Taylor coefficient at $p=0$ gives
+\begin{equation}
+ E(p)=m+\frac{|p|^2}{2m_{\rm kin}}+O(|p|^4),\qquad
+ \frac1{m_{\rm kin}}=\frac1m+ra,\qquad
+ m_{\rm kin}=\frac{m}{1+rma}.
+ \label{nr4-kinetic-mass}
+\end{equation}
+These are exact coefficients of this continuous-time Hamiltonian.
+They are not masses imported from a spacetime-discretized lattice action.
+The distinction between rest, kinetic, and magnetic masses, and the
+need to match their coefficients separately, is treated in
+\cite[Eq.~(9.1) and Sec.~9]{EKM}. The Hamiltonian discretization itself
+is consistent with \cite[Eq.~(3)]{Zache}.
+
+An exact free remainder, useful without a small-$pa$ assumption, is
+\begin{equation}
+ 0\le R(p)+\frac{|v(p)|^2}{2m}-[E(p)-m]
+ \le\frac{|v(p)|^2R(p)}{2m^2}+
+       \frac{|v(p)|^4}{8m^3}.
+ \label{nr4-free-remainder}
+\end{equation}
+Indeed, with $M_p=m+R(p)$,
+\[
+ M_p+\frac{|v|^2}{2M_p}-E
+ =\frac{|v|^4}{2M_p(E+M_p)^2},
+\]
+and subtracting the two inverse-mass coefficients proves the bound.
+
+We next specify the sense in which the magnetic coefficient is matched.
+Take a smooth periodic classical vector potential $A$ and use the electron
+convention
+\[
+ U_{xj}=\exp\left(-ig\int_x^{x+ae_j}A\cdot d\ell\right),\qquad
+ \Pi_j=-i\partial_j+gA_j,\quad B=\nabla\times A.
+\]
+The same gauge-covariant difference operators can be defined on smooth
+continuum functions before sampling them at lattice sites:
+$T_j=e^{ia\Pi_j}$, $v_j=\sin(a\Pi_j)/a$ and
+$R=(r/a)\sum_j[1-\cos(a\Pi_j)]$. These identities are just parallel
+transport along a coordinate segment. Spectral calculus proves
+\begin{align}
+ \|(v_j-\Pi_j)f\|&\le\frac{a^2}{6}\|\Pi_j^3f\|,\nonumber\\
+ \left\|\left(R-\frac{ra}{2}\sum_j\Pi_j^2\right)f\right\|
+ &\le\frac{ra^3}{24}\sum_j\|\Pi_j^4f\|.
+ \label{nr4-consistency}
+\end{align}
+These estimates are continuum $L^2$ consistency estimates on the
+displayed domains, not a claim that point sampling is an isometry or
+that spectra of the continuum and finite lattice have already been
+compared.
+
+For completeness, the error after squaring the spin derivative is also
+controlled on smooth periodic functions. For $0<a\le a_0$, define the finite
+quantity
+\[
+ C_{A,f,a_0}=\frac16\sum_{j,k}
+ \left\{\sup_{|t|\le a_0}\|\Pi_j^3e^{it\Pi_k}\Pi_kf\|
+       +\sup_{|t|\le a_0}\|\Pi_j e^{it\Pi_k}\Pi_k^3f\|\right\}.
+\]
+Then
+\begin{equation}
+ \|(S_a^2-(\sigma\cdot\Pi)^2)f\|\le a^2C_{A,f,a_0},
+ \qquad S_a=\sum_j\sigma_j\frac{\sin(a\Pi_j)}a.
+ \label{nr4-squared-consistency}
+\end{equation}
+To prove it, expand each difference as
+$(v_j-\Pi_j)v_k+\Pi_j(v_k-\Pi_k)$, apply
+\eqref{nr4-consistency}, and use
+$v_kf=(2a)^{-1}\int_{-a}^ae^{it\Pi_k}\Pi_kf\,dt$.
+The second summand is bounded by applying the integral Taylor remainder
+for $v_k-\Pi_k$ before $\Pi_j$. In detail, the average of the linear
+term in $e^{it\Pi_k}$ vanishes, and its quadratic integral remainder
+has total absolute weight $a^2/6$. The supremum in the second term
+of $C_{A,f,a_0}$ is needed because $\Pi_j$ and $\Pi_k$ need not commute.
+
+Since $[\Pi_j,\Pi_k]=-ig\epsilon_{jk\ell}B_\ell$,
+$(\sigma\cdot\Pi)^2=\Pi^2+g\sigma\cdot B$. Consequently the leading
+smooth-field consistency operator is
+\begin{equation}
+ K_{\rm cont}^{\rm tree}
+ =\frac{\Pi^2}{2m_{\rm kin}}+\frac{g}{2m}\sigma\cdot B.
+ \label{nr4-tree-pauli}
+\end{equation}
+The norm difference on $f$ is bounded by the second line of
+\eqref{nr4-consistency} plus $a^2C_{A,f,a_0}/(2m)$.
+Defining the tree-level spin factor through the coefficient
+$g\,g_{\rm eff}\sigma\cdot B/(4m_{\rm kin})$ gives
+\begin{equation}
+ g_{\rm eff}=\frac{2m_{\rm kin}}m=\frac2{1+rma}.
+ \label{nr4-g-factor}
+\end{equation}
+This is coefficient matching for smooth weak fields and low momenta.
+It is not a calculation of the interacting electron's measured magnetic
+moment, which also requires radiative and parameter matching.
+
+\subsection{An explicit hierarchy with a scaled Wilson parameter}
+\label{nr4-scaled}
+
+Set $x=ma$ and choose
+\begin{equation}
+ r=\frac c x,\qquad c>0.
+ \label{nr4-scaled-r}
+\end{equation}
+Then $m_{\rm kin}=m/(1+c)$ and $g_{\rm eff}=2/(1+c)$.
+The fractional spin-factor error from $2$ is $c/(1+c)$, and its
+absolute error is $2c/(1+c)$. At a free Brillouin-zone corner with
+$k$ components equal to $\pi/a$, the energy is exactly $m+2kr/a$.
+The first such excess threshold is therefore
+\begin{equation}
+ \Delta_d=\frac{2r}a=\frac{2cm}{x^2}.
+ \label{nr4-doubler-scale}
+\end{equation}
+Corners occur exactly for even periodic lattices; these formulas also
+describe the large-volume band structure. They identify free thresholds,
+not a proof that rough gauge fields or nuclear potentials cannot mix
+the corresponding bands.
+A conservative free spectral exclusion is immediate: if any
+$|ap_j|\ge\pi/2$ in the first Brillouin zone, then $R(p)\ge r/a$ and
+$E(p)-m\ge r/a=\Delta_d/2$. Thus a free energy cutoff strictly below
+$\Delta_d/2$ excludes the outer half of every momentum coordinate.
+Calling every corner a local minimum would require a further parameter
+restriction; the stated corner energies and this exclusion do not.
+
+For a stated hydrogenic benchmark of nuclear charge $Z$, define
+\begin{equation}
+ p_Z=Z\alpha m_{\rm kin},\qquad
+ \mathcal R_Z=\frac{(Z\alpha)^2m_{\rm kin}}2.
+ \label{nr4-hydrogenic-scales}
+\end{equation}
+These are the momentum and binding-energy scales of the continuum
+Coulomb problem with kinetic mass $m_{\rm kin}$. Their use here is a
+parameter test, not an estimate on an interacting lattice ground state.
+
+\begin{proposition}[Quantified compatibility of the benchmark scales]
+\label{nr4-hierarchy}
+Fix $H>1$, momentum-resolution tolerance $0<\varepsilon_a<1$, and
+energy-separation tolerance $0<\varepsilon_d<1$. The three requirements
+\[
+ x\ge H,\qquad ap_Z\le\varepsilon_a,\qquad
+ \mathcal R_Z/\Delta_d\le\varepsilon_d
+\]
+hold precisely when
+\begin{equation}
+ H\le x\le\min\left\{
+ \frac{\varepsilon_a(1+c)}{Z\alpha},\,
+ \frac{2\sqrt{\varepsilon_dc(1+c)}}{Z\alpha}\right\}.
+ \label{nr4-window}
+\end{equation}
+If the frozen-link target levels additionally satisfy $k_j\le\mathcal R_Z$,
+their relative spectral error from Theorem~\ref{nr4-static-theorem} is
+bounded by
+\begin{equation}
+ \frac{k_j-e_j}{k_j}\le\frac{3c}{x^2}
+                      +\frac{(Z\alpha)^2}{4(1+c)}
+ \quad (k_j>0).
+ \label{nr4-scaled-relative-error}
+\end{equation}
+The error vanishes exactly when $k_j=0$.
+\end{proposition}
+\begin{proof}
+Direct substitution gives $ap_Z=Z\alpha x/(1+c)$ and
+$\mathcal R_Z/\Delta_d=(Z\alpha)^2x^2/[4c(1+c)]$, proving the
+equivalence. Also $w/m\le6c/x^2$; insert this and
+$\mathcal R_Z/m=(Z\alpha)^2/[2(1+c)]$ in
+\eqref{nr4-static-error}.
+\end{proof}
+
+At $c=0.1$ and $\alpha=1/137$, the spin factor is $20/11$ and its
+fractional error is $1/11$, about $9.09\%$. For $Z=1$, $x=60$ gives
+$ap_Z\simeq0.398$ and $\mathcal R_Z/\Delta_d\simeq0.436$.
+Thus ``about sixty'' is at best an order-of-magnitude crossover;
+it does not express two strong scale separations. With the explicit
+choices $\varepsilon_a=\varepsilon_d=0.1$, the upper limit in
+\eqref{nr4-window} is $15.07$ for $Z=1$.
+
+For the unscreened $Z=26$ benchmark relevant to inner iron electrons,
+even replacing both tolerances by $1$ gives an upper limit about $3.50$.
+With the $10\%$ choices it becomes about $0.580$, incompatible even
+with $x>1$. Valence scales with a smaller effective charge do not
+resolve this inner-shell requirement for a theorem uniform up to
+$Z=26$. This calculation does not prove that an improved regulator
+cannot describe iron. It shows that the proposed simultaneous
+heavy-mass, small-$c$, well-resolved single-species hierarchy cannot
+be justified for that benchmark merely by citing the hydrogen value.
+
+\subsection{A magnetic clover term: its actual symmetry and a sufficient bound}
+\label{nr4-clover}
+
+In the formulas for magnetic field normalization, choose
+$g=+\sqrt{g^2}>0$.
+For each cyclic triple $(j,k,\ell)$, let the four plaquettes in the
+$jk$ plane adjacent to $x$ all have orientation $(j,k)$. Define a real
+Abelian magnetic clover multiplier by
+\begin{equation}
+ B_\ell^{\rm cl}(x;U)
+ =-\frac1{4ga^2}\sum_{p\in\mathcal C_{jk}(x)}\operatorname{Im}U_p.
+ \label{nr4-clover-definition}
+\end{equation}
+For smooth links with the convention above this is $B_\ell(x)+O(a^2)$;
+oppositely placed plaquettes cancel first derivative errors. It is
+gauge invariant for $U(1)$ and is a bounded continuous function on
+the full compact link space. In particular,
+\begin{equation}
+ |B_\ell^{\rm cl}(x;U)|\le\frac1{ga^2},\qquad
+ \|\Sigma\cdot B^{\rm cl}(U)\|\le\frac{\sqrt3}{ga^2},
+ \label{nr4-clover-norm}
+\end{equation}
+where $\Sigma_\ell=-i\alpha_j\alpha_k$ for cyclic $(j,k,\ell)$.
+The four-leaf field-strength construction is standard; see
+\cite[Eq.~(2.12)]{EKM}. Our real-field normalization and continuous-time
+magnetic Hamiltonian are specified independently by
+\eqref{nr4-clover-definition}.
+
+Consider the explicitly different one-particle Hamiltonian
+\begin{equation}
+ h_\lambda(U)=h_W(U)+\lambda\beta\Sigma\cdot B^{\rm cl}(U),
+ \qquad \lambda\in\mathbb R.
+ \label{nr4-clover-h}
+\end{equation}
+The often relevant symmetry test can be made without any convention
+about the name of a chirality matrix. Our $C_5=\alpha_1\alpha_2\alpha_3\beta$
+anticommutes with each $\alpha_j$ and with $\beta$, and therefore
+\begin{equation}
+ [C_5,\Sigma_\ell]=0,\qquad
+ \{C_5,\beta\Sigma_\ell\}=0,\qquad
+ \tfrac12\{\beta,h_\lambda\}
+ =M(U)+\lambda\Sigma\cdot B^{\rm cl}(U).
+ \label{nr4-clover-algebra}
+\end{equation}
+Thus the clover term \emph{preserves} the $C_5$ anticommutation.
+It changes the positive operator needed in the $\beta$-form argument;
+its contribution is not positive by itself.
+
+\begin{proposition}[A compact-link clover variant with vacuum stability]
+\label{nr4-clover-positive}
+Replace $h_W$ by $h_\lambda$ in the full compact-link Hamiltonian and
+retain the same electric energy, magnetic plaquette energy, and local
+Gauss operators. If
+\begin{equation}
+ m_{\rm cl}:=m-\frac{\sqrt3|\lambda|}{ga^2}\ge0,
+ \label{nr4-clover-mass}
+\end{equation}
+then the physical-sector comparison remains valid, with
+\begin{equation}
+ E_\nu^{(\lambda)}\ge E_0^{(\lambda)}
+                         +m_{\rm cl}\left|\sum_x\nu_x\right|.
+ \label{nr4-clover-stability}
+\end{equation}
+The same prescribed nuclear self-energy may be subtracted; the
+linear nuclear bound then follows with $m_{\rm cl}$ in its rest-cost
+term. No restriction on individual link configurations is imposed.
+\end{proposition}
+\begin{proof}
+The new term is bounded, Hermitian, gauge covariant, and traceless in
+the full one-particle space. It preserves anticommutation with $C_5$.
+By \eqref{nr4-clover-norm},
+$\{\beta,h_\lambda(U)\}/2\ge m_{\rm cl}I$ uniformly in $U$.
+
+The determinant and annulus proofs need only these algebraic
+properties: $\{C_5,h\}=0$, $\{\beta,h\}/2\ge m_{\rm cl}I$,
+and scalar kicks commuting with $C_5$ and $\beta$.
+Indeed $U^*C_5U=C_5$ still proves centered-trace reality, while
+\[
+ \frac d{dt}\langle f,\beta f\rangle
+ =-\langle f,\{\beta,h_\lambda\}f\rangle
+ \le-2m_{\rm cl}\|f\|^2
+\]
+proves nonvanishing and the quantitative annulus when $m_{\rm cl}>0$.
+For positivity of the real nonzero trace, deform $h_\lambda(t)$ linearly
+to $m_{\rm cl}\beta$ and turn off the scalar kicks. This preserves
+both anticommutation and the displayed lower bound. The terminal
+trace is positive. Thus the bounded matrix Feynman--Kac and full local
+Gauss projection proof, including its global-charge Fourier estimate,
+applies unchanged. A bounded mass perturbation followed by a limit
+covers $m_{\rm cl}=0$.
+\end{proof}
+
+In smooth weak fields the new Pauli coefficient is
+$g/(2m)+\lambda$. This coefficient can also be characterized by a
+finite-matrix small-parameter statement: if the upper mass correction
+is $\varepsilon^2D+O(\varepsilon^4)$ and the off-diagonal block is
+$\varepsilon S_1+O(\varepsilon^3)$ in operator norm, with fixed bounded
+Hermitian $D,S_1$, the positive energies are
+\[
+ m+\varepsilon^2\lambda_j\left(D+\frac{S_1^2}{2m}\right)
+       +O(\varepsilon^4).
+\]
+Indeed Weyl's inequality first puts these energies within $O(\varepsilon)$
+of $m$. The lower-block Schur complement then gives $e=O(\varepsilon^2)$,
+and its inverse differs from $(2m)^{-1}I$ by $O(\varepsilon^2)$.
+Substitution and eigenvalue monotonicity prove the displayed expansion.
+This argument allows $D$ to be indefinite; it applies to the coefficients
+where covariant momentum has order $\varepsilon$ and magnetic field
+has order $\varepsilon^2$. It identifies coefficients and does not assert
+that an arbitrary quantum link state obeys this scaling.
+Consequently choosing
+\begin{equation}
+ \lambda_{\rm tree}=\frac{gra}{2}
+ \label{nr4-clover-tree}
+\end{equation}
+makes the tree-level spin factor equal to $2$ with the kinetic mass
+in \eqref{nr4-kinetic-mass}. The sufficient positivity requirement is
+then simply
+\begin{equation}
+ m\ge\frac{\sqrt3r}{2a}.
+ \label{nr4-clover-tree-positive}
+\end{equation}
+For $r=c/x$ it becomes $x^2\ge\sqrt3c/2$, and
+$m_{\rm cl}=m[1-\sqrt3c/(2x^2)]$.
+Thus a bounded magnetic clover term does not automatically destroy the
+vacuum theorem in the heavy regime. This conclusion uses the compact
+field bound and the specified coefficient; it is not an assertion
+that an arbitrary continuum Pauli term is harmless. The modification
+does not by itself match electric, Darwin, spin--orbit, or radiative
+terms, or change the free doubler thresholds, since it vanishes at
+$U=1$. A term involving electric rotor operators requires a separate
+domain and positivity analysis. Distinguishing magnetic and electric
+improvement is also necessary in the transfer-matrix treatment of
+\cite[Sec.~5.1]{EKM}.
+
+\subsection{What the static theorem does not transfer to quantized links}
+\label{nr4-remaining}
+
+For fixed $U$, the sea energy in the exact comparison is
+\[
+ E_0^{\rm stat}(U)=-\sum_{j=1}^{2N}[m+e_j(U)].
+\]
+When $U$ is quantized, this is a multiplication operator depending on
+the links. The interacting source state and vacuum need not have the
+same expectation of it. It cannot be discarded as a common scalar.
+Moreover, even on a chart where a smooth band-diagonalizing unitary
+$\mathcal U(U)$ is available, transformation of the electric derivative
+produces
+\[
+ \mathcal U E_\ell\mathcal U^*
+ =E_\ell+i(\partial_{\varphi_\ell}\mathcal U)\mathcal U^*.
+\]
+The induced connection and its off-band parts are additional terms in
+the electric energy. A comparison of frozen eigenvalues does not bound
+them. This elementary identity already explains why substituting
+$R+S^2/(2m)$ into a quantized Pauli--Fierz-type Hamiltonian is not a
+proof of that reduction.
+
+The frozen-link charge-extensive error is therefore established only
+for \eqref{nr4-static-occupation}, with a common $U$ and no scalar nuclear
+potential or Gauss constraint. A full low-energy theorem still needs
+a specified retained subspace, a controlled elimination of its
+complement with the electric dynamics included, the induced gauge and
+vacuum-polarization terms, and an error relative to the actual source-free
+vacuum. Neither the existing charge gap nor the static $2m$ pair cost
+supplies these missing estimates for the quantized theory.

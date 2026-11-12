@@ -1,0 +1,428 @@
+\section{Ordering, improved mass windows, and an exact charge gap}
+\label{sec:mass-gap-round2}
+
+The positive-mass hypothesis used above has two distinct roles. It is
+automatic for density-product ordering, whereas free-sea four-field Wick
+ordering produces the explicitly computable mass correction in
+\eqref{eq:effective-mass}. We improve its uniform bound, explain why a
+continuum estimate cannot hold uniformly on arbitrarily coarse momentum
+lattices, and prove a quantitative charge gap. All statements in this
+section retain the finite regulators and the charge convention $Q=N-D/2$.
+
+\subsection{Density-product ordering and nonnegative effective mass}
+\label{subsec:mass-gap-ordering}
+
+Define the alternative, precisely specified Hamiltonian
+\begin{equation}
+ H^{\mathrm{dp}}_0=H_D+H_\gamma+H_I+
+ \frac{\alpha}{2V}\sum_{k\ne0}v_k\rho_{-k}\rho_k.
+ \label{eq:mass-gap-dp}
+\end{equation}
+The density is still centered at the free sea. The product of these two
+centered densities is \emph{not} additionally four-field Wick ordered.
+Nuclear source and nuclear pair terms are added exactly as before, with
+the same nuclear-diagonal convention. Relative to \eqref{eq:model}, this
+changes a definite one-body operator and a scalar; it is a different
+ordering prescription, not an assertion of equivalence after a harmless
+vacuum-energy shift.
+
+\begin{corollary}[No mass window for density-product ordering]
+\label{cor:mass-gap-dp}
+For \eqref{eq:mass-gap-dp}, the canonical Gaussian-domination theorem,
+the one-nucleus bound, and the many-nucleus heat-kernel bound hold for
+every $\alpha\ge0$, $m>0$, and finite fermion and photon cutoffs.
+There is no restriction of the form $\alpha\Lambda<m$.
+The same volume and charge-admissibility qualifications apply to the
+many-nucleus theorem.
+\end{corollary}
+\begin{proof}
+The density-square representation is already present, with
+$h_{\mathrm{eff}}=D_0$ and scalar $-\Tr(PD_0)$. Thus its mass coefficient
+is exactly $m\id$. The transverse current adds only Dirac-vector
+coefficients, so it does not change this mass. Every positivity,
+componentwise Gaussian, photon-coordinate, and electrostatic step in
+the preceding proofs therefore applies unchanged. The source costs
+depend on the density-square coefficients and the nuclear convention,
+which are the same here.
+\end{proof}
+
+\begin{proposition}[Closure at a nonnegative mass]
+\label{prop:mass-gap-semidefinite}
+The canonical Gaussian-domination conclusion continues to hold if the
+Hermitian spatial mass coefficient is only $M\ge0$. This includes
+photon-dependent Dirac-vector terms and the photon limit already treated.
+The centered finite-CAR trace is then nonnegative, though it need not be
+strictly positive.
+\end{proposition}
+\begin{proof}
+Replace $M$ by $M+\varepsilon\id$. At every finite Trotter approximation,
+the strictly positive trace converges, as $\varepsilon\downarrow0$, to
+the desired nonnegative trace. Alternatively, at fixed regulators the
+Hamiltonian changes by $\varepsilon\,\mathrm d\Gamma(\mathsf b)$, a bounded
+operator of norm at most $\varepsilon D$. Ground energies in every charge
+sector therefore converge in norm-perturbation estimates. Apply the
+strictly positive-mass comparison before taking this limit. No uniform
+bound in $D$ is needed for this fixed-regulator passage.
+\end{proof}
+
+This closure argument does not cover an indefinite $M$: adding a scalar
+$\varepsilon\id$ cannot approximate a fixed matrix with a negative
+eigenvalue by positive matrices. Likewise, the decreasing-$\mathsf b$-form
+argument fails when $\langle f,Mf\rangle$ changes sign. The numerical
+tests described below provide neither an indefinite-mass theorem nor an
+indefinite-mass counterexample. We leave that extension unresolved.
+There is no analogous obstruction for a mass of one uniformly negative
+sign: replacing the Dirac matrix $\mathsf b$ by $-\mathsf b$ reduces
+$M\le-m_*\id$ to the same positive-mass theorem, and a limit covers
+$M\le0$. The unresolved case has both mass signs in the same spatial
+operator.
+
+\subsection{A uniform discrete convolution bound}
+\label{subsec:mass-gap-discrete}
+
+Write $h=2\pi/L$ and
+\begin{equation}
+ \delta M(p):=m-M_{\mathrm{eff}}(p)
+ =\frac{\alpha m h^3}{4\pi^2}
+ \sum_{\substack{r\in h\Z^3,\ |r|\le\Lambda\\r\ne p}}
+ \frac{1}{|p-r|^2\sqrt{m^2+|r|^2}}.
+ \label{eq:mass-gap-deficit}
+\end{equation}
+
+\begin{lemma}[All-volume logarithmic bound with a lattice correction]
+\label{lem:mass-gap-layercake}
+For every admissible momentum $p$ and every $L>0$,
+\begin{equation}
+ \delta M(p)\le \frac{\alpha h}{4\pi^2}
+ +\frac{13\alpha m}{2\pi^2}\operatorname{arsinh}(\Lambda/m).
+ \label{eq:mass-gap-layercake}
+\end{equation}
+Consequently a sufficient condition uniform over \emph{all} volumes is
+\begin{equation}
+ \alpha\left[\frac{\Lambda/m}{4\pi^2}
+ +\frac{13}{2\pi^2}\operatorname{arsinh}(\Lambda/m)\right]<1.
+ \label{eq:mass-gap-uniform-window}
+\end{equation}
+At $\alpha=1/137$ this admits $\Lambda/m<5168.21$, with the decimal
+given only as an evaluation of the explicit inequality.
+\end{lemma}
+\begin{proof}
+On $h\Z^3$, fill the omitted kernel value by defining $K(0)=h^{-2}$,
+$K(k)=|k|^{-2}$ for $0<|k|\le2\Lambda$, and zero outside this ball.
+When $h\le2\Lambda$, $K$ is radially nonincreasing on the lattice.
+So is $f(r)=\mathbf1_{|r|\le\Lambda}/\sqrt{m^2+|r|^2}$.
+For every two superlevel sets $A,B$ of these functions, $A$ and $B$ are
+concentric lattice balls. Hence
+\[
+ \#(A\cap(p+B))\le\min(\#A,\#B)=\#(A\cap B).
+\]
+Layer-cake integration gives $(K*f)(p)\le(K*f)(0)$. Filling the diagonal
+only increases the sum in \eqref{eq:mass-gap-deficit}. Thus that sum is
+at most
+\[
+ \frac1{h^2m}+\sum_{0<|r|\le\Lambda}
+ \frac1{|r|^2\sqrt{m^2+|r|^2}}.
+\]
+The lattice shell $|r/h|_\infty=j$ has $24j^2+2\le26j^2$ points.
+Its contribution to the second sum is at most
+$26/[h^2\sqrt{m^2+h^2j^2}]$. The decreasing-function integral estimate
+\[
+ h\sum_{j=1}^{\lfloor\Lambda/h\rfloor}
+ (m^2+h^2j^2)^{-1/2}
+ \le\int_0^\Lambda(m^2+t^2)^{-1/2}\,\mathrm dt
+ =\operatorname{arsinh}(\Lambda/m)
+\]
+proves \eqref{eq:mass-gap-layercake}. If $h>\Lambda$, the fermion band
+contains only $p=0$, so the actual deficit is zero. Otherwise $h\le\Lambda$
+and replacing $h$ by $\Lambda$ gives \eqref{eq:mass-gap-uniform-window}.
+This also disposes of the exceptional case $h>2\Lambda$ in the kernel
+definition.
+\end{proof}
+
+The next estimate recovers the exact continuum logarithmic coefficient
+when the momentum lattice resolves the mass scale. Its explicit error
+constant is deliberately generous.
+
+\begin{lemma}[Continuum coefficient and an explicit mesh error]
+\label{lem:mass-gap-cubature}
+If $h\le m$, then, uniformly in $p\in\Gamma_{\Lambda,L}$,
+\begin{equation}
+ \frac{\delta M(p)}{\alpha m}
+ \le\frac1\pi\operatorname{arsinh}(\Lambda/m)+34\frac hm.
+ \label{eq:mass-gap-cubature}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Set $F_p(x)=|x-p|^{-2}(m^2+|x|^2)^{-1/2}$, $s=|r-p|$,
+and $E=\sqrt{m^2+|r|^2}$. Around every lattice point use its cube of side
+$h$. Remove centers with $|r|<2h$ or $|r-p|<2h$. Each ball contains at
+most $27$ lattice points. Since the center $r=p$ was already omitted,
+the discrete sum $h^3\sum F_p(r)$ over these centers is at most $54h/m$.
+
+On every remaining cube, both $|x-p|\ge bs$ and
+$\sqrt{m^2+|x|^2}\ge bE$, where $b=1-\sqrt3/4>9/16$.
+The elementary derivative estimates
+\[
+ \|\nabla^2|x-p|^{-2}\|\le6|x-p|^{-4},\quad
+ |\nabla|x-p|^{-2}|=2|x-p|^{-3},
+\]
+\[
+ |\nabla(m^2+|x|^2)^{-1/2}|\le(m^2+|x|^2)^{-1},\quad
+ \|\nabla^2(m^2+|x|^2)^{-1/2}\|
+ \le2(m^2+|x|^2)^{-3/2}
+\]
+and the arithmetic--geometric mean inequality give
+\[
+ \sup_{\text{cube}}\|\nabla^2F_p\|
+ \le b^{-5}\left(\frac8{s^4E}+\frac4{s^2E^3}\right).
+\]
+The integral of the linear Taylor term vanishes. Since the cube integral
+of $|x-r|^2$ is $h^5/4$, its midpoint error is at most $h^5/8$ times this
+Hessian bound.
+
+We record every lattice estimate used to sum the errors:
+\begin{align*}
+ \sum_{r\ne p}h^3|r-p|^{-4}
+ &\le\frac{26}{h}\sum_{j\ge1}j^{-2}
+ =\frac{13\pi^2}{3h}<\frac{43}{h},\\
+ \sum_rh^3(m^2+|r|^2)^{-3}&<\frac{62}{m^3}.
+\end{align*}
+For the second estimate put $a=m/h\ge1$. The origin contributes at most
+$a^{-3}$ after factoring $h^{-3}$; shells $j\le a$ contribute at most
+$26a^{-3}$, using $\sum_{j\le a}j^2\le a^3$; the remaining shells
+contribute at most $26(4/3)a^{-3}$, using
+$\sum_{j>a}j^{-4}\le a^{-4}+(3a^3)^{-1}\le4/(3a^3)$.
+Their sum is $(185/3)m^{-3}<62m^{-3}$.
+Cauchy--Schwarz therefore yields
+\[
+ \sum_{r\ne p}\frac{h^3}{s^2E^3}
+ <\frac{52}{h^{1/2}m^{3/2}},\qquad
+ \sum_{r\ne p}\frac{h^3}{s^4E}<\frac{43}{mh}.
+\]
+As $b^{-5}<(16/9)^5<18$ and $h/m\le1$, the total error over the remaining
+cubes is at most $18(43+26)h/m=1242h/m$.
+
+Their union lies in the ball of radius $\Lambda+\sqrt3h/2$. A continuous
+layer-cake intersection argument for concentric balls, identical to the
+one above, bounds the integral of $F_p$ over this ball by its value at
+$p=0$:
+\[
+ 4\pi\operatorname{arsinh}((\Lambda+\sqrt3h/2)/m)
+ \le4\pi\operatorname{arsinh}(\Lambda/m)+11h/m.
+\]
+Thus $h^3\sum F_p(r)\le4\pi\operatorname{arsinh}(\Lambda/m)+1307h/m$.
+Divide by $4\pi^2$ in \eqref{eq:mass-gap-deficit} and use
+$1307/(4\pi^2)<34$.
+\end{proof}
+
+For $h\le m$, positivity follows, for example, from
+\begin{equation}
+ \alpha\left[\pi^{-1}\operatorname{arsinh}(\Lambda/m)+34h/m\right]<1.
+ \label{eq:mass-gap-resolved-window}
+\end{equation}
+For a family with $L\ge L_0\ge2\pi/m$, replace $h/m$ by $2\pi/(mL_0)$.
+Only in a sufficiently fine-mesh regime does this approach the continuum
+scale $\Lambda/m\simeq\frac12e^{\pi/\alpha}$.
+It is not a uniform-in-all-volumes conclusion, and the sign of this bare
+ordering-induced coefficient alone is not a statement about a measured
+renormalized electron mass.
+
+\begin{proposition}[Coarse-box obstruction]
+\label{prop:mass-gap-coarse}
+No bound with a purely logarithmic cutoff dependence and a volume-uniform
+bounded error can dominate \eqref{eq:mass-gap-deficit} for all
+$L\ge\Lambda^{-1}$. In particular, the positive-mass criterion cannot
+hold for all such boxes at arbitrarily large $\Lambda/m$ in the fixed
+free-sea Wick model.
+\end{proposition}
+\begin{proof}
+Choose $L=2\pi/\Lambda$, so $h=\Lambda$ and the fermion momenta are
+$0,\pm\Lambda e_1,\pm\Lambda e_2,\pm\Lambda e_3$.
+For $p=\Lambda e_1$, the $r=0$ term alone gives
+\begin{equation}
+ \delta M(\Lambda e_1)\ge\frac{\alpha\Lambda}{4\pi^2}.
+ \label{eq:mass-gap-coarse-lower}
+\end{equation}
+Thus $M_{\mathrm{eff}}(p)<0$ whenever
+$\Lambda/m>4\pi^2/\alpha$ (about $5408.54$ at $\alpha=1/137$).
+This configuration satisfies $L\ge\Lambda^{-1}$. It refutes the claimed
+uniform continuum estimate, but does not by itself refute Gaussian
+domination at an indefinite mass.
+\end{proof}
+
+\subsection{Quantitative transfer matrices and the exact charge gap}
+\label{subsec:mass-gap-charge}
+
+We use $b>0$ for inverse temperature to avoid confusing it with the
+Dirac matrix $\mathsf b$. Consider a one-particle transfer matrix $U$
+formed from finitely many evolutions $e^{-s_jh_j}$ and scalar unitary
+kicks, with $\sum_js_j=b$, where
+\[
+ h_j=\sum_{\ell=1}^3v_{j\ell}\otimes\mathsf a_\ell
+       +M_j\otimes\mathsf b,\qquad M_j\ge m_*\id>0.
+\]
+The spatial coefficients may differ from interval to interval. Thus
+this setting includes every truncated photon-coordinate history in the
+preceding proof. Put $N=D/2$.
+
+\begin{lemma}[Transfer-spectrum annulus]
+\label{lem:mass-gap-annulus}
+Exactly $N$ eigenvalues of $U$, counted with algebraic multiplicity,
+satisfy $|\lambda|\le e^{-bm_*}$. The remaining $N$ are their partners
+$1/\overline\lambda$, and have modulus at least $e^{bm_*}$.
+No diagonalizability or normality of $U$ is assumed.
+\end{lemma}
+\begin{proof}
+For any transfer eigenvector $u$ with $Uu=\lambda u$, transport it along
+the successive intervals and kicks, writing $f$ for the resulting vector.
+Set $B(t)=\langle f(t),\mathsf b f(t)\rangle$. Scalar kicks preserve $B$;
+on a free interval,
+\[
+ B'(t)=-2\langle f(t),M_jf(t)\rangle
+ \le-2m_*\|f(t)\|^2<0.
+\]
+Since $B(b)=|\lambda|^2B(0)$ and its total decrease is strict,
+$|\lambda|<1$ implies $B(0)>0$, and $|\lambda|>1$ implies $B(0)<0$.
+The case $|\lambda|=1$ is impossible. In the first case the whole
+trajectory has $B>0$, so $B'\le-2m_*B$ and
+$|\lambda|^2\le e^{-2bm_*}$. In the second case the whole trajectory
+has $B<0$, so $B'\le2m_*B$ and
+$|\lambda|^2\ge e^{2bm_*}$, taking care to reverse the inequality upon
+division by $B(0)<0$.
+Finally $U^\dagger\mathsf C_5U=\mathsf C_5$ pairs the spectrum, with
+algebraic multiplicity, under $\lambda\mapsto1/\overline\lambda$.
+The absence of unit-modulus eigenvalues gives exactly $N$ pairs.
+\end{proof}
+
+\begin{lemma}[Canonical Fourier-coefficient bound]
+\label{lem:mass-gap-fourier}
+Let $F(\theta)$ be the centered trace with the additional charge
+kick $e^{i\theta Q}$. Define its Fourier coefficients by
+\[
+F_q=(2\pi)^{-1}\int_0^{2\pi}e^{-iq\theta}F(\theta)\,\mathrm d\theta .
+\]
+Then
+\begin{equation}
+ |F_q|\le\binom{2N}{N+|q|}e^{-bm_*|q|}F_0,
+ \qquad |q|\le N.
+ \label{eq:mass-gap-fourier}
+\end{equation}
+In particular the prefactor is independent of $b$ and of the history.
+\end{lemma}
+\begin{proof}
+Let $\lambda_1,\ldots,\lambda_N$ be the eigenvalues inside the annulus.
+Pairing eigenvalues in the determinant, and including the centering
+factor $e^{-iN\theta}$, gives
+\[
+ F(\theta)=C\prod_{j=1}^N|1+e^{i\theta}\lambda_j|^2,
+ \qquad C>0.
+\]
+Indeed each paired factor is
+$(1+e^{i\theta}\lambda_j)(1+e^{i\theta}/\overline\lambda_j)
+=e^{i\theta}\overline\lambda_j^{-1}|1+e^{i\theta}\lambda_j|^2$;
+the remaining constant is positive because $F(0)>0$ by the centered
+trace lemma. This argument uses determinant eigenvalues only and remains
+valid for defective matrices.
+If $e_j$ are the elementary symmetric polynomials in these $N$ numbers
+and $r=e^{-bm_*}$, then
+\[
+ F_0=C\sum_{j=0}^N|e_j|^2\ge C,\qquad
+ |e_j|\le\binom Nj r^j.
+\]
+For $q\ge0$ it follows that
+\[
+ |F_q|\le C r^q\sum_{j=0}^{N-q}\binom N{j+q}\binom Nj r^{2j}
+ \le C r^q\binom{2N}{N+q}\le r^q\binom{2N}{N+q}F_0.
+\]
+The middle identity is Vandermonde's convolution. Negative $q$ follows
+by complex conjugation.
+\end{proof}
+
+\begin{theorem}[Charge gap above the exact interacting vacuum]
+\label{thm:mass-gap-charge}
+Suppose the effective mass satisfies $M_{\mathrm{eff}}\ge m_*\id>0$.
+For the fully interacting cutoff Hamiltonian, including its finite set
+of nonzero transverse photon modes,
+\begin{equation}
+ E_q(0)-E_0(0)\ge m_*|q|,\qquad |q|\le D/2.
+ \label{eq:mass-gap-charge}
+\end{equation}
+More generally, for the density-square shifts $\eta$ of the canonical
+Gaussian-domination theorem,
+\begin{equation}
+ E_q(\eta)\ge E_0(0)+m_*|q|.
+ \label{eq:mass-gap-shifted}
+\end{equation}
+For density-product ordering one may take $m_*=m$. For a merely
+nonnegative mass, the conclusion reduces to the previous comparison.
+\end{theorem}
+\begin{proof}
+At each finite componentwise Trotter approximation and photon-coordinate
+cutoff, the Hubbard--Stratonovich measures and the Mehler loop kernels
+are positive. A density-square shift supplies a scalar phase of modulus
+one independent of the charge angle $\theta$. Integrate in $\theta$
+first, apply \eqref{eq:mass-gap-fourier}, and then take the absolute value
+of this source phase. Consequently
+\begin{equation}
+ Z_q(b,\eta)\le\binom{D}{D/2+|q|}
+ e^{-bm_*|q|}Z_0(b,0).
+ \label{eq:mass-gap-thermal}
+\end{equation}
+For fixed coordinate cutoff, the trace-norm Trotter limit established
+above preserves this inequality. Letting $b\to\infty$ removes the
+finite combinatorial prefactor and gives the energy comparison for the
+truncated model. The two-sided form comparison used in the photon
+extension gives convergence of every sector ground energy as the
+coordinate cutoff is removed; its constants may depend on the fixed
+regulators, as before. Passing to that limit proves the theorem.
+\end{proof}
+
+The nonneutral source-free sectors in \eqref{eq:mass-gap-charge} are
+auxiliary sectors of the zero-mode-deleted Hamiltonian. They do not
+describe an isolated nonneutral torus satisfying Gauss's law. The theorem
+is a charge gap, not a gap above the vacuum inside the neutral sector:
+it does not give a pair-production gap or exclude low-energy photons.
+Inserting \eqref{eq:mass-gap-shifted} in the source-completion proof also
+adds $m_*Z_{\rm tot}$ to the previously stated nuclear-neutral lower
+bounds, with exactly the same electrostatic costs.
+
+\begin{remark}[The finite-temperature prefactor cannot simply be omitted]
+\label{rem:mass-gap-thermal}
+Take four one-particle modes, $h=m\mathsf b$ and no density squares or
+photons. With $r=e^{-bm}$, the centered twist trace is
+$r^{-2}|1+r e^{i\theta}|^4$. Hence
+\[
+ \frac{Z_1}{Z_0}=\frac{2r+2r^3}{1+4r^2+r^4}.
+\]
+This exceeds $r$ whenever $1-2r^2-r^4>0$, for example at $r=1/100$.
+Thus $Z_q\le e^{-bm|q|}Z_0$ is false even in the free model. Its failure
+does not affect \eqref{eq:mass-gap-charge}: the finite ground-state
+degeneracy factor disappears after division by inverse temperature.
+\end{remark}
+
+\subsection{Numerical audit and the precise unresolved question}
+\label{subsec:mass-gap-numerics}
+
+The supplied mass-sum script reproduces the quoted $p=0$ values
+$0.831,0.977,1.013$ at $\Lambda/m=10,30,100$ and
+$L=36\pi/\Lambda$. These values are consistent with the exact sum, but
+this scaling fixes the number of momentum shells and makes $m/h$ tend
+to zero. It does not approach the continuum integral as the cutoff
+grows. Moreover its test $p=0.99\Lambda e_1$ is generally off the allowed
+momentum lattice, and therefore is not an entry of $M_{\mathrm{eff}}$.
+The coarse-box example \eqref{eq:mass-gap-coarse-lower} is an analytic
+counterexample to the proposed uniform extrapolation.
+
+The random finite-Fock scripts are diagnostics, not proofs of a charge
+gap or of an indefinite-mass extension. The charge-gap theorem above
+settles the positive-mass case without relying on them. An additional
+deterministic-seed search through $20{,}000$ eight-mode transfer histories
+with one positive and one negative spatial mass eigenvalue found no
+negative centered determinant; that absence is not a theorem. Conversely,
+even a negative determinant for one history would obstruct this
+pointwise-positive proof, but would not alone disprove the integrated
+Gaussian-domination inequality. The indefinite-mass question remains
+open in this report. The script
+\texttt{numerics/round2\_mass\_gap\_checks.py} also checks the elementary
+thermal counterexample, the coarse-box mass defect, and the published
+cubature constants; none of those numerical checks replaces its proof.

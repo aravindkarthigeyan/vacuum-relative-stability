@@ -1,0 +1,185 @@
+{
+  "archive": "vacuum-relative-stability-arxiv.zip",
+  "files": 33,
+  "tex_files": 15,
+  "bytes": 98405,
+  "sha256": "de529b49c550379523410df9fa677517ff51b91e91623e2271392fa78cbcf18b",
+  "validation": {
+    "fresh_extraction_compile": "passed",
+    "passes": 3,
+    "pages": 64,
+    "compiler_diagnostics": [],
+    "text_matches_primary_pdf": true,
+    "extracted_text_sha256": "00545f62102f035865593858985c012e98b81d54d5c8af6361b5991eefc8bb85",
+    "human_author_metadata": "not supplied; review draft",
+    "submitted": false,
+    "check_directory": "tmp/arxiv-compile-aqbj7gq8"
+  },
+  "included_files": [
+    {
+      "path": "anc/README.txt",
+      "bytes": 562,
+      "sha256": "06a3734164bf7698d30221e776df6b2cf5f89c278e23f6b22d3140ec81a350ab"
+    },
+    {
+      "path": "anc/numerics/check_gaussian_domination.py",
+      "bytes": 5294,
+      "sha256": "989b6259923e48aaa1a14205139f60f9f70e75814d0f529fb3e4b862d87dac00"
+    },
+    {
+      "path": "anc/numerics/claude_charge_gap_toy.py",
+      "bytes": 838,
+      "sha256": "0d61da6235f63ad69be4e9df8468ed66ac003aceb0da5abc8992c1a198bed5bf"
+    },
+    {
+      "path": "anc/numerics/claude_charge_gap_toy.py.output.txt",
+      "bytes": 56,
+      "sha256": "01db8a71ad80a8a259281ee0e3f957201de379a2664991c3ed3c46c4750bcf7b"
+    },
+    {
+      "path": "anc/numerics/claude_gd_indefinite_mass.py",
+      "bytes": 1168,
+      "sha256": "8722513aae07c1e367df8cad138016922b888abdc3ee38702ec47b04e629bba4"
+    },
+    {
+      "path": "anc/numerics/claude_gd_indefinite_mass.py.output.txt",
+      "bytes": 147,
+      "sha256": "a466f5f1a71d122742a791bf204d30506dfead100f9aa088b2c8dbb79c6a68c7"
+    },
+    {
+      "path": "anc/numerics/claude_gd_random_check.py",
+      "bytes": 2967,
+      "sha256": "c6011f62599d87f5dbf4fdae232c13e1b2618ae0e1c966208714b8b783cad3fe"
+    },
+    {
+      "path": "anc/numerics/claude_gd_random_check.py.output.txt",
+      "bytes": 179,
+      "sha256": "35713a98f93ff8202d93f6a29c98faf9c366ae14ee306b955fe1e15003a668dc"
+    },
+    {
+      "path": "anc/numerics/claude_lattice_1d_gauss_check.py",
+      "bytes": 2096,
+      "sha256": "f711911f926a2c3f9c50fe3ec6c6998a1112b7b9f12f1ff52ca7cf344c2b2226"
+    },
+    {
+      "path": "anc/numerics/claude_lattice_1d_gauss_check.round3.output.txt",
+      "bytes": 124,
+      "sha256": "2c598e3d1097f91880c911e09248d38c23ab152dc7f258bd095d8653022f4b07"
+    },
+    {
+      "path": "anc/numerics/claude_lattice_1d_scalar_control.py",
+      "bytes": 2148,
+      "sha256": "b9f65ab3bb3f271128ff568a0b45f167603f2a8c0cbfe91c7db97696f73f617a"
+    },
+    {
+      "path": "anc/numerics/claude_lattice_1d_scalar_control.round3.output.txt",
+      "bytes": 125,
+      "sha256": "785b41e73197a5189bcda9b682b397b5dc9e9200b5befefd248d8b5264ec4829"
+    },
+    {
+      "path": "anc/numerics/claude_meff_lattice_sum.py",
+      "bytes": 668,
+      "sha256": "9240ede3343db5fb3bcc5336c1f31735c303eeb8ad4f54807986481e34494738"
+    },
+    {
+      "path": "anc/numerics/claude_meff_lattice_sum.py.output.txt",
+      "bytes": 370,
+      "sha256": "5b26547b8a2155bff3417a0ac2f1bfe344d7824959be3cd916c5170931843690"
+    },
+    {
+      "path": "anc/numerics/claude_scripts_reproduction.json",
+      "bytes": 1206,
+      "sha256": "282404c1d68502941b2c988d9b8a421aac9bd6d821165f5d587d63394790773f"
+    },
+    {
+      "path": "anc/numerics/gaussian_domination_checks.json",
+      "bytes": 518,
+      "sha256": "7a53c5d9cbd03e7ed1a442c8490c861d8be80e883e1c3ca1a7a5bbe8ef149081"
+    },
+    {
+      "path": "anc/numerics/round2_mass_gap_checks.json",
+      "bytes": 327,
+      "sha256": "55887970f47cf6909ebac2b45c0aad5df8cd6ebb4ab6ded0b5c97514b8293808"
+    },
+    {
+      "path": "anc/numerics/round2_mass_gap_checks.py",
+      "bytes": 3791,
+      "sha256": "f08e0b25df9c6a16365776429197aac85b782cc27f1cabdf868e134d76f5f24b"
+    },
+    {
+      "path": "checks.tex",
+      "bytes": 6584,
+      "sha256": "a43c4e04369b70985dd45dfbd83ae53b3e6554a97a6aa8209aa56e3ec81bf9ee"
+    },
+    {
+      "path": "context.tex",
+      "bytes": 12459,
+      "sha256": "6de6b6bcedb886f8d1b7ecfb15efeed0a75f4a7671781a6c9b4281bce4028c30"
+    },
+    {
+      "path": "electric-localization.tex",
+      "bytes": 21476,
+      "sha256": "5c1886a972f9300f4e349766c0451db78f17cbee4fb11474bd6ec05decf33a50"
+    },
+    {
+      "path": "free-dielectric.tex",
+      "bytes": 9436,
+      "sha256": "a9c66696c43cadf6135f4d28b58e2bc9d8a189e9bd87ad59a4013379bfe65c9a"
+    },
+    {
+      "path": "introduction.tex",
+      "bytes": 6075,
+      "sha256": "d4515654665976a113a31c7bbd594d8e8b5624e1961d68725faea8c236a7040f"
+    },
+    {
+      "path": "lattice.tex",
+      "bytes": 24465,
+      "sha256": "e283d2bc651843f7458a00cff60f3227ef196e8bb1f9a45184d1d2b4248f8b64"
+    },
+    {
+      "path": "low-energy-matching.tex",
+      "bytes": 20636,
+      "sha256": "da8822d9810d7dc6d2b4895ebb55b7a476ab8b4031b81dbb30d42c6f04f49c47"
+    },
+    {
+      "path": "main.tex",
+      "bytes": 3854,
+      "sha256": "5978ea3b0e24241c5aa5cd53a8267f40b72e5134447bad5031e9ac135504dd50"
+    },
+    {
+      "path": "mass-gap.tex",
+      "bytes": 18540,
+      "sha256": "f7ec8189c78155322ea289306a520fbd6593d0a25daaff2b4e7da75580e8cdfd"
+    },
+    {
+      "path": "photon-extension.tex",
+      "bytes": 18760,
+      "sha256": "96aa47c65957e7d75e1e5311eecd9d18ec20fb624e0061275787d5abe0456327"
+    },
+    {
+      "path": "positioning.tex",
+      "bytes": 8666,
+      "sha256": "57b1fdad136cc442be1478dee983cd6dd8d25f7af00d865746d1817aa2492c92"
+    },
+    {
+      "path": "proof.tex",
+      "bytes": 16996,
+      "sha256": "21500f428a65cd97dfa910582ec2fc0a4c4396d4a0cb9a56ccb6b833a809efaa"
+    },
+    {
+      "path": "references.tex",
+      "bytes": 7390,
+      "sha256": "8b46b3dea0bfb61e782acf39ed85d4074df4c1b47a65d95bfa1bcbeb67acdf30"
+    },
+    {
+      "path": "source-relative-remainders.tex",
+      "bytes": 10425,
+      "sha256": "b543e4eb7b5349a166aad2e68749a5ef777d7d364991973a0c39dc26bb86e9ba"
+    },
+    {
+      "path": "thermodynamics.tex",
+      "bytes": 20627,
+      "sha256": "4d1852c9e1037f833c194c71295fb248f9462191413e2c885616274bc4824777"
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+\section{A neutral-current obstruction to absolute extensivity}
+\label{sec:counterexamples}
+
+\begin{theorem}[Superextensive vacuum trial energy]
+\label{b-vacuum-L5}
+Fix $m,\Lambda_f,\Lambda_\gamma,\alpha>0$ in the bare model with
+massless photons. There are constants $c_\Lambda,C_\Lambda>0$ and $L_0<\infty$
+such that for all $L\ge L_0$ its exact neutral interacting vacuum obeys
+\begin{equation}
+ E^{\vac}_{\Lambda,L}\le-c_\Lambda L^5+C_\Lambda L^3.
+ \label{eq:vacuum-instability}
+\end{equation}
+The same conclusion holds for density-product ordering. In either
+case no absolute bound of the form \eqref{eq:W} holds in this fixed
+normalization, even with no nuclei.
+\end{theorem}
+\begin{proof}
+Set $q=2\pi/L$ and let $C_L=P_f\cos(qx_1)P_f$ on the scalar band.
+Its sign $S_L=\sign C_L$, with $\sign(0)=1$, is a self-adjoint
+unitary. The one-particle matrix
+\begin{equation}
+ \gamma_L=\tfrac12(I+\mathsf a_2S_L)
+ \label{b-L5-projector}
+\end{equation}
+is a projection of rank $2M_L$: the spin trace of $\mathsf a_2$
+is zero. Its Slater determinant therefore has exactly zero charge.
+Moreover $\tr\gamma_L(x,x)=2d_L=\tr P_-(x,x)$, so its charge
+density vanishes pointwise. Its transverse current is
+\[
+ J_L=\int\cos(qx_1)\langle j_2(x)\rangle\dd x
+ =\Tr[(\gamma_L-P_-)\mathsf a_2C_L]=2\Tr|C_L|.
+\]
+The sea contribution is zero because $C_L$ has zero momentum diagonal.
+As $\|C_L\|\le1$, counting the two momentum transfers gives
+\[
+ J_L\ge2\Tr C_L^2
+ =\#\{p\in\Gamma_{f,L}:p+qe_1\in\Gamma_{f,L}\}
+ \ge c_{\Lambda_f}V
+\]
+for all sufficiently large $L$. For example, count an interior ball
+of fixed positive radius inside the cutoff ball.
+
+The kinetic energy is at most $4M_LE_{\Lambda_f}=O(V)$.
+For clarity, the full Wick Coulomb expectation of a quasi-free
+state with $Q_L=\gamma_L-P_-$ is exactly
+\begin{equation}
+ \langle W_P(T_{-k},T_k)\rangle
+ =\Tr(Q_LT_{-k})\Tr(Q_LT_k)
+       -\Tr(Q_LT_{-k}Q_LT_k).
+ \label{eq:trial-wick}
+\end{equation}
+This follows by the CAR Wick contractions in its density matrix.
+The direct term is zero by the pointwise charge identity, whereas
+$|\Tr(Q_LT_{-k}Q_LT_k)|\le\|Q_L\|_{\HS}^2\le4M_L$.
+Equation~\eqref{eq:coulomb-mode-sum} therefore bounds the complete
+Coulomb expectation in absolute value by $C_\Lambda V$.
+This includes the charge fluctuations; they have not been set to zero.
+
+Choose a photon coherent state with mean field
+$A(x)=a e_2\cos(qx_1)$. It is transverse and its nonzero modes
+are retained for all large $L$. The field energy and coupling are
+\[
+ \frac{Vq^2a^2}{4}+eaJ_L.
+\]
+Minimizing in the real amplitude gives
+$-e^2J_L^2/(Vq^2)\le-c_\Lambda L^5$.
+Adding the preceding $O(V)$ costs proves
+\eqref{eq:vacuum-instability}. Every trial state belongs to the
+exact neutral sector and has finite photon occupation at its fixed
+volume. The ordering difference is bounded by $B_\Lambda V$ from
+\eqref{eq:full-coulomb-bound}, so the same proof applies to
+density-product ordering.
+\end{proof}
+
+The optimized mean vector potential is $O(L^2)$ and its magnetic
+field is $O(L)$. A momentum cutoff alone imposes no bound on these
+amplitudes. A declaration that the model describes low energies
+cannot exclude these allowed trial states without changing the
+stated space or Hamiltonian. Fixed mass counterterms and a fixed
+vacuum-energy density contribute at most $O(V)$ here. A fixed
+nonzero charge renormalization changes the coefficient, not the
+power of $L$.
+
+There is no contradiction with \eqref{b-headline}: the latter
+subtracts the actual interacting vacuum and compares the change
+caused by nuclei. A large negative common vacuum contribution does
+not disprove that relative inequality. Conversely, separate bounds
+$E(R,Z)\ge-AK-BV$ and $-BV\le E^{\vac}\le0$ do not imply a
+relative bound $-CK$; they leave a volume error. The canonical
+Gaussian-domination argument supplies the comparison that these
+separate estimates lack.
+
+The ordinary absolute vacuum-energy density for this bare regulator
+with massless photons cannot have a finite thermodynamic limit: the trial bound
+already gives $E^{\vac}/V\to-\infty$ in upper bound. Subtracting
+the exact finite-volume vacuum is a legitimate relative comparison,
+but does not by itself construct a thermodynamic state or establish
+physical renormalization.

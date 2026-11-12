@@ -1,0 +1,497 @@
+\section{Electric-flux localization and restricted pair denominators}
+\label{flux4-section}
+
+We retain the compact-link Hamiltonian~\eqref{lat-hamiltonian},
+with no electric truncation in its definition.  In this section
+the periodic cubic lattice has $n\ge3$, $N=n^3$ sites and $3N$ positive
+links.  Put
+\begin{equation}
+ c=\frac{g^2}{2a},\qquad b=\frac1{g^2a},\qquad
+ \mu=m+\frac{3r}{a},\qquad
+ h_*=m+\frac{3+6r}{a}.
+ \label{flux4-constants}
+\end{equation}
+All assertions below concern the stated finite lattice, with $g^2>0$,
+$a>0$, $m,r\ge0$.  Positive lower bounds on pair denominators will be
+separate hypotheses.  A function of the commuting integer electric
+operators commutes with every Gauss operator
+$G_x=\operatorname{div}E_x+q_x$.  Consequently all electric cutoffs used
+below preserve each physical Gauss sector.  This does not make their
+ranges invariant under $H$.
+
+\subsection{The actual vacuum has electric tails}
+
+The Fourier representation of the gauge Hilbert space is
+$\ell^2(\mathbb Z^{\mathcal E})$.  If $s\in\mathbb Z^{\mathcal E}$,
+write $U^s=\prod_\ell U_\ell^{s_\ell}$, so
+$U^s|e\rangle=|e+s\rangle$.  Each fermion hopping changes one electric
+coordinate by one.  Each plaquette multiplier changes the four
+coordinates on its oriented boundary by one, with signs.  Denote this
+plaquette vector by $s_p$; it has $|s_p|^2=4$ and
+$\operatorname{div}s_p=0$.
+
+\begin{proposition}[No eigenvector has finite electric support]
+\label{flux4-vacuum-tails}
+Every nonzero eigenvector of $H$, including an eigenvector in an
+admissible fixed Gauss sector, has infinite support in the electric
+Fourier variables.  In particular every normalized physical vacuum
+ground vector $\Omega$ satisfies, for every finite $F>0$,
+\begin{equation}
+ \left\langle\Omega,
+   \sum_{\ell\in\mathcal E}{\bf1}_{\{|E_\ell|\ge F\}}
+   \Omega\right\rangle>0.
+ \label{flux4-strict-tail}
+\end{equation}
+\end{proposition}
+\begin{proof}
+The nonconstant part of the magnetic multiplier is
+$-\frac b2\sum_p(U^{s_p}+U^{-s_p})$.  Choose a plaquette vector $s_p$.
+The linear functional $e\mapsto s_p\cdot e$ takes its strictly largest
+value on the set of distinct nonzero shifts of $H$ at $s_p$: its value
+there is $4$, its value on a single-link shift is at most $1$, and its
+value on another plaquette vector is less than $4$ unless that vector
+equals $s_p$.  This follows from Cauchy--Schwarz and equality in it.
+If a plaquette vector occurs more than once, its scalar coefficients
+add with the same negative sign.
+
+Suppose an eigenvector $\psi$ had finite electric support $S$.
+Its Fourier coefficient $\psi_e$ is a vector in the finite fermion
+Fock space.  Perturb the above linear functional slightly so that
+it still uniquely maximizes the distinct shifts at $s_p$ and uniquely
+maximizes $S$ at an element $e_*$.  Such a perturbation exists because
+only finitely many strict inequalities and hyperplanes are involved.
+The coefficient of $H\psi$ at $e_*+s_p$ then has exactly one possible
+shift contribution: a nonzero scalar multiple of $\psi_{e_*}$ from
+the plaquette multiplier.  Indeed, any contributing $e+s=e_*+s_p$
+would have to maximize separately both linear functionals on $S$
+and on the shifts.  The electric kinetic term and all zero-shift
+terms contribute zero, since $e_*+s_p\notin S$.  Thus this coefficient
+is nonzero, whereas the same coefficient of an eigenvalue times
+$\psi$ is zero.  This is a contradiction.
+
+If the nonnegative expectation in \eqref{flux4-strict-tail} vanished,
+every Fourier coefficient outside a finite electric cube would vanish.
+The first assertion therefore proves the second.  This argument uses
+the actual magnetic plaquette multiplier and the full fermionic
+Hamiltonian, rather than a scalar rotor surrogate.
+\end{proof}
+
+\begin{corollary}[Failure of a source-only flux budget]
+\label{flux4-failed-relative-budget}
+No finite constant can make the implication
+\begin{equation}
+ \langle H\rangle\le E_0+C(Z_{\rm tot}+K)\quad\Longrightarrow\quad
+ \left\langle\sum_\ell{\bf1}_{\{|E_\ell|\ge F\}}\right\rangle
+ \le\frac{C'(Z_{\rm tot}+K)}{cF^2}
+ \label{flux4-false-budget}
+\end{equation}
+hold for all normalized physical states and finite $F$.  It fails
+already at $K=Z_{\rm tot}=0$ for a vacuum ground vector.
+\end{corollary}
+\begin{proof}
+The energy hypothesis is then an equality, the proposed right side
+is zero, and \eqref{flux4-strict-tail} makes the left side positive.
+\end{proof}
+
+Subtracting the scalar vacuum energy from $H$ does not subtract the
+vacuum fluctuations of $E_\ell^2$.  Nor does positivity of $H_E$ give
+positivity of $\langle H_E\rangle_\psi-\langle H_E\rangle_\Omega$.
+A theorem controlling an excess flux distribution would need a
+separate response estimate and an explicitly chosen reference state.
+
+\begin{lemma}[A valid extensive flux budget]
+\label{flux4-volume-budget}
+For any normalized form-domain vector with
+$\langle H\rangle\le E_0+\Delta$, one has
+\begin{align}
+ cF^2\left\langle\sum_\ell
+       {\bf1}_{\{|E_\ell|\ge F\}}\right\rangle
+ &\le \langle H_E\rangle
+ \le E_0+\Delta+2Nh_* \notag\\
+ &\le \Delta+N\left(\frac{6(1+r)}a+\frac3{g^2a}\right).
+ \label{flux4-volume-budget-eq}
+\end{align}
+These inequalities apply in every physical sector.  In particular,
+for the sharp cutoff
+$P_F=\prod_\ell{\bf1}_{\{|E_\ell|\le F\}}$ with integer $F\ge0$,
+\begin{equation}
+ \|(1-P_F)\psi\|^2
+ \le\frac{\Delta+N[6(1+r)/a+3/(g^2a)]}{c(F+1)^2}.
+ \label{flux4-outside-probability}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The first inequality is pointwise on the electric joint spectrum.
+The bound $d\Gamma(h_W(U))\ge-2Nh_*$ and $H_B\ge0$ give
+$H\ge H_E-2Nh_*$.  Finally use the vacuum trial bound
+$E_0\le-2N\mu+3N/(g^2a)$ from Lemma~\ref{lat-realization}.
+The last displayed estimate follows because outside $P_F$ at least
+one integer electric coordinate has magnitude at least $F+1$.
+\end{proof}
+
+This is a uniform bound per site, not a bound proportional only to
+the sources.  It remains valid when $\Delta=C(Z_{\rm tot}+K)$, but
+retains its volume term.  The bare-excitation obstruction in
+the result~\ref{rel4-bare-sea} is the fermionic counterpart: the
+interacting vacuum is not annihilated by the onsite excitation number.
+Neither obstruction excludes a suitably dressed, source-relative
+estimate; both exclude the proposed estimates for the bare observables.
+
+\paragraph{Gauss's law supplies no upper flux bound near a nucleus.}
+At a site with source $\nu_x\ge2$, the six signed incident electric
+coordinates have sum $\nu_x-q_x$, where $q_x\le2$.  Thus on that
+physical sector
+\begin{equation}
+ \sum_{\ell\ni x}E_\ell^2\ge\frac{(\nu_x-2)^2}{6}.
+ \label{flux4-local-gauss-lower}
+\end{equation}
+For $\nu_x=26$ this is $96$, and at least one incident coordinate
+has magnitude at least $4$ in each electric--occupation basis vector.
+These are lower bounds.  Adding an arbitrarily large integer
+divergence-free plaquette circulation preserves Gauss's law and
+precludes a kinematical upper bound of order $Z/6$.  An upper bound
+in low-energy states must be proved using their energy or distribution.
+
+\subsection{A Gauss-preserving electric IMS formula}
+
+For explicit constants write
+\begin{equation}
+ H=H_E+C_0+\sum_{s\in\mathcal S}U^s A_s,
+ \qquad
+ \mathcal J:=\sum_{s\in\mathcal S}\|A_s\|
+ \le\frac{12N(1+r)}a+\frac{3N}{g^2a}.
+ \label{flux4-shift-decomposition}
+\end{equation}
+Here a repeated shift may be listed repeatedly, $C_0$ acts only on
+fermions and is independent of the electric variables, and every
+shift has $\|s\|_\infty=1$.  The $A_s$ are finite fermion matrices
+(scalar matrices for the plaquettes).  To verify the stated bound,
+the directed fermion coefficient on a link is
+\[
+ A_\ell=\sum_{u,v=1}^4c_{xu}^*
+       \left(\frac{-i\alpha_j-r\beta}{2a}\right)_{uv}c_{yv}.
+\]
+Singular-value decomposition and the CAR give
+$\|A_\ell\|\le\|(-i\alpha_j-r\beta)/(2a)\|_1
+\le2(1+r)/a$.  There are two such shifts per positive link.
+The two magnetic coefficients of a plaquette each have norm $b/2$.
+This proves \eqref{flux4-shift-decomposition}; no commutativity of
+different fermion coefficients is used.
+
+Choose a Lipschitz function $\theta:[0,\infty)\to[0,\pi/2]$ which
+is zero on $[0,1]$ and equals $\pi/2$ on $[2,\infty)$, and write
+$L_\theta=\operatorname{Lip}(\theta)$.  It can equally well be chosen
+smooth.  Let $R(E)=\max_\ell|E_\ell|$, and set
+\begin{equation}
+ f_0(E)=\cos\theta(R(E)/F),\qquad
+ f_1(E)=\sin\theta(R(E)/F),\qquad F\ge1.
+ \label{flux4-two-cutoffs}
+\end{equation}
+Then $f_0^2+f_1^2=1$, the range of $f_0$ lies in the electric cube
+$R\le2F$, and $f_1$ vanishes on $R\le F$.
+
+\begin{lemma}[Electric IMS identity with a quadratic cutoff error]
+\label{flux4-ims}
+The $f_j$ preserve $D(H_E)$, its form domain, and each Gauss sector.
+There is a bounded self-adjoint operator $\mathcal R_F$ such that
+\begin{equation}
+ f_0Hf_0+f_1Hf_1=H+\mathcal R_F,
+ \qquad
+ \|\mathcal R_F\|\le
+       \frac{L_\theta^2\mathcal J}{2F^2}.
+ \label{flux4-ims-bound}
+\end{equation}
+The identity holds both on $D(H_E)$ and as a quadratic-form identity.
+With
+$B_F={\bf1}_{\{F-1\le R(E)\le2F+1\}}$, one also has
+$\mathcal R_F=B_F\mathcal R_FB_F$ and therefore
+\begin{equation}
+ |\langle\psi,\mathcal R_F\psi\rangle|
+ \le\frac{L_\theta^2\mathcal J}{2F^2}
+       \langle\psi,B_F\psi\rangle.
+ \label{flux4-ims-shell}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The cutoffs commute with $H_E$, $C_0$, and every $G_x$.
+For one shift,
+\[
+ \sum_{j=0}^1 f_jU^sA_sf_j-U^sA_s
+ =U^sA_s\left[
+   \cos\big(\theta(R(E+s)/F)-\theta(R(E)/F)\big)-1\right].
+\]
+Since $|R(e+s)-R(e)|\le1$ and $1-\cos t\le t^2/2$,
+the bracket has norm at most $L_\theta^2/(2F^2)$.
+Summing the finitely many shifts proves the norm bound.
+The bracket can be nonzero only when both endpoints lie in
+$F-1\le R\le2F+1$, which proves the shell assertion.
+All unbounded terms commute with the cutoffs, so the core calculation
+extends directly to the stated domains.  Self-adjointness of the
+bounded error also follows from the left side of
+\eqref{flux4-ims-bound}.
+\end{proof}
+
+There is a useful fully local variant.  For each link set
+$u_{0\ell}=\cos\theta(|E_\ell|/F)$ and
+$u_{1\ell}=\sin\theta(|E_\ell|/F)$.  The $2^{3N}$ products
+$f_\sigma=\prod_\ell u_{\sigma_\ell,\ell}$ form a quadratic
+partition of unity and commute with all Gauss operators.  Define
+$B_{\ell,F}={\bf1}_{\{F-1\le|E_\ell|\le2F+1\}}$ and
+\begin{equation}
+ j_{\rm loc}=\frac{4(1+r)}a+\frac4{g^2a}.
+ \label{flux4-local-shift-constant}
+\end{equation}
+Each link meets four plaquettes, so
+$\sum_{s:\,s_\ell\ne0}\|A_s\|\le j_{\rm loc}$.
+
+\begin{lemma}[Local electric IMS error]
+\label{flux4-local-ims}
+The product partition satisfies
+\begin{equation}
+ \left|\left\langle\psi,
+ \left(\sum_\sigma f_\sigma Hf_\sigma-H\right)\psi\right\rangle\right|
+ \le\frac{L_\theta^2j_{\rm loc}}{2F^2}
+       \sum_\ell\langle\psi,B_{\ell,F}\psi\rangle.
+ \label{flux4-local-ims-bound}
+\end{equation}
+\end{lemma}
+\begin{proof}
+The overlap of the two product vectors at electric configurations
+$e,e+s$ is $\prod_{\ell:s_\ell\ne0}\cos d_\ell$, where
+$d_\ell=\theta(|e_\ell+s_\ell|/F)-\theta(|e_\ell|/F)$.
+These cosines lie in $[0,1]$, so
+\[
+ 0\le1-\prod_\ell\cos d_\ell
+ \le\sum_\ell(1-\cos d_\ell)
+ \le\frac{L_\theta^2}{2F^2}
+       \sum_{\ell:s_\ell\ne0}
+       B_{\ell,F}(e+s)B_{\ell,F}(e).
+\]
+For each summand of the Fourier kernel, bound the fermion matrix by
+$\|A_s\|$ and apply Cauchy--Schwarz to the sum in $e$.  The term
+with the two boundary indicators is at most
+$\|A_s\|\langle\psi,B_{\ell,F}\psi\rangle$ times
+$L_\theta^2/(2F^2)$.  Summing first over shifts touching a fixed link
+gives \eqref{flux4-local-ims-bound}.
+\end{proof}
+
+These identities are valid localization statements, including in
+nonzero source sectors.  The local partition does not discard its
+branches containing high-flux links.  The global bound
+\eqref{flux4-outside-probability} makes the discarded norm small by
+this argument only when $F^2$ is large compared with $N$ at fixed
+parameters.  A positive pair denominator, in contrast, puts an upper
+bound on $F$ at fixed parameters.  Thus these bounds alone do not
+produce a uniform macroscopic low-energy reduction.
+
+\subsection{Sharp truncations and their boundary terms}
+
+For integer $F\ge0$, compress $H$ to $\operatorname{ran}P_F$ and
+then to the chosen Gauss sector.  Denote this finite matrix by $H_F$;
+an empty compressed physical sector is excluded.  The finite matrices
+are mathematically well defined, but need not have the positive
+electric heat kernel used to prove Theorem~\ref{lat-main}.
+
+\begin{lemma}[Convergence and exact sharp-boundary coupling]
+\label{flux4-sharp-boundary}
+For every admissible source,
+\begin{equation}
+ \inf\sigma(H_F|_{\mathcal H_\nu})\downarrow E_\nu
+ \quad\hbox{as }F\to\infty.
+ \label{flux4-galerkin}
+\end{equation}
+For a shift $s$ define its outgoing boundary projector by
+\[
+ B_{s,F}=P_F\,{\mathbf1}_{\{\exists\ell:
+                         |E_\ell+s_\ell|>F\}}.
+\]
+Then, with $Q_F=1-P_F$,
+\begin{align}
+ Q_FHP_F&=\sum_s U^sA_s B_{s,F},\label{flux4-boundary-identity}\\
+ \|Q_FHP_F\psi\|^2
+ &\le\mathcal J\sum_s\|A_s\|\|B_{s,F}\psi\|^2
+ \le\mathcal J j_{\rm loc}
+       \sum_\ell\langle\psi,
+          P_F{\bf1}_{\{|E_\ell|=F\}}\psi\rangle
+ \quad(\psi=P_F\psi).\label{flux4-boundary-bound}
+\end{align}
+Nevertheless, already on the source-free physical sector,
+\begin{equation}
+ \|Q_FHP_F\|\ge\frac1{2g^2a}
+ \quad\hbox{for every integer }F\ge0.
+ \label{flux4-no-boundary-norm-decay}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Finite electric Fourier sums in the Gauss sector are a form core:
+$P_F$ commutes with $H_E$ and the Gauss projections, and truncation
+converges in the $H_E^{1/2}$ norm.  The remaining terms of $H$ are
+bounded.  Rayleigh--Ritz and this form-core approximation prove
+\eqref{flux4-galerkin}, including eventual nonemptiness.
+
+The diagonal terms have no outgoing component.  For every shift,
+$Q_FU^sA_sP_F=U^sA_sB_{s,F}$, proving the identity.  The triangle
+inequality followed by weighted Cauchy--Schwarz proves its first
+bound.  Since shifts have coordinates $0,\pm1$, an outgoing transition
+must start at $|E_\ell|=F$ for an affected link.  Summing these
+indicators and the local coefficient bounds proves the second bound.
+
+For the lower bound choose the electric basis state $e=Fs_p$ and
+fill the onsite negative-$\beta$ sea.  The state is normalized,
+belongs to $\operatorname{ran}P_F$, and is physical with zero source,
+since $\operatorname{div}s_p=0$ and $q_x=0$.  Its outgoing component
+at electric configuration $(F+1)s_p$ is the magnetic coefficient
+$-b/2$ times that same fermion vector.  No single-link fermion hop
+has this shift; any repeated plaquette coefficient has the same sign.
+This component alone proves \eqref{flux4-no-boundary-norm-decay}.
+\end{proof}
+
+Compression can also create commutators.  For bounded operators $A,B$,
+\begin{equation}
+ [P_FAP_F,P_FBP_F]
+ =P_F[A,B]P_F-P_FAQ_FBP_F+P_FBQ_FAP_F.
+ \label{flux4-compressed-commutator}
+\end{equation}
+Thus even commuting link multipliers can acquire boundary
+commutators after compression.  Dropping them would not be a
+controlled Schrieffer--Wolff calculation.
+
+\begin{lemma}[A sufficient, volume-dependent flux Schur hypothesis]
+\label{flux4-schur}
+Fix a Gauss sector, a real spectral parameter $z$, and a nonempty
+$P_F$ block.  Write $A=P_FHP_F$, $B=Q_FHP_F$, and let $C$ be
+the self-adjoint compression of $H$ to $Q_F$.  A sufficient condition
+for $C-z\ge dI>0$ is
+\begin{equation}
+ d=c(F+1)^2-2Nh_*-z>0.
+ \label{flux4-flux-gap-sufficient}
+\end{equation}
+Under this condition the exact effective operator at $z$ is
+\begin{equation}
+ A-z-B^*(C-z)^{-1}B,
+ \qquad
+ 0\le B^*(C-z)^{-1}B\le d^{-1}B^*B.
+ \label{flux4-flux-schur}
+\end{equation}
+The original $H-z$ is nonnegative if and only if this effective
+operator is nonnegative.  Their null spaces correspond by
+$u\mapsto u-(C-z)^{-1}Bu$.
+\end{lemma}
+\begin{proof}
+On $Q_F$, $H_E\ge c(F+1)^2$, and the bounded perturbation gives
+$C\ge c(F+1)^2-2Nh_*$.  For $u\in P_F$ and a form-domain
+$v\in Q_F$, complete the quadratic form:
+\[
+ \langle u+v,(H-z)(u+v)\rangle
+ =\langle u,[A-z-B^*(C-z)^{-1}B]u\rangle
+ +\|(C-z)^{1/2}[v+(C-z)^{-1}Bu]\|^2.
+\]
+The resolvent bounds and the assertions follow.  All terms preserve
+the chosen Gauss sector.
+\end{proof}
+
+For $z\le E_0+\Delta$, an explicit sufficient version of
+\eqref{flux4-flux-gap-sufficient} is
+$c(F+1)^2>\Delta+N[6(1+r)/a+3/(g^2a)]$.
+This sufficient condition is not claimed necessary.  It does show
+exactly where the available argument retains a volume dependence.
+
+\subsection{What a bounded flux actually proves about pair denominators}
+
+Let $N_{\rm exc}=N_e+N_p$ count particles and holes relative to the
+onsite negative-$\beta$ sea.  The diagonal mass-plus-electric
+reference is
+\begin{equation}
+ D=H_E+\mu N_{\rm exc}-2N\mu.
+ \label{flux4-diagonal-reference}
+\end{equation}
+It omits the magnetic plaquette term and the pair-preserving Wilson
+hopping.  These terms have not been absorbed into a claimed
+diagonal denominator.
+
+\begin{lemma}[The elementary pair denominator on a finite flux cube]
+\label{flux4-pair-denominator}
+Let $A=tU_\ell^\sigma B_+$ be a gauge-invariant elementary hopping
+term that creates one electron--hole pair, where $\sigma=\pm1$,
+$B_+$ is a fermion matrix with $[N_{\rm exc},B_+]=2B_+$, and
+$\|B_+\|\le1$.  On the electric core,
+\begin{equation}
+ [D,A]=A\,[2\mu+c(2\sigma E_\ell+1)].
+ \label{flux4-exact-denominator}
+\end{equation}
+For integer $F\ge1$, every nonzero matrix element of
+$A_F=P_FAP_F$ creates an energy difference for $D$ at least
+\begin{equation}
+ \delta_F=2\mu-c(2F-1).
+ \label{flux4-internal-denominator}
+\end{equation}
+In particular $2\mu-c(2F+1)>0$ is a conservative sufficient
+condition.  If $\delta_F>0$, there is an anti-Hermitian,
+Gauss-preserving operator $S_F$ on $\operatorname{ran}P_F$ with
+\begin{equation}
+ [S_F,D_F]=-(A_F+A_F^*),\qquad
+ \|S_F\|\le\frac{2|t|}{\delta_F},
+ \quad D_F=P_FDP_F.
+ \label{flux4-first-generator}
+\end{equation}
+\end{lemma}
+\begin{proof}
+Since $[E_\ell^2,U_\ell^\sigma]
+=U_\ell^\sigma(2\sigma E_\ell+1)$, the first identity follows
+by adding the two-excitation mass increment.  For an allowed initial
+coordinate $e_\ell$ with $|e_\ell|\le F$, the smallest possible
+$2\sigma e_\ell+1$ is $1-2F$.  The transition achieving this
+value moves toward the interior, so it is also allowed by the final
+cutoff.  This proves the asserted lower bound and its precise
+initial-flux convention.
+
+On $P_F$ put
+$\Delta_\ell(E)=2\mu+c(2\sigma E_\ell+1)$ and define
+$T_F=A_F\Delta_\ell(E)^{-1}$, where the inverse is taken only on
+the finite cube.  It is bounded by $\delta_F^{-1}$ and commutes
+with $D_F$.  Thus $[D_F,T_F]=A_F$.  Taking adjoints shows that
+$S_F=T_F-T_F^*$ has the required commutator and norm.  Both the
+hopping and its electric denominator commute with Gauss operators.
+\end{proof}
+
+For a sum of elementary pair hops the generators may be added, with
+the corresponding sum of norm bounds.  This is an exact first
+homological equation for $D_F$, not a block diagonalization of $H_F$.
+With $g^2=4\pi\alpha$, the exact elementary positivity condition is
+$F<\mu a/(2\pi\alpha)+1/2$; at $\alpha=1/137$ its leading
+coefficient is about $21.8\,\mu a$. This large local threshold is
+consistent with rare field-driven pairs, but it does not provide the
+source-relative global flux budget disproved above.
+In particular, the electric-dependent denominator need not commute
+with the plaquette term.  The pair-preserving terms and the boundary
+commutators in \eqref{flux4-compressed-commutator} still enter the
+transformed Hamiltonian.
+
+\paragraph{The additional spectral statement required for pair elimination.}
+Inside a fixed-charge, fixed-Gauss $P_F$ space, let $P$ project onto
+the chosen no-positron sector and $Q=1-P$.  To apply the same exact
+Schur identity to pairs at a real energy $z$, one needs
+\begin{equation}
+ QH_FQ-zQ\ge d_{\rm pair}Q>0.
+ \label{flux4-needed-pair-block}
+\end{equation}
+It gives a correction
+$PH_FQ(QH_FQ-zQ)^{-1}QH_FP$ bounded above by
+$d_{\rm pair}^{-1}PH_FQH_FP$.  Any expansion of that inverse
+requires a further norm or relative-form bound on the difference
+between its actual block and the proposed reference block.
+Lemma~\ref{flux4-pair-denominator} supplies neither
+\eqref{flux4-needed-pair-block} nor that remainder estimate:
+positive differences for individual transitions do not order the
+spectra of entire blocks, and the no-pair block contains gauge
+excitations.  A charge gap controls $N_e-N_p$, whereas neutral
+pairs change $N_e+N_p$ without changing charge.
+
+The results of this section therefore provide valid cutoff
+localization, explicit boundary control, finite-volume Galerkin
+convergence, and a restricted first pair-elimination equation.
+The source-only electric budget is false for this actual model.
+A macroscopic low-energy comparison with a source-sized error still
+requires dressed-vacuum control and a pair-block resolvent estimate;
+it does not follow by deleting the volume term in
+\eqref{flux4-volume-budget-eq}.

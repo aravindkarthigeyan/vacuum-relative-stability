@@ -1,0 +1,129 @@
+\section{Hamiltonian and exact Gauss sectors}
+\label{sec:model}
+
+Let $X=(\mathbb Z/n\mathbb Z)^3$, $n\ge3$, have spacing $a>0$ and
+$N=n^3$ sites. Each positively oriented link $e=(x,j)$ joins $x$
+to $x+e_j$; write $\mathcal E$ for the $3N$ links. The auxiliary
+Hilbert space is
+\begin{equation}
+ \mathcal H=L^2(U(1)^{\mathcal E},dU)
+       \otimes\F_a(\ell^2(X)\otimes\mathbb C^4).
+ \label{eq:hilbert}
+\end{equation}
+All Haar measures are normalized. On a link, $U_e=e^{i\varphi_e}$
+is multiplication and $E_e=-i\partial_{\varphi_e}$ has spectrum
+$\mathbb Z$. No electric-field truncation is imposed.
+For a coupling $g>0$, put
+\begin{equation}
+ H_E=\frac{g^2}{2a}\sum_eE_e^2,\qquad
+ H_B(U)=\frac1{g^2a}\sum_p(1-\operatorname{Re}U_p).
+ \label{eq:gauge}
+\end{equation}
+Each elementary plaquette is counted once, with
+$U_p=U_{xj}U_{x+e_j,k}\overline U_{x+e_k,j}\overline U_{xk}$,
+$j<k$. There is no background electric shift, topological angle,
+or additional flux-sector projection.
+
+Let $\alpha_1,\alpha_2,\alpha_3,\beta$ be Hermitian $4\times4$
+matrices that square to one and anticommute pairwise. For negative
+fermionic electric charge use the link convention
+\begin{align}
+ (T_j(U)f)(x)&=\overline U_{xj}f(x+e_j),&
+ v_j(U)&=\frac{T_j(U)-T_j(U)^*}{2ia},\nonumber\\
+ M(U)&=m+\frac r{2a}\sum_{j=1}^3(2-T_j(U)-T_j(U)^*),&
+ h_W(U)&=\sum_j\alpha_jv_j(U)+\beta M(U),
+ \label{eq:wilson}\\
+ H&=H_E+H_B(U)+d\Gamma(h_W(U)).&&
+ \label{eq:hamiltonian}
+\end{align}
+The bare parameters satisfy $m\ge0$ and $r\ge0$. Spatial matrices
+commute with the Dirac matrices. Since $T_j(U)$ is unitary,
+\begin{equation}
+ M(U)\ge mI,\qquad
+ \|h_W(U)\|\le h_*:=m+(3+6r)/a.
+ \label{eq:mass-bound}
+\end{equation}
+The first assertion follows from $2-T-T^*=(I-T)^*(I-T)$.
+For $r>0$ this is the usual positive Wilson term; $r=0$ also obeys
+the proof but retains the naive doublers.
+
+The fermion term in \eqref{eq:hamiltonian} is the \emph{raw bilinear}.
+There is no link-dependent vacuum subtraction. In a particle--hole
+representation relative to the negative spectral subspace of
+$h_W(1)$, the scalar $\Tr(P_-(h_W(1))h_W(U))$ is retained.
+Subtracting that function of $U$ changes the model. A common
+source-independent scalar constant may be changed without affecting
+any relative conclusion.
+For $m>0$, $h_W(1)$ has $2N$ positive and $2N$ negative levels.
+The particle--hole transform identifies electron excess with
+$N_e-N_p$; the blocks $P_+h_W(U)P_-$ give electron--positron
+creation and annihilation. They are not removed.
+
+Write $n_x=\sum_{s=1}^4c_{xs}^*c_{xs}$ and $q_x=n_x-2$.
+The physical fermionic charge at $x$ is $-gq_x$.
+For a gauge function $u_x=e^{i\theta_x}$ define
+\begin{equation}
+ U^u_{xj}=u_xU_{xj}\overline u_{x+e_j},\qquad
+ (R_u\Psi)(U)=\Psi(U^u),\qquad
+ W(u)=e^{i\sum_x\theta_xq_x}R_u.
+ \label{eq:gauge-unitary}
+\end{equation}
+Then $h_W(U^u)=u^*h_W(U)u$, so $W(u)$ commutes with each term of
+$H$. Its strongly commuting integer generators are
+\begin{equation}
+ G_x=\sum_j(E_{xj}-E_{x-e_j,j})+q_x.
+ \label{eq:gauss}
+\end{equation}
+For an integer static source $\nu:X\to\mathbb Z$, let
+\begin{equation}
+ \mathcal H_\nu=\{\Psi:G_x\Psi=\nu_x\Psi\ \forall x\},\qquad
+ P_\nu=\int\frac{d\theta}{(2\pi)^N}
+          e^{-i\theta\cdot\nu}W(e^{i\theta}).
+ \label{eq:projection}
+\end{equation}
+This is an orthogonal projection. Gauss's law is
+$\diver E=\nu-q$, so positive sources require electron excess.
+Writing $Q_\nu=\sum_x\nu_x$, one has exactly
+\begin{equation}
+ \sum_xq_x=Q_\nu,\qquad
+ \mathcal H_\nu\ne0\ \Longleftrightarrow\ |Q_\nu|\le2N.
+ \label{eq:capacity}
+\end{equation}
+Necessity follows by summing Gauss's law. Conversely choose
+occupations with that total excess. The integer function $\nu-q$
+has zero sum and is the divergence of an integer flow on a
+spanning tree. Its electric Fourier vector and the occupation
+vector give a physical state. This also shows why integrality
+and finite fermion capacity cannot be suppressed.
+
+\begin{lemma}[Operator realization]
+\label{lem:operator}
+$H$ is self-adjoint on $D(H_E)$, has compact resolvent, and
+$e^{-bH}$ is trace class for every $b>0$. Every nonempty
+$\mathcal H_\nu$ reduces $H$ and has these properties. Moreover
+\begin{equation}
+ H\ge-2Nh_*,\qquad
+ E_0\le-2N(m+3r/a)+3N/(g^2a),
+ \label{eq:extensive}
+\end{equation}
+where $E_\nu=\inf\sigma(H|_{\mathcal H_\nu})$.
+\end{lemma}
+\begin{proof}
+$H_B+d\Gamma(h_W)$ is a bounded continuous Hermitian matrix
+multiplier on the compact link torus. Bounded perturbation of its
+positive Laplacian proves the operator assertions; eigenvalue
+comparison proves trace-class heat semigroups.
+The Hermitian unitary $C_5=\alpha_1\alpha_2\alpha_3\beta$
+anticommutes with $h_W(U)$. Its spectrum is paired under
+$\lambda\mapsto-\lambda$, so
+$d\Gamma(h_W(U))\ge-\frac12\Tr|h_W(U)|\ge-2Nh_*$.
+For the upper bound use the constant link wave function, with the
+two negative-$\beta$ spinors occupied at every site. It has
+$q_x=E_e=0$, hence is in $\mathcal H_0$.
+Hopping expectations vanish; its fermion energy is
+$-2N(m+3r/a)$ and magnetic energy is at most $3N/(g^2a)$.
+\end{proof}
+
+The physical space is obtained by projection from \eqref{eq:hilbert}.
+No factorization into independent physical matter, longitudinal,
+and transverse Hilbert spaces is assumed.

@@ -1,0 +1,127 @@
+\section{Results and scope}
+\label{intro4-section}
+
+Stability relative to an interacting vacuum is a comparison of two
+correlated ground energies. A lower bound proportional to spatial
+volume does not supply that comparison. This paper proves such a
+comparison for a compact Hamiltonian lattice gauge theory and for a
+separately specified momentum-cutoff model. It then distinguishes
+the resulting thermodynamic and low-energy consequences from
+statements requiring new estimates.
+
+\subsection{The gauge-invariant lattice result}
+
+Fix $a>0$, $g^2>0$, $m\ge0$, and $r\ge0$. On the periodic cubic
+lattice $X=(\Z/n\Z)^3$, take one four-component Wilson field and
+compact $U(1)$ links with electric spectrum $\Z$. The full fermion
+Fock space is used; there is no no-pair projection. The Hamiltonian,
+including its raw fermion sea energy, is specified in
+\eqref{lat-hamiltonian}. The physical space with integer static
+source $\nu$ obeys every constraint
+$\operatorname{div}E_x+n_x-2=\nu_x$ and is nonempty exactly when
+$|\sum_x\nu_x|\le2n^3$.
+
+The main source comparison is
+\begin{equation}
+ E_\nu\ge E_0+m\left|\sum_x\nu_x\right|.
+ \label{intro4-main}
+\end{equation}
+Here $E_\nu$ includes the sources' electric self-energy, and $E_0$
+is the exact interacting vacuum energy in the same box. No photon
+mass, electric-flux truncation, weak-coupling assumption, or continuum
+limit is used. For positive labeled nuclei of bounded charge,
+the fixed per-species subtraction
+\[
+ S_\infty=\frac{g^2}{2a}\mathcal G_\infty(0)\sum_iZ_i^2
+\]
+gives
+\begin{equation}
+ E_\nu-S_\infty-E_0
+ \ge mZ_{\rm tot}-\frac{\pi\sqrt3\,g^2}{16a}Z_{\max}^2K .
+ \label{intro4-subtracted}
+\end{equation}
+This normalization is independent of state, positions, and volume.
+A periodic-diagonal convention and its slightly different explicit
+constant are also proved. Lattice sites resolve positions at scale
+$a$; this is not an unregularized continuum point-source claim.
+
+The mechanism is a positive centered finite-CAR determinant, not
+positivity of arbitrary fermion matrix elements. The positive Wilson
+mass makes the Dirac $\beta$ form decrease along the imaginary-time
+propagator. The electric heat kernel and the local gauge projection
+then turn each source into a unit-modulus character. A quantitative
+Fourier bound proves the rest-energy strengthening in
+\eqref{intro4-main}. The finite Fourier prefactor is retained before
+the zero-temperature limit. The general transfer estimate is proved
+in Lemmas~\ref{lem:mass-gap-annulus}--\ref{lem:mass-gap-fourier};
+these forward references do not assume the lattice result.
+
+\subsection{Thermodynamics and a sharply scoped low-energy result}
+
+At fixed $a,g^2,m,r$, the unrestricted auxiliary ground energy equals
+the physical vacuum energy. Cutting the auxiliary tensor-product
+space therefore proves existence of the vacuum energy density,
+with an explicit surface correction. No factorization of the
+Gauss-constrained physical Hilbert space is assumed. For a fixed
+admissible periodic source cell, a screening-flow trial state gives
+two-sided source-relative bounds. A separate tiling argument gives
+a thermodynamic limit for open boxes with zero boundary flux.
+Identifying this density with the periodic-source limit still
+requires a boundary-sector comparison; the missing statement is
+specified in Section~\ref{therm4-section}.
+
+At frozen links the positive Wilson bands admit an exact
+Schur-complement comparison with
+\[
+ K(U)=R(U)+\frac{S(U)^2}{2m}.
+\]
+The addition-energy error is proportional to the number of added
+particles, uniformly in lattice size and frozen links.
+This does not integrate out pairs in the quantized gauge theory.
+For the unimproved discretization, the small-momentum coefficients are
+\[
+ m_{\rm kin}=\frac{m}{1+rma},\qquad
+ g_{\rm eff}=\frac{2}{1+rma}.
+\]
+The magnetic statement is a controlled smooth-field, low-momentum
+matching coefficient, not a finite-coupling measurement of the
+interacting anomalous moment. Explicit scale inequalities include
+nuclear charge. A bounded magnetic clover modification can restore
+the tree-level coefficient while preserving determinant positivity
+in a stated bare-parameter range.
+
+Two proposed dynamical shortcuts are false. Every eigenvector of
+the compact model has infinite electric Fourier support, and no
+vacuum eigenvector is the bare on-site sea. Thus a source-only bound
+on bare high-flux tails or bare pair number cannot have zero
+right side in the source-free vacuum. Smooth electric localization,
+an explicit virtual-pair density bound, and the local-annihilation
+remainder lemma are proved instead. The remaining dressed
+pair-block resolvent and source-relative remainder estimates are
+stated as open hypotheses, not consequences of locality.
+
+\subsection{The separate momentum-cutoff comparison}
+
+Sections~\ref{sec:model}--\ref{pos-section} retain continuum point
+nuclei but use a sharp finite fermion momentum band, finite transverse
+photon modes, and an explicit periodic Coulomb convention.
+The harmonic photon zero mode is fixed. A positive effective mass
+gives the canonical vacuum comparison, and heat-kernel electrostatics
+gives $E(R,Z)-E^{\vac}\ge-C_\Lambda K$ in the stated box-size range.
+The photon-coordinate limit is justified in quadratic-form and
+trace-norm terms.
+
+For the specified free-sea four-field Wick ordering, a sufficient
+criterion uniform over all boxes permits $\Lambda_f/m<5168.21$ at
+$\alpha=1/137$. The sharper logarithmic estimate has a mesh error;
+an explicit coarse-box example prevents an all-volume exponential
+window by that estimate. Positive density-product ordering is a
+different Hamiltonian prescription with no such mass window.
+Neither prescription is asserted to be a renormalized physical
+QED construction.
+
+The lattice and momentum models have different regulators and
+different self-energy conventions. Their constants are not
+interchanged. A charge gap is not a neutral pair gap; an extensive
+vacuum density is not binding; and none of the present source costs
+is uniform in the ultraviolet cutoff at fixed physical parameters.

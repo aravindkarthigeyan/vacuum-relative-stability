@@ -1,0 +1,12 @@
+{
+  "seed": 20261028,
+  "determinant_trials": 100,
+  "exact_canonical_energy_comparisons": 432,
+  "minimum_centered_trace": 0.014939983604141357,
+  "maximum_relative_imaginary_part": 1.3434798076282305e-14,
+  "maximum_C5_preservation_error": 2.4587462973174067e-14,
+  "minimum_beta_decrease_eigenvalue": 0.3503178036713248,
+  "minimum_completed_square_energy_margin": 0.07528042128622969,
+  "maximum_Wick_expectation_error": 8.93902333649171e-16,
+  "status": "passed; finite numerical checks, not a proof"
+}

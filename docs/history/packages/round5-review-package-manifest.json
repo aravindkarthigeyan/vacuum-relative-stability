@@ -1,0 +1,848 @@
+{
+  "archive": "round5-review-package.zip",
+  "bytes": 3401065,
+  "sha256": "a4550b182bbcf816cb93af1f8f05c33cf0851ba3bdc472d14e5cd24118e82e22",
+  "included_files": [
+    {
+      "path": "ARXIV_PREPARATION.md",
+      "bytes": 2665,
+      "sha256": "71d264a04359d18743aa3440fdfc268dd743ea5175fad1f3172e0fbba1c8f00f"
+    },
+    {
+      "path": "AUDIT_AGENT_REPORTS.md",
+      "bytes": 3244,
+      "sha256": "27d61605ddc2adf377a4457e081d2868d82822cc96a28ed22ec5623f53b44c70"
+    },
+    {
+      "path": "AUDIT_REPORT.md",
+      "bytes": 6334,
+      "sha256": "622e8ad0a1495bfc6669ccef66e50b9ea099db6855b84fa6b76d2851a4c68d8f"
+    },
+    {
+      "path": "CODEX_HANDOFF.md",
+      "bytes": 6955,
+      "sha256": "ed546207f37343384ca3c7d1b7d0e4adab2263c995b00f09369c982a952c70b2"
+    },
+    {
+      "path": "CODEX_NEXT_TASKS.md",
+      "bytes": 7204,
+      "sha256": "f2706b2079c023eed63cf70b42bf7d03c3c498bc95c4dbe1829d23b0b2fc72d9"
+    },
+    {
+      "path": "CODEX_NEXT_TASKS_2.md",
+      "bytes": 7870,
+      "sha256": "7126eb0c06e434bbc73007827a3ecad328ffbafcfcbc46fc56400d9b96213270"
+    },
+    {
+      "path": "CODEX_NEXT_TASKS_3.md",
+      "bytes": 7598,
+      "sha256": "4a956ac371a09cf83f611537f4058449f7916f28448a067079124dd8e2a0efc9"
+    },
+    {
+      "path": "CODEX_NEXT_TASKS_4.md",
+      "bytes": 5355,
+      "sha256": "0d264cb554d7a1bfc5f3361d1c0e877ebff9a8f79deeff30cef24d953171264d"
+    },
+    {
+      "path": "CODEX_NEXT_TASKS_5.md",
+      "bytes": 4570,
+      "sha256": "1b2b42497a04af60ed04b3ee141cbdd7febadb7453b1ef5f479b0ebdbb8d4e2c"
+    },
+    {
+      "path": "CURRENT_RESEARCH_REPORT.md",
+      "bytes": 6565,
+      "sha256": "f372b7a07f32ab6f522ed3b00436088f7a2b4aae03d98d3e7c935549b3fc4f0d"
+    },
+    {
+      "path": "FREE_DIELECTRIC_AGENT_REPORT.md",
+      "bytes": 13480,
+      "sha256": "5e0f6b1c856f67ba75238d75f9038dcd3192bc2a20d98ef96ded65215baaef3c"
+    },
+    {
+      "path": "GD_DETERMINANT_AGENT_REPORT.md",
+      "bytes": 17990,
+      "sha256": "c6a7d3f837b54b3077f35740e921d909a4c7c7d92b63a222fe6ec23e48687a34"
+    },
+    {
+      "path": "HARDENING_LITERATURE_ROUND2_REPORT.md",
+      "bytes": 19691,
+      "sha256": "39bdceb56f0d33ef55103144fb7dda92f6b97202b16b27cf357c4eda218dee81"
+    },
+    {
+      "path": "LATTICE_ROUND2_REPORT.md",
+      "bytes": 13149,
+      "sha256": "026a9b4bb0ae42ba8cd68b4ea3b01d8d73d9fd039941771b461a73680fa03ca9"
+    },
+    {
+      "path": "MASS_GAP_ROUND2_REPORT.md",
+      "bytes": 8721,
+      "sha256": "43f4a5457cf0a515c72ce3e3e5fcb547048c5cafd7e7cc403370ab7ce8169731"
+    },
+    {
+      "path": "NEXT_STEPS_AGENT_REPORTS.md",
+      "bytes": 3618,
+      "sha256": "d3988b1a9d16c134b4d69962c72003479d9ac318a14dd80f241184e460864c8c"
+    },
+    {
+      "path": "NEXT_STEPS_REPORT.md",
+      "bytes": 5073,
+      "sha256": "e1618e08d9842ac6e0e998490efe9b9029b2b1d3938bb08f7da3598aa708265c"
+    },
+    {
+      "path": "NR_FREE_AUDIT_ROUND3.md",
+      "bytes": 16192,
+      "sha256": "1299bf6312718bf0ab755998ee328038f16e6afee63872778e855090ff9fdf6a"
+    },
+    {
+      "path": "NR_SW_OBSTRUCTIONS_ROUND3.md",
+      "bytes": 13384,
+      "sha256": "40a11618406d471c4b2a01d01f065d398eb2165d191ff83ba462821393425a8f"
+    },
+    {
+      "path": "PHOTON_EXTENSION_AGENT_REPORT.md",
+      "bytes": 7685,
+      "sha256": "09ac8220471b85a659daad5f2f3aebf8d173e08f85857e57d17ad6d65be06fb0"
+    },
+    {
+      "path": "README.md",
+      "bytes": 5405,
+      "sha256": "adcadcd065f04bee6640ca63f5cb0cc4fb06c7432367b243a4aae413704b18f3"
+    },
+    {
+      "path": "ROUND3_RESEARCH_REPORT.md",
+      "bytes": 7505,
+      "sha256": "d3c8b24ce7fa4e5cb15e39c395f49d2407981d1460bd9edae93c1c8cac023d08"
+    },
+    {
+      "path": "ROUND4_DELIVERY_CHECKS.md",
+      "bytes": 1717,
+      "sha256": "d74c325529a2948b7983de438a1fb5166652a8faed4b5f52318577f77b75d322"
+    },
+    {
+      "path": "ROUND4_FLUX_REPORT.md",
+      "bytes": 12235,
+      "sha256": "480ae68495f7e1df30b98de831ed5297c624ebdda64f590cb8ca613db23e4949"
+    },
+    {
+      "path": "ROUND4_INDEPENDENT_AUDITS.md",
+      "bytes": 2653,
+      "sha256": "dc4d4052c53bf353144a2cd37bfc51f88a97e9e14e10708bc6c20a00b31bcb99"
+    },
+    {
+      "path": "ROUND4_MATCHING_REPORT.md",
+      "bytes": 9904,
+      "sha256": "0f10b9557c8bed22b3d9c8202ec836b5a741509a4de2810f8a6784be717d8f6b"
+    },
+    {
+      "path": "ROUND4_RESEARCH_REPORT.md",
+      "bytes": 8720,
+      "sha256": "ec9fd482ca6089ef834abbb7fac1dacc6e9795606a7d8527aa99ac7efe8a1cea"
+    },
+    {
+      "path": "ROUND4_THERMODYNAMICS_REPORT.md",
+      "bytes": 12073,
+      "sha256": "931226b007aa57e393b09cfdc57ef490a4a362687b47387a35c353112daa621a"
+    },
+    {
+      "path": "ROUND5_COMPANION_REPORT.md",
+      "bytes": 2266,
+      "sha256": "5735c05690d71617bacd22c58f0d2b3838e3ca1272e75172a19333e5c6832620"
+    },
+    {
+      "path": "ROUND5_LEAN_REPORT.md",
+      "bytes": 6134,
+      "sha256": "3a9c3576267248ca5c0ff709f6815bb74980761118105f463c5c9c326e03c18c"
+    },
+    {
+      "path": "ROUND5_PAPER_A_REPORT.md",
+      "bytes": 11016,
+      "sha256": "e68246615b097cd48f9fe23c617f2ff8b1371403621d9a1b7e3f2c9015377512"
+    },
+    {
+      "path": "ROUND5_PAPER_B_REPORT.md",
+      "bytes": 13339,
+      "sha256": "a821fb534627eb5853e285fa8709017717c916809b20a79c300a6592e7edb1d3"
+    },
+    {
+      "path": "ROUND5_REVIEW_HANDOFF.md",
+      "bytes": 6325,
+      "sha256": "e1a0762ccfc4211fb3beb98b361cd95455b55ec052cc03da689e7cb064c39c3b"
+    },
+    {
+      "path": "ROUND5_VERIFICATION.json",
+      "bytes": 927,
+      "sha256": "144181f424b58e2cf9ffd2771cde505f69d5d667918b8c1f25998fdfc16b247d"
+    },
+    {
+      "path": "SPECIALIST_REVIEW_REQUEST.md",
+      "bytes": 3417,
+      "sha256": "f1085831b403fb5ea5673e7246bec54eb088db6eda62c89842d59472e76db53e"
+    },
+    {
+      "path": "THERMODYNAMIC_LIMIT_ROUND3.md",
+      "bytes": 7974,
+      "sha256": "282fbebc93b518e92fad8049ed0a3baeca967b9de89e1505e602e6e342884985"
+    },
+    {
+      "path": "VALIDATION_LITERATURE_ROUND3.md",
+      "bytes": 8687,
+      "sha256": "05236f9fd16ae6551c834b859033e3555dc2f1e15ae8dbc9e5641518f4dfca9a"
+    },
+    {
+      "path": "companion-notes-manifest.json",
+      "bytes": 1615,
+      "sha256": "5d39079b001147be7f7207274c9f3e46293b13ba10355bb188d8fb181ec5aeba"
+    },
+    {
+      "path": "companion-notes-sources.zip",
+      "bytes": 27420,
+      "sha256": "d74d60b1f6ab83a2c6b3f85ad4c5097c115bc7b245b427e25a86e298b50621b1"
+    },
+    {
+      "path": "companion-notes/build.ps1",
+      "bytes": 734,
+      "sha256": "d7a061a2afd84e83a7ce6ca4bf9416c77ae816bb8243c2aa0cbc8e0b0d3f835e"
+    },
+    {
+      "path": "companion-notes/companion-notes.pdf",
+      "bytes": 418563,
+      "sha256": "5a2fbe72d148a80972e1c25a47e40a13435f16fc6b1980fa66d8cadc999f88c3"
+    },
+    {
+      "path": "companion-notes/electric-localization.tex",
+      "bytes": 21476,
+      "sha256": "5c1886a972f9300f4e349766c0451db78f17cbee4fb11474bd6ec05decf33a50"
+    },
+    {
+      "path": "companion-notes/low-energy-matching.tex",
+      "bytes": 20636,
+      "sha256": "da8822d9810d7dc6d2b4895ebb55b7a476ab8b4031b81dbb30d42c6f04f49c47"
+    },
+    {
+      "path": "companion-notes/main.tex",
+      "bytes": 3062,
+      "sha256": "22fb61917e1608d71281c58cc5373c2954168798bc9668a1d028044c9ab9e262"
+    },
+    {
+      "path": "companion-notes/model.tex",
+      "bytes": 4439,
+      "sha256": "d5b3ddeee2593d4b1de27ce993bd41c1dbafe8a0f6aa04614e6886ffb99f2225"
+    },
+    {
+      "path": "companion-notes/references.tex",
+      "bytes": 1593,
+      "sha256": "fc844c640d361500b7b09baa74dea0eb3219c349a481698776836ac442b5cb99"
+    },
+    {
+      "path": "companion-notes/scope.tex",
+      "bytes": 2156,
+      "sha256": "bc5fc2235f1d289039f888ba3a30f18fa2a579042a1496af72222942e068d616"
+    },
+    {
+      "path": "companion-notes/source-relative-remainders.tex",
+      "bytes": 10425,
+      "sha256": "b543e4eb7b5349a166aad2e68749a5ef777d7d364991973a0c39dc26bb86e9ba"
+    },
+    {
+      "path": "companion-notes/verification.json",
+      "bytes": 437,
+      "sha256": "36c8e6e501d79d6f18ee925b7ba020e3da1891f25338c248f26a47d7ef28d748"
+    },
+    {
+      "path": "lean-core/.gitignore",
+      "bytes": 34,
+      "sha256": "21a6a02bbcb5d07e12ec32db3d1f1cdfd83b4cccb3eca5cc9716ca8a1f30c8e6"
+    },
+    {
+      "path": "lean-core/Audit.lean",
+      "bytes": 1232,
+      "sha256": "ce128d4924188d5b18f474dffd0bcdea76e8a417276f32010285e851a707b10e"
+    },
+    {
+      "path": "lean-core/Core.lean",
+      "bytes": 136,
+      "sha256": "6d36dfe8aa561c871c1516e04a02e235c530dea87db520d63a91537559469443"
+    },
+    {
+      "path": "lean-core/Core/CanonicalComparison.lean",
+      "bytes": 2094,
+      "sha256": "859273647e12650ed5886be520ec0b8e433c8eef63a184e63af2930fae5a1f2d"
+    },
+    {
+      "path": "lean-core/Core/Coefficients.lean",
+      "bytes": 5548,
+      "sha256": "5924db169455f420e7838594862757120e648809e03bc45e5b312d0c137a2e21"
+    },
+    {
+      "path": "lean-core/Core/Eigenvectors.lean",
+      "bytes": 1726,
+      "sha256": "3280f2acb0987c361795de4ad3d539d91db98aa35bf7e03baf881624d3aea1a4"
+    },
+    {
+      "path": "lean-core/Core/PositiveMeasure.lean",
+      "bytes": 1063,
+      "sha256": "76d3e10e0cd4e8c3e1a0cc53c97e241a114f71666aea2f83e7fd875950d0d8da"
+    },
+    {
+      "path": "lean-core/Core/PseudoUnitary.lean",
+      "bytes": 2796,
+      "sha256": "87b20ccb6c8ba2f5cf2d33b4866e23b276503423b4b7adeeebe4f7777e8ad0aa"
+    },
+    {
+      "path": "lean-core/README.md",
+      "bytes": 8169,
+      "sha256": "1c4252ed6dfd3c168734463d17d87d3d33d06654459cfff4082173b8c4580860"
+    },
+    {
+      "path": "lean-core/SOURCE_SHA256SUMS.txt",
+      "bytes": 1181,
+      "sha256": "d25d3f0d59c6471a65219f1739c0e67b6f7f374d51cf7fff3e1e2b6d9b0e6dfa"
+    },
+    {
+      "path": "lean-core/build.ps1",
+      "bytes": 1149,
+      "sha256": "027851cdda90a0a7f227588d4412b9549bfefe1865250471420d26898ce28d62"
+    },
+    {
+      "path": "lean-core/dependencies.json",
+      "bytes": 1253,
+      "sha256": "5c7a5e14ee212f1ce50ee51af231a52a2dd50fc8531b411d03962b280a80447b"
+    },
+    {
+      "path": "lean-core/lake-manifest.json",
+      "bytes": 2965,
+      "sha256": "5a65f7a2297db4b473c0e70b5710a89be28361e52dc8980925219eb54b9d013d"
+    },
+    {
+      "path": "lean-core/lakefile.lean",
+      "bytes": 168,
+      "sha256": "49173060a8a14da5498696c4053ee42b143c0ba1857b07db75463324d847eb2a"
+    },
+    {
+      "path": "lean-core/lean-toolchain",
+      "bytes": 25,
+      "sha256": "55e97be96000b5e9e290c9e74482e5e317861499a5540353ce845471bded8cea"
+    },
+    {
+      "path": "lean-core/logs/axioms.log",
+      "bytes": 2077,
+      "sha256": "3b21f37cf166b1f5b538633a6b0343a285d505ee9907bad3e032905a7eb9a2db"
+    },
+    {
+      "path": "lean-core/logs/build-initial.log",
+      "bytes": 377,
+      "sha256": "aa4affa9f75d37d42eb8ccf29f8ed17c326b06e33195bfbc4ce880e8b18ad19a"
+    },
+    {
+      "path": "lean-core/logs/build-second.log",
+      "bytes": 148,
+      "sha256": "617f1be310984293dc1d9f0d753f42dfe00d81d1b78e3ca7ed5e5839000ab2fb"
+    },
+    {
+      "path": "lean-core/logs/build.log",
+      "bytes": 31,
+      "sha256": "8cfb9033d39a87fb69c12eae73c7237e2f0c76f7fe05a5c65df40cf071c49c90"
+    },
+    {
+      "path": "lean-core/logs/cache.log",
+      "bytes": 95,
+      "sha256": "2cc0e3993ed0dd181427be3b5d2afd9ddf821cb7afc90789c94fc7a331b0d49a"
+    },
+    {
+      "path": "lean-core/logs/root-recheck.log",
+      "bytes": 2108,
+      "sha256": "1d9614283176fb04384e5fea3b5b6197ac9a6edc521efab91fee0784ce72ec1c"
+    },
+    {
+      "path": "lean-core/logs/setup.log",
+      "bytes": 186,
+      "sha256": "5b525408cfecfc93515028818a0c63e364df63ea64e11096f51da4958451f5ab"
+    },
+    {
+      "path": "lean-core/logs/verified-at-utc.txt",
+      "bytes": 22,
+      "sha256": "d3188a738261853767c988230c70ffe3ad6b71fe7531933121bff794cd02a1bd"
+    },
+    {
+      "path": "lean-core/setup.ps1",
+      "bytes": 2490,
+      "sha256": "3df080cc0a8563945e91af174f30560c198d7cea07d16afaea18d91fcb3f4046"
+    },
+    {
+      "path": "numerics/audit_constants.py",
+      "bytes": 1545,
+      "sha256": "65e6a5869a6ada66571b765c43dc38b0fdda0c25a4e5052375bf7962448fe975"
+    },
+    {
+      "path": "numerics/check_gaussian_domination.py",
+      "bytes": 5294,
+      "sha256": "989b6259923e48aaa1a14205139f60f9f70e75814d0f529fb3e4b862d87dac00"
+    },
+    {
+      "path": "numerics/chi0_closed_form.py",
+      "bytes": 199,
+      "sha256": "c48a0c05133fd20637c3e77da3b2e7089341828790c700bda29bdf9a63958a9c"
+    },
+    {
+      "path": "numerics/chi_q_dependence.py",
+      "bytes": 882,
+      "sha256": "3b229e94ddb6723e5d7082617845ee48d0b7dbd0758e458849cd3f96cb34d40e"
+    },
+    {
+      "path": "numerics/chi_susceptibility.py",
+      "bytes": 1198,
+      "sha256": "6eda054ff1929418e3fa63cb1113d992bf6deb00417ec712cad3677596f3c7bc"
+    },
+    {
+      "path": "numerics/claude_charge_gap_toy.py",
+      "bytes": 838,
+      "sha256": "0d61da6235f63ad69be4e9df8468ed66ac003aceb0da5abc8992c1a198bed5bf"
+    },
+    {
+      "path": "numerics/claude_charge_gap_toy.py.output.txt",
+      "bytes": 56,
+      "sha256": "01db8a71ad80a8a259281ee0e3f957201de379a2664991c3ed3c46c4750bcf7b"
+    },
+    {
+      "path": "numerics/claude_gd_indefinite_mass.py",
+      "bytes": 1168,
+      "sha256": "8722513aae07c1e367df8cad138016922b888abdc3ee38702ec47b04e629bba4"
+    },
+    {
+      "path": "numerics/claude_gd_indefinite_mass.py.output.txt",
+      "bytes": 147,
+      "sha256": "a466f5f1a71d122742a791bf204d30506dfead100f9aa088b2c8dbb79c6a68c7"
+    },
+    {
+      "path": "numerics/claude_gd_random_check.py",
+      "bytes": 2967,
+      "sha256": "c6011f62599d87f5dbf4fdae232c13e1b2618ae0e1c966208714b8b783cad3fe"
+    },
+    {
+      "path": "numerics/claude_gd_random_check.py.output.txt",
+      "bytes": 179,
+      "sha256": "35713a98f93ff8202d93f6a29c98faf9c366ae14ee306b955fe1e15003a668dc"
+    },
+    {
+      "path": "numerics/claude_lattice_1d_gauss_check.py",
+      "bytes": 2096,
+      "sha256": "f711911f926a2c3f9c50fe3ec6c6998a1112b7b9f12f1ff52ca7cf344c2b2226"
+    },
+    {
+      "path": "numerics/claude_lattice_1d_gauss_check.round3.output.txt",
+      "bytes": 124,
+      "sha256": "2c598e3d1097f91880c911e09248d38c23ab152dc7f258bd095d8653022f4b07"
+    },
+    {
+      "path": "numerics/claude_lattice_1d_scalar_control.py",
+      "bytes": 2148,
+      "sha256": "b9f65ab3bb3f271128ff568a0b45f167603f2a8c0cbfe91c7db97696f73f617a"
+    },
+    {
+      "path": "numerics/claude_lattice_1d_scalar_control.round3.output.txt",
+      "bytes": 125,
+      "sha256": "785b41e73197a5189bcda9b682b397b5dc9e9200b5befefd248d8b5264ec4829"
+    },
+    {
+      "path": "numerics/claude_meff_lattice_sum.py",
+      "bytes": 668,
+      "sha256": "9240ede3343db5fb3bcc5336c1f31735c303eeb8ad4f54807986481e34494738"
+    },
+    {
+      "path": "numerics/claude_meff_lattice_sum.py.output.txt",
+      "bytes": 370,
+      "sha256": "5b26547b8a2155bff3417a0ac2f1bfe344d7824959be3cd916c5170931843690"
+    },
+    {
+      "path": "numerics/claude_scripts_reproduction.json",
+      "bytes": 1206,
+      "sha256": "282404c1d68502941b2c988d9b8a421aac9bd6d821165f5d587d63394790773f"
+    },
+    {
+      "path": "numerics/ewald_madelung.py",
+      "bytes": 1341,
+      "sha256": "a75ce36bd85411f4d6274c3d98e84dfe32d346f98c741ca5d7923632f0e41e65"
+    },
+    {
+      "path": "numerics/gaussian_domination_checks.json",
+      "bytes": 518,
+      "sha256": "7a53c5d9cbd03e7ed1a442c8490c861d8be80e883e1c3ca1a7a5bbe8ef149081"
+    },
+    {
+      "path": "numerics/round2_mass_gap_checks.json",
+      "bytes": 327,
+      "sha256": "55887970f47cf6909ebac2b45c0aad5df8cd6ebb4ab6ded0b5c97514b8293808"
+    },
+    {
+      "path": "numerics/round2_mass_gap_checks.py",
+      "bytes": 3791,
+      "sha256": "f08e0b25df9c6a16365776429197aac85b782cc27f1cabdf868e134d76f5f24b"
+    },
+    {
+      "path": "package_round5.py",
+      "bytes": 7157,
+      "sha256": "1e63c043415bf8824ca57c3efd516b493b2cf9a1417171f566b0c9023a471d1a"
+    },
+    {
+      "path": "paper-a-lattice-manifest.json",
+      "bytes": 1430,
+      "sha256": "370d03cd4851657d52185b79d5f39e68488b4d91169e27ad20ec9949c7b423a9"
+    },
+    {
+      "path": "paper-a-lattice-sources.zip",
+      "bytes": 18309,
+      "sha256": "31e702ba28f0051e4750c1c45b69fbebe00055637b228576685b00e980cffb6c"
+    },
+    {
+      "path": "paper-a-lattice/build.ps1",
+      "bytes": 719,
+      "sha256": "834069a614b02dc524eccade58555b25f03e43291848356ac89d0d441f942296"
+    },
+    {
+      "path": "paper-a-lattice/comparison.tex",
+      "bytes": 8134,
+      "sha256": "1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273"
+    },
+    {
+      "path": "paper-a-lattice/main.tex",
+      "bytes": 5136,
+      "sha256": "ed741955104fb9d5368d3b01a2af91dbea17ebccc6e49f4457eb7f56bf2758cc"
+    },
+    {
+      "path": "paper-a-lattice/model.tex",
+      "bytes": 5234,
+      "sha256": "2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e"
+    },
+    {
+      "path": "paper-a-lattice/paper-a-lattice.pdf",
+      "bytes": 415085,
+      "sha256": "1d1ffcf31ce34de6080d6f85d64a007630efa41f80c4305a31ff652e2aff35bc"
+    },
+    {
+      "path": "paper-a-lattice/references.tex",
+      "bytes": 2189,
+      "sha256": "ec11e40b6d8e9f6e097a754bf987d6ac0569bb690e877fa68978585acefadd48"
+    },
+    {
+      "path": "paper-a-lattice/thermodynamics.tex",
+      "bytes": 14449,
+      "sha256": "56b29baca17406cb1800315140ae725fc838ec89b5f15813580452a1e2adafcb"
+    },
+    {
+      "path": "paper-a-lattice/transfer.tex",
+      "bytes": 4884,
+      "sha256": "b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf"
+    },
+    {
+      "path": "paper-a-lattice/verification.json",
+      "bytes": 443,
+      "sha256": "2987960ed0491056b520320dc222fe6e5e65a56bad9007bd42875fb6ac07e8a7"
+    },
+    {
+      "path": "paper-b-momentum-manifest.json",
+      "bytes": 2724,
+      "sha256": "b49cee6895805d99339c1ed2d7dd3adbd4b3f6d459b0a8eb5c750f513bb140c6"
+    },
+    {
+      "path": "paper-b-momentum-sources.zip",
+      "bytes": 71678,
+      "sha256": "c278a6fb517b683bb569fcf0359f2736bdeaf6580bad85a42382814ceec30a03"
+    },
+    {
+      "path": "paper-b-momentum/absolute-bounds.tex",
+      "bytes": 5053,
+      "sha256": "c8872329868a7e03e82286593bbeef9149c0e4b564bee134e7c859eb8f1927d1"
+    },
+    {
+      "path": "paper-b-momentum/build.ps1",
+      "bytes": 703,
+      "sha256": "628c631af17f3b2fe75ed2c0f73629f2efc76b813dd5ad1f66b511e86ed11659"
+    },
+    {
+      "path": "paper-b-momentum/exchange-instability.tex",
+      "bytes": 18191,
+      "sha256": "7a57ea7bce26e2994ab03054aab379d8acbdf7a447604ff5d30bafc829c59588"
+    },
+    {
+      "path": "paper-b-momentum/free-dielectric.tex",
+      "bytes": 9436,
+      "sha256": "a9c66696c43cadf6135f4d28b58e2bc9d8a189e9bd87ad59a4013379bfe65c9a"
+    },
+    {
+      "path": "paper-b-momentum/interpretation.tex",
+      "bytes": 8663,
+      "sha256": "695b3014205aa2f025800f4ac0ec25cf381e11000b25f9cbbcf0fca13f5d8fbd"
+    },
+    {
+      "path": "paper-b-momentum/introduction.tex",
+      "bytes": 5021,
+      "sha256": "6f3516232313914bddb2af17d0e26b0a2cf4a455ff7eebbd1c99e1bc09fd872b"
+    },
+    {
+      "path": "paper-b-momentum/main.tex",
+      "bytes": 4065,
+      "sha256": "79fb3bd28a82c1925d1b8733cfadb268dd36208a878da6271684bdc9bfcfa581"
+    },
+    {
+      "path": "paper-b-momentum/mass-gap.tex",
+      "bytes": 16936,
+      "sha256": "5731dd1349e334090e2e5f9a089cffb035bd6db50f297fa35ff878ce3c450b75"
+    },
+    {
+      "path": "paper-b-momentum/mean-field.tex",
+      "bytes": 22646,
+      "sha256": "46055400b5c0077f1b91c78947181782160ce5c3f98f403d624c99f028411e30"
+    },
+    {
+      "path": "paper-b-momentum/paper-b-momentum.pdf",
+      "bytes": 783685,
+      "sha256": "5bd92a57c5040a83f3a42f199e62e2c52228d55f56cda86f04ada8d8685984d9"
+    },
+    {
+      "path": "paper-b-momentum/photon-extension.tex",
+      "bytes": 18760,
+      "sha256": "96aa47c65957e7d75e1e5311eecd9d18ec20fb624e0061275787d5abe0456327"
+    },
+    {
+      "path": "paper-b-momentum/proof.tex",
+      "bytes": 17535,
+      "sha256": "a56877d725d86b2aec55e0deb4fd2e16ce5e9f6d2910c9dad1444bcaf77a880d"
+    },
+    {
+      "path": "paper-b-momentum/references.tex",
+      "bytes": 6613,
+      "sha256": "ade36bcffbf5bf9c43061a4741e3cac264ab09864259377bcb1549939d4832d0"
+    },
+    {
+      "path": "paper-b-momentum/static-response.tex",
+      "bytes": 22802,
+      "sha256": "950e6184a4cdcea678035a9f207a5d63f81595c4c5aff0aa18d1efa009bc119d"
+    },
+    {
+      "path": "paper-b-momentum/ultraviolet-obstruction.tex",
+      "bytes": 13769,
+      "sha256": "50ae29e86ba6644e4adddaad05f50d28b952b131b4f238b37a759c536e0ce409"
+    },
+    {
+      "path": "paper-b-momentum/vacuum-obstruction.tex",
+      "bytes": 4250,
+      "sha256": "46007702af87f2f268126f029511c2f328964a8f7f64c55d35afcbde6ffa5221"
+    },
+    {
+      "path": "paper-b-momentum/verification.json",
+      "bytes": 444,
+      "sha256": "d16da3d15f2fe5e8b8411d2fa9116b13082decba121c17c50cb3b474cffbd842"
+    },
+    {
+      "path": "prepare_companion.py",
+      "bytes": 3522,
+      "sha256": "e43ba10c022507b2b2f4355f2269b4021eafc09c50584d7bff96e74a17cefa6a"
+    },
+    {
+      "path": "stability-qed-paper/README.txt",
+      "bytes": 5456,
+      "sha256": "6c7d27f1383804bf1ce98f5aca09617266867982e3215ec1a8322f1db61fd5b4"
+    },
+    {
+      "path": "stability-qed-paper/appendix-finite-cutoff.tex",
+      "bytes": 19162,
+      "sha256": "242dcd8af188791b31f5c11760b33add8078dbeb05f92512ceba291b23f1b9eb"
+    },
+    {
+      "path": "stability-qed-paper/appendix-qed-literature.tex",
+      "bytes": 12372,
+      "sha256": "0d851e5ba82735e75a19b174a91c284eb44681d028038a41f4d61770a931a335"
+    },
+    {
+      "path": "stability-qed-paper/appendix-relativistic-literature.tex",
+      "bytes": 12245,
+      "sha256": "51709e4deaa655fb7a59834692e1be032497c93d698cca53dfd103e2a669ee4d"
+    },
+    {
+      "path": "stability-qed-paper/build.ps1",
+      "bytes": 780,
+      "sha256": "9950d211c637f76619b29b0c2fe9e1840d3f53ee58424c0a2c9df58b7085eaf0"
+    },
+    {
+      "path": "stability-qed-paper/continuation-meanfield.tex",
+      "bytes": 22614,
+      "sha256": "ddf1948a9582fac160d7ddab973357d04999a9bb275d4164ab49058e1256db08"
+    },
+    {
+      "path": "stability-qed-paper/continuation-photons.tex",
+      "bytes": 22871,
+      "sha256": "eb9ce10a6bb9c386c983581c1d37f56ffc6ca0d3f87eee23e93c8c0b07f71f58"
+    },
+    {
+      "path": "stability-qed-paper/continuation-program.tex",
+      "bytes": 11348,
+      "sha256": "f7c1247376f6cef98dbeb41d62d57c02bbe8b741fd00e0d56c9dc0037f433ae1"
+    },
+    {
+      "path": "stability-qed-paper/main.tex",
+      "bytes": 5502,
+      "sha256": "a755dc55fd9ca558af4a70cf0b85cd7e1d216b74b0f06aa8901b9f9b61f186b9"
+    },
+    {
+      "path": "stability-qed-paper/next-conclusions.tex",
+      "bytes": 6524,
+      "sha256": "9e26c07bab0c280acb67913fcb0b030fc57b0e4947976ece448b1b79d53de463"
+    },
+    {
+      "path": "stability-qed-paper/next-photon-vacuum.tex",
+      "bytes": 18191,
+      "sha256": "7a57ea7bce26e2994ab03054aab379d8acbdf7a447604ff5d30bafc829c59588"
+    },
+    {
+      "path": "stability-qed-paper/next-screened-lattice.tex",
+      "bytes": 15472,
+      "sha256": "8cddd32dd3316198259e60746ecd410bab7b25b13a9d74281cf32d3a59312600"
+    },
+    {
+      "path": "stability-qed-paper/next-uv.tex",
+      "bytes": 13769,
+      "sha256": "50ae29e86ba6644e4adddaad05f50d28b952b131b4f238b37a759c536e0ce409"
+    },
+    {
+      "path": "stability-qed-paper/paper-part-three.tex",
+      "bytes": 158,
+      "sha256": "9132b3353c8e7b213d9c4d47064a4cf5eaf591981c64627960afcf442a73b26d"
+    },
+    {
+      "path": "stability-qed-paper/paper-part-two.tex",
+      "bytes": 24620,
+      "sha256": "67d3f75d4ee1cdff35a0840c8291b48d8f876aaabac1b875173ab81387bcecef"
+    },
+    {
+      "path": "stability-qed-paper/paper.tex",
+      "bytes": 15731,
+      "sha256": "e4911dd51919c7571fef6ddeefde75d431a81206118af388a039c3a44ed0fb2c"
+    },
+    {
+      "path": "stability-qed-paper/references.tex",
+      "bytes": 7388,
+      "sha256": "1a62d924982b3dcc68160a8f2366191c119cdc1b21e04b0614c64a37f0c204bf"
+    },
+    {
+      "path": "stability-qed-paper/stability-qed-paper.pdf",
+      "bytes": 896793,
+      "sha256": "20e45ceaf5ae750c03fc4c83dae924342d639603a3007e243eac4aa741445592"
+    },
+    {
+      "path": "stability-qed-paper/verification.json",
+      "bytes": 599,
+      "sha256": "a60ff60deef747479aea746e717da2aee497090f2f9c7825cd2312ae548cd2a2"
+    },
+    {
+      "path": "stability-qed-paper/verify_pdf.py",
+      "bytes": 2681,
+      "sha256": "96852d2c93a4609c2ef0aa3640a3b3973ab26821fa7f44d56dbf6cee66e767ac"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/build.ps1",
+      "bytes": 759,
+      "sha256": "06d2d48b246ae14bdfbd9354f90bf72ab6df08b5000b7f907f162c8ff47f932d"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/checks.tex",
+      "bytes": 6584,
+      "sha256": "a43c4e04369b70985dd45dfbd83ae53b3e6554a97a6aa8209aa56e3ec81bf9ee"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/context.tex",
+      "bytes": 12459,
+      "sha256": "6de6b6bcedb886f8d1b7ecfb15efeed0a75f4a7671781a6c9b4281bce4028c30"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/electric-localization.tex",
+      "bytes": 21476,
+      "sha256": "5c1886a972f9300f4e349766c0451db78f17cbee4fb11474bd6ec05decf33a50"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/free-dielectric.tex",
+      "bytes": 9436,
+      "sha256": "a9c66696c43cadf6135f4d28b58e2bc9d8a189e9bd87ad59a4013379bfe65c9a"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/introduction.tex",
+      "bytes": 6075,
+      "sha256": "d4515654665976a113a31c7bbd594d8e8b5624e1961d68725faea8c236a7040f"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/lattice.tex",
+      "bytes": 24465,
+      "sha256": "e283d2bc651843f7458a00cff60f3227ef196e8bb1f9a45184d1d2b4248f8b64"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/low-energy-matching.tex",
+      "bytes": 20636,
+      "sha256": "da8822d9810d7dc6d2b4895ebb55b7a476ab8b4031b81dbb30d42c6f04f49c47"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/main.tex",
+      "bytes": 3854,
+      "sha256": "5978ea3b0e24241c5aa5cd53a8267f40b72e5134447bad5031e9ac135504dd50"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/mass-gap.tex",
+      "bytes": 18540,
+      "sha256": "f7ec8189c78155322ea289306a520fbd6593d0a25daaff2b4e7da75580e8cdfd"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/photon-extension.tex",
+      "bytes": 18760,
+      "sha256": "96aa47c65957e7d75e1e5311eecd9d18ec20fb624e0061275787d5abe0456327"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/positioning.tex",
+      "bytes": 8666,
+      "sha256": "57b1fdad136cc442be1478dee983cd6dd8d25f7af00d865746d1817aa2492c92"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/proof.tex",
+      "bytes": 16996,
+      "sha256": "21500f428a65cd97dfa910582ec2fc0a4c4396d4a0cb9a56ccb6b833a809efaa"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/references.tex",
+      "bytes": 7390,
+      "sha256": "8b46b3dea0bfb61e782acf39ed85d4074df4c1b47a65d95bfa1bcbeb67acdf30"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/source-relative-remainders.tex",
+      "bytes": 10425,
+      "sha256": "b543e4eb7b5349a166aad2e68749a5ef777d7d364991973a0c39dc26bb86e9ba"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/thermodynamics.tex",
+      "bytes": 20627,
+      "sha256": "4d1852c9e1037f833c194c71295fb248f9462191413e2c885616274bc4824777"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/vacuum-relative-stability.pdf",
+      "bytes": 869810,
+      "sha256": "1eb48a00b704ec5e658010d4ef3ff2c936e6463840e9806ca32e91f1600fbba8"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/verification.json",
+      "bytes": 482,
+      "sha256": "05070b4100757c39ba71aa8fa4428b52eaf0f97a95c1d5f65d0fd0d6c6186140"
+    },
+    {
+      "path": "vacuum-relative-stability-paper/verify_pdf.py",
+      "bytes": 2351,
+      "sha256": "7a019909c205ff4a9639aaa8cc2788228623d0e24398fb9bc8b979b06c1f0192"
+    },
+    {
+      "path": "verify_round5_delivery.py",
+      "bytes": 3445,
+      "sha256": "4038ea6fafa0ac06aa48eed4962583096afc4543b38aff3ecd2c25ba38f14579"
+    },
+    {
+      "path": "verify_split_pdfs.py",
+      "bytes": 2767,
+      "sha256": "1a7ea28ecae68d4d35569b1b9dea6ea6c5d2bc02f5e1dff75359887900266c5c"
+    }
+  ],
+  "scope": "Three review PDFs and their sources; Lean project source and logs, without downloaded toolchain or dependency artifacts; consolidated and historical manuscripts, technical reports and numerics."
+}

@@ -1,0 +1,8 @@
+✔ [2794/2799] Built Core.PseudoUnitary
+✔ [2795/2799] Built Core.PositiveMeasure
+⚠ [2796/2799] Built Core.Coefficients
+warning: .\.\.\.\Core\Coefficients.lean:17:5: unused variable `hr`
+note: this linter can be disabled with `set_option linter.unusedVariables false`
+✔ [2797/2799] Built Core.Eigenvectors
+✔ [2798/2799] Built Core
+Build completed successfully.

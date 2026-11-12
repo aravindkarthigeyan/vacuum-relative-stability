@@ -1,0 +1,174 @@
+\section{Interpretation and related positivity methods}
+\label{pos-section}
+
+\subsection{The precise source-energy statement}
+
+All statements in this subsection assume the hypotheses of the
+Gaussian-domination theorem being used.  Let $H_0$ include the photon
+terms when the full-field theorem is invoked, and let $E_\nu(q)$ be the
+ground energy of $H_0+\alpha D_L(\rho,\nu)+U_{\rm nn}$ in sector $q$.
+The exact completed-square statement is
+\begin{equation}
+ E_\nu(q)-U_{\rm nn}
+ +\frac\alpha2D_L^{\rm band}(\nu,\nu)
+ \geq E^{\rm vac}_{\Lambda,L}.
+ \label{pos-completed-source}
+\end{equation}
+Here $D_L^{\rm band}(\nu,\nu)$ is the \emph{collective} source
+self-energy: it contains both individual diagonals and nuclear cross
+terms.  It is not just a sum of single-nucleus constants.
+
+To state the distinction explicitly, set
+\[
+ G_L^{\rm band}(x)=\frac1V\sum_{0<|k|\leq2\Lambda_f}
+                \frac{4\pi}{|k|^2}e^{ik\cdot x},\qquad
+ U_{\rm nn}^{\rm band}=\alpha\sum_{i<j}Z_iZ_j
+                  G_L^{\rm band}(R_i-R_j).
+\]
+Then \eqref{pos-completed-source} is equivalent to
+\begin{equation}
+ E_\nu(q)+\frac\alpha2\kappa_{\Lambda,L}\sum_i Z_i^2
+ \geq E^{\rm vac}_{\Lambda,L}
+       +U_{\rm nn}-U_{\rm nn}^{\rm band}.
+ \label{pos-self-mismatch}
+\end{equation}
+Thus nuclei plus their individual band self-energies cannot lower the
+energy below the vacuum if there is one nucleus, or if the nuclear
+repulsion is also defined with the same band kernel.  For the original
+point-source repulsion, the extra cross term in
+\eqref{pos-self-mismatch} has no fixed sign.  Indeed,
+$G_L-G_L^{\rm band}$ has zero mean, is positive near its Coulomb
+singularity, and must be negative somewhere else.  Positivity of its
+Fourier coefficients does not give pointwise positivity.  The
+heat-kernel comparison in the many-nucleus theorem is what controls
+this mismatch.
+
+An unrestricted box-size version of the simpler physical slogan is
+false for the specified periodic self-energy convention.  Choose
+$y\ne0$ on the unit torus with $G_1(y)<0$, which exists because
+$G_1$ has zero mean and a positive singularity.  Take two unit nuclei
+at $0,Ly$ and let $L\downarrow0$ at fixed cutoffs.  Eventually only the
+fermionic momentum $p=0$ remains, no nonzero photon mode remains, and
+$\kappa_{\Lambda,L}=0$.  The neutral sector $q=2$ is admissible and
+has electronic ground energy $2m$.  Hence
+\begin{equation}
+ E_\nu(2)-E^{\rm vac}_{\Lambda,L}
+ =2m+\frac\alpha L G_1(y)\longrightarrow-\infty.
+ \label{pos-small-box}
+\end{equation}
+This does not contradict the many-nucleus theorem, which assumes
+$L\geq\Lambda_f^{-1}$.  It does rule out replacing
+\eqref{pos-completed-source} by a stronger, unqualified statement about
+the original point-nucleus Hamiltonian and individual band self-energies.
+
+At zero source, Gaussian domination also proves
+\begin{equation}
+ \inf\sigma(H_0|_{Q=q})\geq
+ \inf\sigma(H_0|_{Q=0})
+ \quad\text{for every admissible }q.
+ \label{pos-neutral-minimum}
+\end{equation}
+The neutral vacuum therefore minimizes the energy over all algebraic
+charge sectors of the common zero-mode-deleted Hamiltonian.  Nonzero
+$q$ sectors without compensating external charge are auxiliary sectors,
+not isolated physical charged systems satisfying periodic Gauss law.
+Neither uniqueness nor a strictly positive charge gap follows from
+\eqref{pos-neutral-minimum} alone.  The stronger estimate
+$E_q(0)-E_0(0)\geq m_*|q|$ under a strictly positive mass coefficient
+is proved separately in Theorem~\ref{thm:mass-gap-charge}.
+
+The compact gauge-invariant lattice model of Section~\ref{lat-section}
+has a different, exact source prescription.  Its physical Gauss-law
+sector retains the complete electric energy, and
+Theorem~\ref{lat-main} proves $E_\nu\geq E_0$ before any nuclear
+self-energy subtraction; Corollary~\ref{lat-rest-energy} strengthens
+this to $E_\nu\geq E_0+m|\sum_x\nu_x|$.
+Corollary~\ref{lat-linear-stability} then
+subtracts the explicitly prescribed individual lattice diagonals.
+For that consistently regulated model, adding those same individual
+self-energies back to the subtracted energy does give an energy at
+least as large as the interacting vacuum.  This does not remove the
+kernel mismatch in \eqref{pos-self-mismatch} for the original
+continuum point-source prescription.
+
+\subsection{Euclidean and Gaussian positivity}
+
+The underlying positivity mechanism has established precedents.
+For a regulated Euclidean vector-coupled Dirac operator $\mathcal D$
+with $\mathcal D^*=-\mathcal D$ and
+$\{\gamma_5,\mathcal D\}=0$, a positive scalar mass gives
+\[
+ \det(\mathcal D+m)=m^{n_0}
+          \prod_{\lambda>0}(m^2+\lambda^2)>0.
+\]
+The spectral-pairing argument is recorded explicitly in
+Vafa--Witten~\cite{VafaWitten}, equation~(1).  It does not require
+two identical fermion flavours.  The present proof instead works
+directly with a finite-dimensional, centered Hamiltonian trace,
+allows a positive spatial mass matrix, and verifies positivity after
+inserting the charge-projection twist.  Its proof is supplied here
+rather than inferred from a formal infinite-dimensional determinant.
+
+The proposed Seiler reference~\cite{Seiler} requires a different
+description.  Its result is an upper bound on the growth of a
+lattice color-confining potential: positivity of the Hamiltonian and
+Euclidean rotational symmetry prevent faster-than-linear growth.
+It is not cited here as a proof of single-flavour QED determinant
+positivity or of \eqref{pos-completed-source}.  A bound
+$|\langle W\rangle|\leq1$ follows immediately for a bounded unitary
+observable integrated against a positive probability measure, but
+identifying its large-time exponent with a static-source energy also
+requires a transfer-matrix statement and a fixed self-energy convention.
+Those ingredients cannot be replaced by the elementary modulus bound.
+
+Fr\"ohlich--Simon--Spencer~\cite{FSS}, Section~2, establish Gaussian
+domination for periodic, nearest-neighbour classical ferromagnets on
+cubic lattices.  Their shifted bond partition function is maximized
+at zero shift; differentiating gives an infrared bound on the two-point
+function.  Theorem~2.1 and its shifted-square formulation are the
+relevant comparison, rather than a theorem for fermions or Coulomb-gauge
+photons.  Miyao's finite-source result~\cite{Miyao} is closer to the
+present operator setting, but uses the particular half-filled lattice
+fermion structure described in Section~\ref{context:scope}.  Here the
+positive centered CAR trace replaces those model-specific positivity
+inputs.  Componentwise Hubbard--Stratonovich integration retains the
+order of the noncommuting projected densities.
+
+\subsection{Comparison with Majorana sign criteria}
+
+Wei--Wu--Li--Zhang--Xiang~\cite{Wei} give two sufficient conditions for
+nonnegative auxiliary-field fermion weights.  Their Theorem~1 uses
+Majorana reflection-positive quadratic kernels of block form
+\[
+ \begin{pmatrix} A&iB\\-iB^T&A^*\end{pmatrix},
+ \qquad A^T=-A,\quad B=B^*,
+\]
+with the stated semidefiniteness condition on $B$.  Their Theorem~2
+uses a common pair of symmetry operators satisfying
+$S^TVS=V^*$, $PVP^{-1}=V$, $S^2=-I$, $P^2=I$, and $PS=-SP$,
+with the additional reality and symmetry conditions specified there.
+These are criteria for each auxiliary-field quadratic factor; they
+do not themselves identify a Coulomb Hamiltonian, its charge sector,
+or its nuclear self-energy subtraction.
+
+Li--Jiang--Yao~\cite{LiJiangYao} classify quadratic Majorana factors
+by mutually anticommuting antiunitary symmetries.  The two basic
+sign-free classes have symmetry-square signatures $(+,-)$ and
+$(-,-)$.  This classification is within that symmetry framework;
+it is not a classification of every possible nonnegative fermion
+weight.  Their examples include models without particle-number
+conservation.  That possibility differs from the present
+electron--positron formulation, which permits pair creation while
+conserving total electric charge.
+
+The present $C_5$ identity is a pseudo-unitary spectral-pairing
+condition, supplemented by a positive-mass quadratic-form condition
+that excludes eigenvalues on the unit circle.  It belongs in this
+broader family of positivity methods.  No unproved equivalence to a
+particular Majorana criterion is required, and no priority claim for
+the positivity mechanism is made.  The substantive application checked
+here is its compatibility with the specified Wick correction,
+canonical projection, quantized photon integration, and point-source
+comparison.  None of the cited sign criteria by itself removes the
+ultraviolet cutoff, repairs the gauge covariance of the sharp momentum
+cutoff, or proves an extensive interacting vacuum.

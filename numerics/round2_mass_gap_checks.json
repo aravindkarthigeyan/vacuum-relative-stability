@@ -1,0 +1,13 @@
+{
+  "thermal_prefactor_free_claim_false": {
+    "r": 0.01,
+    "Z1_over_Z0": 0.019994002199180308
+  },
+  "coarse_box": {
+    "Lambda_over_m": 6000.0,
+    "h_over_m": 6000.0,
+    "deficit_over_m": 1.1097720337847732,
+    "r_zero_contribution_over_m": 1.1093560252810706
+  },
+  "cubature_constants_verified": true
+}

@@ -1,0 +1,156 @@
+\section{Source conventions, prior results, and remaining limits}
+\label{b-interpretation}
+
+\subsection{Collective completion is not an individual self-energy statement}
+Under the Gaussian-domination hypotheses, the exact source conclusion is
+\begin{equation}
+ E_\nu(q)-U_{\rm nn}
+ +\frac\alpha2D_L^{\rm band}(\nu,\nu)
+ \ge E^{\vac}+m_*|q|.
+ \label{b-collective-completion}
+\end{equation}
+The band form is a collective source energy, containing nuclear cross
+terms as well as individual diagonals. If
+$G_L^{\rm band}=V^{-1}\sum_{0<|k|\le2\Lambda_f}v_ke^{ikx}$ and
+$U_{\rm nn}^{\rm band}=\alpha\sum_{i<j}Z_iZ_j
+G_L^{\rm band}(R_i-R_j)$, then equivalently
+\[
+ E_\nu(q)+\frac\alpha2\kappa_{\Lambda,L}\sum_iZ_i^2
+ \ge E^{\vac}+m_*|q|+U_{\rm nn}-U_{\rm nn}^{\rm band}.
+\]
+The last difference has no fixed sign. The kernel
+$G_L-G_L^{\rm band}$ has zero mean and a positive Coulomb singularity,
+so it must be negative somewhere. Positive Fourier coefficients do
+not imply pointwise positivity. The heat argument is needed to control
+this mismatch for many point nuclei. A statement that the nuclei plus
+their individual band self-energies never lower the energy below the
+vacuum is valid for one nucleus or for a consistently band-regulated
+nuclear repulsion, but is too strong for the original point-source
+repulsion. The small-box example~\eqref{eq:small-box} is an explicit
+counterexample to its unrestricted version.
+
+A common scalar shift cancels from every relative energy. Adding
+$\sum_i\varepsilon_{Z_i}(\Lambda_f)$ instead changes the source
+reference. Such a species-dependent calibration must be independently
+specified, volume independent, and independent of configurations and
+states. It is distinct from subtracting the infinite classical self-energy
+of an individual point nucleus. No additional nuclear calibration is
+used here, and neither an arbitrary configuration subtraction nor a
+finite-box source ground energy is used to force the bound.
+
+\subsection{The exact models in the relevant literature}
+Lieb--Yau~\cite{LY1988} prove stability and instability for relativistic
+particle kinetic energy and point Coulomb sources; there is no
+pair-creating Dirac field or quantized transverse photon field in that
+model. Lieb--Loss~\cite{LL2002} include quantized photons and point
+nuclei in a no-pair theory using the positive spectral subspace of a
+field-dependent Dirac operator. Positrons are excluded; at physical
+$\alpha$ their stated range includes $Z\le42$. Lieb's review
+\cite{Lieb2002} explains these distinctions. Neither no-pair theorem
+is applied to the full Fock Hamiltonian here.
+
+J\"akel--Wreszinski~\cite{JW2018} treat finite-volume, ultraviolet-
+regularized Coulomb-gauge fermion and photon fields. Their fixed-regulator
+vacuum-energy shift is allowed to depend on volume. It is not the
+uniform point-nucleus comparison proved above. The lower-bound square
+completion here is an explicitly proved operator inequality; it is
+not justified by assuming that shifted current-dependent oscillators
+obey canonical commutation relations.
+
+Lieb--Siedentop~\cite{LS2000} already distinguish a positive
+density-product interaction from its normal-ordered form and analyze
+the resulting quadratic operator with a self-consistent ordering.
+Our reference is prescribed to be the free sea, so its exact one-body
+and scalar corrections are retained rather than replaced by that
+self-consistent construction. Bach--Barbaroux--Helffer--Siedentop
+\cite{BBHS1998} prove matter stability for a relativistic
+Hartree--Fock electron--positron functional with point nuclei and
+classical magnetic fields. Their reference splitting and variational
+class differ from this fully correlated quantized-field Hamiltonian.
+Hainzl--Lewin--S\'er\'e~\cite{HLS2004,HLS2005,HLS2008} establish
+stable polarized vacua and atomic or molecular existence in specified
+BDF approximations. Hainzl--Lewin--Solovej~\cite{HLSol2007} construct
+a self-consistent no-photon mean-field vacuum and its thermodynamic
+limit. These do not identify that vacuum with the free sea in a
+different ordering, or supply a theorem for arbitrary correlated states.
+The periodic Coulomb--Kato estimate used here is part of that established
+toolkit; the explicit constant is proved in Lemma~\ref{lem:pkato}.
+
+The point-nucleus Dirac--Coulomb distinguished-extension theory
+\cite{ELS2021} concerns one-particle operator domains and critical
+couplings. At our finite fermion band the compressed source matrices
+are bounded, so the proof does not invoke a singular one-particle
+extension. This regularity benefit is lost on removing the cutoff;
+finite-cutoff admissibility at $Z=26$ is not a cutoff-uniform
+critical-charge assertion.
+
+\subsection{Positivity methods and what they actually supply}
+Miyao~\cite{Miyao}, Theorem~3.4, proves finite-source Gaussian
+domination for a half-filled Hubbard model on a bipartite lattice,
+with two spin species, positive-type density interactions, and photons
+entering through Peierls phases. Its particle--hole conjugate-factor
+structure is not the spin-mixing projected Dirac operator here.
+The thermodynamic susceptibility result also has an interaction
+summability hypothesis which unscreened Coulomb interactions do not
+satisfy. Our finite-CAR positivity proof and canonical projection are
+therefore supplied explicitly rather than imported from that theorem.
+
+Gaussian domination for periodic classical ferromagnets appears in
+Fr\"ohlich--Simon--Spencer~\cite{FSS}. Euclidean vector-like
+determinant positivity follows from paired anti-Hermitian eigenvalues
+with a positive scalar mass, as in Vafa--Witten~\cite{VafaWitten}.
+The Majorana positivity criteria of Wei et al.~\cite{Wei} and
+Li--Jiang--Yao~\cite{LiJiangYao} provide further sufficient
+auxiliary-field sign conditions. They are relevant precedents,
+not substitutes for checking the present noncommuting projected
+densities, spatial mass coefficient, charge twist, and photon integration.
+No equivalence to an unverified Majorana criterion or priority claim
+for the positivity mechanism is needed.
+
+The componentwise Hubbard--Stratonovich formula is justified by the
+spectral theorem for one Hermitian charge at a time. Trotter ordering
+then handles their noncommutativity. This is not an operator-valued
+Graf--Schenker localization theorem. It supplies finite-source
+domination rather than only the curvature at the unsourced vacuum.
+Indeed, $f(t)=\inf\sigma(H_0+tW)$ is concave, and its drop to
+$t=1$ depends on curvature and possible level crossings along the
+whole path. For $H_0=\operatorname{diag}(0,\Delta)$ and
+$W=\operatorname{diag}(0,-B)$ with $B>\Delta>0$, the response
+at zero vanishes while $f(1)=\Delta-B<0$.
+
+Likewise an equal-time structure factor and a static susceptibility
+are distinct quantities. With their connected spectral conventions,
+\[
+ S(k)=V^{-1}\|\rho(k)\Omega\|^2,\quad
+ \chi(k)=V^{-1}\langle\rho(k)\Omega,(H-E)^{-1}_{\perp}
+                         \rho(k)\Omega\rangle,
+\]
+Cauchy--Schwarz gives $S(k)^2\le\chi(k)F(k)$, where
+$F(k)=V^{-1}\langle\rho(k)\Omega,(H-E)\rho(k)\Omega\rangle$.
+A susceptibility estimate alone is not an equal-time bound; a lower
+gap yields an inequality in the opposite direction. No such unproved
+screening inference is used above.
+
+\subsection{What remains outside these theorems}
+The fixed-cutoff source bound grows as $\Lambda_f$ and the source-free
+bare model with massless photons has the obstruction
+\eqref{eq:vacuum-instability}. The mean-field point-source construction
+proves necessary linear cutoff growth in its own reference convention,
+not in every renormalized model or after the exact many-body vacuum
+subtraction. The positive bare $A^2$ theorem and the exchange calculation
+are likewise statements about the explicitly modified Hamiltonian.
+The Pauli--Villars classical-field construction~\cite{GHLS2013} and
+reduced-BDF charge renormalization~\cite{GLS2009} are different
+frameworks and do not construct the present quantized theory's
+ultraviolet limit.
+
+A charge gap is not a neutral pair gap. A low-energy Pauli--Fierz or
+Coulomb reduction would need a specified energy window, control of
+the full pair-block resolvent and induced operators, and errors that
+remain controlled with system size after vacuum subtraction. The
+stability of a proposed effective Hamiltonian does not supply these
+missing comparisons. Atomic binding, molecular binding, thermodynamic
+limits of relative source energies, and equilibrium crystals each
+require further arguments. The purpose of this paper is to preserve
+the proved regulator-dependent comparisons and their counterexamples,
+without identifying them with those additional conclusions.

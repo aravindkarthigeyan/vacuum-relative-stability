@@ -1,0 +1,52 @@
+{
+  "archive": "companion-notes-sources.zip",
+  "bytes": 27420,
+  "sha256": "d74d60b1f6ab83a2c6b3f85ad4c5097c115bc7b245b427e25a86e298b50621b1",
+  "included_files": [
+    {
+      "path": "electric-localization.tex",
+      "bytes": 21476,
+      "sha256": "5c1886a972f9300f4e349766c0451db78f17cbee4fb11474bd6ec05decf33a50"
+    },
+    {
+      "path": "low-energy-matching.tex",
+      "bytes": 20636,
+      "sha256": "da8822d9810d7dc6d2b4895ebb55b7a476ab8b4031b81dbb30d42c6f04f49c47"
+    },
+    {
+      "path": "main.tex",
+      "bytes": 3062,
+      "sha256": "22fb61917e1608d71281c58cc5373c2954168798bc9668a1d028044c9ab9e262"
+    },
+    {
+      "path": "model.tex",
+      "bytes": 4439,
+      "sha256": "d5b3ddeee2593d4b1de27ce993bd41c1dbafe8a0f6aa04614e6886ffb99f2225"
+    },
+    {
+      "path": "references.tex",
+      "bytes": 1593,
+      "sha256": "fc844c640d361500b7b09baa74dea0eb3219c349a481698776836ac442b5cb99"
+    },
+    {
+      "path": "scope.tex",
+      "bytes": 2156,
+      "sha256": "bc5fc2235f1d289039f888ba3a30f18fa2a579042a1496af72222942e068d616"
+    },
+    {
+      "path": "source-relative-remainders.tex",
+      "bytes": 10425,
+      "sha256": "b543e4eb7b5349a166aad2e68749a5ef777d7d364991973a0c39dc26bb86e9ba"
+    }
+  ],
+  "validation": {
+    "fresh_compile": "passed",
+    "passes": 3,
+    "pages": 20,
+    "compiler_diagnostics": [],
+    "text_matches_review_pdf": true,
+    "text_sha256": "7f6d973c8468881a773b857d3c6332a18d1ba61576ef2950dc2c71195ec6c9de",
+    "check_directory": "tmp/companion-notes-check-5eqhkmse",
+    "submitted": false
+  }
+}

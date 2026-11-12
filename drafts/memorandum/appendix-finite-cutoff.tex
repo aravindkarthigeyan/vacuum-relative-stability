@@ -1,0 +1,417 @@
+\section{Agent report: finite-cutoff estimates and counterexamples}
+\label{app-finite:report}
+
+This appendix gives independent proofs of the cutoff estimates and the
+neutral-current counterexample used in the main text.  Its conclusions concern
+the specified, fixed canonical-momentum cutoff.  They are not claims about every
+possible gauge-covariant regularization of QED.  In particular, the large-volume
+counterexample below disproves extensivity in the stated free-vacuum
+normalization; it does not, by itself, disprove a bound measured relative to the
+interacting vacuum.
+
+\subsection{Conventions and finite-regulator realization}
+\label{app-finite:conventions}
+
+Set $\hbar=c=1$, let $V=L^3$, and use Heaviside--Lorentz electromagnetic
+normalization, so $e^2=4\pi\alpha$.  The scalar fermion momentum space is
+\[
+ \mathcal P_{\Lambda,L}
+ =\operatorname{span}\{V^{-1/2}e^{ip\cdot x}:
+ p\in(2\pi/L)\mathbb Z^3,\ |p|\le\Lambda_f\},
+ \qquad n=\dim\mathcal P_{\Lambda,L},\quad d=n/V.
+\]
+Write $P$ for its projection.  The bare one-particle Dirac space is
+$\mathbb C^4\otimes\mathcal P_{\Lambda,L}$, of dimension $4n$.  The Dirac
+matrices are denoted by $\mathsf a_i$ and $\mathsf b$, and
+\[
+ D_0=\mathsf a\cdot(-i\nabla)+m\mathsf b,
+ \qquad \Gamma_0=\mathbf1_{(-\infty,0)}(D_0),
+ \qquad \operatorname{rank}\Gamma_0=2n.
+\]
+The finite particle--hole transformation identifies the electron--positron
+Fock representation with the bare CAR representation.  Under this
+identification,
+\[
+ H_D=d\Gamma(D_0)-\operatorname{Tr}(D_0\Gamma_0)
+     =\sum_{p,s}E(p)(b_{p,s}^\dagger b_{p,s}
+                         +d_{p,s}^\dagger d_{p,s})\ge0.
+\]
+All normal ordering in this appendix is relative to $\Gamma_0$.
+For unambiguous signs define the fermionic electric charge density in units of
+$e$, and the number current, respectively, by
+\[
+ \rho(x)=-:\!\psi^\dagger(x)\psi(x)\!:,
+ \qquad j_i(x)=:\!\psi^\dagger(x)\mathsf a_i\psi(x)\!:.
+\]
+Thus $\int\rho=N_p-N_e$ and the transverse interaction is
+$H_I=e\int j\cdot A$.  With $Z_{\rm tot}=\sum_i Z_i$, the neutral sector obeys
+\begin{equation}
+ N_e-N_p=Z_{\rm tot},\qquad 0\le Z_{\rm tot}\le2n.
+ \label{app-finite:capacity}
+\end{equation}
+In particular, a nonintegral $Z_{\rm tot}$ gives no neutral sector in this
+representation.  Physical integral nuclear charges satisfy the integrality
+condition automatically, but still have to satisfy the capacity constraint.
+
+Take transverse photon momenta $0<|k|\le\Lambda_\gamma$, with the constant
+photon mode omitted.  The omitted Coulomb zero mode is fixed by the neutral
+Gauss constraint, not by inserting a compensating background.  Use the
+zero-mean periodic Green function
+\[
+ G_L(x)=\frac1V\sum_{k\ne0}\frac{4\pi}{|k|^2}e^{ik\cdot x}.
+\]
+The following nuclear self-energy convention is used throughout this
+appendix: remove the entire diagonal contribution of each individual nucleus
+and retain $\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j)$.  Equivalently, mollify the
+nuclei, subtract each mollified nucleus's own periodic Coulomb energy, and
+take the point limit.  This removes a finite periodic self term as well as the
+divergence.  A convention retaining the periodic Robin self term defines a
+different finite-volume energy and must be stated separately.  Distinct
+nuclear positions are assumed; collisions have infinite positive mutual
+energy under the convention here.
+
+First use the density-product Coulomb operator
+\begin{equation}
+ H_C^{\rm prod}
+ =\frac\alpha2D_G(\rho,\rho)
+   +\alpha D_G(\rho,\nu)
+   +\alpha\sum_{i<j}Z_iZ_jG_L(R_i-R_j),
+ \qquad \nu=\sum_iZ_i\delta_{R_i},
+ \label{app-finite:coulomb-definition}
+\end{equation}
+where $D_G$ is the periodic Coulomb quadratic form with zero mode excluded.
+The fermionic Fourier support is contained in $|k|\le2\Lambda_f$, so every
+fermionic term in this formula is a bounded finite-dimensional operator.
+The nuclei remain point sources.  Their coupling to a band-limited fermion
+field does, however, sample only the corresponding band of their Coulomb
+potential.  Normal-ordering variants are addressed below.
+
+At fixed $L,\Lambda_f,\Lambda_\gamma$ there are finitely many photon
+oscillators of strictly positive frequency.  Every coefficient of their linear
+coupling is a bounded fermion matrix.  The creation and annihilation bounds
+for these oscillators make $H_I$ infinitesimally $H_\gamma$-bounded.
+Consequently Kato--Rellich gives self-adjointness on $D(H_\gamma)$ and
+semiboundedness.  The finite-dimensional fermion terms do not change this
+domain.  The realization has compact resolvent: $(H_\gamma+1)^{-1}$ is
+compact for finitely many positive-frequency oscillators, and the linear
+oscillator perturbation is relatively compact.  A ground state therefore
+exists in every nonempty charge sector.  These statements are about fixed
+regulators and contain no uniform volume estimate.
+
+\subsection{Local exclusion bounds and the transverse-field estimate}
+\label{app-finite:photon}
+
+At a fixed point the cutoff CAR are
+\[
+ \{\psi_a(x),\psi_b^\dagger(x)\}=d\,\delta_{ab},
+ \qquad \operatorname{tr}_{\mathbb C^4}\Gamma_0(x,x)=2d.
+\]
+After dividing by $\sqrt d$, these are four canonical fermion modes.  Hence
+$\psi^\dagger\psi$ has spectrum in $[0,4d]$.  Each $\mathsf a_i$ has two
+eigenvalues $+1$ and two eigenvalues $-1$.  Inversion symmetry of the momentum
+cutoff makes the free-sea current vanish.  Diagonalizing $\mathsf a_i$ in
+spin space therefore proves the operator inequalities
+\begin{equation}
+ -2d\le\rho(x)\le2d,\qquad
+ -2d\le j_i(x)\le2d,\qquad
+ \sum_{i=1}^3j_i(x)^2\le12d^2.
+ \label{app-finite:local-car}
+\end{equation}
+These bounds already include the pair-creation and pair-annihilation terms.
+
+For a mode with frequency $\omega=|k|$, let $J$ be the relevant transverse
+Fourier component of the current and $g=e/(2V\omega)^{1/2}$.  Since photon
+operators commute with fermion operators, the exact identity is
+\begin{equation}
+ \omega a^\dagger a+g(a^\dagger J+aJ^\dagger)
+ =\omega\left(a^\dagger+\frac g\omega J^\dagger\right)
+             \left(a+\frac g\omega J\right)
+       -\frac{g^2}{\omega}J^\dagger J.
+ \label{app-finite:square}
+\end{equation}
+The first term is positive.  This identity does not assert that the shifted
+operators for different modes obey canonical commutation relations, and does
+not require different currents to commute.  Summing the positive terms,
+using the transverse polarization projection, and applying Parseval gives
+\begin{align}
+ H_\gamma+H_I
+ &\ge-\frac{e^2}{2V k_{\min}^2}
+       \sum_{k,i}j_i(k)^\dagger j_i(k)\\
+ &=-\frac{e^2}{2 k_{\min}^2}
+       \int\sum_i j_i(x)^2\,dx
+ \ge-\frac{6e^2d^2V}{k_{\min}^2}.
+ \label{app-finite:photon-bound}
+\end{align}
+In the intermediate inequality one may enlarge the sum to all Fourier modes;
+this only enlarges the nonnegative quantity being subtracted.  For ordinary
+torus photons one may take $k_{\min}=2\pi/L$.  If the model instead has a fixed
+infrared exclusion $|k|\ge\kappa>0$, one may take $k_{\min}=\kappa$.  A large
+photon ultraviolet cutoff causes no additional loss here because the cutoff
+fermion current has Fourier support only up to $2\Lambda_f$.
+
+\subsection{A uniform point-nucleus Coulomb estimate}
+\label{app-finite:coulomb}
+
+Let $p_t$ denote the normalized torus heat kernel, set
+$G_s=e^{s\Delta}G_L$, $h_s=G_L-G_s$, and
+$\nu_s=e^{s\Delta}\nu$.  The heat representation yields
+\[
+ h_s(x)=4\pi\int_0^s\bigl(p_t(x)-V^{-1}\bigr)\,dt,
+ \quad h_s(x)\ge-\frac{4\pi s}{V},
+ \quad \|h_s\|_{L^1}\le8\pi s.
+\]
+The last bound follows from $\|p_t-V^{-1}\|_1\le2$.  Also
+\begin{equation}
+ 0\le G_{2s}(0)
+ =\frac1V\sum_{k\ne0}\frac{4\pi e^{-2s|k|^2}}{|k|^2}
+ \le C s^{-1/2}.
+ \label{app-finite:heat-self}
+\end{equation}
+For example, the last estimate follows by partitioning the integer lattice
+into spherical shells and comparing the resulting Gaussian sum with its
+radial integral; its constant is independent of $L$ and $s$.
+
+Expanding the square with the smoothed nuclear density gives the exact
+identity
+\begin{align}
+ H_C^{\rm prod}
+ ={}&\frac\alpha2D_G(\rho+\nu_s,\rho+\nu_s)
+       +\alpha D_G(\rho,\nu-\nu_s)\nonumber\\
+ &+\alpha\sum_{i<j}Z_iZ_jh_{2s}(R_i-R_j)
+       -\frac\alpha2G_{2s}(0)\sum_iZ_i^2.
+ \label{app-finite:heat-identity}
+\end{align}
+The first term is positive, including when its operator-valued Fourier
+coefficients do not commute, because it is a positive weighted sum of
+$T_k^\dagger T_k$.  The other terms satisfy
+\begin{align*}
+ \alpha D_G(\rho,\nu-\nu_s)
+   &\ge-16\pi\alpha d s Z_{\rm tot},\\
+ \alpha\sum_{i<j}Z_iZ_jh_{2s}(R_i-R_j)
+   &\ge-\frac{4\pi\alpha s}{V}Z_{\rm tot}^2
+    \ge-8\pi\alpha d s Z_{\rm tot},\\
+ -\frac\alpha2G_{2s}(0)\sum_iZ_i^2
+   &\ge-C\alpha s^{-1/2}Z_{\max}Z_{\rm tot}.
+\end{align*}
+The second line uses the finite-mode neutrality constraint
+\eqref{app-finite:capacity}; without it, this particular argument would not
+give the displayed estimate.  Taking, for instance, $s=\Lambda_f^{-2}$ proves
+\begin{equation}
+ H_C^{\rm prod}\ge-C_{\alpha,\Lambda_f,L_0,Z_{\max}}K
+ \quad\hbox{for }L\ge L_0>0,
+ \label{app-finite:coulomb-bound}
+\end{equation}
+since $d\le C(\Lambda_f^3+L_0^{-3})$.  No nuclear minimum-separation
+assumption is used.
+
+\subsection{Normal-ordering audit and the resulting lower bounds}
+\label{app-finite:wick}
+
+Normal ordering the density alone is not the same as fully Wick ordering its
+product.  This difference must be specified rather than absorbed without
+explanation.  Here it is an extensive, bounded correction.
+
+For a one-particle matrix $A$, write
+$X_A=d\Gamma(A)-\operatorname{Tr}(\Gamma_0A)$.  Direct CAR contraction gives
+\begin{equation}
+ X_A X_B
+ =:\!X_A X_B\!:
+  +X_{A(1-\Gamma_0)B-B\Gamma_0A}
+  +\operatorname{Tr}\bigl(\Gamma_0A(1-\Gamma_0)B\bigr).
+ \label{app-finite:wick-identity}
+\end{equation}
+Here the first term means full Wick ordering relative to the same free sea.
+For the density Fourier matrices $A=P e^{ik\cdot x}P$, $B=A^\dagger$, both
+matrix norms are at most one.  The middle matrix has norm at most two, while
+the one-particle dimension is $4n$.  The estimates
+\[
+ \|X_M\|\le\|M\|_1+|\operatorname{Tr}(\Gamma_0M)|,
+ \qquad
+ |\operatorname{Tr}(\Gamma_0A(1-\Gamma_0)B)|\le2n
+\]
+therefore bound the difference in \eqref{app-finite:wick-identity} by a
+constant times $n$, uniformly in $k$.  Finally,
+\begin{equation}
+ \frac1V\sum_{0<|k|\le2\Lambda_f}\frac1{|k|^2}
+ \le C\Lambda_f
+ \label{app-finite:coulomb-sum}
+\end{equation}
+follows from $\sum_{0<|\ell|\le M}|\ell|^{-2}\le CM$ in three dimensions.
+It follows that replacing the first term in
+\eqref{app-finite:coulomb-definition} by its fully Wick-ordered version
+changes the Hamiltonian by an operator of norm at most $C\alpha n\Lambda_f$.
+Subtracting just its free-vacuum expectation obeys the same bound.  Both costs
+are $O(V)$ for $L\ge L_0$.
+
+Combining \eqref{app-finite:photon-bound},
+\eqref{app-finite:coulomb-bound}, and $H_D\ge0$ proves
+\begin{equation}
+ H\ge-C_{\Lambda,L_0}\bigl[K+V(1+L^2)\bigr].
+ \label{app-finite:polynomial-bound}
+\end{equation}
+With a fixed photon infrared exclusion $|k|\ge\kappa>0$, the stronger
+conclusion is
+\begin{equation}
+ H\ge-C_{\Lambda,L_0,\kappa}(K+V).
+ \label{app-finite:ir-extensive}
+\end{equation}
+Both bounds hold at arbitrary fixed positive coupling, including the physical
+value of $\alpha$, with constants depending on that coupling.  A finite fixed
+mass counterterm is a bounded fermion operator of norm $O(n)$ and does not
+alter these conclusions.  A fixed vacuum-energy-density counterterm is
+$O(V)$.  Charge renormalization must be implemented consistently in Coulomb
+and transverse couplings; a fixed nonzero renormalized coupling changes the
+constants.  No assertion is made here about tuning these counterterms to a
+cutoff-independent physical theory.
+
+\subsection{A neutral-current trial state with energy of order minus \texorpdfstring{$L^5$}{L to the fifth power}}
+\label{app-finite:current-counterexample}
+
+The $VL^2$ loss in \eqref{app-finite:polynomial-bound} reflects an actual
+instability of extensivity in this canonical-momentum cutoff model.  The
+following construction is in the exact neutral sector, with no nuclei.
+
+For $q=2\pi/L$ define scalar matrices on $\mathcal P_{\Lambda,L}$ by
+\[
+ U=P e^{iqx_1}P,
+ \qquad C=\frac{U+U^\dagger}{2}=P\cos(qx_1)P.
+\]
+Choose a self-adjoint unitary $S$ that equals $\operatorname{sign}(C)$ on
+$(\ker C)^\perp$, choosing either sign on each zero eigenspace.  The matrix
+\begin{equation}
+ \gamma=\frac{1+\mathsf a_2S}{2}
+ \label{app-finite:trial-projector}
+\end{equation}
+is an orthogonal projector of rank $2n$.  Its Slater determinant is therefore
+an exact charge-zero state, not a grand-canonical mixture.  Its density is
+\[
+ \operatorname{tr}_{\mathbb C^4}\gamma(x,x)
+ =2P(x,x)
+ =\operatorname{tr}_{\mathbb C^4}\Gamma_0(x,x).
+\]
+Thus $\langle\rho(x)\rangle=0$ identically.  Nevertheless its transverse
+current has a macroscopic Fourier component:
+\begin{align}
+ J&=\int\cos(qx_1)\langle j_2(x)\rangle\,dx
+   =\operatorname{Tr}\bigl(\mathsf a_2C(\gamma-\Gamma_0)\bigr)
+   =2\operatorname{Tr}|C|\nonumber\\
+  &\ge2\operatorname{Tr}C^2
+   =\#\{p:p\hbox{ and }p+qe_1\hbox{ belong to the cutoff band}\}
+   \ge c_{\Lambda_f}V
+ \label{app-finite:macroscopic-current}
+\end{align}
+for all sufficiently large $L$.  The free-sea term in this trace vanishes
+because $\Gamma_0$ is diagonal in momentum and $C$ has zero momentum diagonal.
+The inequality uses $\|C\|\le1$.  For the final estimate it suffices to count
+momenta with $|p|\le\Lambda_f/2$ once $q\le\Lambda_f/2$.
+
+The free Dirac energy of this Slater determinant is bounded above by
+$4n\sqrt{m^2+\Lambda_f^2}$.  For every nonzero momentum, set
+$U_k=P e^{ik\cdot x}P$, with the spin identity implicit.  The Slater covariance
+formula gives
+\begin{equation}
+ \langle\rho_k^\dagger\rho_k\rangle
+ =\operatorname{Tr}\bigl(\gamma U_k^\dagger(1-\gamma)U_k\bigr)
+ \le2n,
+ \label{app-finite:trial-charge-fluctuation}
+\end{equation}
+because the mean density is zero.  Equations
+\eqref{app-finite:coulomb-sum} and
+\eqref{app-finite:trial-charge-fluctuation} bound its density-product Coulomb
+energy above by $C\alpha n\Lambda_f$.  The other normal-ordering conventions
+in Section~\ref{app-finite:wick} change this by at most another $O(V)$ term.
+
+Now take the tensor product with a photon coherent state whose mean transverse
+potential is
+\[
+ A_2(x)=-a\cos(qx_1),\qquad A_1=A_3=0,
+\]
+and whose mean transverse electric field vanishes.  This is an allowed
+coherent state whenever $q\le\Lambda_\gamma$.  The normally ordered free
+photon energy equals its classical magnetic energy,
+$Vq^2a^2/4$.  The current coupling is $-eaJ$.  Minimizing their sum over the
+real number $a$ yields
+\begin{equation}
+ \inf_a\left(\frac{Vq^2a^2}{4}-eaJ\right)
+ =-\frac{e^2J^2}{Vq^2}.
+ \label{app-finite:coherent-minimum}
+\end{equation}
+Every trial state at finite $L$ has finite photon number and lies in the
+Hamiltonian form domain.  Its photon number need not be uniformly bounded as
+$L$ increases; the original stability question does not impose such a bound.
+
+The variational principle now proves, for all sufficiently large $L$,
+\begin{equation}
+ E^{\rm vac}_{\Lambda,L}
+ \le C_\Lambda V-c_\Lambda e^2VL^2.
+ \label{app-finite:l5-instability}
+\end{equation}
+Thus no inequality $E^{\rm vac}_{\Lambda,L}\ge-C_\Lambda V$ can hold in the
+stated free-vacuum normalization.  This is true at every fixed nonzero
+coupling, however small.  The trial state is charge neutral, its mean charge
+density vanishes, and its Coulomb fluctuations and pair rest-energy cost are
+only extensive.  The negative contribution comes from the coherent
+long-wavelength transverse field.
+
+The mechanism depends on the fixed canonical-momentum cutoff: large vector
+potentials do not move the retained fermion modes in a gauge-covariant way.
+It is therefore inappropriate to extrapolate
+\eqref{app-finite:l5-instability} to a different, gauge-covariant regulator
+without a new argument.  A vacuum counterterm proportional to $V$ or a fixed
+mass counterterm cannot cancel the $L^5$ term.  Subtracting the actual
+interacting vacuum energy removes this particular obstruction by definition,
+but leaves the nuclear vacuum-relative inequality unproved.  The fixed-volume
+positivity-after-a-vacuum-shift statement in \cite{JW2018} is compatible with
+this conclusion and supplies no contrary extensive estimate.
+
+\subsection{A separate small-box obstruction to an all-volume assertion}
+\label{app-finite:small-box}
+
+Under the nuclear self convention in
+Section~\ref{app-finite:conventions}, even a vacuum-relative estimate uniform
+over every $L>0$ is false.  Take $L$ so small that
+$2\pi/L>\max\{\Lambda_f,\Lambda_\gamma\}$.  Only the fermion momentum $p=0$
+remains, and there are no photon modes.  Put two unit nuclei in the box.
+Neutrality forces occupation of both zero-momentum electron spin states and
+no positrons.  Every nonzero Fourier component of the fermion density
+vanishes as an operator.  Hence the electron--nucleus and fermion--fermion
+Coulomb terms vanish, including the ordering corrections discussed above,
+and
+\begin{equation}
+ E_{\Lambda,L}(R_1,R_2)-E^{\rm vac}_{\Lambda,L}
+ =2m+\alpha G_L(R_1-R_2),\qquad E^{\rm vac}_{\Lambda,L}=0.
+ \label{app-finite:small-box-energy}
+\end{equation}
+The zero-mean Green function $G_1$ has a point $r_0\ne0$ where $G_1(r_0)<0$:
+it is integrable, is positive near its Coulomb singularity, and has integral
+zero.  Choose $R_1-R_2=Lr_0$ on the torus.  Scaling gives
+$G_L(Lr_0)=L^{-1}G_1(r_0)$, so the right-hand side of
+\eqref{app-finite:small-box-energy} tends to $-\infty$ as $L\downarrow0$ at
+fixed $K=2$.  A fixed mass renormalization only changes the finite $2m$ term,
+and a shared vacuum-energy subtraction cancels from the energy difference.
+
+This small-box example uses the specified periodic self-energy convention.
+If a finite periodic nuclear self term is retained instead, its contribution
+must be included before asserting an analogous formula.  It is not legitimate
+to change that convention in the middle of a proof.  A macroscopic theorem
+can avoid the small-box issue by explicitly restricting $L\ge L_0>0$.
+
+\subsection{Scope of the conclusions}
+\label{app-finite:scope}
+
+The finite-regulator self-adjointness statement,
+\eqref{app-finite:polynomial-bound}, the modified-model extensive bound
+\eqref{app-finite:ir-extensive}, and both trial-state obstructions are proved
+above.  Their proofs do not use a no-pair stability theorem.  Pair creation is
+retained throughout through the exact finite particle--hole representation.
+The extensive estimate with a fixed photon infrared exclusion is a theorem
+about that additional regulator, and is not uniform as $\kappa\downarrow0$.
+
+For $L\ge L_0$, the neutral-current example neither proves nor disproves
+$E_{\Lambda,L}(R,Z)-E^{\rm vac}_{\Lambda,L}\ge-C_\Lambda K$.
+Controlling this difference would require an estimate comparing the
+interacting vacua with and without sources, rather than separate absolute
+lower bounds.  None of the estimates here gives that comparison.  Likewise,
+they establish no ultraviolet limit, physical mass or charge identification,
+thermodynamic limit relative to the interacting vacuum, binding theorem, or
+crystallization theorem.

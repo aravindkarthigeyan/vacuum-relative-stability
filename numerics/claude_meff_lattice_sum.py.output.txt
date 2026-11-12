@@ -1,0 +1,4 @@
+Lam=10: (M_eff deficit)/alpha at |p|=0,L/2,~L: [0.831 0.483 0.254]  continuum (1/pi)asinh: 0.954  crude 13Lam/pi^2: 13.2
+Lam=30: (M_eff deficit)/alpha at |p|=0,L/2,~L: [0.977 0.497 0.258]  continuum (1/pi)asinh: 1.303  crude 13Lam/pi^2: 39.5
+Lam=100: (M_eff deficit)/alpha at |p|=0,L/2,~L: [1.013 0.5   0.259]  continuum (1/pi)asinh: 1.687  crude 13Lam/pi^2: 131.7
+

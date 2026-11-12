@@ -1,0 +1,529 @@
+\section{Compact Hamiltonian lattice QED with exact Gauss law}
+\label{lat-section}
+
+We begin with a local ultraviolet regulator. This section proves a vacuum-relative
+bound for a spatially local, gauge-invariant Hamiltonian with compact
+$U(1)$ link variables and Wilson fermions.  The electric rotors are not
+truncated.  The statement is about this specified Hamiltonian, with a
+nonnegative bare Wilson mass; it is not a continuum-limit assertion.
+The Hamiltonian formulation follows the framework of
+Kogut--Susskind~\cite{KogutSusskind}.
+For the direct spatial discretization of the Dirac Hamiltonian with a
+Wilson term, see also
+Zache et al.~\cite{Zache}, Eq.~(3).
+The proof below establishes the comparison directly, without importing a
+Euclidean transfer-matrix assertion from a differently discretized action.
+
+\subsection{Hamiltonian, signs, and physical sectors}
+
+Let $X=(\mathbb Z/n\mathbb Z)^3$, $n\ge2$, have spacing $a>0$ and
+$N=n^3$ sites.  There is a positively oriented link $(x,j)$ from $x$ to
+$x+e_j$ for every $x$ and $j=1,2,3$.  Write $\mathcal E$ for these
+$3N$ links and set
+\begin{equation}
+ \mathcal H=L^2(U(1)^{\mathcal E},dU)
+       \otimes\mathcal F_{\!a}(\ell^2(X)\otimes\mathbb C^4).
+ \label{lat-hilbert}
+\end{equation}
+All Haar measures are normalized.  On a link,
+$U_{xj}=e^{i\varphi_{xj}}$ acts by multiplication and
+$E_{xj}=-i\partial_{\varphi_{xj}}$ has spectrum $\mathbb Z$.
+For $g^2>0$, let
+\begin{align}
+ H_E&=\frac{g^2}{2a}\sum_{x,j}E_{xj}^2,\qquad
+ H_B(U)=\frac1{g^2a}\sum_p(1-\operatorname{Re}U_p),
+ \label{lat-gauge-energy}\\
+ U_p&=U_{xj}U_{x+e_j,k}\overline{U_{x+e_k,j}}\,
+          \overline{U_{xk}},\qquad j<k.
+ \nonumber
+\end{align}
+Each elementary plaquette occurs once.  No electric background shift,
+topological angle, or extra global-flux projection is imposed.
+
+Fix four Hermitian Dirac matrices $\alpha_1,\alpha_2,\alpha_3,\beta$,
+which square to one and anticommute pairwise.  The convention for a
+negatively charged fermion is
+\begin{align}
+ (T_j(U)f)(x)&=\overline{U_{xj}}f(x+e_j),\qquad
+ v_j(U)=\frac{T_j(U)-T_j(U)^*}{2ia},\label{lat-hopping}\\
+ M(U)&=m+\frac r{2a}\sum_{j=1}^3
+             \bigl(2-T_j(U)-T_j(U)^*\bigr),\qquad m\ge0,\quad r\ge0,
+ \label{lat-wilson-mass}\\
+ h_W(U)&=\sum_j\alpha_j v_j(U)+\beta M(U),\qquad
+ H=H_E+H_B(U)+d\Gamma(h_W(U)).\label{lat-hamiltonian}
+\end{align}
+Spatial operators commute with the Dirac matrices.  Every $T_j(U)$ is
+unitary, and consequently
+\begin{equation}
+ M(U)\ge mI,\qquad
+ \|h_W(U)\|\le h_*:=m+\frac{3+6r}{a}.
+ \label{lat-mass-positive}
+\end{equation}
+Indeed, $2-T-T^*=(I-T)^*(I-T)$.  This is the sign of the Wilson
+term needed in the theorem.  The choice $r>0$ is the usual Wilson choice;
+$r=0$ also obeys the proof but retains naive fermion doublers.
+
+Put $n_x=\sum_{s=1}^4 c_{xs}^*c_{xs}$ and $q_x=n_x-2$.
+Thus $q_x\in\{-2,-1,0,1,2\}$ measures electron excess, while physical
+fermionic charge in units of $g$ is $-q_x$.  The centered charge is a
+definition, not a subtraction chosen from the interacting state.
+For $g_x=e^{i\theta_x}$, distinguish the gauge function $g_x$ from the
+coupling $g$ and define
+\begin{align}
+ U^g_{xj}&=g_xU_{xj}\overline{g_{x+e_j}},\qquad
+ (R_g\Psi)(U)=\Psi(U^g),\nonumber\\
+ W(g)&=\exp\Bigl(i\sum_x\theta_xq_x\Bigr)R_g,
+ \qquad
+ G_x=\sum_j(E_{xj}-E_{x-e_j,j})+q_x.
+ \label{lat-gauge-unitary}
+\end{align}
+The symbol $g$ in $R_g,W(g),U^g$ denotes the gauge function.
+Because $h_W(U^g)=g^*h_W(U)g$, conjugation by the fermion factor
+$\Gamma(g)$ cancels conjugation by $R_g$.  Hence $W(g)$ commutes
+with all three terms of $H$.  Also
+$W(g)=\exp(i\sum_x\theta_xG_x)$.
+The $G_x$ strongly commute and have integer joint spectrum.
+
+An external source is an integer function $\nu:X\to\mathbb Z$.
+Positive nuclei have
+\begin{equation}
+ \nu_x=\sum_{i=1}^K Z_i\mathbf1_{\{x=R_i\}},\qquad
+ Z_i\in\{1,\ldots,Z_{\max}\}.
+ \label{lat-sources}
+\end{equation}
+The physical Hilbert space and its orthogonal projection are
+\begin{align}
+ \mathcal H_\nu&=\{\Psi:G_x\Psi=\nu_x\Psi\text{ for all }x\},\nonumber\\
+ P_\nu&=\int_{[0,2\pi)^N}\frac{d\theta}{(2\pi)^N}
+            e^{-i\sum_x\theta_x\nu_x}W(e^{i\theta}).
+ \label{lat-projection}
+\end{align}
+Gauss's law is therefore
+$\operatorname{div}E=\nu-q$: positive nuclei are screened by electron
+excess.  In particular, on the torus
+\begin{equation}
+ \sum_xq_x=\sum_x\nu_x,\qquad
+ \mathcal H_\nu\ne\{0\}\quad\Longleftrightarrow\quad
+             -2N\le\sum_x\nu_x\le2N.
+ \label{lat-capacity}
+\end{equation}
+For sufficiency, select site occupations with the required total excess.
+The integer function $\nu-q$ has zero sum.  On a connected finite graph
+it is the divergence of an integer link flow: route each site's integer
+excess to a fixed root along a spanning tree.  The corresponding electric
+Fourier vector and occupation vector give a state in $\mathcal H_\nu$.
+Necessity follows by summing Gauss's law.  Integrality of $\nu$ is
+essential for a character of compact $U(1)$; fractional external charges
+would require a different representation or boundary prescription.
+
+The finite fermion space still contains pair creation.  For $m>0$, the
+free matrix $h_W(1)$ has $2N$ positive and $2N$ negative eigenvalues.
+The finite particle--hole transform relative to its negative projection
+identifies $\sum q_x$ with $N_e-N_p$.  The blocks
+$P_+h_W(U)P_-$ of the interacting bilinear produce electron--positron
+creation and annihilation.  No projection removes them.  The compact
+gauge-field Hilbert space is infinite dimensional; it is not being
+replaced by a classical link configuration in the Hamiltonian.
+The Hamiltonian uses the raw bilinear \(d\Gamma(h_W(U))\).
+In a particle--hole representation relative to \(P_-(h_W(1))\), its
+generally link-dependent scalar
+\(\Tr(P_-(h_W(1))h_W(U))\) is retained. Subtracting that function
+of the links would define a different operator; it is not a harmless
+constant vacuum shift. A single source-independent scalar constant
+may be changed without changing the relative theorem.
+
+\begin{lemma}[Operator realization and extensive lower bound]
+\label{lat-realization}
+The Hamiltonian \eqref{lat-hamiltonian} is self-adjoint on $D(H_E)$,
+has compact resolvent, and $e^{-tH}$ is trace class for every $t>0$.
+Every admissible physical restriction has these properties.  Moreover,
+\begin{equation}
+ H\ge-2Nh_*,\qquad
+ -2Nh_*\le E_0\le-2N(m+3r/a)+\frac{3N}{g^2a},
+ \label{lat-extensive}
+\end{equation}
+where $E_\nu=\inf\sigma(H|_{\mathcal H_\nu})$.
+\end{lemma}
+\begin{proof}
+$H_B+d\Gamma(h_W)$ is a bounded continuous Hermitian matrix multiplier
+on a finite product of circles.  Bounded perturbation of the positive
+torus Laplacian proves self-adjointness and compact resolvent.
+Eigenvalue comparison with $H_E$ proves trace-class heat semigroups.
+The matrix $C_5=\alpha_1\alpha_2\alpha_3\beta$ anticommutes with
+$h_W(U)$, so its eigenvalues occur in opposite pairs.  The smallest
+eigenvalue of $d\Gamma(h_W(U))$ is
+$-\tfrac12\operatorname{Tr}|h_W(U)|\ge-2Nh_*$.
+The physical projections reduce $H$.
+For the upper bound, take the constant link wave function and occupy
+the two $\beta=-1$ spinors at every site.  This state has $q_x=0$,
+zero electric field, and lies in $\mathcal H_0$.  Hopping expectations
+vanish, its fermionic energy is $-2N(m+3r/a)$, and its magnetic energy
+is at most $3N/(g^2a)$.  This gives the stated trial bound.
+\end{proof}
+
+\subsection{A positive trace for time-dependent Wilson matrices}
+
+\begin{lemma}[Local twists and varying positive mass]
+\label{lat-determinant}
+Let $h(t)=\sum_j\alpha_j v_j(t)+\beta M(t)$ be bounded and measurable
+on a finite time interval of length $b>0$, with Hermitian spatial
+coefficients, $M(t)\ge mI$ and $m>0$.  Let $V$ be its ordered
+one-particle propagator and $g=e^{i\Theta}$ any spin-scalar unitary,
+where $\Theta$ is a Hermitian spatial matrix.  Then
+\begin{equation}
+ z(g,V):=e^{-\frac i2\operatorname{Tr}\Theta}\det(I+gV)>0.
+ \label{lat-positive-determinant}
+\end{equation}
+Here the trace in the phase includes the four spin components.  The
+inequality is nonnegative when $M(t)\ge0$ is obtained as a limit of
+strictly positive masses.
+\end{lemma}
+\begin{proof}
+Represent the propagator and the terminal unitary as the solution of
+$U'=-A(t)U$, with $A=c(t)h(t)+i\Phi(t)$, $c\ge0$, positive total
+free time, and Hermitian spin-scalar $\Phi$.  Free and kick intervals
+can be separate; the kick $e^{i\Theta}$ has $\int\Phi=-\Theta$.
+Since $\operatorname{Tr}h=0$,
+$z=e^{\frac12\int\operatorname{Tr}A}\det(I+U)$ is the expression
+in \eqref{lat-positive-determinant}.
+The identities
+\[
+ A^*C_5+C_5A=0,\qquad U^*C_5U=C_5
+\]
+give
+$\overline{\det(I+U)}=\det(U)^{-1}\det(I+U)$.
+Together with $\det U=e^{-\int\operatorname{Tr}A}$, this makes $z$
+real, including its centering phase.
+
+If $Uv=-v$ for a nonzero vector, the associated solution $f$ is
+antiperiodic and satisfies $f'+Af=0$.  But
+\begin{equation}
+ 0=\operatorname{Re}\int f^*\beta(f'+Af)
+      =\int c(t)f(t)^*M(t)f(t)\,dt>0.
+ \label{lat-no-zero}
+\end{equation}
+The derivative contributes the zero antiperiodic boundary term;
+$\beta\alpha_jv_j$ and $i\beta\Phi$ are anti-Hermitian.  The last
+inequality holds because a nonzero solution never vanishes and the free
+time has positive length.  Thus $z$ cannot be zero.
+Continuously turn off $\Phi$ and $v_j$, and replace $M(t)$ by
+$(1-s)M(t)+smI$.  This preserves the argument.  The terminal expression
+is $\det(I+e^{-bm\beta})>0$, proving the sign.  Bounded measurable
+coefficients follow either from the same absolutely continuous ODE
+argument or from bounded step approximations.  Finally replace a
+nonnegative $M(t)$ by $M(t)+\epsilon I$ and pass to the limit.
+\end{proof}
+
+For the local gauge twist, $\Theta_{xy}=\theta_x\delta_{xy}I_4$.
+Therefore its phase is $e^{-2i\sum_x\theta_x}$, exactly the phase
+from $q_x=n_x-2$.  It is single-valued under $\theta_x\mapsto
+\theta_x+2\pi$.  Omitting this phase would invalidate the argument.
+
+\subsection{Gauss-law domination with quantized compact links}
+
+\begin{theorem}[Physical-sector vacuum comparison]
+\label{lat-main}
+For \eqref{lat-hamiltonian}, at any $a>0$, $g^2>0$, $r\ge0$, and
+$m\ge0$, every admissible integer source $\nu$ satisfies, for all $b>0$,
+\begin{equation}
+ 0<Z_\nu(b):=\operatorname{Tr}(P_\nu e^{-bH})
+       \le Z_0(b),\qquad E_\nu\ge E_0.
+ \label{lat-vacuum-domination}
+\end{equation}
+The zero-source physical vacuum is also a ground-energy sector of the
+whole auxiliary Hilbert space \eqref{lat-hilbert}.  The assertion includes
+the full electric energy of the sources; no nuclear self-energy has yet
+been subtracted.
+\end{theorem}
+\begin{proof}
+Set $c=g^2/(2a)$.  Relative to normalized Haar measure the one-link
+electric heat kernel is
+\begin{equation}
+ k_t(\phi)=\sum_{\ell\in\mathbb Z}e^{-ct\ell^2}e^{i\ell\phi}
+  =\sqrt{\frac\pi{ct}}\sum_{s\in\mathbb Z}
+           e^{-(\phi-2\pi s)^2/(4ct)}>0.
+ \label{lat-positive-heat}
+\end{equation}
+Let $K_t(U,V)$ be the product over links.  It is positive, continuous,
+and obeys the Markov convolution identity.
+
+For completeness, the bounded matrix Feynman--Kac formula used here
+can be obtained directly.  Write $B(U)=H_B(U)+d\Gamma(h_W(U))$.
+In the Dyson expansion for $e^{-b(H_E+B)}$, a $k$th-order kernel is
+the time-simplex integral of $k$ matrices $B$ inserted between
+$k+1$ electric heat kernels.  Its norm is at most
+\begin{equation}
+ K_b(U,V)\,\frac{(b\|B\|)^k}{k!}.
+ \label{lat-dyson-kernel-bound}
+\end{equation}
+This follows by integrating the positive scalar kernels and using their
+semigroup property.  The absolutely convergent series is the bounded
+perturbation Dyson series and hence is the kernel of the required
+semigroup.  The Markov bridge moments give the equivalent formula
+\begin{equation}
+ [e^{-bH}](U,V)=K_b(U,V)\,\mathbb E_{V\to U}^{b}
+ \left[e^{-\int_0^bH_B(\omega_t)dt}
+       \Gamma(V_\omega)\right].
+ \label{lat-matrix-fk}
+\end{equation}
+$V_\omega$ is the ordered one-particle evolution with generator
+$-h_W(\omega_t)$.  The bridge is the product of circle Brownian bridges.
+The expression also follows by approximating its continuous paths with
+step paths; boundedness of $B$ supplies domination.  Thus this use of
+Feynman--Kac requires neither an unbounded matrix potential nor a
+formal interchange of a nonconvergent expansion.
+
+Inserting $W(g)$ changes the first kernel argument to $U^g$.
+The trace therefore is
+\begin{align}
+ \operatorname{Tr}(W(g)e^{-bH})
+   =\int dU\,K_b(U^g,U)\,\mathbb E_{U\to U^g}^{b}
+     \left[e^{-\int_0^bH_B(\omega_t)dt}
+        e^{-2i\sum_x\theta_x}\det(I+gV_\omega)\right].
+ \label{lat-twisted-trace}
+\end{align}
+The finite-CAR identity $\operatorname{Tr}_{\mathcal F}\Gamma(A)
+=\det(I+A)$ proves the determinant formula.  Traces of the continuous
+kernels can be justified by factoring the semigroup into two
+Hilbert--Schmidt factors; the resulting convolution gives the diagonal
+kernel integral.  The bound \eqref{lat-dyson-kernel-bound}, with the
+finite fermion trace, also bounds all integrals uniformly in the gauge
+twist at fixed $b,n,a,g$.
+
+For $m>0$ every integrand in \eqref{lat-twisted-trace} is strictly
+positive: the scalar factors are positive and
+Lemma~\ref{lat-determinant} applies to the time-dependent Wilson
+matrix.  Denote this nonnegative function of $\theta$ by $F_b(\theta)$.
+Equation~\eqref{lat-projection} gives
+\begin{equation}
+ Z_\nu(b)=\int\frac{d\theta}{(2\pi)^N}
+          e^{-i\theta\cdot\nu}F_b(\theta),\qquad
+ |Z_\nu(b)|\le\int\frac{d\theta}{(2\pi)^N}F_b(\theta)=Z_0(b).
+ \label{lat-character-bound}
+\end{equation}
+For an admissible sector its actual heat trace is strictly positive,
+so the absolute value may be removed.  Its compact-resolvent spectral
+expansion gives
+$-\lim_{b\to\infty}b^{-1}\log Z_\nu(b)=E_\nu$.
+This proves the energy comparison.  The same proof with nonnegative
+determinants applies for $m=0$; alternatively use
+$\|H_m-H_0\|\le2Nm$ and finite-volume continuity.
+Finally the commuting integer Gauss operators decompose
+$\mathcal H$ into their joint eigenspaces.  The inequality for every
+joint eigenvalue proves that the auxiliary ground energy equals $E_0$.
+\end{proof}
+
+This proof uses the full local Gauss projection, not just its global
+charge component.  The constant gauge transformation acts trivially on
+the links and imposes \eqref{lat-capacity} on the fermions.  The link
+holonomies, including torus harmonic variables, remain integrated.
+
+\begin{corollary}[Rest-energy strengthening in the physical sectors]
+\label{lat-rest-energy}
+Let $Q_\nu=\sum_x\nu_x$.  For the same model and every admissible
+integer source,
+\begin{equation}
+ E_\nu\ge E_0+m|Q_\nu|.
+ \label{lat-rest-energy-bound}
+\end{equation}
+For $m>0$ the corresponding thermal bound is
+\begin{equation}
+ Z_\nu(b)\le
+ \binom{4N}{2N+|Q_\nu|}e^{-bm|Q_\nu|}Z_0(b).
+ \label{lat-rest-energy-thermal}
+\end{equation}
+\end{corollary}
+\begin{proof}
+Choose a root site $x_*$ and decompose the Haar angles as
+$\theta_x=\vartheta_x+\phi$, with $\vartheta_{x_*}=0$.
+This is a measure-preserving change of torus coordinates.  The endpoint
+$U^{e^{i\theta}}=U^{e^{i\vartheta}}$ and hence the bridge measure and
+all scalar gauge weights are independent of $\phi$.  At a fixed
+relative twist and fixed bridge, the remaining fermion factor is the
+centered trace with global charge angle $\phi$ and one-particle history
+$e^{i\vartheta}V_\omega$.
+
+Lemma~\ref{lem:mass-gap-annulus} applies with $M(t)\ge mI$ and total
+free time $b$.  It also applies to the continuous bridge history:
+the same absolutely continuous identity
+$\frac{d}{dt}\langle f,\beta f\rangle=-2\langle f,M(t)f\rangle$
+gives its eigenvalue bounds directly.  Thus
+Lemma~\ref{lem:mass-gap-fourier}, with one-particle dimension $4N$,
+bounds the absolute value of its $Q_\nu$ Fourier coefficient by
+$\binom{4N}{2N+|Q_\nu|}e^{-bm|Q_\nu|}$ times its nonnegative zeroth
+coefficient.  Integrate first in $\phi$, use this bound, and remove the
+remaining source phase $e^{-i\vartheta\cdot\nu}$ by absolute value.
+The integral of the zeroth coefficient over relative twists and gauge
+bridges is exactly the full local-Gauss vacuum partition function
+$Z_0(b)$.  This proves \eqref{lat-rest-energy-thermal}.  The finite
+binomial factor disappears as $b\to\infty$.  For $m=0$, the conclusion
+is Theorem~\ref{lat-main}.
+\end{proof}
+
+The strengthening concerns the total electron excess forced by external
+charges.  It is not a neutral-sector excitation gap or a photon gap.
+
+\subsection{Nuclear self-energy and a uniform linear bound}
+
+Let $D:\mathbb R^{\mathcal E}\to\mathbb R^X$ be the incidence
+matrix, with $(DE)_x=\operatorname{div}E_x$, and let
+$\Delta=DD^*$ be the nonnegative combinatorial lattice Laplacian.
+Write $\mathcal G_n=\Delta^+$ for its inverse on zero-mean functions,
+extended by zero on constants.  On $\mathcal H_\nu$, the exact identity
+\begin{equation}
+ H_E=\frac{g^2}{2a}
+ \left[(\nu-q)^*\mathcal G_n(\nu-q)
+       +\left\|E-D^*\mathcal G_n(\nu-q)\right\|^2\right]
+ \label{lat-longitudinal-split}
+\end{equation}
+holds as a quadratic-form identity.  It follows from the orthogonal
+decomposition of a real link vector into $\operatorname{ran}D^*$
+and $\ker D$, since $DE=\nu-q$ has zero sum.  The commuting electric
+and occupation operators permit the same computation in their joint
+eigenbasis.  The second term is positive, but its allowed spectrum
+depends on the integer-flux and charge constraints.  Equation
+\eqref{lat-longitudinal-split} does not assert a tensor factorization
+into independent transverse and longitudinal physical Hilbert spaces.
+
+The source-source term in the first square is
+\begin{equation}
+ \frac{g^2}{2a}\nu^*\mathcal G_n\nu
+ =\frac{g^2}{2a}\mathcal G_n(0)\sum_iZ_i^2
+   +\frac{g^2}{a}\sum_{i<j}Z_iZ_j\mathcal G_n(R_i-R_j).
+ \label{lat-source-self}
+\end{equation}
+Thus the conventional subtraction of individual nuclear self-energies
+defines, explicitly,
+\begin{equation}
+ E_\nu^{\rm sub}=E_\nu-S_n(R,Z),\qquad
+ S_n(R,Z)=\frac{g^2}{2a}\mathcal G_n(0)\sum_iZ_i^2.
+ \label{lat-self-subtraction}
+\end{equation}
+The subtraction is prescribed per nuclear species and is independent
+of the interacting state and of nuclear positions.  Its mild finite-box
+dependence is fixed by the periodic Green function.  A prescribed
+infinite-lattice self-energy could instead be used, but would be a
+different, equally explicit normalization.
+
+\begin{lemma}[Uniform lattice self-energy]
+\label{lat-green-bound}
+For every $n\ge2$ in three dimensions,
+\begin{equation}
+ 0\le\mathcal G_n(0)
+  =\frac1{n^3}\sum_{k\ne0}
+       \frac1{4\sum_{j=1}^3\sin^2(\pi k_j/n)}\le\frac{13}{16}.
+ \label{lat-green-diagonal}
+\end{equation}
+The sum runs over one reciprocal-lattice representative per residue.
+\end{lemma}
+\begin{proof}
+Choose representatives with $|k_j|\le n/2$.  Since
+$\sin(\pi|k_j|/n)\ge2|k_j|/n$, the denominator is at least
+$16|k|^2/n^2$.  The shell $\max_j|k_j|=s$ contains at most
+$(2s+1)^3-(2s-1)^3=24s^2+2\le26s^2$ points.  Therefore
+\[
+ \mathcal G_n(0)\le\frac1{16n}
+      \sum_{0<\max|k_j|\le\lfloor n/2\rfloor}|k|^{-2}
+ \le\frac{26\lfloor n/2\rfloor}{16n}\le\frac{13}{16}.
+\]
+For even $n$, the chosen representatives contain only a subset of some
+boundary shells, which improves this upper bound.
+\end{proof}
+
+\begin{corollary}[Stability with subtracted individual source energies]
+\label{lat-linear-stability}
+For positive nuclei satisfying $\sum_i Z_i\le2n^3$, with any sites
+$R_i$, and $1\le Z_i\le Z_{\max}$,
+\begin{equation}
+ E_\nu^{\rm sub}-E_0
+ \ge m\sum_i Z_i-\frac{g^2}{2a}\mathcal G_n(0)\sum_iZ_i^2
+ \ge m\sum_i Z_i-\frac{13g^2}{32a}Z_{\max}^2K,
+ \label{lat-final-bound}
+\end{equation}
+where $13g^2/(32a)=13\pi\alpha/(8a)$ when $g^2=4\pi\alpha$.
+The constant is uniform in box size, source positions, fermion pair
+content, and electric or magnetic excitations.  It requires no
+smallness of $\alpha$ and no restriction relating $a^{-1}$ to $m$.
+\end{corollary}
+\begin{proof}
+Subtract the explicitly defined $S_n$ from
+Corollary~\ref{lat-rest-energy} and use Lemma~\ref{lat-green-bound}.
+\end{proof}
+
+Two nuclei assigned to the same site remain two labeled sources in
+\eqref{lat-self-subtraction}; their mutual energy
+$g^2Z_iZ_j\mathcal G_n(0)/a$ is retained.  Hence the bound still
+holds for lattice site collisions.  Replacing their individual
+subtractions by the square of the total charge at that site removes
+this mutual term and defines a different model.  With arbitrarily many
+nuclei at a site, that alternative subtraction is not bounded by a
+constant times $K$, so \eqref{lat-final-bound} does not follow from this
+proof.  A lattice site is an exact source location for the lattice model,
+but represents resolution of order $a$ when compared with continuum
+point nuclei; no continuum collision singularity is being preserved.
+
+\paragraph{A volume-independent source convention.}
+One may instead prescribe the infinite-lattice diagonal
+\[
+\mathcal G_\infty(0)=
+\int_{[-1/2,1/2]^3}
+\frac{dt}{4\sum_j\sin^2(\pi t_j)}
+\le\frac1{16}\int_{|t|\le\sqrt3/2}|t|^{-2}\,dt
+=\frac{\pi\sqrt3}{8}.
+\]
+The integrable singularity in three dimensions makes this finite.
+It is the zero-site Green value, equivalently the monotone
+zero-mass resolvent integral of the infinite lattice Laplacian.
+Subtracting the fixed per-species constants
+\(S_\infty=\frac{g^2}{2a}\mathcal G_\infty(0)\sum_iZ_i^2\)
+from the raw source-sector energy gives
+\[
+E_\nu-S_\infty-E_0
+\ge mZ_{\rm tot}-\frac{\pi\sqrt3\,g^2}{16a}Z_{\max}^2K.
+\]
+This convention is independent of the box size as well as of the
+state and positions. It is an alternative specified normalization,
+not a claim that the finite-box diagonal equals its infinite-lattice value.
+
+\subsection{Scope and limitations}
+
+The substantive comparison is $E_\nu\ge E_0$ before self-energy
+subtraction, not the elementary finite-volume lower bound.  After the
+subtraction, it says precisely that nuclei together with their
+specified individual electromagnetic self-energies cannot lower the
+energy below the interacting vacuum.  Adding those self-energies to
+the unsubtracted Hamiltonian would count them twice.
+
+Unlike the sharp momentum regulator, this model is spatially local,
+exactly gauge invariant, and has the extensive bound
+\eqref{lat-extensive} as well as \eqref{lat-final-bound}.  These facts
+alone do not establish a thermodynamic limit, atomic binding, a gap
+above the vacuum in its neutral Gauss sector, or crystalline order.
+The vacuum and open-source thermodynamic limits are proved by
+additional arguments in Section~\ref{therm4-section}; the periodic-source
+limit is distinguished there.
+The charge-cost strengthening \eqref{lat-rest-energy-bound} does not
+control neutral pair or photon excitations.
+
+The electric energy here is the unshifted compact-rotor Laplacian.
+A nonintegral background electric shift can make its kernel complex.
+Restricting to an additional flux or winding sector can introduce a
+further character into the gauge integral.  The proof has made neither
+modification and does not compare separately fixed flux sectors.
+In the presence of mobile charged matter, some proposed global electric
+flux restrictions are not even reducing subspaces of the hopping
+Hamiltonian.  A finite electric-field truncation also need not retain
+the positive kernel \eqref{lat-positive-heat}.
+
+Finally, positivity of the \emph{bare} mass in
+\eqref{lat-wilson-mass} is a structural hypothesis.  Wilson fermions
+have additive mass renormalization; fixed physical parameters need not
+remain in this bare parameter range along a putative continuum
+trajectory.  The source bound itself diverges as $a^{-1}$.
+Neither a renormalized continuum QED construction nor a cutoff-uniform
+stability constant follows.  The nonnegative determinant mechanism is
+not a proof that compact \(U(1)\) is in a Coulomb phase at every coupling,
+nor a proof of gapless transverse photons. It is
+closely related to familiar positivity and static-source character
+bounds in lattice gauge theory; no priority claim is made for that
+mechanism or for this application.

@@ -1,0 +1,26 @@
+[
+  {
+    "script": "claude_meff_lattice_sum.py",
+    "returncode": 0,
+    "output": "Lam=10: (M_eff deficit)/alpha at |p|=0,L/2,~L: [0.831 0.483 0.254]  continuum (1/pi)asinh: 0.954  crude 13Lam/pi^2: 13.2\nLam=30: (M_eff deficit)/alpha at |p|=0,L/2,~L: [0.977 0.497 0.258]  continuum (1/pi)asinh: 1.303  crude 13Lam/pi^2: 39.5\nLam=100: (M_eff deficit)/alpha at |p|=0,L/2,~L: [1.013 0.5   0.259]  continuum (1/pi)asinh: 1.687  crude 13Lam/pi^2: 131.7\n",
+    "stderr": ""
+  },
+  {
+    "script": "claude_charge_gap_toy.py",
+    "returncode": 0,
+    "output": "min (E_q-E_0)/(m|q|) over trials: 1.7749532210408838\n",
+    "stderr": ""
+  },
+  {
+    "script": "claude_gd_random_check.py",
+    "returncode": 0,
+    "output": "min over random instances of E_q(eta)-E_0(0) (should be >=0):\n proper h : 0.2751879699953026\n h with scalar part : -0.9115899005694414\n indefinite mass : 0.7317527741145131\n",
+    "stderr": ""
+  },
+  {
+    "script": "claude_gd_indefinite_mass.py",
+    "returncode": 0,
+    "output": "[0.5, 0.5] 1.6560628239148576\n[-1, 1] 1.2445509425233547\n[0, 0] 0.6078935790749291\n[-0.05, 0.05] 1.771491654312062\n[0, 1] 2.241093840768123\n",
+    "stderr": ""
+  }
+]

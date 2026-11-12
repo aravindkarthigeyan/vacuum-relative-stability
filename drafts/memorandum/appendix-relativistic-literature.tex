@@ -1,0 +1,263 @@
+\section{Agent report: relativistic Coulomb, polarized vacua, and low-energy limits}
+\label{app-rel:report}
+
+This report records the hypotheses and limitations of the relativistic Coulomb,
+Bogoliubov--Dirac--Fock (BDF), and nonrelativistic-limit results used in this
+paper. Statements attributed to the literature are separated from elementary
+deductions and conditional estimates. None of the results reviewed below is a
+stability theorem for the complete electron--positron--photon Fock-space model
+with arbitrary point-nuclear configurations.
+
+\subsection{The Lieb--Yau theorem and the relevant collapse mechanism}
+\label{app-rel:lieb-yau}
+
+Lieb and Yau \cite{LY1988} consider fixed-number fermionic electrons with
+spin degeneracy $q$, fixed point nuclei, Coulomb interactions, and kinetic
+energy $\sqrt{p^2+m^2}-m$ in units $\hbar=c=1$. Their stability conditions are
+\begin{equation}
+ Z_{\max}\alpha\le \frac{2}{\pi},\qquad
+ \alpha<\frac{1}{47q}.
+ \label{app-rel:ly-conditions}
+\end{equation}
+For physical electron spin, $q=2$, these inequalities include
+$\alpha\simeq1/137$ and $Z_{\max}=26$. The model has no positrons, quantized
+photons, or pair creation. The theorem therefore supports the electrostatic
+part of the research program, but supplies no estimate for the omitted
+operators.
+
+The one-center critical coupling is $Z\alpha=2/\pi$. The paper also
+establishes collective instability at sufficiently large $\alpha$, even for
+arbitrarily small positive nuclear charge. Bounds on individual $Z\alpha$
+are consequently not the only issue in relativistic many-body stability.
+
+\paragraph{A scaling check.}
+The sharp Coulomb form inequality on $\mathbb R^3$ is
+$|p|\ge 2/(\pi|x|)$; its application and sharp threshold are part of
+\cite{LY1988}. If $\nu>2/\pi$, sharpness gives a normalized form-domain
+vector $f$ for which
+\[
+ c_f:=\langle f,|p|f\rangle-
+ \nu\langle f,|x|^{-1}f\rangle<0.
+\]
+For $f_s(x)=s^{3/2}f(sx)$, functional calculus and
+$\sqrt{a^2+m^2}-m\le a$ for $a\ge0$ give
+\begin{equation}
+ \left\langle f_s,
+ \left(\sqrt{p^2+m^2}-m-\frac{\nu}{|x|}\right)f_s
+ \right\rangle\le s c_f\longrightarrow-\infty.
+ \label{app-rel:collapse-scaling}
+\end{equation}
+This is an actual variational collapse argument for the uncut
+pseudorelativistic operator. It does not apply at fixed fermion momentum
+cutoff: dilation eventually takes $f_s$ outside the cutoff space. Nor is
+$2/\pi$ the self-adjointness threshold of the Dirac--Coulomb operator.
+
+\subsection{What polarized-vacuum theorems establish}
+\label{app-rel:bdf}
+
+The initial Hainzl--Lewin--S\'er\'e construction
+\cite{HLS2004} obtains a stable polarized vacuum through a fixed-point
+argument, with smallness restrictions on the field, coupling, and cutoff.
+The later variational result \cite{HLS2005}, Theorem~1 and equation~(29),
+allows every finite cutoff and external density $n$ of finite Coulomb energy.
+For $0\le\alpha<4/\pi$, it gives a minimizer and
+\begin{align}
+ \mathcal E^{n}_{\mathrm{BDF}}(Q)
+ &\ge
+ \left(1-\frac{\alpha\pi}{4}\right)
+       \operatorname{Tr}_{P_-^0}(D^0Q)
+ +\frac{\alpha}{2}D(\rho_Q-n,\rho_Q-n)
+ -\frac{\alpha}{2}D(n,n),
+ \label{app-rel:bdf-bound}\\
+ D(f,g)&:=\iint_{\mathbb R^3\times\mathbb R^3}
+             \frac{f(x)g(y)}{|x-y|}\,dx\,dy.
+ \nonumber
+\end{align}
+Here $Q$ is the change in the one-body density matrix relative to the free
+sea, and the generalized kinetic trace is nonnegative. BDF is a
+mean-field, no-photon theory; its quasifree states describe polarization and
+pair degrees of freedom, but not all correlated Fock-space states. Literal
+delta nuclei fail the hypothesis $D(n,n)<\infty$.
+
+\paragraph{Two logical checks on transferring this theorem.}
+First, if $\mathcal S$ is a restricted variational class in a Hilbert space
+$\mathcal H$, then
+\begin{equation}
+ \inf_{\substack{\Psi\in\mathcal H\\\|\Psi\|=1}}
+ \langle\Psi,H\Psi\rangle
+ \le
+ \inf_{\Psi\in\mathcal S}\langle\Psi,H\Psi\rangle.
+ \label{app-rel:variational-direction}
+\end{equation}
+A lower bound on the right side does not lower-bound the left side. Thus
+even a BDF theorem incorporating arbitrarily many pairs cannot by itself
+establish stability against arbitrary correlated pair states.
+
+Second, a finite fermion momentum cutoff makes the external coupling to a
+point source well-defined. In a box, every fermion bilinear has Fourier
+support among differences of allowed momenta, hence within $|k|\le2\Lambda_f$.
+If a distribution $n_{\Lambda_f}$ has the same Fourier coefficients as
+$\sum_i Z_i\delta_{R_i}$ on this set, it produces exactly the same
+external coupling. This algebraic equivalence permits a finite-Coulomb-energy
+representative for that coupling. It does not identify the original
+nucleus--nucleus energy with $D(n_{\Lambda_f},n_{\Lambda_f})/2$.
+
+In particular, the last term of \eqref{app-rel:bdf-bound} is generally
+configuration dependent and includes nuclear cross terms. Obtaining a
+bound proportional to $K$ requires comparison with the prescribed nuclear
+repulsion and control of the remaining self terms. Treating the filtered
+representative as a new nuclear charge density without stating this change
+would obscure the point-source assumption.
+
+\subsection{Dirac--Coulomb self-adjointness is a different question}
+\label{app-rel:dirac-coulomb}
+
+For $D^0-\nu/|x|$, essential self-adjointness on
+$C_c^\infty(\mathbb R^3\setminus\{0\};\mathbb C^4)$ holds for
+$0\le\nu\le\sqrt3/2$, including the endpoint. The domain is $H^1$ for
+strict $\nu<\sqrt3/2$. For $\sqrt3/2<\nu<1$, there is a unique
+distinguished extension with domain in $H^{1/2}$. At $\nu=1$, a limiting
+distinguished extension exists but its domain is not contained in
+$H^{1/2}$ \cite[Section~2]{ELS2021}.
+
+For a finite signed measure $\mu$ satisfying
+$|\mu(\{R\})|<1$ at every point, \cite[Theorem~1]{ELS2021} constructs the
+unique distinguished extension of $D^0-\mu*|x|^{-1}$ with domain in
+$H^{1/2}$, obtained by norm-resolvent truncation of the singular potential.
+Its essential spectrum is
+\begin{equation}
+ (-\infty,-1]\cup[1,\infty).
+ \label{app-rel:dirac-essential-spectrum}
+\end{equation}
+This theorem does not assert semiboundedness. Distinct nuclei with
+$Z\le26$ meet the individual atomic-weight condition at physical $\alpha$;
+coincident sources instead have the sum of their charges as atomic weight.
+Multicenter spectral gaps require separate analysis.
+
+\paragraph{Why the negative sea must be treated correctly.}
+Equation~\eqref{app-rel:dirac-essential-spectrum} prevents interpreting the
+unprojected one-particle Dirac operator as a positive electron kinetic
+energy. Already in the free problem, let $\widehat f_n$ be normalized,
+supported in a fixed-radius ball centered at $ne_1$, and valued in the
+negative spectral subspace of $D^0(p)$. Then
+\[
+ \langle f_n,D^0 f_n\rangle
+ =-\int\sqrt{|p|^2+m^2}\,|\widehat f_n(p)|^2\,dp
+ \longrightarrow-\infty.
+\]
+The electron--positron Fock construction instead fills the reference sea
+and assigns positive energy to both particles and holes. This removes the
+displayed free instability. It does not prove a bound for the interactions
+or justify dropping pair terms.
+
+\subsection{Established nonrelativistic limits and their scope}
+\label{app-rel:nr-limits}
+
+Hainzl--Lewin--S\'er\'e \cite{HLS2008} establish existence of charged BDF
+minimizers under an HVZ-type binding condition. Their Theorem~3 considers
+$\nu\in\mathcal C\cap L^1$, $\nu\ge0$, $Z=\int\nu$, fixed positive integer
+$N$ satisfying $Z>N-1$, and cutoff $\Lambda=c\Lambda_0$. For sufficiently
+large $c$, minimizers exist and
+\begin{equation}
+ \mathcal E_c^\nu(N)-N g_0(0)
+       \longrightarrow E_{\mathrm{HF}}^\nu(N),
+ \label{app-rel:bdf-nr-limit}
+\end{equation}
+with subsequential $H^1$ convergence of their electronic orbitals to a
+Hartree--Fock minimizer. Here $g_0(0)$ is the threshold of the
+self-consistent free mean-field Dirac operator. This is a fixed-$N,Z$
+mean-field limit, not a macroscopic error estimate for full QED.
+
+Arai \cite{Arai2003} proves a nonrelativistic Dirac--Maxwell limit leading
+to a spin-$1/2$ Pauli--Fierz realization. The starting model contains one
+Dirac particle and photon Fock space; it does not contain a quantized
+Dirac field with variable electron and positron numbers. The theorem
+therefore verifies a restricted relativistic-to-nonrelativistic connection,
+without supplying the pair-elimination argument required here.
+
+\paragraph{An elementary kinetic error bound.}
+For $x\ge0$, convexity of $(1+x)^{-1/2}$ or direct differentiation gives
+\[
+ 0\le 1+\frac{x}{2}-\sqrt{1+x}\le\frac{x^2}{8}.
+\]
+Consequently functional calculus yields
+\begin{equation}
+ 0\le\frac{p^2}{2m}
+ -\left(\sqrt{m^2c^4+c^2p^2}-mc^2\right)
+ \le\frac{p^4}{8m^3c^2}.
+ \label{app-rel:kinetic-error}
+\end{equation}
+On a sector of $N$ particles whose momenta are bounded by $p_*$, the
+sum of these errors is at most $Np_*^4/(8m^3c^2)$. This proves an extensive
+free-kinetic approximation under an explicit low-momentum assumption.
+It neither controls the electromagnetic interaction nor establishes that
+minimizers of the full theory lie in that sector.
+
+\subsection{A conditional Feshbach estimate, with proof}
+\label{app-rel:feshbach}
+
+Let $P$ project onto a chosen no-positron subspace within a fixed charge
+sector, and put $Q=1-P$. Suppose the compressions and off-diagonal maps
+admit compatible self-adjoint or closed-form realizations. Write
+$A=PHP$, $D=QHQ$, and $B=QHP$. Fix real $z$ and assume
+\begin{equation}
+ D-z\ge gQ,\qquad g>0.
+ \label{app-rel:gap-assumption}
+\end{equation}
+On vectors in the domain of $B$, spectral calculus gives the rigorous form
+inequality
+\begin{equation}
+ 0\le B^*(D-z)^{-1}B\le g^{-1}B^*B.
+ \label{app-rel:feshbach-bound}
+\end{equation}
+Indeed $0\le(D-z)^{-1}\le g^{-1}Q$, so application to $B\psi$ proves
+\eqref{app-rel:feshbach-bound}. The effective operator at spectral
+parameter $z$ is
+\begin{equation}
+ H_{\mathrm{eff}}(z)=A-B^*(D-z)^{-1}B.
+ \label{app-rel:feshbach-operator}
+\end{equation}
+For vectors on a common core, completion of the quadratic form gives
+\begin{align}
+ \langle(\psi,\chi),(H-z)(\psi,\chi)\rangle
+ &=\left\|(D-z)^{1/2}\chi+(D-z)^{-1/2}B\psi\right\|^2
+ \nonumber\\
+ &\quad+\langle\psi,
+       (A-z-B^*(D-z)^{-1}B)\psi\rangle.
+ \label{app-rel:feshbach-square}
+\end{align}
+The identity extends whenever the displayed forms are closed. Thus, under
+these hypotheses, positivity of $H_{\mathrm{eff}}(z)-z$ implies
+positivity of $H-z$. No commutation of $B$ with $D$ is used.
+
+The difficult hypotheses have not disappeared. One needs
+\eqref{app-rel:gap-assumption} uniformly over the configurations under
+consideration, and a form estimate for the correction whose error is
+proportional to system size. Photon-dependent $B$ need not be a bounded
+operator on the entire photon Fock space. An operator norm estimate after
+an additional finite-energy projection is legitimate, but its dependence
+on that projection must be tracked. A bound growing as $K^2$, $V^2$, or an
+uncontrolled cutoff-dependent mode count cannot transfer a uniform
+$-CK$ stability theorem.
+
+The phrase ``below pair threshold'' is therefore insufficient on its own.
+The relevant threshold is that of the interacting complementary
+compression $QHQ$, with the external field and reference vacuum fixed.
+Soft photons also mean that the no-positron sector has no isolated
+finite-dimensional band in infinite volume. They do not by themselves
+eliminate the free pair threshold; they invalidate an unqualified
+finite-dimensional gapped-band argument.
+
+\subsection{Consequences for the proposed stability proof}
+\label{app-rel:consequences}
+
+The verified results establish substantial stability, binding, and
+nonrelativistic-limit statements in their stated models. They leave three
+distinct steps for full QED: a lower bound on all correlated pair states,
+a nonperturbative estimate for the transverse photon interaction, and a
+vacuum-relative comparison uniform in the number and placement of nuclei.
+The conditional formula above identifies one possible route to an
+effective description, but its gap and extensive-error assumptions require
+new proof. Stability of an effective Hamiltonian, without these estimates
+and control of the complementary subspace, does not prove stability of
+the underlying relativistic theory.

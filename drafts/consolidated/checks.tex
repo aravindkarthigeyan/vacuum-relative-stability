@@ -1,0 +1,118 @@
+\section{Checks, limitations, and the next decisive questions}
+\subsection{Independent checks and reproducible finite tests}
+Three collaborating agents checked the exact Wick coefficient, the
+centered trace phase, the strict decrease of the $\mathsf b$ form,
+canonical Fourier projection, and the heat-kernel constants.
+The shareable technical reports and reproducible scripts are supplied
+with the research package.
+The main text states the complete proof and takes precedence over
+intermediate reports.
+The 29 October revision additionally audits the charge gap, the discrete
+mass estimates, and exact local Gauss projection in the compact lattice
+model. The four supplied check scripts were preserved together and
+reproduced without modification; their outputs are saved in
+\texttt{numerics/claude\_scripts\_reproduction.json}.
+
+The subsequent consolidation integrates the vacuum thermodynamic
+argument, fixed-cell source estimates, and frozen-link spectral
+comparison. The later internal audits check the clover mass condition,
+electric IMS identities, Fourier-support obstruction, virtual-pair
+density bound, and the distinction between open-source and periodic-source
+limits. These are analytic proofs; numerical checks are not their premises.
+
+Two additional supplied scripts solve Gauss's law on a four-site open
+chain with two fermion components per site. They reproduce minimum
+charge-adjusted margins $0.11137650412315825$ in the Dirac model and
+$-1.6840305765244952$ with a spin-scalar potential. This control
+remains gauge invariant: it violates the extra Dirac positivity
+structure, not gauge invariance. An open tree has no independent
+magnetic holonomies, so these tests do not check three-dimensional
+transverse photons, a heavy-mass expansion, or a thermodynamic limit.
+
+The accompanying script \texttt{numerics/check\_gaussian\_domination.py}
+adds independent finite-matrix diagnostics. With fixed seed 20261028 it
+tests 100 products of noncommuting Hermitian scalar kicks and positive-mass
+Dirac factors on an eight-dimensional one-particle space. The largest
+relative imaginary part of the centered trace is below $1.4\,10^{-14}$;
+every real part is positive. It also diagonalizes all nine charge blocks
+of six full 256-dimensional CAR Hamiltonians, for eight source shifts
+each: all 432 completed-square ground-energy comparisons hold.
+Fifty quasifree expectation checks of the exact Wick rewriting agree
+within $9\,10^{-16}$. The output JSON records the full diagnostics.
+These calculations test signs and normalizations; the proofs do not
+depend on numerical evidence.
+
+\subsection{What was and was not needed}
+The direct one-nucleus proof bypasses a local annihilation-operator
+commutator bound. In fact a bound on
+$\|[H_0,c^\dagger(f)]P_{Q=0}\|$ uniform in $L$ is too strong.
+One can occupy a positive density of disjoint momentum-pair orbitals
+$(\varphi_p+\varphi_{p+q})\xi/\sqrt2$, where $q=2\pi e_1/L$,
+and complete the occupied subspace to rank $2M_L$.
+The resulting neutral Slater has a macroscopic density modulation
+$A_L\cos(qx)$ with $A_L$ bounded below as $L\to\infty$.
+An unoccupied complementary orbital
+$(\varphi_p-\varphi_{p+q})\xi/\sqrt2$ has a Hartree addition energy
+of order $-\alpha A_L/|q|^2=-c_\Lambda L^2$.
+Its kinetic and exchange increments stay bounded at fixed cutoff:
+exchange is bounded by $\alpha\kappa_{\Lambda,L}$ and the rank-one
+direct and exchange self-terms cancel.
+Thus individual high-energy states obstruct that norm estimate.
+The initial Slaters have large positive Coulomb energy and do not
+contradict ground-energy comparisons. The proof above requires no
+such individual commutator assertion.
+
+Nor was a uniform pair-sector gap required. A vacuum-relative lower
+bound and a spectral gap are different statements. The theorem does
+not supply the uniform resolvent estimates needed for a Feshbach
+reduction, nor an extensive estimate for its virtual-pair remainder.
+
+\subsection{Per-species subtraction: corrected ultraviolet target}
+An independently prescribed function $\delta M_Z(\Lambda)$ for each
+nuclear species is a legitimate additional source parameter.
+It is not state- or configuration-dependent.
+For the shifted energy
+\[
+\widetilde E_\nu=E_\nu+\sum_i\delta M_{Z_i}(\Lambda),
+\]
+existence of a fixed-cutoff $O(K)$ relative bound is unchanged when
+$Z_i$ ranges over a fixed finite set: its constant changes by at most
+$\max_Z|\delta M_Z(\Lambda)|$. Cutoff uniformity, however, can change.
+Consequently the earlier one-nucleus ultraviolet trial does not
+refute a separately calibrated, per-species-subtracted theorem.
+The old assertion must be read as a statement about its fixed bare
+normalization, not about every physical mass convention.
+
+To use the exact isolated-nucleus energy as a calibration requires
+an infinite-volume definition or another specified reference:
+$E_{Z,\Lambda,L}-E^{\vac}_{\Lambda,L}$ at each different finite $L$
+is not itself one volume-independent parameter.
+The present proof does not construct that limit, test all two-nucleus
+renormalized cross terms, or permit $\Lambda\to\infty$ at fixed physical
+charge. Those remain separate tasks.
+
+\subsection{Minimal scope of the main conclusion}
+The decisive input is canonical Gaussian domination with a mass of
+one sign. Section~\ref{sec:mass-gap-round2} enlarges the original
+linear cutoff window, treats nonnegative mass by continuity, and
+proves a charge gap. Failure of a sufficient positivity criterion is
+not an instability counterexample. Mixed-sign mass remains unresolved.
+Section~\ref{lat-section} supplies a gauge-invariant model with both
+relative stability and absolute extensivity. No ultraviolet-independent
+constant or constructive continuum QED limit follows.
+
+Section~\ref{therm4-section} proves the fixed-spacing vacuum and
+open-source thermodynamic limits. The periodic-source limit remains
+conditional on (BF). Sections~\ref{nr4-section}--\ref{rel4-section}
+state the controlled static reduction and the outstanding dynamical
+pair-block and dressed-vacuum estimates. Binding and crystal
+selection require separate arguments.
+
+\subsection{Research-tool disclosure and review status}
+The project owner's requested research-tool credits are
+\emph{Opus 5.5 + Astra 6}. Generative AI assisted mathematical
+formulation, proof drafting, literature searches, code, and internal
+audits. Those audits are not external specialist review or a
+certification of priority. Human author metadata has not been supplied
+for this review draft. The mathematical statements must be assessed
+from their explicit hypotheses and proofs.

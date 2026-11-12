@@ -1,0 +1,353 @@
+\section{An ultraviolet obstruction for the fixed-reference mean-field model}
+\label{uv-section}
+
+The cutoff dependence in Theorem~\ref{thm:mf} cannot be removed merely by
+imposing a subcritical nuclear charge.  In the photon-free Hamiltonian fully
+Wick ordered relative to the fixed free sea, a single unit point nucleus
+already produces an energy gain proportional to minus the fermion cutoff.
+The following construction uses an exactly neutral Slater determinant and
+at most one coherent electron--positron excitation in addition to its
+neutralizing electron.  Thus an unbounded number of pairs is not needed for
+this obstruction.
+
+Throughout this section $m>0$ and $0<\alpha<4/\pi$ are fixed,
+$\Lambda:=\Lambda_f$, and the box side $L$ is fixed with
+\begin{equation}
+ L>\frac{\alpha c_*}{2m(1-\alpha\pi/4)},
+ \qquad c_*=6+\frac{3\pi\sqrt6}{2}.
+ \label{uv-box-range}
+\end{equation}
+The source is one point nucleus of charge $Z=1$ at the origin.  We retain the
+same zero-mean Green function and nuclear self-energy convention as in the
+main model.  There is therefore no nucleus--nucleus term in this example.
+All assertions below concern the fixed bare coupling and fixed mass in
+that explicitly specified Hamiltonian.
+
+\begin{theorem}[No cutoff-independent mean-field relative bound for a unit point nucleus]
+\label{uv-theorem}
+Set $V=L^3$ and define the positive constants
+\begin{align}
+ b_0&=\frac1{21600\sqrt3\pi^2},\qquad
+ c_1=c_*+\frac52,\qquad
+ A_\alpha=\frac94+\frac{15\pi\alpha}{16},\nonumber\\
+ c_\alpha&=\frac{A_\alpha\alpha^2b_0^2}
+                    {A_\alpha^2+\alpha^2b_0^2}>0.
+ \label{uv-constants}
+\end{align}
+For every cutoff satisfying
+\begin{equation}
+ \Lambda\ge\max\left\{
+ 32m,\ \frac{16\pi\sqrt3}{L},\
+ 4m+\frac{6\alpha c_1}{L},\
+ \left(\frac{1024\pi\alpha}{9V}\right)^{1/3}
+ \right\},
+ \label{uv-cutoff-threshold}
+\end{equation}
+the Hartree--Fock energy, minimized over exactly neutral Slater determinants,
+satisfies
+\begin{equation}
+ E^{\rm HF}_{\Lambda,L}(0,1)
+       -E^{\rm HF,\vac}_{\Lambda,L}
+ \le m-c_\alpha\Lambda.
+ \label{uv-linear-collapse}
+\end{equation}
+Here $E^{\rm HF,\vac}_{\Lambda,L}=0$ by Theorem~\ref{thm:mf}.
+Consequently no lower bound $-CK$, with $C$ independent of $\Lambda$, holds
+for this fixed-reference mean-field model, even with $K=Z=1$; in particular,
+this includes the physical coupling, for which $Z\alpha<2/\pi$.
+The same obstruction applies to the relaxed mean-charge
+variational class, which contains these Slater states.
+\end{theorem}
+
+The constants are deliberately conservative.  Their significance is their
+strict positivity and independence of the cutoff, not their numerical size.
+The proof below involves only finite-dimensional Fourier sums; no
+unjustified interchange of ultraviolet and infinite-volume limits is needed.
+
+\subsection{Opposite-energy Fourier packets with a positive Coulomb matrix element}
+\label{uv-packets}
+
+Let
+\[
+ \mathsf C=-i\mathsf a_1\mathsf a_2\mathsf a_3.
+\]
+The Dirac anticommutation relations imply that $\mathsf C$ is a Hermitian
+unitary, commutes with all $\mathsf a_i$, and anticommutes with $\mathsf b$.
+Choose a unit spinor $\xi$ satisfying
+$\mathsf a_1\xi=\xi$ and $\mathsf C\xi=\xi$.  Such a spinor exists: the
+commuting projections $(1+\mathsf a_1)/2$ and $(1+\mathsf C)/2$ have a
+one-dimensional intersection, as follows by taking the trace of their
+product.
+
+Define a finite set of lattice momenta by
+\begin{equation}
+ \mathcal A_\Lambda=\left\{
+ p\in\frac{2\pi}{L}\Z^3:
+ \left|p_i-\frac\Lambda2\delta_{i1}\right|
+        \le\frac\Lambda{8\sqrt3}\quad(i=1,2,3)
+ \right\},\qquad N=|\mathcal A_\Lambda|.
+ \label{uv-momentum-cube}
+\end{equation}
+Every such momentum obeys
+\[
+ \left|p-\frac\Lambda2e_1\right|\le\frac\Lambda8,
+ \qquad \frac{3\Lambda}8\le|p|\le\frac{5\Lambda}8.
+\]
+The set and its reflection lie strictly inside the fermion cutoff and have
+disjoint supports.  If $\Lambda L\ge16\pi\sqrt3$, elementary counting in
+each of the three coordinate intervals gives
+\begin{equation}
+ N\ge\left(\frac{\Lambda L}{16\pi\sqrt3}\right)^3
+       =\frac{V\Lambda^3}{12288\sqrt3\pi^3}.
+ \label{uv-mode-count}
+\end{equation}
+Indeed an interval of length $\Lambda/(4\sqrt3)$ contains at least its
+length divided by the lattice spacing, minus one, lattice points.  Under
+the stated condition this is at least half that ratio.
+
+For $p\in\mathcal A_\Lambda$ put
+\[
+ a_p=P_+(p)\xi,
+ \qquad S_\Lambda=\sum_{p\in\mathcal A_\Lambda}\|a_p\|^2,
+ \qquad \varphi_p(x)=V^{-1/2}e^{ip\cdot x},
+\]
+and define normalized spinors
+\begin{equation}
+ u(x)=S_\Lambda^{-1/2}\sum_{p\in\mathcal A_\Lambda}a_p\varphi_p(x),
+ \qquad v(x)=\mathsf C u(-x).
+ \label{uv-orbitals}
+\end{equation}
+To control the spinors quantitatively, note that
+\[
+ \left|\frac p{|p|}-e_1\right|\le\frac12,
+ \quad
+ 1-\frac{|p|}{E(p)}\le\frac m{|p|},
+ \quad \frac m{E(p)}\le\frac m{|p|}.
+\]
+Since $\mathsf a_1\xi=\xi$, these imply
+\begin{equation}
+ \|a_p-\xi\|
+ \le\frac14+\frac m{|p|}
+ \le\frac14+\frac{8m}{3\Lambda}\le\frac13
+ \quad\text{if }\Lambda\ge32m.
+ \label{uv-spin-bound}
+\end{equation}
+It follows that $4N/9\le S_\Lambda\le N$, so the definition of $u$ is
+nondegenerate.
+
+Let $\mathcal R$ be spatial inversion.  Since
+$D_0\mathsf C\mathcal R=-\mathsf C\mathcal R D_0$, the two orbitals obey
+\[
+ P_+u=u,\qquad P_-v=v,\qquad
+ \|u\|=\|v\|=1,\qquad \langle u,v\rangle=0.
+\]
+Moreover $G_L$ is even, so their diagonal Coulomb matrix elements are
+exactly equal:
+\begin{equation}
+ \langle u,G_Lu\rangle=\langle v,G_Lv\rangle.
+ \label{uv-equal-diagonal}
+\end{equation}
+
+The off-diagonal matrix element is positive and grows linearly.  For all
+$p,r\in\mathcal A_\Lambda$, \eqref{uv-spin-bound} gives
+\[
+ \operatorname{Re}\langle a_p,\mathsf C a_r\rangle
+ \ge1-\frac13-\frac13-\frac19=\frac29.
+\]
+No term $p+r$ vanishes.  The Fourier formula for $G_L$ therefore gives
+\begin{align}
+ b_\Lambda&:=\operatorname{Re}\langle u,G_Lv\rangle
+   =\frac1{VS_\Lambda}\sum_{p,r\in\mathcal A_\Lambda}
+       \frac{4\pi}{|p+r|^2}
+       \operatorname{Re}\langle a_p,\mathsf C a_r\rangle\nonumber\\
+ &\ge\frac{128\pi}{225}\frac{N}{V\Lambda^2}
+ \ge b_0\Lambda.
+ \label{uv-positive-matrix-element}
+\end{align}
+Here $|p+r|\le5\Lambda/4$, $S_\Lambda\le N$, and
+\eqref{uv-mode-count} were used.  This establishes the required
+electron--positron Coulomb coupling directly at finite volume.
+
+\subsection{An exactly neutral Slater state}
+\label{uv-neutral-state}
+
+Write $P_u=|u\rangle\langle u|$ and similarly for other normalized orbitals.
+Choose $0<t<\pi/2$, set $s=\sin t$, $c=\cos t$, and replace the occupied
+negative-energy orbital $v$ by $z=cv+su$.  The resulting sea-relative
+matrix is
+\begin{equation}
+ Q_t=s^2(P_u-P_v)+sc\bigl(|u\rangle\langle v|
+                              +|v\rangle\langle u|\bigr),
+ \qquad Q_t^2=s^2(P_u+P_v).
+ \label{uv-pair-rotation}
+\end{equation}
+This rotation alone has exact charge zero.
+
+To neutralize the unit nucleus, choose a unit spinor $\zeta$ with
+$\mathsf b\zeta=\zeta$ and add the positive-energy zero-momentum orbital
+$w(x)=V^{-1/2}\zeta$.  Its Fourier support is disjoint from those of $u,v$.
+Then
+\begin{equation}
+ \gamma_t=P_- -P_v+P_z+P_w,
+ \qquad Q^{\rm tot}_t=\gamma_t-P_-=Q_t+P_w
+ \label{uv-full-projector}
+\end{equation}
+is an orthogonal projector of rank $2M_L+1$.  Its Slater determinant lies
+in the exact neutral sector of the one-nucleus system.  In the free
+electron--positron representation it is a superposition of a state with
+one electron and a state with two electrons and one positron.
+
+The kinetic contribution is
+\begin{equation}
+ \Tr(D_0Q^{\rm tot}_t)
+ =m+2s^2\langle u,D_0u\rangle
+ \le m+\left(\frac{5\Lambda}4+2m\right)s^2.
+ \label{uv-kinetic}
+\end{equation}
+Equation~\eqref{uv-equal-diagonal} removes the order-$s^2$ part of the
+pair's nuclear coupling.  The constant density of $w$ has zero coupling
+to the zero-mean Green function.  Hence the complete electron--nucleus
+expectation is
+\begin{equation}
+ \alpha D_L(\rho_{Q^{\rm tot}_t},\delta_0)
+ =-2\alpha b_\Lambda sc
+ \le-2\alpha b_0\Lambda sc.
+ \label{uv-nuclear-attraction}
+\end{equation}
+
+\subsection{Bounds on every remaining Coulomb term}
+\label{uv-coulomb}
+
+The analytic Ewald certificate in the proof of Lemma~\ref{lem:pkato}
+also supplies a convenient lower bound.  All real-space terms in
+\eqref{eq:ewald-audit} are nonnegative, while
+\eqref{eq:ewald-fourier-bound} bounds the absolute reciprocal-space sum
+by $9/10$.  Therefore
+\[
+ G_1(x)>-\frac\pi9-\frac9{10}>-\frac54,
+ \qquad |G_L(x)|\le G_L(x)+\frac5{2L}.
+\]
+The periodic Kato inequality thus implies, for either orbital $a=u,v$,
+\begin{equation}
+ \sup_y\int |G_L(x-y)|\,|a(x)|^2\dd x
+ \le\frac\pi2\langle a,|p|a\rangle+\frac{c_1}{L}
+ \le h_\Lambda,
+ \qquad h_\Lambda=\frac{5\pi}{16}\Lambda+\frac{c_1}{L}.
+ \label{uv-orbital-potential}
+\end{equation}
+
+Since $|Q_t|=s(P_u+P_v)$, evaluation of its diagonal kernel gives
+\[
+ |\rho_{Q_t}(x)|\le s\bigl(|u(x)|^2+|v(x)|^2\bigr).
+\]
+The density on the right has integral $2s$.  Using
+\eqref{uv-orbital-potential} twice yields
+\begin{equation}
+ 0\le D_L(\rho_{Q_t},\rho_{Q_t})\le4h_\Lambda s^2.
+ \label{uv-direct}
+\end{equation}
+Applying the same Kato bound to the columns of $Q_t(x,y)$ gives
+\begin{align}
+ |\mathrm{Ex}(Q_t)|
+ &\le\iint |G_L(x-y)|\|Q_t(x,y)\|_{\HS}^2\dd x\dd y\nonumber\\
+ &\le\frac\pi2\Tr(|p|Q_t^2)+\frac{c_1}{L}\Tr Q_t^2
+ \le2h_\Lambda s^2.
+ \label{uv-exchange}
+\end{align}
+Consequently the pair's complete direct-minus-exchange contribution obeys
+\begin{equation}
+ \frac\alpha2\left[D_L(\rho_{Q_t},\rho_{Q_t})
+                       -\mathrm{Ex}(Q_t)\right]
+ \le3\alpha h_\Lambda s^2.
+ \label{uv-pair-interaction}
+\end{equation}
+No sign of the exchange functional was assumed.
+
+It remains to check the interaction with the neutralizing electron; dropping
+it without an estimate would leave a gap.  The density of $P_w$ is constant,
+so its direct self term and its direct cross term with $\rho_{Q_t}$ vanish.
+Also $\mathrm{Ex}(P_w)=0$ by the zero-mean condition on $G_L$.  Define the
+exchange bilinear form
+\[
+ X(Q_t,P_w)=\iint G_L(x-y)
+                 \tr\bigl(Q_t(x,y)P_w(y,x)\bigr)\dd x\dd y.
+\]
+Writing $Q_t(p,p)$ for the diagonal momentum matrix gives exactly
+\[
+ X(Q_t,P_w)=\frac1V\sum_{p\ne0}\frac{4\pi}{|p|^2}
+                  \langle\zeta,Q_t(p,p)\zeta\rangle.
+\]
+The off-diagonal terms in \eqref{uv-pair-rotation} have zero momentum
+diagonal because the two Fourier supports are disjoint.  On both remaining
+supports $|p|\ge3\Lambda/8$.  Normalization of $u,v$ therefore proves
+\begin{equation}
+ |X(Q_t,P_w)|\le\frac{512\pi}{9V\Lambda^2}s^2.
+ \label{uv-spectator-exchange}
+\end{equation}
+The full exchange is $\mathrm{Ex}(Q_t)+2X(Q_t,P_w)$, so the extra energy is
+bounded above by $\alpha|X(Q_t,P_w)|$.  This completes the accounting of
+the kinetic, nuclear, direct, and exchange terms.
+
+\subsection{Optimization and implications}
+\label{uv-conclusion}
+
+Combining \eqref{uv-kinetic}, \eqref{uv-nuclear-attraction},
+\eqref{uv-pair-interaction}, and \eqref{uv-spectator-exchange} gives
+\begin{align}
+ \mathcal E_{0,1}(\gamma_t)
+ \le m+\left[
+ \left(\frac54+\frac{15\pi\alpha}{16}\right)\Lambda
+       +2m+\frac{3\alpha c_1}{L}
+       +\frac{512\pi\alpha}{9V\Lambda^2}
+       \right]s^2
+       -2\alpha b_0\Lambda sc.
+ \label{uv-energy-before-optimization}
+\end{align}
+The last two threshold conditions in \eqref{uv-cutoff-threshold} bound the
+nonlinear-in-$\Lambda$ remainder in square brackets by $\Lambda$.
+Thus the square bracket is at most $A_\alpha\Lambda$.  Choose the fixed
+angle
+\[
+ \tan t=\frac{\alpha b_0}{A_\alpha}.
+\]
+Then
+\[
+ A_\alpha s^2-2\alpha b_0sc
+ =-\frac{A_\alpha\alpha^2b_0^2}
+             {A_\alpha^2+\alpha^2b_0^2}
+ =-c_\alpha.
+\]
+The variational principle and the zero Hartree--Fock vacuum energy prove
+Theorem~\ref{uv-theorem}.
+
+\paragraph{What this disproves.}
+For fixed $m,\alpha,L$ and the fixed free-Wick prescription, a point-source
+vacuum-polarization effect makes the optimal relative stability constant
+grow at least linearly along large cutoffs:
+$C_\Lambda\ge c_\alpha\Lambda-m$ already for a unit nucleus.
+Combined with Theorem~\ref{thm:mf}, this also shows that the linear
+cutoff order is sharp for this one-nucleus problem at fixed $\alpha,m,L$:
+the energy is bounded below by $-C\alpha\Lambda$ and above by
+$m-c_\alpha\Lambda$ for all sufficiently large $\Lambda$.
+No subcritical condition such as $Z\alpha\le2/\pi$ repairs that statement,
+since $Z=1$ suffices.  The mass cost is quadratic in the small pair rotation,
+whereas its coupling to the point Coulomb source is linear; both scale with
+$\Lambda$ on the chosen high-momentum packets.  All self-consistent direct
+and exchange terms have been retained and bounded above, not omitted.
+Keeping instead the finite periodic nuclear Robin self term changes this
+example by an $O(L^{-1})$ constant at fixed $L$, and therefore does not change
+the ultraviolet conclusion.
+
+\paragraph{What this does not disprove.}
+This is not a counterexample to the fixed-cutoff theorem, whose constant is
+allowed to depend on $\Lambda$.  It is also not a counterexample to a
+many-body bound relative to the exact interacting many-body vacuum: the
+trial bounds the many-body energy from above, but does not control the
+many-body vacuum subtraction, which is not the zero Hartree--Fock value.
+Finally, it makes no claim about a separately constructed renormalized QED
+model with cutoff-dependent bare parameters, a different reference vacuum,
+or additional source renormalization.  Such choices change the Hamiltonian
+or its energy convention and require their own nonperturbative analysis.
+In particular no configuration-dependent subtraction has been inserted in
+this proof.  The result identifies a concrete obstruction to the proposed
+cutoff-uniform theorem for the model actually defined in this paper.

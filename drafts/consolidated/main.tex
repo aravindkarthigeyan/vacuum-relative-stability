@@ -1,0 +1,97 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,microtype}
+\usepackage{booktabs,array,enumitem,xcolor,hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+urlcolor=blue!45!black,pdftitle={Vacuum-relative stability in Hamiltonian lattice QED},
+pdfauthor={}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parskip}{0.3em}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\T}{\mathbb T}
+\newcommand{\id}{I}
+\newcommand{\vac}{\mathrm{vac}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\HS}{\mathrm{HS}}
+\newcommand{\Ex}{\operatorname{Ex}}
+\newcommand{\F}{\mathcal F}
+\newcommand{\hf}{h_{\mathrm{eff}}}
+\title{\textbf{Vacuum-relative stability\\in Hamiltonian lattice QED}\\[0.4em]
+\large Charge gaps, thermodynamic limits, and controlled cutoff comparisons}
+\author{}
+\date{Revised 29 October 2026}
+\begin{document}
+\maketitle
+\begin{center}
+\small Research-tool credits: Opus 5.5 + Astra 6\\
+Review draft; human author metadata has not been supplied.
+\end{center}
+\begin{abstract}
+For compact Hamiltonian $U(1)$ lattice QED with Wilson fermions,
+nonnegative bare mass, untruncated electric rotors, and exact local
+Gauss law, we prove $E_\nu\ge E_0+m|\sum_x\nu_x|$ at every positive
+gauge coupling. Prescribed individual nuclear self-energy subtraction
+then gives stability relative to the interacting vacuum, uniformly in
+volume and source positions. The proof uses a positive centered
+fermion trace, a positive electric heat kernel, and exact gauge
+projection. At fixed lattice spacing we also prove the vacuum
+thermodynamic limit, fixed-cell two-sided source bounds, and a
+zero-boundary-flux thermodynamic limit for periodic source patterns.
+The corresponding periodic-source limit remains open.
+
+A frozen-link Schur-complement theorem gives a charge-extensive
+nonrelativistic spectral error. Its Wilson kinetic mass and magnetic
+moment require explicit matching; a bounded clover improvement
+preserves the positivity method under a stated mass condition.
+For dynamical links, smooth electric localization is controlled, but
+the proposed source-relative bounds on bare flux tails and bare
+pair number fail already in the vacuum. We prove those obstructions
+and quantitative volume-dependent replacements.
+
+A separate sharp-momentum-cutoff model admits canonical relative
+stability with continuum point nuclei and quantized transverse
+photons. Its ordering, effective-mass restrictions, photon limits,
+and small-box obstruction are treated explicitly. No theorem here
+constructs renormalized continuum QED, a dressed neutral pair gap,
+atomic binding, or crystalline order.
+\end{abstract}
+\noindent\textbf{Status.}
+The arguments are presented for specialist review. Internal AI-assisted
+proof audits are not external peer review. No priority claim is made.
+All regulators, energy normalizations, and restricted conclusions
+are specified in the statements below.
+\clearpage
+\tableofcontents
+\clearpage
+\input{introduction}
+\input{lattice}
+\input{thermodynamics}
+\input{low-energy-matching}
+\input{electric-localization}
+\input{source-relative-remainders}
+\input{proof}
+\input{photon-extension}
+\input{mass-gap}
+\input{positioning}
+\appendix
+\input{free-dielectric}
+\input{context}
+\input{checks}
+\input{references}
+\end{document}

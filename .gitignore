@@ -1,0 +1,58 @@
+# Backups, review bundles and source packages: local only, never committed.
+*.zip
+archives/
+
+# Build output and scratch directories (LaTeX build/, Python QA tmp/).
+build/
+tmp/
+
+# MiKTeX console captures; they record local absolute paths.
+build-output.txt
+build-console.txt
+round*-build-output.txt
+
+# LaTeX auxiliary files.
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+*.bbl
+*.blg
+*.bcf
+*.run.xml
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.dvi
+# ...but keep the archived Lean build/audit logs of the 4.19 toolchain.
+!docs/history/lean-core-v4.19/logs/*.log
+
+# Lean / Lake. tools/ and vendor/ hold the retired Windows Lean 4.19.0
+# distribution and mathlib checkout; .lake-v4.19/ holds their build state.
+.lake/
+.lake-*/
+lake-packages/
+.cache/
+tools/
+vendor/
+
+# Local working notes (contain machine-specific paths).
+LEAN_FORMALIZATION_PROMPTS.md
+
+# Python.
+__pycache__/
+*.py[cod]
+
+# OS and editor files.
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
