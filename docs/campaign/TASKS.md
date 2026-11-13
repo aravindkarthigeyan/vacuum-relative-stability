@@ -78,7 +78,16 @@ files, `Core.lean`, the manifest or the docs; the orchestrator integrates and la
 | H4 | Opus | `Transfer/Homotopy.lean` | deformation, continuity, endpoint, positivity | proved, landed |
 | P1 | orchestrator | `Provider/PositivityAndTransferAnnulus.lean` | provider and seal of Lemma 3.1 | sealed; AUDITED (two passing seal audits, `docs/audits/seal/`) |
 | Q2 | Opus | `Fourier/Bound.lean`, `Provider/CanonicalFourierBound.lean` | Lemma 3.2 assembly and provider | proved, landed |
-| P2 | orchestrator | seal of Lemma 3.2 | — | sealed 2026-11-12; audits pending |
+| P2 | orchestrator | seal of Lemma 3.2 | — | sealed; AUDITED (two passing seal audits, `docs/audits/seal/`) |
+
+## Follow-ups (non-blocking, from the seal audits)
+
+- `exists_fin_enum` (Fourier/Factorization) and `exists_fin_enum_of_card` (Fourier/Bound)
+  overlap; merge them in a later cleanup. Helper lemmas are not frozen, so this needs no
+  ruling.
+- `Step.IsAdmissible.deform` keeps an unused `0 ≤ σ`, and `betaForm_exp_lt` and the Lemma 3.2
+  provider keep unused hypotheses (silenced with `linter.unusedVariables`). This is harmless:
+  each use discharges them.
 
 ## Landing checklist (per wave)
 

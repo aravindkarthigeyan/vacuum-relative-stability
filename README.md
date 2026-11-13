@@ -17,11 +17,12 @@ library. The first paper, **Paper A**, proves for a compact $U(1)$ Hamiltonian
 lattice gauge theory with Wilson fermions and exact Gauss law that static charges
 cannot lower the energy below the vacuum: $E_\nu \ge E_0 + m\,|Q_\nu|$. **This is a
 partial formalization: it does not formalize that stability theorem, or any other
-numbered result of the papers, as stated.** A companion Lean project checks the
-finite product algebra, selected endpoint implications, an eigenvector-level
-inverse-adjoint correspondence, and the finite Vandermonde/canonical integration
-estimate. The analytic and full spectral arguments and the physical theorem remain
-outside the formalization. **The papers are drafts and have not yet been reviewed by
+numbered result of the papers except two finite-dimensional ingredients.** Lemma 3.1
+(the transfer annulus and the positivity of the centered fermion determinant) and
+Lemma 3.2 (the canonical Fourier bound) are proved in Lean and independently audited,
+for piecewise-constant histories as the author ruled. The extension to time-dependent
+histories, the Hamiltonian, the path measure, the stability theorem itself and every
+limit remain outside the formalization. **The papers are drafts and have not yet been reviewed by
 specialists.**
 
 **Author:** Aravind Karthigeyan.
@@ -33,7 +34,7 @@ specialists.**
 - ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry`; every declaration in the library depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
 - ⬜ **Lemma 2.1, Operator realization** (`lem:operator`): not formalized.
 - ✅ **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): audited as `QEDCore.PaperA.positivity_and_transfer_annulus`. By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).
-- ✅ **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): proved as `QEDCore.PaperA.canonical_fourier_bound`. By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).
+- ✅ **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): audited as `QEDCore.PaperA.canonical_fourier_bound`. By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).
 - 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Checked supporting lemmas: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`.
 - ⬜ **Lemma 4.2, Uniform lattice self-energy** (`lem:green`): not formalized.
 - ⬜ **Corollary 4.3, Stability after individual nuclear subtraction** (`cor:stability`): not formalized.
@@ -91,7 +92,7 @@ Paper A results  ████▒▒░░░░░░░░░░░░░░  2
 | | |
 |---|---|
 | Paper A numbered results | 10 |
-| … proved in Lean (`PROVED` or `AUDITED`) | 2 (1 audited) |
+| … proved in Lean (`PROVED` or `AUDITED`) | 2 (2 audited) |
 | … frozen statement, unproved (`FROZEN_UNPROVED`) | 0 |
 | … `NOT_STARTED`, with checked supporting lemmas | 1 |
 | … `NOT_STARTED`, nothing in Lean | 7 |
@@ -122,7 +123,7 @@ result's state. [docs/CORRESPONDENCE.md](docs/CORRESPONDENCE.md) explains every 
 |---|---|---|---|---|---|
 | 2.1 | ⬜ Lemma: Operator realization | [`lem:operator`](paper-a/model.tex) | `NOT_STARTED` | — | — |
 | 3.1 | ✅ Lemma: Positivity and the transfer annulus | [`lem:transfer`](paper-a/transfer.tex) | `AUDITED` | [`PaperA.positivity_and_transfer_annulus`](lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean) | `preservesForm_mul`, `preservesForm_one`, `preservesForm_list_prod`, `adjoint_eq_conjugate_inverse`, `no_unit_factor_of_strict_drop`, `stable_endpoint_positive`, `unstable_endpoint_negative`, `stable_annulus_from_endpoint`, `unstable_annulus_from_endpoint`, `inverse_eigenvector`, `involution_mulVec_ne_zero`, `adjoint_inverse_eigenvector` |
-| 3.2 | ✅ Lemma: Canonical Fourier bound | [`lem:fourier`](paper-a/transfer.tex) | `PROVED` | [`PaperA.canonical_fourier_bound`](lean/Frozen/PaperA/CanonicalFourierBound.lean) | `elementary_zero`, `norm_elementary_le`, `correlation_zero`, `one_le_vacuumWeight`, `norm_correlation_le`, `elementary_correlation_bound`, `relative_correlation_bound` |
+| 3.2 | ✅ Lemma: Canonical Fourier bound | [`lem:fourier`](paper-a/transfer.tex) | `AUDITED` | [`PaperA.canonical_fourier_bound`](lean/Frozen/PaperA/CanonicalFourierBound.lean) | `elementary_zero`, `norm_elementary_le`, `correlation_zero`, `one_le_vacuumWeight`, `norm_correlation_le`, `elementary_correlation_bound`, `relative_correlation_bound` |
 | 4.1 | 🔧 Theorem: Exact physical-sector comparison | [`thm:main`](paper-a/comparison.tex) | `NOT_STARTED` | — | `positive_measure_comparison`, `phase_preserves_bound`, `scaled_coefficient_comparison`, `canonical_integral_comparison` |
 | 4.2 | ⬜ Lemma: Uniform lattice self-energy | [`lem:green`](paper-a/comparison.tex) | `NOT_STARTED` | — | — |
 | 4.3 | ⬜ Corollary: Stability after individual nuclear subtraction | [`cor:stability`](paper-a/comparison.tex) | `NOT_STARTED` | — | — |
@@ -289,8 +290,8 @@ theorem canonical_integral_comparison {X : Type*} [MeasurableSpace X]
   that it is exactly that placeholder, that every frozen byte is unchanged, and that
   nothing else imports or uses an unproved statement.
 - **What it does not.** For the frozen statements of Lemmas 3.1 and 3.2, Lean defines
-  the transfer matrix and the centered trace of a piecewise-constant history; their
-  proofs are in progress. Lean does not see the Hamiltonian, the Gauss sectors or the
+  the transfer matrix and the centered trace of a piecewise-constant history, and both
+  statements are proved. Lean does not see the Hamiltonian, the Gauss sectors or the
   path measure of Paper A. In the supporting lemmas, facts the paper proves (form
   preservation of the propagators, the ODE estimate (3.3) and Gronwall, algebraic
   multiplicities and the eigenvalue count, the factorization of the centered trace,
@@ -302,8 +303,9 @@ theorem canonical_integral_comparison {X : Type*} [MeasurableSpace X]
   [docs/ERRATA-AND-DEVIATIONS.md](docs/ERRATA-AND-DEVIATIONS.md) records how the Lean
   statements differ from the printed ones. The two frozen statements had two
   independent pre-approval statement audits each
-  ([`docs/audits/pilot/`](docs/audits/pilot)); a result becomes `AUDITED` only after
-  its frozen statement is proved and audited again, so none is yet.
+  ([`docs/audits/pilot/`](docs/audits/pilot)), and after sealing two further
+  independent audits each ([`docs/audits/seal/`](docs/audits/seal)), including a kernel
+  replay of every module; both are `AUDITED`.
 - **Pinned source.** `lean/status.json` pins the Paper A LaTeX files by SHA-256. If
   Paper A changes, CI fails until the manifest has been rechecked against the new text.
 - **Numerics.** The scripts in [`numerics/`](numerics) are diagnostics, not proof

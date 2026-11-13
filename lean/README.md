@@ -1,12 +1,11 @@
 # Lean library `Core`: checked finite steps for Paper A
 
 This is a **partial** formalization. It does not prove the lattice stability
-theorem of Paper A or any other numbered result of it. Lemmas 3.1 and 3.2 have frozen,
-author-approved Lean statements (in `Frozen/`) whose proofs are in progress. The
-library also checks conditional algebraic, finite-coefficient and integration lemmas
-used inside the proofs of Lemma 3.1, Lemma 3.2 and Theorem 4.1. The ODE estimate, the full spectral pairing,
-the identification with determinants and Fourier integrals, the Hamiltonian
-construction and all limits remain proofs in the paper.
+theorem of Paper A. It proves Lemmas 3.1 and 3.2 for piecewise-constant histories: their
+author-approved statements are frozen in `Frozen/`, their proofs are in `Core/PaperA/`,
+and both are audited. The library also keeps older conditional lemmas for steps of
+Lemma 3.1, Lemma 3.2 and Theorem 4.1. Time-dependent histories, the Hamiltonian
+construction, the path measure and all limits remain proofs in the paper.
 
 - [`../docs/CORRESPONDENCE.md`](../docs/CORRESPONDENCE.md): what each declaration
   checks and where the boundary to the paper lies.

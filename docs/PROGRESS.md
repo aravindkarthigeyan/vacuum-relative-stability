@@ -52,8 +52,16 @@ Phase: **step 4 in progress (bounded proof tasks); task board in
   `lean/Core/PaperA/Provider/CanonicalFourierBound.lean` (statement verbatim) uses the sealed
   Lemma 3.1 once and `Fourier/Bound.lean`. Its hypothesis `hq : |q| ≤ d` is not needed (both
   sides vanish for |q| > d); it stays in the frozen statement. No `sorry` remains anywhere.
-- Next: two independent audits of the Lemma 3.2 seal, then AUDITED; then the
-  finite-dimensional part of `thm:main` (needs new author-approved statements).
+- 2026-11-13: Lemma 3.2 **AUDITED**: two independent seal audits passed
+  ([`audits/seal/LEM_FOURIER_AUDIT_1.md`](audits/seal/LEM_FOURIER_AUDIT_1.md),
+  [`audits/seal/LEM_FOURIER_AUDIT_2.md`](audits/seal/LEM_FOURIER_AUDIT_2.md)). Kernel replay of all
+  30 modules, one per process: 0 failures
+  ([`audits/seal/KERNEL_REPLAY_2026-11-13.md`](audits/seal/KERNEL_REPLAY_2026-11-13.md)).
+  After audit 1, the checker's seal rule was tightened to read only the top-level binders
+  (mutation-tested).
+- Next: the finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson mass
+  bound of model.tex (2.5), the `m = 0` remark). It needs new author-approved statements;
+  nothing has been drafted.
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

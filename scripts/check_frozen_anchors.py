@@ -481,13 +481,49 @@ class Guard:
         return body_start, body_end
 
     def binder_names(self, prefix: str) -> set[str]:
-        """Names bound by `(x y : T)`, `{x : T}`, `[x : T]` groups of the last declaration header."""
+        """Names bound by the top-level binder groups of the last declaration header.
+
+        Scans from the declaration name over consecutive `( )`, `{ }`, `[ ]`, `⦃ ⦄`
+        groups at bracket depth 0 and stops at the colon that starts the conclusion, so
+        names bound inside the conclusion (`let`, `fun`, casts) are not collected.
+        """
         code = self.code_mask(prefix)
-        start = max(code.rfind("theorem "), code.rfind("lemma "))
-        header = code[start:] if start >= 0 else code
+        match = None
+        for match in re.finditer(r"(?:theorem|lemma)\s+\S+", code):
+            pass
+        if match is None:
+            return set()
+        opening, closing = "([{⦃", ")]}⦄"
         names: set[str] = set()
-        for group in re.finditer(r"[({\[]\s*([^\s:(){}\[\]]+(?:\s+[^\s:(){}\[\]]+)*)\s*:", header):
-            names.update(group.group(1).split())
+        index, size = match.end(), len(code)
+        while index < size:
+            while index < size and code[index].isspace():
+                index += 1
+            if index >= size or code[index] not in opening:
+                break
+            depth, start = 0, index
+            while index < size:
+                if code[index] in opening:
+                    depth += 1
+                elif code[index] in closing:
+                    depth -= 1
+                    if depth == 0:
+                        break
+                index += 1
+            group = code[start + 1:index]
+            index += 1
+            depth, colon = 0, -1
+            for position, char in enumerate(group):
+                if char in opening:
+                    depth += 1
+                elif char in closing:
+                    depth -= 1
+                elif char == ":" and depth == 0:
+                    colon = position
+                    break
+            if colon > 0:
+                names.update(token for token in group[:colon].split()
+                             if re.fullmatch(r"[^\W\d][\w'!?₀-₉]*", token))
         return names
 
     def check_declaration(self, anchor: dict[str, Any], label: str, text: str, kind: str) -> None:

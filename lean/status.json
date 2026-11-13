@@ -43,7 +43,7 @@
       "lean": "QEDCore.PaperA.positivity_and_transfer_annulus",
       "frozen_note": "By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).",
       "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`; the other `d` are their partners `1/conj(λ)`, of modulus at least `e^{b m_*}`.",
-      "lean_coverage": "the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence",
+      "lean_coverage": "the frozen statement itself is proved (see `lean/Core/PaperA/`); separately, the older conditional lemmas check the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence",
       "outside_lean": "histories with time-dependent (continuous or bounded measurable) coefficients on the free intervals, and simultaneous free and kick terms, which ruling R1(a) leaves outside the frozen statement; their reduction to step histories is not formalized."
     },
     {
@@ -52,11 +52,11 @@
       "number": "3.2",
       "title": "Canonical Fourier bound",
       "file": "paper-a/transfer.tex",
-      "state": "PROVED",
+      "state": "AUDITED",
       "lean": "QEDCore.PaperA.canonical_fourier_bound",
       "frozen_note": "By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).",
       "claim": "`|F_q| ≤ binom(2d, d+|q|) e^{-b m_* |q|} F_0` for `|q| ≤ d`.",
-      "lean_coverage": "the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q`",
+      "lean_coverage": "the frozen statement itself is proved (see `lean/Core/PaperA/`); separately, the older conditional lemmas check the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q`",
       "outside_lean": "the same time-dependent histories (R1(a)); the identification of the Fock-space twist e^{iφQ} with the one-particle kick, which the frozen statement takes as the definition of F(φ)."
     },
     {

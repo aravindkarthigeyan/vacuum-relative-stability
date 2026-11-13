@@ -4,11 +4,11 @@ This directory will hold Mathlib-only restatements of the headline results, chec
 Lean's comparator (`lake comparator`, bundled with the pinned toolchain) in the
 [comparator workflow](../../.github/workflows/comparator.yml).
 
-**It is empty on purpose.** No numbered result of Paper A has a proved Lean statement
-yet (see [`../status.json`](../status.json)), and the conditional supporting lemmas in
-`Core/` are not headline theorems. A comparator check of them would certify only
-that they are what they say, which the build and the
-[axiom audit](../scripts/Audit/AxiomAudit.lean) already do.
+**It is still empty.** Lemmas 3.1 and 3.2 are now proved and audited (see
+[`../status.json`](../status.json)). A comparator restatement of them, following the
+steps below, is a pending step. Until then their statements are protected by the
+frozen-anchor manifest and checker, the axiom audit and a `leanchecker` kernel replay
+([`../../docs/audits/seal/`](../../docs/audits/seal)).
 
 ## When the first Paper A result is proved
 

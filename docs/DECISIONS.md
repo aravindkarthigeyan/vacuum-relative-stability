@@ -157,7 +157,9 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
 
 - **Files.** One declaration per file. The six definitions are in
   `lean/Core/PaperA/Defs/` and part of `Core`; the two theorems are in
-  `lean/Frozen/PaperA/`, a separate library that nothing in `Core` imports. Each
+  `lean/Frozen/PaperA/`, a separate library. Nothing may import an unproved frozen
+  statement except its audit file; a sealed one may be used by later providers (the
+  Lemma 3.2 provider uses the sealed Lemma 3.1). Each
   theorem imports its provider module `lean/Core/PaperA/Provider/…`, where the proof
   will be written; sealing replaces only `by sorry` by a short exact use of the
   provider's theorem. The declarations are byte-identical to the approved v1 text;
@@ -178,8 +180,8 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
   `vendor/`, `tools/` and `.lake*` directories, accepts a literal `inductive` as a
   definition anchor, lets an allowlisted audit file reach a draft's provider through
   the draft's own import, compares paths in POSIX form, and lets a sealed body apply the
-  provider to the frozen declaration's own binder names and nothing else, since the frozen
-  theorems bind their hypotheses before the colon) verifies every frozen
+  provider to the frozen declaration's own top-level binder names and nothing else, since
+  the frozen theorems bind their hypotheses before the colon) verifies every frozen
   byte, the exact `by sorry` body of each draft, the import quarantine and the
   absence of any other `sorry` or `axiom`. The axiom audit, now
   `lean/scripts/Audit/AxiomAudit.lean` because the checker allows a draft to be

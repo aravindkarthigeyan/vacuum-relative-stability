@@ -7,21 +7,24 @@ draft of 29 October 2026; LaTeX sources in [`paper-a/`](../paper-a)). The state 
 every numbered result, and the list of checked declarations, is recorded in
 [`lean/status.json`](../lean/status.json); the README tables are generated from it.
 
-**No numbered result of Paper A is proved in Lean.** Lemmas 3.1 and 3.2 have frozen,
-author-approved Lean statements whose proofs are in progress (see "Frozen statements"
-below). Separately, the library checks
+**Two numbered results of Paper A are proved in Lean: Lemmas 3.1 and 3.2, for
+piecewise-constant histories** (author ruling R1(a)). Their statements were approved by
+the author and frozen before any proof was written; the proofs are in
+[`lean/Core/PaperA/`](../lean/Core/PaperA), and each seal passed two independent audits
+([`audits/seal/`](audits/seal)). See "Frozen statements" below. Theorem 4.1 and the
+other results are not proved. Separately, the library keeps older lemmas that check
 conditional algebraic, finite-coefficient and integration steps used inside the
 proofs of Lemma 3.1, Lemma 3.2 and Theorem 4.1. Each such lemma has, among its
 hypotheses, facts that Paper A proves analytically and that Lean does not check.
 Those facts are explicit hypotheses of the Lean statements, never axioms.
 
-Recommended status language: *“A companion Lean project checks the finite product
-algebra, selected endpoint implications, an eigenvector-level inverse-adjoint
-correspondence, and the finite Vandermonde/canonical integration estimate. The
-analytic and full spectral arguments and the physical theorem remain outside the
-formalization.”* Avoid “the stability theorem is formally verified,” “the
-spectral-pairing lemma is fully formalized,” or “the ODE positivity proof is machine
-checked.”
+Recommended status language: *“A companion Lean project proves Lemmas 3.1 and 3.2 of
+Paper A (the transfer annulus with positivity of the centered fermion determinant, and
+the canonical Fourier bound) for piecewise-constant histories, with author-approved
+statements that were independently audited. The extension to time-dependent histories,
+the stability theorem itself and all limits remain outside the formalization.”* Avoid
+“the stability theorem is formally verified” and “Lemma 3.1 is formalized for
+measurable histories.”
 
 All Lean names below have the prefix `QEDCore.`.
 
