@@ -197,3 +197,29 @@ The repository is published as the **private** GitHub repository
 `aravindkarthigeyan/vacuum-relative-stability`, the name the README badges already
 used, with `main` as the default branch. D6's CI runs on every push. Making it public
 still requires the `lean-public-release` checklist of D10.
+
+## D14. Source dependency graph (author brief step 3; mechanics setup, 2026-11-12)
+
+The source-level dependency graph of the two frozen roots is
+[`graph/DEPGRAPH.md`](graph/DEPGRAPH.md), with the coverage inventory
+[`graph/DEPGRAPH_COVERAGE.md`](graph/DEPGRAPH_COVERAGE.md), in the schema of the
+`build-proof-dependency-graph` skill. It binds its eight frozen nodes to
+`lean/frozen-manifest.json` by anchor ID, path, export, contract and ABI hash, and
+pins the manifest by SHA-256, so a manifest change fails the graph check.
+
+- **Extraction.** The corpus is small (transfer.tex and 17 lines of model.tex), so it
+  was extracted as one slice by the orchestrator, which is also the single writer.
+  Every node was reviewed by a fresh agent, and the root closure by a second, distinct
+  fresh agent; their reports are in [`audits/graph/`](audits/graph).
+- **Source gaps.** A step the paper asserts without an argument beyond naming a
+  method is a node whose `NOTE` starts with `SOURCE_GAP:`, graded `[minor]` or
+  `[substantive]`. A gap is a place where a proof must supply an argument; it is not
+  an erratum unless the asserted step is false.
+- **Linter.** [`scripts/proof_depgraph.py`](../scripts/proof_depgraph.py) is the
+  skill's linter with one adaptation: a frozen file is resolved relative to the
+  manifest's directory (`lean/`), since the manifest's Lean paths are relative to
+  `lean/` while source locators are relative to the repository root. CI runs it with
+  `--require-reviewed --require-complete-coverage --require-initial-lean-status
+  --require-all-reachable --check`.
+- **Maintenance.** After publication, structural corrections are append-only `AMEND`
+  records with an independent reviewer; a frozen node's source fields never change.

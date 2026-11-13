@@ -42,6 +42,14 @@ jobs:
         working-directory: .
         run: python3 -I scripts/check_frozen_anchors.py --root lean --manifest lean/frozen-manifest.json --allow-non-module
 
+      - name: Source dependency graph is reviewed, complete and bound to the manifest
+        working-directory: .
+        run: >-
+          python3 -I scripts/proof_depgraph.py --db docs/graph/DEPGRAPH.md
+          --manifest docs/graph/DEPGRAPH_COVERAGE.md --source-root .
+          --require-reviewed --require-complete-coverage --require-initial-lean-status
+          --require-all-reachable --check
+
       - name: Install elan
         run: |
           set -Eeuo pipefail

@@ -26,7 +26,17 @@ versioned successor.
 
 ## Current state
 
-Phase: **step 2 done (statements frozen); step 3 (source dependency graph) next.**
+Phase: **step 3 done (source dependency graph published); step 4 (bounded proof tasks) next.**
+
+- 2026-11-12, step 3: [`graph/DEPGRAPH.md`](graph/DEPGRAPH.md) has 52 nodes, 134 edges,
+  roots `lem:transfer` and `lem:fourier`, and 8 frozen nodes bound to the manifest.
+  [`graph/DEPGRAPH_COVERAGE.md`](graph/DEPGRAPH_COVERAGE.md) has 27 items, 4 of them
+  excluded. Every node and item was reviewed by `topology-reviewer-1`, and the root closure
+  by `global-reviewer-1`; both are fresh Opus sessions. The reports and the merge log are in
+  [`audits/graph/`](audits/graph). The full gate (`--require-reviewed
+  --require-complete-coverage --require-initial-lean-status --require-all-reachable
+  --check`) passes and runs in CI (D14). 21 `SOURCE_GAP` nodes, listed below; no
+  erratum.
 
 - 2026-11-12: the author approved v1 with "Approve with R1(a)" (rulings R1(a)–R4,
   [DECISIONS.md](DECISIONS.md) D11). Frozen as `DRAFT_SORRY` with manifest entries
@@ -55,10 +65,7 @@ SEALED_THIS_TURN: 0
 
 ## Next steps
 
-1. Step 3: build the source dependency graph from the two anchors down through
-   transfer.tex (skill `build-proof-dependency-graph`), with `SOURCE_GAP` records for
-   every skipped step; independent topology review; list the gaps for the author.
-2. Step 4: bounded proof tasks from the dependency-ready frontier. Expected hard
+1. Step 4: bounded proof tasks from the dependency-ready frontier. Expected hard
    nodes: C-form preservation of a matrix exponential with C-anti-Hermitian
    generator; the β-form derivative along `exp(-t h)` and the per-step Gronwall bound;
    eigenvalue pairing with algebraic multiplicity via the characteristic polynomial
@@ -67,9 +74,44 @@ SEALED_THIS_TURN: 0
    Schur triangulation in Mathlib, so use the spectral theorem); reality and
    positivity of the centered trace along the homotopy. Lemma 3.2's provider must not
    import Lemma 3.1's quarantined provider; shared results go in ordinary modules.
-3. The finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson
+2. The finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson
    mass bound `M(U) ≥ mI` of model.tex (2.4), the `m = 0` remark) needs separately
    approved statements; not drafted yet.
+
+## Source gaps of the graph (21; no erratum)
+
+`[substantive]`: the source uses a standard theorem it neither proves nor names.
+
+- `lem:transfer#spectral-pairing`: from U* = C5 U⁻¹ C5 to pairing with algebraic multiplicity
+  (characteristic polynomials of similar, adjoint and inverse matrices).
+- `lem:transfer#liouville`: det U = exp(−∫Tr A), which per step is det(exp X) = exp(tr X).
+
+`[minor]`: a few lines from facts already stated.
+
+- `lem:transfer#c5-involution`: C5 is a Hermitian involution (model.tex L116).
+- `lem:transfer#c5-anticommutes-h`: C5 anticommutes with h (L38).
+- `lem:transfer#dirac-hermitian`: h is Hermitian; used at L40 and L57, never stated.
+- `lem:transfer#form-preservation`: from A* C5 + C5 A = 0 to U* C5 U = C5 (L40).
+- `lem:transfer#propagator-invertible`: U is invertible; used at L42, L62 and L64, never stated.
+- `lem:transfer#det-conjugation`: conj det(I+U) = det(U)⁻¹ det(I+U) (L46).
+- `lem:transfer#trace-h-zero`: Tr h = 0, which needs the traceless Dirac matrices (L49).
+- `eq:beta-form`: the derivative (3.3) is stated without its computation.
+- `lem:transfer#norm-bounds-beta-form`: ‖f‖² ≥ ±B (L65, L68).
+- `lem:transfer#beta-form-monotone`: B is nonincreasing along the whole history; used at
+  L64-L67.
+- `lem:transfer#stable-trajectory`: the sign of B(0), and λ ≠ 0.
+- `lem:transfer#unstable-trajectory`: B(0) < 0.
+- `lem:transfer#homotopy-admissible`: the deformation is admissible (L73-L75).
+- `lem:transfer#homotopy-continuity`: F_σ is continuous in σ.
+- `lem:transfer#homotopy-endpoint`: the value det(I + e^{−bm_*β}) > 0 at σ = 1.
+- `lem:fourier#twist-is-kick`: e^{iφQ} is the centered lift of the kick; this is not a Lean
+  obligation.
+- `lem:fourier#constant-positive`: λ_j ≠ −1.
+- `lem:fourier#coefficient-identification`: F_q = C Σ_j e_{j+q} conj(e_j).
+- `lem:fourier#elementary-bound`: |e_j| ≤ binom(d, j) s^j.
+
+Open source questions are recorded in [`audits/graph/MERGE_LOG.md`](audits/graph/MERGE_LOG.md).
+None of them blocks the frozen statements.
 
 ## Approved declarations (v1, frozen 2026-11-12)
 

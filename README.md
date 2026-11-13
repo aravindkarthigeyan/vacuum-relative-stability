@@ -379,6 +379,9 @@ needed.
   frozen statements against their manifest.
 - [`docs/PROGRESS.md`](docs/PROGRESS.md): the state of the current formalization
   campaign and its open decisions.
+- [`docs/graph/`](docs/graph): the source dependency graph of the frozen statements of
+  Lemmas 3.1 and 3.2 (every proof step, and every place where the paper skips one, marked
+  `SOURCE_GAP`), checked by [`scripts/proof_depgraph.py`](scripts/proof_depgraph.py).
 
 ## How this was made
 
