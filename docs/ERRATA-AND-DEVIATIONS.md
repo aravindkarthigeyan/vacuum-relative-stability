@@ -37,7 +37,7 @@ None.
 | 2 | Lemma 3.2, proof | Reformulation as a finite coefficient bound | the same, and `correlation`, `vacuumWeight` |
 | 3 | Lemma 3.1, proof | Generalization; inverse supplied | `preservesForm_mul`, `preservesForm_list_prod`, `adjoint_eq_conjugate_inverse` |
 | 4 | Lemma 3.1, proof after (3.3) | Endpoint step as scalar implications | the five endpoint lemmas in `Core/PseudoUnitary.lean` |
-| 5 | Lemma 3.1, spectral pairing | Weaker: eigenvectors, not multiplicities | `inverse_eigenvector`, `adjoint_inverse_eigenvector` |
+| 5 | Lemma 3.1, spectral pairing | Weaker: eigenvectors, not multiplicities | `inverse_eigenvector`, `involution_mulVec_ne_zero`, `adjoint_inverse_eigenvector` |
 | 6 | Theorem 4.1, proof of (4.2) | Abstract measure, explicit integrability | `positive_measure_comparison`, `canonical_integral_comparison` |
 
 1. **Lemma 3.2 (`lem:fourier`), inequality (3.4).** Printed for integers `|q| ≤ d`.
@@ -51,7 +51,9 @@ None.
    `F_q` of a centered trace. Lean bounds the finite lag-`q` autocorrelation
    `correlation N q (elementary λ)` of the elementary symmetric coefficients, relative
    to `vacuumWeight N (elementary λ) = Σ_j |e_j|²`. Paper notation corresponds as
-   `d ↦ N`, `s = e^{-b m_*} ↦ r` with the added hypothesis `0 ≤ r ≤ 1`, and
+   `d ↦ N` (Lean's `N` is the paper's `d`, not its number of sites `N = n³`),
+   `s = e^{-b m_*} ↦ r`, where Lean allows any `r` with `0 ≤ r ≤ 1` (the paper's `s`
+   lies in `(0, 1)` because `b, m_* > 0`), and
    `F_q / C ↦ correlation`, `F_0 / C ↦ vacuumWeight`. The bound `|λ_j| ≤ e^{-b m_*}`,
    which the paper takes from Lemma 3.1, is a hypothesis. Effect: the Lean statements
    are the finite inequality inside the proof, not (3.4); the identification
@@ -66,11 +68,16 @@ None.
    [`Core/PseudoUnitary.lean`](../lean/Core/PseudoUnitary.lean).
 
 4. **Lemma 3.1 (`lem:transfer`), the argument after (3.3).** The values `B(0)`,
-   `B(T)`, the factor `t` (the paper's `|λ|²`), the strict drop `B(T) < B(0)` and the
-   contraction `B(T) ≤ r B(0)` are real-number hypotheses. In the paper they come from
-   the derivative identity (3.3) and Gronwall's inequality. Effect: the Lean lemmas
-   are the scalar implications that follow the analysis (no unit factor, the sign of
-   `B(0)`, and the division step), not the annulus bound (3.2).
+   `B(T)`, the factor `t` (the paper's `|λ|²`), the endpoint relation
+   `B(T) = t B(0)`, the strict drop `B(T) < B(0)` and the integrated bound
+   `B(T) ≤ r B(0)` are real-number hypotheses. In the paper the endpoint relation
+   comes from transporting a transfer eigenvector, the strict drop from (3.3) with
+   `b > 0` and the non-vanishing of nonzero solutions, and the integrated bound from
+   integrating (3.3) (Gronwall's inequality), with `r = e^{-2bm_*}` when `|λ| < 1`
+   and `r = e^{2bm_*}` when `|λ| > 1`. Effect: the Lean lemmas are the scalar
+   implications that follow the analysis (no unit factor, the sign of `B(0)`, and the
+   division step giving `t ≤ r` or `r ≤ t`), not the annulus bound (3.2). See
+   [`Core/PseudoUnitary.lean`](../lean/Core/PseudoUnitary.lean).
 
 5. **Lemma 3.1 (`lem:transfer`), spectral pairing.** The paper pairs the transfer
    spectrum under `λ ↦ 1/conj(λ)` with algebraic multiplicities and counts exactly `d`
@@ -85,9 +92,11 @@ None.
    arbitrary measure on a measurable space, with a nonnegative real prefactor, a
    unit-modulus phase and eigenvalue data at each point, and with integrability of
    both integrands as explicit hypotheses; in the paper integrability follows from the
-   Dyson bound. Effect: the Lean statement is the abstract integration step; it does
-   not define the physical measure or prove (4.2). See `canonical_integral_comparison`
-   in [`Core/CanonicalComparison.lean`](../lean/Core/CanonicalComparison.lean).
+   Dyson bound. Lean's `N` is the paper's `d = 2N` here, so `binom(N + N, N + q)` is
+   the `binom(4N, 2N + |Q_ν|)` of (4.2). Effect: the Lean statement is the abstract
+   integration step; it does not define the physical measure or prove (4.2). See
+   `canonical_integral_comparison` in
+   [`Core/CanonicalComparison.lean`](../lean/Core/CanonicalComparison.lean).
 
 ## How the formal proof route differs
 
@@ -97,9 +106,16 @@ proof first bounds every antidiagonal term by `binom(N, i) binom(N, j) r^q`, usi
 `r^{2k} ≤ 1`, and then sums with Mathlib's Vandermonde identity `Nat.add_choose_eq`.
 The two routes give the same bound.
 
+For `U* C_5 U = C_5` in Lemma 3.1, the paper derives the relation for the whole
+propagator from `A* C_5 + C_5 A = 0` along the auxiliary ODE `U' = -A U`, which
+includes the kicks. The Lean library instead composes form preservation of the
+individual factors (`preservesForm_list_prod`); form preservation of each factor is
+a hypothesis.
+
 ## Outside the formalization
 
-Everything in Paper A other than the steps above, in particular Lemma 2.1,
-Lemmas 4.2 and 5.1, Corollary 4.3, Proposition 5.3, Theorems 4.1, 5.2 and 5.4 as
-stated, and Hypothesis (BF), which Paper A states and does not prove. Paper B and the
-companion notes are not formalized.
+Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 and
+Theorem 4.1 are not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
+Lemma 5.1, Theorem 5.2, Proposition 5.3 and Theorem 5.4 have nothing in Lean.
+Hypothesis (BF) is stated in Paper A and not proved there. Paper B and the companion
+notes are not formalized.

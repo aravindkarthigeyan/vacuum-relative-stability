@@ -41,7 +41,7 @@
       "file": "paper-a/transfer.tex",
       "state": "NOT_STARTED",
       "lean": null,
-      "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`.",
+      "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`; the other `d` are their partners `1/conj(λ)`, of modulus at least `e^{b m_*}`.",
       "lean_coverage": "the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence",
       "outside_lean": "form preservation of the actual propagators, derived from the generator relations; the β-form derivative identity (3.3), the strict decrease and the Gronwall integration; algebraic multiplicities and the exact eigenvalue count; reality and positivity of the centered trace along the homotopy; measurable histories."
     },
@@ -65,9 +65,9 @@
       "file": "paper-a/comparison.tex",
       "state": "NOT_STARTED",
       "lean": null,
-      "claim": "`E_ν ≥ E_0 + m |Q_ν|` in every admissible integer source sector; `0 < Z_ν(b) ≤ Z_0(b)`, and the binomial thermal bound (4.2) for `m > 0`.",
+      "claim": "`E_ν ≥ E_0 + m |Q_ν|` in every admissible integer source sector; `0 < Z_ν(b) ≤ Z_0(b)`, and the binomial thermal bound (4.2) for `m > 0`; the unrestricted auxiliary ground energy equals `E_0`.",
       "lean_coverage": "the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation",
-      "outside_lean": "the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection, the ground-energy limit, and the case `m = 0`."
+      "outside_lean": "the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`."
     },
     {
       "label": "lem:green",
@@ -132,7 +132,7 @@
       "file": "paper-a/thermodynamics.tex",
       "state": "NOT_STARTED",
       "lean": null,
-      "claim": "The open zero-exterior-flux source energy density exists and bounds the periodic-source density from above; the vacuum-plus-rest density bounds it from below.",
+      "claim": "The open zero-exterior-flux source energy density `e_ν^op` exists; along `p | n`, `e_vac + m ρ ≤ liminf E_ν^per(n)/n³ ≤ limsup E_ν^per(n)/n³ ≤ e_ν^op`.",
       "outside_lean": "all of it."
     }
   ],
@@ -189,7 +189,7 @@
     {
       "name": "QEDCore.stable_annulus_from_endpoint",
       "supports": "lem:transfer",
-      "step": "Division step: `B(0) > 0`, `B(T) = t B(0)` and an assumed contraction `B(T) ≤ r B(0)` give `t ≤ r`.",
+      "step": "Division step: `B(0) > 0`, `B(T) = t B(0)` and an assumed integrated bound `B(T) ≤ r B(0)` give `t ≤ r`.",
       "headline": false
     },
     {
@@ -243,7 +243,7 @@
     {
       "name": "QEDCore.norm_correlation_le",
       "supports": "lem:fourier",
-      "step": "Termwise bound and Mathlib's Vandermonde identity: `|corr_q| ≤ binom(2N, N+q) r^q` for `0 ≤ r ≤ 1` and every natural `q`.",
+      "step": "Termwise bound and Mathlib's Vandermonde identity: if `|a_k| ≤ binom(N, k) r^k` for every `k`, then `|corr_q| ≤ binom(2N, N+q) r^q` for `0 ≤ r ≤ 1` and every natural `q`.",
       "headline": false
     },
     {
