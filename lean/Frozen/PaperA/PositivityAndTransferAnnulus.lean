@@ -50,7 +50,8 @@ theorem positivity_and_transfer_annulus
     ∀ z ∈ (transferMatrix α β hist).charpoly.roots,
       ¬ ‖z‖ ≤ Real.exp (-(b * mStar)) → Real.exp (b * mStar) ≤ ‖z‖ :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact QEDCore.PaperA.Provider.positivity_and_transfer_annulus α β hα_herm hβ_herm hα_sq hβ_sq
+      hα_anti hαβ_anti d hd mStar b hm hb hist hfree hkick htime
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

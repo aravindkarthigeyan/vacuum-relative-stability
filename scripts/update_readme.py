@@ -400,11 +400,13 @@ def render_glance(status: dict, facts: dict) -> str:
     drafts = len(facts["draft_theorems"])
     sorry_note = (
         "with no `sorry`" if not drafts else
-        f"with no `sorry` except the {drafts} registered proof placeholders of the frozen statements"
+        f"with no `sorry` except the registered proof placeholder{'s' if drafts != 1 else ''} of "
+        f"{drafts} frozen, unproved statement{'s' if drafts != 1 else ''}"
     )
     axiom_note = (
         f"every declaration in the library depends only on {axioms}" if not drafts else
-        f"every declaration other than those {drafts} frozen statements depends only on {axioms}"
+        f"every declaration other than {'those' if drafts != 1 else 'that'} unproved "
+        f"statement{'s' if drafts != 1 else ''} depends only on {axioms}"
     )
     lines = [
         f"- {ICON_NONE} **The stability theorem is not formalized.** "
@@ -417,7 +419,8 @@ def render_glance(status: dict, facts: dict) -> str:
     for r, sup, icon in per_result(status):
         head = f"**{r['kind']} {r['number']}, {r['title']}** (`{r['label']}`)"
         if icon == ICON_DONE:
-            lines.append(f"- {icon} {head}: {r['state'].lower()} as `{r['lean']}`.")
+            note = f" {r['frozen_note']}" if r.get("frozen_note") else ""
+            lines.append(f"- {icon} {head}: {r['state'].lower()} as `{r['lean']}`.{note}")
             continue
         parts = []
         if r["state"] == "FROZEN_UNPROVED":

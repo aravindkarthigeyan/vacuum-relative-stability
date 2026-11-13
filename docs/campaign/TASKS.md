@@ -72,11 +72,11 @@ files, `Core.lean`, the manifest or the docs; the orchestrator integrates and la
 
 | ID | Model | Files owned | Target | Status |
 |---|---|---|---|---|
-| H1 | Opus | `Transfer/History.lean` | `Step.IsAdmissible`; invertibility, form preservation, `det U`, reality of `F` (layer E) | running |
-| Q1 | Opus | `Fourier/Factorization.lean` | G3, algebraic part: `det(1 + e^{iφ}U) = e^{idφ} (∏ conj λ)⁻¹ \|P\|²` | running |
-| H2 | Opus | `Transfer/Annulus.lean` | eigenvalue dichotomy along a history (needs W3, W4) | waiting for W3 |
-| H3 | — | `Transfer/AnnulusCount.lean` | conjuncts 2–4 of Lemma 3.1 and `det(I+U) ≠ 0` (needs H1, H2) | waiting |
-| H4 | Opus | `Transfer/Homotopy.lean` | deformation, continuity, endpoint, positivity (needs H1, H3) | waiting |
+| H1 | Opus | `Transfer/History.lean` | `Step.IsAdmissible`; invertibility, form preservation, `det U`, reality of `F` (layer E) | proved, landed |
+| Q1 | Opus | `Fourier/Factorization.lean` | G3, algebraic part: `det(1 + e^{iφ}U) = e^{idφ} (∏ conj λ)⁻¹ \|P\|²` | proved, landed |
+| H23 | Opus | `Transfer/Annulus.lean` | eigenvalue dichotomy along a history; conjuncts 2–4 of Lemma 3.1; `det(I+U) ≠ 0` | proved, landed |
+| H4 | Opus | `Transfer/Homotopy.lean` | deformation, continuity, endpoint, positivity | proved, landed |
+| P1 | orchestrator | `Provider/PositivityAndTransferAnnulus.lean` | provider and seal of Lemma 3.1 | sealed 2026-11-12; audits pending |
 | Q2 | — | `Fourier/Bound.lean` | Lemma 3.2 assembly (needs Q1, H4) | waiting |
 
 ## Landing checklist (per wave)

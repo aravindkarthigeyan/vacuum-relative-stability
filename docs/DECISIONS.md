@@ -173,10 +173,12 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
   manifest was generated once by an untracked script; there is deliberately no
   tracked rebaseline command.
 - **Checks.** [`scripts/check_frozen_anchors.py`](../scripts/check_frozen_anchors.py)
-  (the skill's checker with four documented adaptations: it skips the retired
+  (the skill's checker with five documented adaptations: it skips the retired
   `vendor/`, `tools/` and `.lake*` directories, accepts a literal `inductive` as a
   definition anchor, lets an allowlisted audit file reach a draft's provider through
-  the draft's own import, and compares paths in POSIX form) verifies every frozen
+  the draft's own import, compares paths in POSIX form, and lets a sealed body apply the
+  provider to the frozen declaration's own binder names and nothing else, since the frozen
+  theorems bind their hypotheses before the colon) verifies every frozen
   byte, the exact `by sorry` body of each draft, the import quarantine and the
   absence of any other `sorry` or `axiom`. The axiom audit, now
   `lean/scripts/Audit/AxiomAudit.lean` because the checker allows a draft to be

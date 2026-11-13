@@ -37,9 +37,15 @@ Phase: **step 4 in progress (bounded proof tasks); task board in
   pairing with algebraic multiplicity; Liouville per step, for Hermitian generators)
   and the β-form calculus. The axiom audit passes (236 declarations, standard axioms
   outside the two drafts).
-- Running: H4 (homotopy and positivity) and H23 (eigenvalue annulus along a history,
-  det(I+U) ≠ 0). Next: provider P1 and seal of Lemma 3.1; Q2 assembly, provider P2 and
-  seal of Lemma 3.2; two independent audits per seal (step 5).
+- 2026-11-12: **Lemma 3.1 sealed** (`lem_transfer_v1` SEALED; `status.json` PROVED).
+  Provider `lean/Core/PaperA/Provider/PositivityAndTransferAnnulus.lean` (statement copied
+  verbatim) assembles Homotopy (H4) and Annulus (H23). The frozen file changed only in its
+  proof body: `by exact QEDCore.PaperA.Provider.positivity_and_transfer_annulus` applied to
+  the anchor's own binders. Checks: build, axiom audit (standard axioms; one draft left),
+  `leanchecker` kernel replay of the anchor, the provider and the main helpers (exit 0),
+  frozen-anchor guard (adaptation 5 for seals), graph gate (manifest hash re-pinned).
+- Next: two independent audits of the Lemma 3.1 seal (step 5, `docs/audits/seal/`), then
+  `AUDITED`; Q2 assembly, provider P2 and seal of Lemma 3.2.
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

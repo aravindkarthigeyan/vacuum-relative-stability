@@ -25,3 +25,5 @@ import Core.PaperA.Transfer.History
 import Core.PaperA.Fourier.FourierCoeff
 import Core.PaperA.Fourier.Factorization
 import Core.PaperA.Transfer.BetaForm
+import Core.PaperA.Transfer.Homotopy
+import Core.PaperA.Transfer.Annulus

@@ -39,7 +39,7 @@
       "number": "3.1",
       "title": "Positivity and the transfer annulus",
       "file": "paper-a/transfer.tex",
-      "state": "FROZEN_UNPROVED",
+      "state": "PROVED",
       "lean": "QEDCore.PaperA.positivity_and_transfer_annulus",
       "frozen_note": "By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).",
       "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`; the other `d` are their partners `1/conj(λ)`, of modulus at least `e^{b m_*}`.",

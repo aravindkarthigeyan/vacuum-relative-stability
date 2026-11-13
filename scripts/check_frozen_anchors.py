@@ -4,7 +4,7 @@
 This tool verifies supplied baselines only.  It deliberately has no update,
 accept, or rebaseline command: an author-approved successor is external work.
 
-Repository copy of the `lean-orchestrator` skill's checker, with four local
+Repository copy of the `lean-orchestrator` skill's checker, with five local
 adaptations recorded in docs/DECISIONS.md (D12):
 
 1. `project_files` skips `.lake*` build directories and the retired, git-ignored
@@ -17,6 +17,10 @@ adaptations recorded in docs/DECISIONS.md (D12):
    provider export, and nothing may import the allowlisted file.
 4. Definition-closure paths are compared in POSIX form, so the check gives the
    same result on Windows as on Linux.
+5. A SEALED body may apply the provider export to the frozen declaration's own
+   binder names (`by exact Provider.result α β h₁ h₂ ...`), and to nothing else,
+   because the frozen theorems bind their hypotheses before the colon. A provider
+   that needs any extra premise therefore cannot be sealed.
 
 Usage (from the repository root):
 
@@ -463,12 +467,28 @@ class Guard:
             implementation = anchor.get("implementation")
             export = implementation.get("export") if isinstance(implementation, dict) else None
             escaped = re.escape(export) if isinstance(export, str) else r"(?!)"
-            if not re.fullmatch(r"\s*by\s+(?:exact\s+|simpa\s+using\s+)" + escaped + r"\s*", body):
-                self.fail(f"{label}: SEALED body must be trivial assembly of exactly implementation.export")
+            # Local adaptation 5: the export may be applied to the frozen declaration's own
+            # binder names (and nothing else), since frozen theorems bind their hypotheses
+            # before the colon.
+            binders = self.binder_names(text[:body_start])
+            match = re.fullmatch(r"\s*by\s+(?:exact\s+|simpa\s+using\s+)" + escaped + r"((?:\s+\S+)*)\s*", body)
+            if match is None or any(arg not in binders for arg in match.group(1).split()):
+                self.fail(f"{label}: SEALED body must be trivial assembly of exactly implementation.export "
+                          "applied only to the frozen declaration's own binder names")
             lines = 0 if not body.strip() else body.strip().count("\n") + 1
             if lines > limits["max_body_lines"] or len(body.encode("utf-8")) > limits["max_body_bytes"]:
                 self.fail(f"{label}: SEALED body exceeds configured short assembly limits")
         return body_start, body_end
+
+    def binder_names(self, prefix: str) -> set[str]:
+        """Names bound by `(x y : T)`, `{x : T}`, `[x : T]` groups of the last declaration header."""
+        code = self.code_mask(prefix)
+        start = max(code.rfind("theorem "), code.rfind("lemma "))
+        header = code[start:] if start >= 0 else code
+        names: set[str] = set()
+        for group in re.finditer(r"[({\[]\s*([^\s:(){}\[\]]+(?:\s+[^\s:(){}\[\]]+)*)\s*:", header):
+            names.update(group.group(1).split())
+        return names
 
     def check_declaration(self, anchor: dict[str, Any], label: str, text: str, kind: str) -> None:
         declarations = self.declarations(text)
