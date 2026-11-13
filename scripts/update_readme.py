@@ -53,6 +53,7 @@ MANIFEST = LEAN / "frozen-manifest.json"
 README = ROOT / "README.md"
 ERRATA = ROOT / "docs" / "ERRATA-AND-DEVIATIONS.md"
 PROGRESS_SVG = ROOT / "docs" / "img" / "progress.svg"
+INFRA_PREFIX = "Core.PaperA."
 STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 STATES = ("NOT_STARTED", "FROZEN_UNPROVED", "PROVED", "AUDITED")
@@ -233,6 +234,10 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
         and t["name"].rsplit(".", 1)[-1] in {"inj", "injEq", "sizeOf_spec"}
     }
     theorems = {t["name"]: t for t in audit["theorems"] if t["name"] not in generated}
+    # Proof infrastructure below the frozen statements (lean/Core/PaperA/): audited like
+    # everything else, counted separately, not listed one by one in status.json.
+    infrastructure = {name for name, t in theorems.items()
+                      if t["module"].startswith(INFRA_PREFIX) and name not in draft_exports}
     for r in results:
         if r["state"] in DONE:
             t = theorems.get(r["lean"])
@@ -247,7 +252,7 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
         if s["supports"] not in seen:
             problems.append(f"supporting {s['name']} cites unknown result {s['supports']}")
         claimed.add(s["name"])
-    for name in sorted(set(theorems) - claimed):
+    for name in sorted(set(theorems) - claimed - infrastructure):
         problems.append(f"audited theorem {name} is not listed in status.json")
 
     lib, audit_files, script_files = lean_sources()
@@ -295,6 +300,7 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
         "axiom_decls": len(axiom_hits),
         "axioms_used": used,
         "audited_theorems": len(theorems),
+        "infrastructure_theorems": len(infrastructure),
         "declarations": audit["declarations_audited"],
         "modules": len(modules),
         "lean_version": audit["lean_version"],
@@ -533,6 +539,7 @@ def render_stats(status: dict, facts: dict) -> str:
          f"{len(facts['sealed_theorems'])} / {len(facts['draft_theorems'])}"),
         ("Frozen definitions in `lean/frozen-manifest.json`", len(facts["definition_anchors"])),
         ("Supporting lemmas listed in `lean/status.json`", c["supporting"]),
+        ("Proof lemmas for the frozen statements (`lean/Core/PaperA/`)", facts["infrastructure_theorems"]),
         ("Theorems in the axiom audit", facts["audited_theorems"]),
         ("Declarations audited (including auxiliary ones)", facts["declarations"]),
         ("Library modules / files / lines", f"{facts['modules']} / {facts['lib_files']} / {facts['lib_lines']}"),

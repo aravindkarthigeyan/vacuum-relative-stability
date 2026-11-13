@@ -223,3 +223,26 @@ pins the manifest by SHA-256, so a manifest change fails the graph check.
   --require-all-reachable --check`.
 - **Maintenance.** After publication, structural corrections are append-only `AMEND`
   records with an independent reviewer; a frozen node's source fields never change.
+
+## D15. Proof campaign mechanics (author brief step 4; setup, 2026-11-12)
+
+- **Compile gate.** [`scripts/lean-gate.sh`](../scripts/lean-gate.sh) allows at most two
+  Lean or Lake commands at once on the machine, as the author requires for this laptop.
+  The `lean-orchestrator` skill's gate needs `flock` and replaces the `lean` binary; Git
+  Bash on Windows has no `flock`, so the repository gate uses atomic `mkdir` slots
+  (recording the owner's PID and reclaimed when it dies) and wraps commands instead.
+  Every worker and orchestrator command of the campaign runs through it.
+- **Workers.** Bounded briefs with exact target statements, owned files, one validation
+  command and a stop condition. Workers report an API gap or a false target instead of
+  adding a hypothesis. Sonnet does Mathlib search and routine lemmas; Opus does the matrix
+  exponential, the β-form calculus, the spectral pairing, the Fourier integral and the
+  homotopy. The board is [`campaign/TASKS.md`](campaign/TASKS.md).
+- **Helper modules.** Helpers are sorry-free and live in `lean/Core/PaperA/Transfer/` and
+  `lean/Core/PaperA/Fourier/`. They are imported by `Core.lean` and covered by the axiom
+  audit once landed. A helper may take premises: the provider discharges them at the
+  frozen statement, whose binders never change. The helper predicates `IsDiracClifford`
+  (the six Clifford hypotheses of the frozen statements) and `Step.IsHermitianData` are
+  conveniences for these internal lemmas, not source-facing definitions.
+- **Route.** The β-form estimate is formalized per free step as two unconditional bounds
+  plus a strict drop, which replaces the source's trajectory-sign case split
+  (campaign/TASKS.md). The source graph is unchanged.

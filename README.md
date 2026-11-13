@@ -98,9 +98,10 @@ Paper A results  ▒▒▒▒▒▒░░░░░░░░░░░░░░  0
 | Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 0 / 2 |
 | Frozen definitions in `lean/frozen-manifest.json` | 6 |
 | Supporting lemmas listed in `lean/status.json` | 23 |
-| Theorems in the axiom audit | 25 |
-| Declarations audited (including auxiliary ones) | 68 |
-| Library modules / files / lines | 16 / 16 / 632 |
+| Proof lemmas for the frozen statements (`lean/Core/PaperA/`) | 67 |
+| Theorems in the axiom audit | 92 |
+| Declarations audited (including auxiliary ones) | 236 |
+| Library modules / files / lines | 28 / 28 / 2110 |
 | Comparator files in `lean/Audit/` | 0 |
 | Registered `sorry` (proof bodies of frozen, unproved statements) | 2 |
 | Unregistered `sorry` or `admit` outside `lean/Audit/` | 0 |

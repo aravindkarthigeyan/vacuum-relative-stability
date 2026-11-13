@@ -26,7 +26,24 @@ versioned successor.
 
 ## Current state
 
-Phase: **step 3 done (source dependency graph published); step 4 (bounded proof tasks) next.**
+Phase: **step 4 in progress (bounded proof tasks); task board in
+[`campaign/TASKS.md`](campaign/TASKS.md).**
+
+- 2026-11-12, step 4: compile gate `scripts/lean-gate.sh` (two machine-wide slots,
+  D15). The Mathlib API map is [`campaign/MATHLIB_API.md`](campaign/MATHLIB_API.md).
+- Landed: 12 sorry-free helper modules under `lean/Core/PaperA/{Transfer,Fourier}/`,
+  covering layers A–D, the history-level facts H1, and the Lemma 3.2 pieces G1, G2, G4
+  and the algebraic part of G3. They prove the two `[substantive]` source gaps (spectral
+  pairing with algebraic multiplicity; Liouville per step, for Hermitian generators)
+  and the β-form calculus. The axiom audit passes (236 declarations, standard axioms
+  outside the two drafts).
+- Running: H4 (homotopy and positivity) and H23 (eigenvalue annulus along a history,
+  det(I+U) ≠ 0). Next: provider P1 and seal of Lemma 3.1; Q2 assembly, provider P2 and
+  seal of Lemma 3.2; two independent audits per seal (step 5).
+- Landing procedure while workers write into the same checkout: stage only finished
+  files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
+  `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,
+  `check_frozen_anchors.py` and `proof_depgraph.py --check` there.
 
 - 2026-11-12, step 3: [`graph/DEPGRAPH.md`](graph/DEPGRAPH.md) has 52 nodes, 134 edges,
   roots `lem:transfer` and `lem:fourier`, and 8 frozen nodes bound to the manifest.
