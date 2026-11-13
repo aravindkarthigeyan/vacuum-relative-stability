@@ -47,7 +47,8 @@ theorem canonical_fourier_bound
       ‖Fhat q‖ ≤ ((2 * d).choose (d + q.natAbs) : ℝ) *
         Real.exp (-(b * mStar * |(q : ℝ)|)) * (Fhat 0).re :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact QEDCore.PaperA.Provider.canonical_fourier_bound α β hα_herm hβ_herm hα_sq hβ_sq
+      hα_anti hαβ_anti d hd mStar b hm hb hist hfree hkick htime q hq
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

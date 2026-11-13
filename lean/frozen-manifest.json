@@ -344,7 +344,7 @@
           "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
         }
       ],
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "5fd81d9cdc86adbc4906ecedce0cf4235927467d2f90c8f25e4a78d91e5bbb8d",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {

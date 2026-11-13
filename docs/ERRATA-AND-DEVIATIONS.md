@@ -100,6 +100,14 @@ None.
    `canonical_integral_comparison` in
    [`Core/CanonicalComparison.lean`](../lean/Core/CanonicalComparison.lean).
 
+Deviations 1–6 describe the older supporting lemmas in `lean/Core/*.lean`, which remain in the
+library as helpers. Since 2026-11-12 Lemmas 3.1 and 3.2 are proved as frozen statements
+(`QEDCore.PaperA.positivity_and_transfer_annulus`, `QEDCore.PaperA.canonical_fourier_bound`):
+the spectral pairing with algebraic multiplicities, the exact count, the positivity of the
+centered trace and the Fourier bound for integer `q` are now stated and proved, so deviations
+1, 2, 4 and 5 no longer describe how those results stand in Lean. Deviations 7 and 8 describe
+how the frozen statements differ from the printed lemmas.
+
 7. **Lemmas 3.1 and 3.2 (`lem:transfer`, `lem:fourier`), class of histories.** The
    lemmas allow time-dependent coefficients `v_j(t)`, `M(t)` on the free intervals
    (transfer.tex lines 4–5 and 13; bounded measurable histories, lines 78–80), and
@@ -143,9 +151,9 @@ a hypothesis.
 
 ## Outside the formalization
 
-Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 have frozen
-Lean statements (deviations 7 and 8) whose proofs are not yet in Lean. Theorem 4.1 is
-not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
+Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 are proved for
+piecewise-constant histories and any finite spatial index (deviations 7 and 8); their
+time-dependent versions are not formalized. Theorem 4.1 is not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
 Lemma 5.1, Theorem 5.2, Proposition 5.3 and Theorem 5.4 have nothing in Lean.
 Hypothesis (BF) is stated in Paper A and not proved there. Paper B and the companion
 notes are not formalized.

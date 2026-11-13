@@ -44,8 +44,16 @@ Phase: **step 4 in progress (bounded proof tasks); task board in
   the anchor's own binders. Checks: build, axiom audit (standard axioms; one draft left),
   `leanchecker` kernel replay of the anchor, the provider and the main helpers (exit 0),
   frozen-anchor guard (adaptation 5 for seals), graph gate (manifest hash re-pinned).
-- Next: two independent audits of the Lemma 3.1 seal (step 5, `docs/audits/seal/`), then
-  `AUDITED`; Q2 assembly, provider P2 and seal of Lemma 3.2.
+- 2026-11-12: Lemma 3.1 **AUDITED**: two independent seal audits passed
+  ([`audits/seal/LEM_TRANSFER_AUDIT_1.md`](audits/seal/LEM_TRANSFER_AUDIT_1.md): fidelity and
+  seal integrity; [`audits/seal/LEM_TRANSFER_AUDIT_2.md`](audits/seal/LEM_TRANSFER_AUDIT_2.md):
+  premise discharge, axioms, kernel replay, non-vacuity).
+- 2026-11-12: **Lemma 3.2 sealed** (`lem_fourier_v1`; PROVED). Provider
+  `lean/Core/PaperA/Provider/CanonicalFourierBound.lean` (statement verbatim) uses the sealed
+  Lemma 3.1 once and `Fourier/Bound.lean`. Its hypothesis `hq : |q| ≤ d` is not needed (both
+  sides vanish for |q| > d); it stays in the frozen statement. No `sorry` remains anywhere.
+- Next: two independent audits of the Lemma 3.2 seal, then AUDITED; then the
+  finite-dimensional part of `thm:main` (needs new author-approved statements).
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

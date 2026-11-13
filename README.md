@@ -4,11 +4,11 @@
 [![Comparator](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml/badge.svg?branch=main)](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml)
 
 <!-- BEGIN badges -->
-![Paper A results proved in Lean: 1/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-1%2F10-yellow) ![frozen statements: 1 proved, 1 unproved](https://img.shields.io/badge/frozen%20statements-1%20proved%2C%201%20unproved-blue) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
+![Paper A results proved in Lean: 2/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-2%2F10-yellow) ![frozen statements: 2 proved, 0 unproved](https://img.shields.io/badge/frozen%20statements-2%20proved%2C%200%20unproved-brightgreen) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
 <!-- END badges -->
 
 <!-- BEGIN progress -->
-![Paper A numbered results (10): 1/10 proved; Frozen theorem statements (2): 1/2 proved](docs/img/progress.svg)
+![Paper A numbered results (10): 2/10 proved; Frozen theorem statements (2): 2/2 proved](docs/img/progress.svg)
 <!-- END progress -->
 
 This repository contains three draft papers on the stability of matter relative to
@@ -29,11 +29,11 @@ specialists.**
 ## At a glance
 
 <!-- BEGIN glance -->
-- ⬜ **The stability theorem is not formalized.** 1 of the 10 numbered results of Paper A are proved in Lean, and 1 have a frozen Lean statement whose proof is in progress.
-- ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry` except the registered proof placeholder of 1 frozen, unproved statement; every declaration other than that unproved statement depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
+- ⬜ **The stability theorem is not formalized.** 2 of the 10 numbered results of Paper A are proved in Lean, and 0 have a frozen Lean statement whose proof is in progress.
+- ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry`; every declaration in the library depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
 - ⬜ **Lemma 2.1, Operator realization** (`lem:operator`): not formalized.
-- ✅ **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): proved as `QEDCore.PaperA.positivity_and_transfer_annulus`. By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).
-- 🔧 **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): statement frozen as `QEDCore.PaperA.canonical_fourier_bound`, proof in progress. By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3). Checked supporting lemmas: the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q` (7 lemmas). Not in Lean: the factorization `F(φ) = C ∏_j |1 + e^{iφ} λ_j|²`, the identification of `F_q` with the finite antidiagonal correlation, and negative `q` by conjugation.
+- ✅ **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): audited as `QEDCore.PaperA.positivity_and_transfer_annulus`. By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).
+- ✅ **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): proved as `QEDCore.PaperA.canonical_fourier_bound`. By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).
 - 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Checked supporting lemmas: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`.
 - ⬜ **Lemma 4.2, Uniform lattice self-energy** (`lem:green`): not formalized.
 - ⬜ **Corollary 4.3, Stability after individual nuclear subtraction** (`cor:stability`): not formalized.
@@ -84,26 +84,26 @@ or establish a neutral pair gap, binding, or crystalline order.
 
 <!-- BEGIN stats -->
 ```text
-Paper A results  ██▒▒▒▒░░░░░░░░░░░░░░  1/10 proved (10%), 1 frozen, 1 with supporting lemmas only
+Paper A results  ████▒▒░░░░░░░░░░░░░░  2/10 proved (20%), 0 frozen, 1 with supporting lemmas only
 ```
 `█` proved · `▒` statement frozen or supporting lemmas checked · `░` nothing in Lean
 
 | | |
 |---|---|
 | Paper A numbered results | 10 |
-| … proved in Lean (`PROVED` or `AUDITED`) | 1 (0 audited) |
-| … frozen statement, unproved (`FROZEN_UNPROVED`) | 1 |
+| … proved in Lean (`PROVED` or `AUDITED`) | 2 (1 audited) |
+| … frozen statement, unproved (`FROZEN_UNPROVED`) | 0 |
 | … `NOT_STARTED`, with checked supporting lemmas | 1 |
 | … `NOT_STARTED`, nothing in Lean | 7 |
-| Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 1 / 1 |
+| Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 2 / 0 |
 | Frozen definitions in `lean/frozen-manifest.json` | 6 |
 | Supporting lemmas listed in `lean/status.json` | 23 |
-| Proof lemmas for the frozen statements (`lean/Core/PaperA/`) | 85 |
-| Theorems in the axiom audit | 110 |
-| Declarations audited (including auxiliary ones) | 290 |
-| Library modules / files / lines | 30 / 30 / 2724 |
+| Proof lemmas for the frozen statements (`lean/Core/PaperA/`) | 93 |
+| Theorems in the axiom audit | 118 |
+| Declarations audited (including auxiliary ones) | 299 |
+| Library modules / files / lines | 31 / 31 / 2971 |
 | Comparator files in `lean/Audit/` | 0 |
-| Registered `sorry` (proof bodies of frozen, unproved statements) | 1 |
+| Registered `sorry` (proof bodies of frozen, unproved statements) | 0 |
 | Unregistered `sorry` or `admit` outside `lean/Audit/` | 0 |
 | `axiom` declarations in the project | 0 |
 | Axioms used | `propext`, `Classical.choice`, `Quot.sound` |
@@ -121,8 +121,8 @@ result's state. [docs/CORRESPONDENCE.md](docs/CORRESPONDENCE.md) explains every 
 | # | Paper A result | Label | State | Lean statement | Checked supporting lemmas |
 |---|---|---|---|---|---|
 | 2.1 | ⬜ Lemma: Operator realization | [`lem:operator`](paper-a/model.tex) | `NOT_STARTED` | — | — |
-| 3.1 | ✅ Lemma: Positivity and the transfer annulus | [`lem:transfer`](paper-a/transfer.tex) | `PROVED` | [`PaperA.positivity_and_transfer_annulus`](lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean) | `preservesForm_mul`, `preservesForm_one`, `preservesForm_list_prod`, `adjoint_eq_conjugate_inverse`, `no_unit_factor_of_strict_drop`, `stable_endpoint_positive`, `unstable_endpoint_negative`, `stable_annulus_from_endpoint`, `unstable_annulus_from_endpoint`, `inverse_eigenvector`, `involution_mulVec_ne_zero`, `adjoint_inverse_eigenvector` |
-| 3.2 | 🔧 Lemma: Canonical Fourier bound | [`lem:fourier`](paper-a/transfer.tex) | `FROZEN_UNPROVED` | [`PaperA.canonical_fourier_bound`](lean/Frozen/PaperA/CanonicalFourierBound.lean) | `elementary_zero`, `norm_elementary_le`, `correlation_zero`, `one_le_vacuumWeight`, `norm_correlation_le`, `elementary_correlation_bound`, `relative_correlation_bound` |
+| 3.1 | ✅ Lemma: Positivity and the transfer annulus | [`lem:transfer`](paper-a/transfer.tex) | `AUDITED` | [`PaperA.positivity_and_transfer_annulus`](lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean) | `preservesForm_mul`, `preservesForm_one`, `preservesForm_list_prod`, `adjoint_eq_conjugate_inverse`, `no_unit_factor_of_strict_drop`, `stable_endpoint_positive`, `unstable_endpoint_negative`, `stable_annulus_from_endpoint`, `unstable_annulus_from_endpoint`, `inverse_eigenvector`, `involution_mulVec_ne_zero`, `adjoint_inverse_eigenvector` |
+| 3.2 | ✅ Lemma: Canonical Fourier bound | [`lem:fourier`](paper-a/transfer.tex) | `PROVED` | [`PaperA.canonical_fourier_bound`](lean/Frozen/PaperA/CanonicalFourierBound.lean) | `elementary_zero`, `norm_elementary_le`, `correlation_zero`, `one_le_vacuumWeight`, `norm_correlation_le`, `elementary_correlation_bound`, `relative_correlation_bound` |
 | 4.1 | 🔧 Theorem: Exact physical-sector comparison | [`thm:main`](paper-a/comparison.tex) | `NOT_STARTED` | — | `positive_measure_comparison`, `phase_preserves_bound`, `scaled_coefficient_comparison`, `canonical_integral_comparison` |
 | 4.2 | ⬜ Lemma: Uniform lattice self-energy | [`lem:green`](paper-a/comparison.tex) | `NOT_STARTED` | — | — |
 | 4.3 | ⬜ Corollary: Stability after individual nuclear subtraction | [`cor:stability`](paper-a/comparison.tex) | `NOT_STARTED` | — | — |
@@ -205,7 +205,7 @@ theorem positivity_and_transfer_annulus
       ¬ ‖z‖ ≤ Real.exp (-(b * mStar)) → Real.exp (b * mStar) ≤ ‖z‖ :=
 ```
 
-`QEDCore.PaperA.canonical_fourier_bound`, the frozen statement of Lemma 3.2 (`lem:fourier`), verbatim from [lean/Frozen/PaperA/CanonicalFourierBound.lean](lean/Frozen/PaperA/CanonicalFourierBound.lean); proof in progress: its body is the registered placeholder `by sorry`.
+`QEDCore.PaperA.canonical_fourier_bound`, the frozen statement of Lemma 3.2 (`lem:fourier`), verbatim from [lean/Frozen/PaperA/CanonicalFourierBound.lean](lean/Frozen/PaperA/CanonicalFourierBound.lean); proved.
 
 ```lean
 /-- **Paper A, Lemma 3.2 (Canonical Fourier bound).** Append to a history of Lemma 3.1 the

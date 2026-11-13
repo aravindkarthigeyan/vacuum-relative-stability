@@ -76,8 +76,9 @@ files, `Core.lean`, the manifest or the docs; the orchestrator integrates and la
 | Q1 | Opus | `Fourier/Factorization.lean` | G3, algebraic part: `det(1 + e^{iφ}U) = e^{idφ} (∏ conj λ)⁻¹ \|P\|²` | proved, landed |
 | H23 | Opus | `Transfer/Annulus.lean` | eigenvalue dichotomy along a history; conjuncts 2–4 of Lemma 3.1; `det(I+U) ≠ 0` | proved, landed |
 | H4 | Opus | `Transfer/Homotopy.lean` | deformation, continuity, endpoint, positivity | proved, landed |
-| P1 | orchestrator | `Provider/PositivityAndTransferAnnulus.lean` | provider and seal of Lemma 3.1 | sealed 2026-11-12; audits pending |
-| Q2 | — | `Fourier/Bound.lean` | Lemma 3.2 assembly (needs Q1, H4) | waiting |
+| P1 | orchestrator | `Provider/PositivityAndTransferAnnulus.lean` | provider and seal of Lemma 3.1 | sealed; AUDITED (two passing seal audits, `docs/audits/seal/`) |
+| Q2 | Opus | `Fourier/Bound.lean`, `Provider/CanonicalFourierBound.lean` | Lemma 3.2 assembly and provider | proved, landed |
+| P2 | orchestrator | seal of Lemma 3.2 | — | sealed 2026-11-12; audits pending |
 
 ## Landing checklist (per wave)
 

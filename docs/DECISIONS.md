@@ -161,9 +161,10 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
   theorem imports its provider module `lean/Core/PaperA/Provider/…`, where the proof
   will be written; sealing replaces only `by sorry` by a short exact use of the
   provider's theorem. The declarations are byte-identical to the approved v1 text;
-  the files add a copyright header, per-file imports, docstrings for the two
-  theorems, and the proof-region markers. One import differs from the draft: the
-  deprecated `Mathlib.Data.Complex.Basic` became `Mathlib.Basic.Complex.Basic`.
+  the files add a copyright header, imports chosen per file (the draft had one import
+  block for all eight declarations), docstrings for the two theorems, and the
+  proof-region markers. Before the freeze, one per-file import first chosen, the
+  deprecated `Mathlib.Data.Complex.Basic`, was replaced by `Mathlib.Basic.Complex.Basic`.
 - **Manifest.** [`lean/frozen-manifest.json`](../lean/frozen-manifest.json), in the
   schema of the `lean-orchestrator` skill: per anchor the source range and revision,
   approval, whole-file hash (definitions) or prefix and suffix hashes around the
