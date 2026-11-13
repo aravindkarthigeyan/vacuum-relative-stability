@@ -4,8 +4,12 @@
 [![Comparator](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/comparator.yml/badge.svg?branch=main)](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/comparator.yml)
 
 <!-- BEGIN badges -->
-![Paper A results proved in Lean: 0/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-0%2F10-lightgrey) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![sorry: 0](https://img.shields.io/badge/sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
+![Paper A results proved in Lean: 0/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-0%2F10-lightgrey) ![frozen statements: 0 proved, 0 unproved](https://img.shields.io/badge/frozen%20statements-0%20proved%2C%200%20unproved-blue) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
 <!-- END badges -->
+
+<!-- BEGIN progress -->
+![Paper A numbered results (10): 0/10 proved](docs/img/progress.svg)
+<!-- END progress -->
 
 This repository contains three draft papers on the stability of matter relative to
 the interacting vacuum in quantum electrodynamics with a regulator, and a small Lean 4
@@ -25,12 +29,12 @@ specialists.**
 ## At a glance
 
 <!-- BEGIN glance -->
-- ⬜ **The stability theorem is not formalized.** 0 of the 10 numbered results of Paper A are proved in Lean, and 0 have a frozen Lean statement.
-- ✅ **What is checked.** 23 conditional supporting lemmas for steps of 3 of those results compile on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry`; every declaration in the library depends only on `propext`, `Classical.choice`, `Quot.sound`.
+- ⬜ **The stability theorem is not formalized.** 0 of the 10 numbered results of Paper A are proved in Lean, and 0 have a frozen Lean statement whose proof is in progress.
+- ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry`; every declaration in the library depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
 - ⬜ **Lemma 2.1, Operator realization** (`lem:operator`): not formalized.
-- 🔧 **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): not formalized as stated. Checked: the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence (12 lemmas). Not in Lean: form preservation of the actual propagators, derived from the generator relations; the β-form derivative identity (3.3), the strict decrease and the Gronwall integration; algebraic multiplicities and the exact eigenvalue count; reality and positivity of the centered trace along the homotopy; measurable histories.
-- 🔧 **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): not formalized as stated. Checked: the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q` (7 lemmas). Not in Lean: the factorization `F(φ) = C ∏_j |1 + e^{iφ} λ_j|²`, the identification of `F_q` with the finite antidiagonal correlation, and negative `q` by conjugation.
-- 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Checked: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`.
+- 🔧 **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): not formalized as stated. Checked supporting lemmas: the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence (12 lemmas). Not in Lean: form preservation of the actual propagators, derived from the generator relations; the β-form derivative identity (3.3), the strict decrease and the Gronwall integration; algebraic multiplicities and the exact eigenvalue count; reality and positivity of the centered trace along the homotopy; measurable histories.
+- 🔧 **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): not formalized as stated. Checked supporting lemmas: the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q` (7 lemmas). Not in Lean: the factorization `F(φ) = C ∏_j |1 + e^{iφ} λ_j|²`, the identification of `F_q` with the finite antidiagonal correlation, and negative `q` by conjugation.
+- 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Checked supporting lemmas: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`.
 - ⬜ **Lemma 4.2, Uniform lattice self-energy** (`lem:green`): not formalized.
 - ⬜ **Corollary 4.3, Stability after individual nuclear subtraction** (`cor:stability`): not formalized.
 - ⬜ **Lemma 5.1, Cutting with retained rotors** (`lem:cut`): not formalized.
@@ -39,7 +43,7 @@ specialists.**
 - ⬜ **Theorem 5.4, Open zero-flux source limit** (`thm:open-source`): not formalized.
 - 📄 **Errata and deviations:** 0 errata, 6 deviations → [docs/ERRATA-AND-DEVIATIONS.md](docs/ERRATA-AND-DEVIATIONS.md)
 
-✅ proved in Lean · 🔧 not formalized as stated, but conditional lemmas for some proof steps are checked (or the statement is frozen) · ⬜ nothing in Lean
+✅ proved in Lean · 🔧 statement frozen, or conditional lemmas for some proof steps checked · ⬜ nothing in Lean
 <!-- END glance -->
 
 ## The papers
@@ -80,9 +84,9 @@ or establish a neutral pair gap, binding, or crystalline order.
 
 <!-- BEGIN stats -->
 ```text
-Paper A results  ▒▒▒▒▒▒░░░░░░░░░░░░░░  0/10 proved (0%), 3 with checked supporting lemmas
+Paper A results  ▒▒▒▒▒▒░░░░░░░░░░░░░░  0/10 proved (0%), 0 frozen, 3 with supporting lemmas only
 ```
-`█` proved · `▒` supporting lemmas checked or statement frozen · `░` nothing in Lean
+`█` proved · `▒` statement frozen or supporting lemmas checked · `░` nothing in Lean
 
 | | |
 |---|---|
@@ -91,12 +95,15 @@ Paper A results  ▒▒▒▒▒▒░░░░░░░░░░░░░░  0
 | … frozen statement, unproved (`FROZEN_UNPROVED`) | 0 |
 | … `NOT_STARTED`, with checked supporting lemmas | 3 |
 | … `NOT_STARTED`, nothing in Lean | 7 |
+| Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 0 / 0 |
+| Frozen definitions in `lean/frozen-manifest.json` | 0 |
 | Supporting lemmas listed in `lean/status.json` | 23 |
 | Theorems in the axiom audit | 23 |
 | Declarations audited (including auxiliary ones) | 34 |
 | Library modules / files / lines | 6 / 6 / 340 |
 | Comparator files in `lean/Audit/` | 0 |
-| `sorry` or `admit` outside `lean/Audit/` | 0 |
+| Registered `sorry` (proof bodies of frozen, unproved statements) | 0 |
+| Unregistered `sorry` or `admit` outside `lean/Audit/` | 0 |
 | `axiom` declarations in the project | 0 |
 | Axioms used | `propext`, `Classical.choice`, `Quot.sound` |
 | Toolchain | Lean v4.35.0, Mathlib v4.35.0 (`56a005855ea1`) |

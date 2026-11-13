@@ -5,7 +5,8 @@
 Every number in README.md comes from this script, which reads
 
 * lean/status.json            the state of each Paper A result and the supporting lemmas,
-* lean/.lake/axiom-audit.json the report written by `lake env lean scripts/AxiomAudit.lean`,
+* lean/frozen-manifest.json   the author-approved frozen statements (optional),
+* lean/.lake/axiom-audit.json the report written by `lake env lean scripts/Audit/AxiomAudit.lean`,
 * the Lean sources            file, line, `sorry` and `axiom` counts, verbatim statements,
 * paper-a/*.tex               labels and pinned hashes of the source,
 * docs/ERRATA-AND-DEVIATIONS.md entry counts.
@@ -13,13 +14,18 @@ Every number in README.md comes from this script, which reads
 It rewrites the text between these marker pairs in README.md:
 
     <!-- BEGIN badges -->    <!-- END badges -->
+    <!-- BEGIN progress -->  <!-- END progress -->
     <!-- BEGIN glance -->    <!-- END glance -->
     <!-- BEGIN stats -->     <!-- END stats -->
     <!-- BEGIN table -->     <!-- END table -->
     <!-- BEGIN verbatim -->  <!-- END verbatim -->
 
-and the count table between <!-- BEGIN counts --> / <!-- END counts --> in
-docs/ERRATA-AND-DEVIATIONS.md.
+the count table between <!-- BEGIN counts --> / <!-- END counts --> in
+docs/ERRATA-AND-DEVIATIONS.md, and the progress chart docs/img/progress.svg.
+
+A `sorry` is accepted only as the single proof body of a theorem that
+lean/frozen-manifest.json registers as DRAFT_SORRY; the body itself is checked by
+scripts/check_frozen_anchors.py.
 
 Usage, from the repository root, after `lake build` and the axiom audit in lean/:
 
@@ -43,8 +49,11 @@ ROOT = Path(__file__).resolve().parents[1]
 LEAN = ROOT / "lean"
 STATUS = LEAN / "status.json"
 AUDIT = LEAN / ".lake" / "axiom-audit.json"
+MANIFEST = LEAN / "frozen-manifest.json"
 README = ROOT / "README.md"
 ERRATA = ROOT / "docs" / "ERRATA-AND-DEVIATIONS.md"
+PROGRESS_SVG = ROOT / "docs" / "img" / "progress.svg"
+STANDARD_AXIOMS = {"propext", "Classical.choice", "Quot.sound"}
 
 STATES = ("NOT_STARTED", "FROZEN_UNPROVED", "PROVED", "AUDITED")
 DONE = ("PROVED", "AUDITED")
@@ -68,9 +77,20 @@ def load_json(path: Path) -> dict:
         if path == AUDIT:
             raise CheckError(
                 f"{path.relative_to(ROOT)} not found: run `lake build` and then "
-                "`lake env lean scripts/AxiomAudit.lean` in lean/ first"
+                "`lake env lean scripts/Audit/AxiomAudit.lean` in lean/ first"
             ) from None
         raise
+
+
+def load_anchors() -> list[dict]:
+    """The anchors of lean/frozen-manifest.json, or [] before the first freeze."""
+    if not MANIFEST.exists():
+        return []
+    data = load_json(MANIFEST)
+    anchors = data.get("anchors")
+    if not isinstance(anchors, list):
+        raise CheckError("lean/frozen-manifest.json has no anchors array")
+    return anchors
 
 
 def sha256(path: Path) -> str:
@@ -152,9 +172,12 @@ def tex_labels(tex_files: list[Path]) -> tuple[set[str], dict[str, str]]:
     return labels, results
 
 
-def validate(status: dict, audit: dict) -> dict:
-    """Cross-check status.json, the sources and the audit; return derived facts."""
+def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
+    """Cross-check status.json, the manifest, the sources and the audit; return derived facts."""
     problems: list[str] = []
+    theorem_anchors = {a["export"]: a for a in anchors if a.get("kind") == "theorem"}
+    draft_exports = {e for e, a in theorem_anchors.items() if a.get("state") == "DRAFT_SORRY"}
+    draft_paths = {(LEAN / theorem_anchors[e]["path"]).resolve() for e in draft_exports}
     src = status["source"]
     for rel, digest in src["pinned_sha256"].items():
         path = ROOT / rel
@@ -178,6 +201,22 @@ def validate(status: dict, audit: dict) -> dict:
             problems.append(f"{lab}: not a theorem-like environment in {r['file']}")
         if r["state"] != "NOT_STARTED" and not r["lean"]:
             problems.append(f"{lab}: state {r['state']} needs a Lean name")
+        if r["state"] == "FROZEN_UNPROVED" and r["lean"] not in draft_exports:
+            problems.append(f"{lab}: FROZEN_UNPROVED needs a DRAFT_SORRY anchor in the manifest")
+        if r["state"] in DONE and r["lean"] in draft_exports:
+            problems.append(f"{lab}: {r['lean']} is still DRAFT_SORRY in the manifest")
+    linked = {r["lean"] for r in results if r["lean"]}
+    for export in sorted(set(theorem_anchors) - linked):
+        problems.append(f"frozen theorem {export} is not the Lean statement of any result")
+    abi = audit.get("anchor_abi", {})
+    for a in anchors:
+        text = abi.get(a["export"])
+        if text is None:
+            problems.append(f"the axiom audit reports no elaborated signature for anchor {a['export']}")
+        elif hashlib.sha256(text.encode("utf-8")).hexdigest() != a.get("abi_sha256"):
+            problems.append(f"anchor {a['export']}: elaborated signature hash differs from the manifest")
+    if set(audit.get("draft_exports", [])) != draft_exports:
+        problems.append("the axiom audit and the manifest disagree on the DRAFT_SORRY exports")
     for lab in sorted(set(env_labels) - seen):
         problems.append(f"{lab} ({env_labels[lab]}) is missing from status.json")
     for item in status.get("open_in_source", []):
@@ -210,19 +249,25 @@ def validate(status: dict, audit: dict) -> dict:
     for path in lib:
         if module_name(path) not in modules:
             problems.append(f"{path.relative_to(ROOT).as_posix()} is not covered by the axiom audit")
-    sorry_hits, axiom_hits, lines = [], [], 0
+    sorry_hits, axiom_hits, lines, registered = [], [], 0, 0
     for path in lib + script_files:
         raw = path.read_text(encoding="utf-8")
         code = strip_lean_comments(raw)
         rel = path.relative_to(ROOT).as_posix()
         if path in lib:
             lines += raw.count("\n")
-        sorry_hits += [rel for _ in re.findall(r"\b(?:sorry|admit)\b", code)]
+        hits = re.findall(r"\b(?:sorry|admit)\b", code)
+        if path.resolve() in draft_paths and hits == ["sorry"]:
+            registered += 1
+            hits = []
+        sorry_hits += [rel for _ in hits]
         axiom_hits += [rel for _ in re.findall(
             r"^\s*(?:@\[[^\]]*\]\s*)?(?:(?:private|protected|noncomputable|unsafe)\s+)*axiom\s",
             code, re.M)]
     if sorry_hits:
-        problems.append(f"`sorry`/`admit` outside Audit/: {sorted(set(sorry_hits))}")
+        problems.append(f"unregistered `sorry`/`admit` outside Audit/: {sorted(set(sorry_hits))}")
+    if registered != len(draft_paths):
+        problems.append(f"{len(draft_paths)} DRAFT_SORRY anchors but {registered} registered `sorry` bodies")
     if axiom_hits:
         problems.append(f"`axiom` declarations outside Audit/: {sorted(set(axiom_hits))}")
     if problems:
@@ -236,6 +281,11 @@ def validate(status: dict, audit: dict) -> dict:
         "audit_files": len(audit_files),
         "script_files": len(script_files),
         "sorry": len(sorry_hits),
+        "registered_sorry": registered,
+        "anchors": anchors,
+        "draft_theorems": sorted(draft_exports),
+        "sealed_theorems": sorted(set(theorem_anchors) - draft_exports),
+        "definition_anchors": [a for a in anchors if a.get("kind") == "definition"],
         "axiom_decls": len(axiom_hits),
         "axioms_used": used,
         "audited_theorems": len(theorems),
@@ -315,11 +365,14 @@ def render_badges(status: dict, facts: dict) -> str:
     c = counts(status)
     lean, mathlib, _ = toolchain()
     color = "brightgreen" if c["done"] == c["total"] else ("yellow" if c["done"] else "lightgrey")
-    std = facts["axioms_used"] and set(facts["axioms_used"]) <= {"propext", "Classical.choice", "Quot.sound"}
+    std = facts["axioms_used"] and set(facts["axioms_used"]) <= STANDARD_AXIOMS
+    drafts, sealed = len(facts["draft_theorems"]), len(facts["sealed_theorems"])
     return " ".join([
         badge("Paper A results proved in Lean", f"{c['done']}/{c['total']}", color),
+        badge("frozen statements", f"{sealed} proved, {drafts} unproved",
+              "brightgreen" if drafts == 0 and sealed else "blue"),
         badge("supporting lemmas checked", str(c["supporting"]), "blue"),
-        badge("sorry", str(facts["sorry"]), "brightgreen" if facts["sorry"] == 0 else "red"),
+        badge("unregistered sorry", str(facts["sorry"]), "brightgreen" if facts["sorry"] == 0 else "red"),
         badge("axioms", "standard only" if std else "non-standard", "brightgreen" if std else "red"),
         badge("Lean", lean, "blue"),
         badge("Mathlib", mathlib, "blue"),
@@ -332,37 +385,125 @@ def render_glance(status: dict, facts: dict) -> str:
     lean, mathlib, _ = toolchain()
     e, d = errata_counts()
     axioms = ", ".join(f"`{a}`" for a in facts["axioms_used"])
+    drafts = len(facts["draft_theorems"])
+    sorry_note = (
+        "with no `sorry`" if not drafts else
+        f"with no `sorry` except the {drafts} registered proof placeholders of the frozen statements"
+    )
+    axiom_note = (
+        f"every declaration in the library depends only on {axioms}" if not drafts else
+        f"every declaration other than those {drafts} frozen statements depends only on {axioms}"
+    )
     lines = [
         f"- {ICON_NONE} **The stability theorem is not formalized.** "
         f"{c['done']} of the {c['total']} numbered results of Paper A are proved in Lean, "
-        f"and {c['FROZEN_UNPROVED']} have a frozen Lean statement.",
-        f"- {ICON_DONE} **What is checked.** {facts['audited_theorems']} conditional supporting lemmas "
-        f"for steps of {c['partial']} of those results compile on Lean {lean} with Mathlib {mathlib}, "
-        f"with no `sorry`; every declaration in the library depends only on {axioms}.",
+        f"and {c['FROZEN_UNPROVED']} have a frozen Lean statement whose proof is in progress.",
+        f"- {ICON_DONE} **What is checked.** The library compiles on Lean {lean} with Mathlib {mathlib}, "
+        f"{sorry_note}; {axiom_note}. It contains {c['supporting']} conditional supporting lemmas "
+        f"for steps of {sum(1 for _, sup, _ in per_result(status) if sup)} results.",
     ]
     for r, sup, icon in per_result(status):
         head = f"**{r['kind']} {r['number']}, {r['title']}** (`{r['label']}`)"
         if icon == ICON_DONE:
             lines.append(f"- {icon} {head}: {r['state'].lower()} as `{r['lean']}`.")
+            continue
+        parts = []
+        if r["state"] == "FROZEN_UNPROVED":
+            note = f" {r['frozen_note']}" if r.get("frozen_note") else ""
+            parts.append(f"statement frozen as `{r['lean']}`, proof in progress.{note}")
         elif sup:
-            lines.append(
-                f"- {icon} {head}: not formalized as stated. Checked: {r['lean_coverage']} "
-                f"({len(sup)} lemmas). Not in Lean: {r['outside_lean']}"
-            )
-        elif r["state"] == "FROZEN_UNPROVED":
-            lines.append(f"- {icon} {head}: statement frozen as `{r['lean']}`, proof not started.")
-        else:
-            lines.append(f"- {icon} {head}: not formalized.")
+            parts.append("not formalized as stated.")
+        if sup:
+            parts.append(f"Checked supporting lemmas: {r['lean_coverage']} ({len(sup)} lemmas). "
+                         f"Not in Lean: {r['outside_lean']}")
+        lines.append(f"- {icon} {head}: " + (" ".join(parts) if parts else "not formalized."))
     lines.append(
         f"- 📄 **Errata and deviations:** {e} errata, {d} deviations "
         "→ [docs/ERRATA-AND-DEVIATIONS.md](docs/ERRATA-AND-DEVIATIONS.md)"
     )
     lines.append("")
     lines.append(
-        f"{ICON_DONE} proved in Lean · {ICON_PARTIAL} not formalized as stated, but conditional "
-        f"lemmas for some proof steps are checked (or the statement is frozen) · {ICON_NONE} nothing in Lean"
+        f"{ICON_DONE} proved in Lean · {ICON_PARTIAL} statement frozen, or conditional lemmas for "
+        f"some proof steps checked · {ICON_NONE} nothing in Lean"
     )
     return "\n".join(lines)
+
+
+# Progress chart -------------------------------------------------------------------------
+
+SVG_COLORS = {
+    "proved": "#1a7f37",
+    "frozen": "#0969da",
+    "supporting": "#bf8700",
+    "none": "#d0d7de",
+}
+SVG_FONT = "-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif"
+
+
+def progress_rows(status: dict, facts: dict) -> list[tuple[str, str, list[tuple[str, int]]]]:
+    """(label, right-hand summary, segments) for each bar of the chart."""
+    c = counts(status)
+    supporting_only = c["partial"] - c["FROZEN_UNPROVED"]
+    rows = [(
+        f"Paper A numbered results ({c['total']})",
+        f"{c['done']}/{c['total']} proved",
+        [("proved", c["done"]), ("frozen", c["FROZEN_UNPROVED"]),
+         ("supporting", supporting_only), ("none", c["none"])],
+    )]
+    drafts, sealed = len(facts["draft_theorems"]), len(facts["sealed_theorems"])
+    if drafts + sealed:
+        rows.append((
+            f"Frozen theorem statements ({drafts + sealed})",
+            f"{sealed}/{drafts + sealed} proved",
+            [("proved", sealed), ("frozen", drafts)],
+        ))
+    return rows
+
+
+def render_progress_svg(status: dict, facts: dict) -> str:
+    rows = progress_rows(status, facts)
+    width, pad, bar_w, bar_h, row_h = 720, 20, 520, 16, 50
+    legend_y = pad + row_h * len(rows) + 10
+    height = legend_y + 22
+    out = [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" '
+        f'viewBox="0 0 {width} {height}" role="img" aria-label="Formalization progress">',
+        f'<rect x="0.5" y="0.5" width="{width - 1}" height="{height - 1}" rx="8" '
+        'fill="#ffffff" stroke="#d0d7de"/>',
+        f'<g font-family="{SVG_FONT}" font-size="13" fill="#1f2328">',
+    ]
+    for i, (label, summary, segments) in enumerate(rows):
+        y = pad + i * row_h
+        total = sum(n for _, n in segments) or 1
+        out.append(f'<text x="{pad}" y="{y + 12}" font-weight="600">{label}</text>')
+        out.append(f'<clipPath id="bar{i}"><rect x="{pad}" y="{y + 20}" width="{bar_w}" '
+                   f'height="{bar_h}" rx="4"/></clipPath>')
+        out.append(f'<g clip-path="url(#bar{i})">')
+        out.append(f'<rect x="{pad}" y="{y + 20}" width="{bar_w}" height="{bar_h}" '
+                   f'fill="{SVG_COLORS["none"]}"/>')
+        x = float(pad)
+        for key, n in segments:
+            w = bar_w * n / total
+            if n and key != "none":
+                out.append(f'<rect x="{x:.1f}" y="{y + 20}" width="{w:.1f}" height="{bar_h}" '
+                           f'fill="{SVG_COLORS[key]}"><title>{n}: {key}</title></rect>')
+            x += w
+        out.append("</g>")
+        out.append(f'<text x="{pad + bar_w + 14}" y="{y + 33}">{summary}</text>')
+    legend = [("proved", "proved in Lean"), ("frozen", "statement frozen, proof in progress"),
+              ("supporting", "supporting lemmas only"), ("none", "nothing in Lean")]
+    x = pad
+    for key, text in legend:
+        out.append(f'<rect x="{x}" y="{legend_y}" width="11" height="11" rx="2" fill="{SVG_COLORS[key]}"/>')
+        out.append(f'<text x="{x + 16}" y="{legend_y + 10}" font-size="12" fill="#59636e">{text}</text>')
+        x += 16 + round(6.2 * len(text)) + 18
+    out += ["</g>", "</svg>", ""]
+    return "\n".join(out)
+
+
+def render_progress(status: dict, facts: dict) -> str:
+    alt = "; ".join(f"{label}: {summary}" for label, summary, _ in progress_rows(status, facts))
+    return f"![{alt}](docs/img/progress.svg)"
 
 
 def progress_bar(c: dict, width: int = 20) -> str:
@@ -382,12 +523,16 @@ def render_stats(status: dict, facts: dict) -> str:
         ("… frozen statement, unproved (`FROZEN_UNPROVED`)", c["FROZEN_UNPROVED"]),
         ("… `NOT_STARTED`, with checked supporting lemmas", c["partial"] - c["FROZEN_UNPROVED"]),
         ("… `NOT_STARTED`, nothing in Lean", c["none"]),
+        ("Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved)",
+         f"{len(facts['sealed_theorems'])} / {len(facts['draft_theorems'])}"),
+        ("Frozen definitions in `lean/frozen-manifest.json`", len(facts["definition_anchors"])),
         ("Supporting lemmas listed in `lean/status.json`", c["supporting"]),
         ("Theorems in the axiom audit", facts["audited_theorems"]),
         ("Declarations audited (including auxiliary ones)", facts["declarations"]),
         ("Library modules / files / lines", f"{facts['modules']} / {facts['lib_files']} / {facts['lib_lines']}"),
         ("Comparator files in `lean/Audit/`", facts["audit_files"]),
-        ("`sorry` or `admit` outside `lean/Audit/`", facts["sorry"]),
+        ("Registered `sorry` (proof bodies of frozen, unproved statements)", facts["registered_sorry"]),
+        ("Unregistered `sorry` or `admit` outside `lean/Audit/`", facts["sorry"]),
         ("`axiom` declarations in the project", facts["axiom_decls"]),
         ("Axioms used", ", ".join(f"`{a}`" for a in facts["axioms_used"])),
         ("Toolchain", f"Lean {lean}, Mathlib {mathlib} (`{rev[:12]}`)"),
@@ -396,10 +541,10 @@ def render_stats(status: dict, facts: dict) -> str:
     bar = (
         "```text\n"
         f"Paper A results  {progress_bar(c)}  {c['done']}/{c['total']} proved ({pct}%), "
-        f"{c['partial']} with checked supporting lemmas\n"
+        f"{c['FROZEN_UNPROVED']} frozen, {c['partial'] - c['FROZEN_UNPROVED']} with supporting lemmas only\n"
         "```"
     )
-    legend = "`█` proved · `▒` supporting lemmas checked or statement frozen · `░` nothing in Lean"
+    legend = "`█` proved · `▒` statement frozen or supporting lemmas checked · `░` nothing in Lean"
     return "\n".join([bar, legend, "", *table])
 
 
@@ -408,8 +553,12 @@ def render_table(status: dict, facts: dict) -> str:
         "| # | Paper A result | Label | State | Lean statement | Checked supporting lemmas |",
         "|---|---|---|---|---|---|",
     ]
+    paths = {a["export"]: a["path"] for a in facts["anchors"]}
     for r, sup, icon in per_result(status):
-        lean = f"`{r['lean']}`" if r["lean"] else "—"
+        if r["lean"] in paths:
+            lean = f"[`{short(r['lean'])}`](lean/{paths[r['lean']]})"
+        else:
+            lean = f"`{r['lean']}`" if r["lean"] else "—"
         names = ", ".join(f"`{short(s['name'])}`" for s in sup) if sup else "—"
         lines.append(
             f"| {r['number']} | {icon} {r['kind']}: {r['title']} | [`{r['label']}`]({r['file']}) "
@@ -481,8 +630,31 @@ def scope_variables(path: Path, name: str) -> list[str]:
     raise CheckError(f"cannot find theorem {name} in {path.relative_to(ROOT)}")
 
 
+def frozen_statement(path: Path, name: str) -> str:
+    """The frozen statement of `name`: its docstring and signature, up to the proof region."""
+    text = path.read_text(encoding="utf-8")
+    m = re.search(r"(/--(?:(?!-/).)*?-/[ \t]*\n)?^theorem[ \t]+" + re.escape(name) + r"\b",
+                  text, re.S | re.M)
+    end = text.find("-- FROZEN_ANCHOR_PROOF_BEGIN")
+    if not m or end < m.start():
+        raise CheckError(f"cannot find the frozen statement {name} in {path.relative_to(ROOT)}")
+    return text[m.start():end].rstrip()
+
+
 def render_verbatim(status: dict, facts: dict) -> str:
     parts = []
+    for r in status["results"]:
+        anchor = next((a for a in facts["anchors"] if a["export"] == r["lean"]), None)
+        if anchor is None or anchor.get("kind") != "theorem":
+            continue
+        rel = "lean/" + anchor["path"]
+        state = ("proof in progress: its body is the registered placeholder `by sorry`"
+                 if anchor["state"] == "DRAFT_SORRY" else "proved")
+        parts.append(
+            f"`{r['lean']}`, the frozen statement of {r['kind']} {r['number']} (`{r['label']}`), "
+            f"verbatim from [{rel}]({rel}); {state}.\n\n```lean\n"
+            + frozen_statement(ROOT / rel, short(r["lean"]).split(".")[-1]) + "\n```"
+        )
     for s in [s for s in status["supporting"] if s["headline"]]:
         rel = module_path(facts["module_of"][s["name"]])
         result = next(r for r in status["results"] if r["label"] == s["supports"])
@@ -521,22 +693,26 @@ def main() -> int:
     try:
         status = load_json(STATUS)
         audit = load_json(AUDIT)
-        facts = validate(status, audit)
+        anchors = load_anchors()
+        facts = validate(status, audit, anchors)
         for r, sup, _ in per_result(status):
             if sup and not r.get("lean_coverage"):
                 raise CheckError(f"{r['label']} has supporting lemmas but no lean_coverage text")
         readme = README.read_text(encoding="utf-8")
         new = readme
-        for key, fn in (("badges", render_badges), ("glance", render_glance),
-                        ("stats", render_stats), ("table", render_table),
-                        ("verbatim", render_verbatim)):
+        for key, fn in (("badges", render_badges), ("progress", render_progress),
+                        ("glance", render_glance), ("stats", render_stats),
+                        ("table", render_table), ("verbatim", render_verbatim)):
             new = splice(new, key, fn(status, facts), README)
         errata = ERRATA.read_text(encoding="utf-8")
         new_errata = splice(errata, "counts", render_errata_counts(), ERRATA)
+        svg = PROGRESS_SVG.read_text(encoding="utf-8") if PROGRESS_SVG.exists() else ""
+        new_svg = render_progress_svg(status, facts)
     except CheckError as err:
         print(f"update_readme: check failed:\n{err}", file=sys.stderr)
         return 1
-    stale = [p.name for p, old, cur in ((README, readme, new), (ERRATA, errata, new_errata)) if old != cur]
+    outputs = ((README, readme, new), (ERRATA, errata, new_errata), (PROGRESS_SVG, svg, new_svg))
+    stale = [p.name for p, old, cur in outputs if old != cur]
     if args.check:
         if stale:
             print(f"update_readme: stale generated sections in {stale}; run scripts/update_readme.py",
@@ -544,8 +720,9 @@ def main() -> int:
             return 1
         print("update_readme: README.md and the errata counts are current")
         return 0
-    for path, old, cur in ((README, readme, new), (ERRATA, errata, new_errata)):
+    for path, old, cur in outputs:
         if old != cur:
+            path.parent.mkdir(parents=True, exist_ok=True)
             path.write_text(cur, encoding="utf-8", newline="\n")
     print(f"update_readme: updated {stale}" if stale else "update_readme: already current")
     return 0
