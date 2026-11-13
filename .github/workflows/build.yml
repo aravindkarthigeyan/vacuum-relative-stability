@@ -38,6 +38,10 @@ jobs:
           fi
           df -h .
 
+      - name: Frozen statements match the manifest
+        working-directory: .
+        run: python3 -I scripts/check_frozen_anchors.py --root lean --manifest lean/frozen-manifest.json --allow-non-module
+
       - name: Install elan
         run: |
           set -Eeuo pipefail
@@ -66,8 +70,8 @@ jobs:
       - name: Build
         run: lake build
 
-      - name: Axiom and sorry audit (every declaration outside Audit/)
-        run: lake env lean scripts/AxiomAudit.lean
+      - name: Axiom and sorry audit (every declaration; only manifested drafts may use sorry)
+        run: lake env lean scripts/Audit/AxiomAudit.lean
 
       - name: Per-theorem axiom report
         run: lake env lean scripts/PrintAxioms.lean

@@ -7,7 +7,9 @@ draft of 29 October 2026; LaTeX sources in [`paper-a/`](../paper-a)). The state 
 every numbered result, and the list of checked declarations, is recorded in
 [`lean/status.json`](../lean/status.json); the README tables are generated from it.
 
-**No numbered result of Paper A is formalized as stated.** The library checks
+**No numbered result of Paper A is proved in Lean.** Lemmas 3.1 and 3.2 have frozen,
+author-approved Lean statements whose proofs are in progress (see "Frozen statements"
+below). Separately, the library checks
 conditional algebraic, finite-coefficient and integration steps used inside the
 proofs of Lemma 3.1, Lemma 3.2 and Theorem 4.1. Each such lemma has, among its
 hypotheses, facts that Paper A proves analytically and that Lean does not check.
@@ -22,6 +24,33 @@ spectral-pairing lemma is fully formalized,” or “the ODE positivity proof is
 checked.”
 
 All Lean names below have the prefix `QEDCore.`.
+
+## Frozen statements
+
+Approved by the author on 2026-11-12 with rulings R1(a)–R4
+([DECISIONS.md](DECISIONS.md), D11), frozen verbatim and registered in
+[`lean/frozen-manifest.json`](../lean/frozen-manifest.json). The definitions are
+literal transcriptions of the paper's formulas for a step history; the two theorems
+state the lemmas themselves, with no hypothesis that the paper proves.
+
+| Lean (`QEDCore.PaperA.`) | File | Paper A |
+|---|---|---|
+| `Step` | [Defs/Step.lean](../lean/Core/PaperA/Defs/Step.lean) | one step of a history: a free evolution `(τ, v_j, M)` or a spin-scalar kick generator `Θ` (transfer.tex 11–16, 26) |
+| `diracOperator` | [Defs/DiracOperator.lean](../lean/Core/PaperA/Defs/DiracOperator.lean) | `h = Σ_j α_j v_j + β M` on `ℓ²(ι) ⊗ ℂ⁴` (model.tex 27–38) |
+| `Step.generator` | [Defs/StepGenerator.lean](../lean/Core/PaperA/Defs/StepGenerator.lean) | `∫A` over a step, `A = c h + iΦ`: `τ h`, or `-i (Θ ⊗ 1)` (transfer.tex 20–26, 83–84) |
+| `Step.freeTime` | [Defs/StepFreeTime.lean](../lean/Core/PaperA/Defs/StepFreeTime.lean) | free time `τ` of a step; the total is `b = ∫c` (transfer.tex 15, 25) |
+| `transferMatrix` | [Defs/TransferMatrix.lean](../lean/Core/PaperA/Defs/TransferMatrix.lean) | `U`, the ordered product of `exp(-∫A)`, later steps on the left (`U' = -AU`) |
+| `centeredTrace` | [Defs/CenteredTrace.lean](../lean/Core/PaperA/Defs/CenteredTrace.lean) | `F = exp(½∫Tr A) det(I + U)`, equation (3.1) |
+| `positivity_and_transfer_annulus` | [Frozen/PaperA/PositivityAndTransferAnnulus.lean](../lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean) | Lemma 3.1: `F > 0` (as `Re F > 0`, `Im F = 0`); exactly `d` roots of the characteristic polynomial of `U` (eigenvalues with algebraic multiplicity) in `|λ| ≤ e^{-bm_*}`; the others are their partners `1/conj λ` and have modulus at least `e^{bm_*}` |
+| `canonical_fourier_bound` | [Frozen/PaperA/CanonicalFourierBound.lean](../lean/Frozen/PaperA/CanonicalFourierBound.lean) | Lemma 3.2: with the twist `e^{iφQ}` appended as the kick `Θ = φ·1`, `F_q = (2π)⁻¹∫_0^{2π} e^{-iqφ}F(φ)dφ` satisfies `Im F_0 = 0` and `|F_q| ≤ binom(2d, d+|q|) e^{-bm_*|q|} Re F_0` for integers `|q| ≤ d` |
+
+The hypotheses are the paper's: Hermitian 4×4 Clifford matrices `α_j`, `β`; `D = 4|ι| = 2d`;
+`m_* > 0`, `b > 0`; each free step has `τ ≥ 0`, Hermitian `v_j` and `M ≥ m_* I`; each kick
+has Hermitian `Θ`; the free times add up to `b`. The class of histories is narrower
+than the paper's (deviation 7 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md)),
+and the spatial index is any finite type (deviation 8). The pre-approval statement
+audits are in [`audits/pilot/`](audits/pilot); the binder test of the older supporting
+lemmas below is in [`audits/LEGACY_BINDER_TEST.md`](audits/LEGACY_BINDER_TEST.md).
 
 ## Lemma 3.1 (`lem:transfer`), positivity and the transfer annulus
 
@@ -84,10 +113,14 @@ is stated in Paper A and explicitly not proved there.
 ## Trust boundary
 
 `lake build` checks every proof in the library. The
-[axiom audit](../lean/scripts/AxiomAudit.lean) computes, for every declaration of the
-library, the axioms it depends on, and fails on `sorryAx`, on any axiom other than
-`propext`, `Classical.choice` and `Quot.sound`, and on any axiom declared in the
-project. The trust base is the Lean kernel and compiler of the pinned toolchain and
+[axiom audit](../lean/scripts/Audit/AxiomAudit.lean) computes, for every declaration of the
+library and of the frozen statements, the axioms it depends on, and fails on
+`sorryAx`, on any axiom other than `propext`, `Classical.choice` and `Quot.sound`, and
+on any axiom declared in the project. The only exception is a frozen statement that
+[`lean/frozen-manifest.json`](../lean/frozen-manifest.json) registers as unproved
+(`DRAFT_SORRY`): its proof body is the single placeholder `by sorry`, which
+[`scripts/check_frozen_anchors.py`](../scripts/check_frozen_anchors.py) verifies
+together with the frozen bytes, and nothing may import or use it. The trust base is the Lean kernel and compiler of the pinned toolchain and
 the Mathlib build downloaded by `lake exe cache get`.
 
 Compilation shows that the Lean statements are proved. It does not show that they

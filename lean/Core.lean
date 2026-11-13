@@ -7,3 +7,9 @@ import Core.Coefficients
 import Core.Eigenvectors
 import Core.PositiveMeasure
 import Core.CanonicalComparison
+import Core.PaperA.Defs.Step
+import Core.PaperA.Defs.DiracOperator
+import Core.PaperA.Defs.StepGenerator
+import Core.PaperA.Defs.StepFreeTime
+import Core.PaperA.Defs.TransferMatrix
+import Core.PaperA.Defs.CenteredTrace

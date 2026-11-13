@@ -20,7 +20,7 @@ evidence about the paper as a whole.
 <!-- BEGIN counts -->
 | Source | Errata | Deviations |
 |---|---|---|
-| Paper A | 0 | 6 |
+| Paper A | 0 | 8 |
 <!-- END counts -->
 
 ## Paper A
@@ -39,6 +39,8 @@ None.
 | 4 | Lemma 3.1, proof after (3.3) | Endpoint step as scalar implications | the five endpoint lemmas in `Core/PseudoUnitary.lean` |
 | 5 | Lemma 3.1, spectral pairing | Weaker: eigenvectors, not multiplicities | `inverse_eigenvector`, `involution_mulVec_ne_zero`, `adjoint_inverse_eigenvector` |
 | 6 | Theorem 4.1, proof of (4.2) | Abstract measure, explicit integrability | `positive_measure_comparison`, `canonical_integral_comparison` |
+| 7 | Lemmas 3.1 and 3.2, class of histories | Specialization: piecewise-constant histories (ruling R1(a)) | `PaperA.positivity_and_transfer_annulus`, `PaperA.canonical_fourier_bound`, `PaperA.Step` |
+| 8 | Lemmas 3.1 and 3.2, spatial factor | Generalization: any finite spatial index (ruling R2) | the same |
 
 1. **Lemma 3.2 (`lem:fourier`), inequality (3.4).** Printed for integers `|q| ≤ d`.
    The Lean bounds hold for every natural number `q`, including `q > d`, where both
@@ -98,6 +100,33 @@ None.
    `canonical_integral_comparison` in
    [`Core/CanonicalComparison.lean`](../lean/Core/CanonicalComparison.lean).
 
+7. **Lemmas 3.1 and 3.2 (`lem:transfer`, `lem:fourier`), class of histories.** The
+   lemmas allow time-dependent coefficients `v_j(t)`, `M(t)` on the free intervals
+   (transfer.tex lines 4–5 and 13; bounded measurable histories, lines 78–80), and
+   Theorem 4.1 applies them to continuous Brownian-bridge paths (comparison.tex
+   lines 70–89). The frozen Lean statements, by author ruling R1(a) of 2026-11-12
+   ([DECISIONS.md](DECISIONS.md), D11), cover finite piecewise-constant histories: a
+   list of free steps `exp(-τ h)` with `τ ≥ 0`, constant Hermitian `v_j` and constant
+   `M ≥ m_* I`, and separate instantaneous spin-scalar kicks `exp(i Θ ⊗ 1)` with `Θ`
+   Hermitian, the centering phase computed from `Θ` (ruling R4). A step on which free
+   evolution and a kick act simultaneously is not a step of this class. Effect: the
+   Lean statements are a special case of the printed lemmas. The conclusions pass to
+   limits of step approximations (the annulus bounds are closed, the count `d`
+   survives because no eigenvalue lies in the open gap `e^{-bm_*} < |λ| < e^{bm_*}`,
+   and `F > 0` follows from `F ≥ 0` with `det(I + U) ≠ 0`), but that approximation is
+   not formalized. See [`Step`](../lean/Core/PaperA/Defs/Step.lean) and the frozen
+   statements in [`lean/Frozen/PaperA/`](../lean/Frozen/PaperA).
+
+8. **Lemmas 3.1 and 3.2, spatial factor.** Section 3 states the lemmas abstractly for
+   one-particle dimension `D = 2d` with the four-component Dirac structure; the
+   application takes `ℓ²(X)` with `X` the lattice torus. The frozen statements take
+   `ℓ²(ι) ⊗ ℂ⁴` for any finite type `ι`, the empty one included, with `d` a binder
+   satisfying `4|ι| = 2d`, and any Hermitian 4×4 Clifford set `α_1, α_2, α_3, β`
+   (author ruling R2). Effect: a harmless generalization; the lattice case is the
+   instance `ι = X`. In Lemma 3.2 the inequality `|F_q| ≤ … F_0`, whose right side the
+   paper treats as real, is stated as `Im F_0 = 0` together with `|F_q| ≤ … · Re F_0`
+   (ruling R3); this makes the paper's implicit claim explicit and is not a deviation.
+
 ## How the formal proof route differs
 
 For the Vandermonde step of Lemma 3.2, the paper sums
@@ -114,8 +143,9 @@ a hypothesis.
 
 ## Outside the formalization
 
-Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 and
-Theorem 4.1 are not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
+Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 have frozen
+Lean statements (deviations 7 and 8) whose proofs are not yet in Lean. Theorem 4.1 is
+not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
 Lemma 5.1, Theorem 5.2, Proposition 5.3 and Theorem 5.4 have nothing in Lean.
 Hypothesis (BF) is stated in Paper A and not proved there. Paper B and the companion
 notes are not formalized.

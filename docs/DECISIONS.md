@@ -87,7 +87,9 @@ The audit was tested on a temporary module containing a `sorry`, a custom axiom 
 
 When the first `FROZEN_UNPROVED` statement is added, its `by sorry` will fail this
 audit by design. The exemption for registered frozen statements has to be decided
-then; until then no `sorry` is admitted outside `Audit/`.
+then; until then no `sorry` is admitted outside `Audit/`. *Superseded by D12 on
+2026-11-12: the audit moved to `lean/scripts/Audit/AxiomAudit.lean` and admits
+`sorryAx` only for manifested `DRAFT_SORRY` theorems.*
 
 ## D6. CI (author request; trigger choice setup)
 
@@ -126,3 +128,65 @@ No remote was created and nothing was pushed. No independent review of the relea
 tree, the errata record or the statement correspondence has been made; the
 `lean-public-release` checklist (forbidden-reference scrub, fresh-checkout build,
 independent review) remains to be completed before the repository is made public.
+
+## D11. Rulings on the frozen statements of Lemmas 3.1 and 3.2 (author, 2026-11-12)
+
+The author approved the proposed declarations v1 (archived byte for byte, with their
+SHA-256, in [`audits/pilot/audited-draft-v1.lean.txt`](audits/pilot/audited-draft-v1.lean.txt))
+with the words "Approve with R1(a)", which also accepted R2–R4 as proposed:
+
+- **R1(a).** Lemmas 3.1 and 3.2 are frozen for finite piecewise-constant histories:
+  free steps `exp(-τ h)` with `τ ≥ 0`, constant Hermitian `v_j` and constant
+  `M ≥ m_* I`, and separate instantaneous spin-scalar kicks `exp(i Θ ⊗ 1)`. The
+  time-dependent (continuous or bounded measurable) case is not covered; it would
+  be a separately frozen approximation result, outside the current campaign. The
+  alternative R1(b), an ODE carrier with coefficient paths, was declined.
+- **R2.** The spatial factor is `ℓ²(ι)` for any finite type `ι` (empty allowed), with
+  `d` a binder satisfying `4|ι| = 2d`, and any Hermitian 4×4 Clifford set.
+- **R3.** In Lemma 3.2, `|F_q| ≤ … F_0` is stated as `Im F_0 = 0` together with
+  `|F_q| ≤ … · Re F_0`.
+- **R4.** Kicks are parameterized by a Hermitian generator `Θ`, with the centering
+  phase computed from `Θ`.
+
+Two independent statement audits (fresh sessions, refute-first) found no EXCESS
+binder other than the history-class restriction that R1(a) rules on, and no false
+or vacuous statement: [`audits/pilot/`](audits/pilot). The resulting deviations are
+entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
+
+## D12. Frozen-anchor workflow (author brief; mechanics setup, 2026-11-12)
+
+- **Files.** One declaration per file. The six definitions are in
+  `lean/Core/PaperA/Defs/` and part of `Core`; the two theorems are in
+  `lean/Frozen/PaperA/`, a separate library that nothing in `Core` imports. Each
+  theorem imports its provider module `lean/Core/PaperA/Provider/…`, where the proof
+  will be written; sealing replaces only `by sorry` by a short exact use of the
+  provider's theorem. The declarations are byte-identical to the approved v1 text;
+  the files add a copyright header, per-file imports, docstrings for the two
+  theorems, and the proof-region markers. One import differs from the draft: the
+  deprecated `Mathlib.Data.Complex.Basic` became `Mathlib.Basic.Complex.Basic`.
+- **Manifest.** [`lean/frozen-manifest.json`](../lean/frozen-manifest.json), in the
+  schema of the `lean-orchestrator` skill: per anchor the source range and revision,
+  approval, whole-file hash (definitions) or prefix and suffix hashes around the
+  proof body (theorems), the definition closure with hashes, and `abi_sha256`, the
+  SHA-256 of the elaborated signature that the axiom audit prints (a theorem's type;
+  a definition's type and value; an inductive type and its constructors). The
+  manifest was generated once by an untracked script; there is deliberately no
+  tracked rebaseline command.
+- **Checks.** [`scripts/check_frozen_anchors.py`](../scripts/check_frozen_anchors.py)
+  (the skill's checker with four documented adaptations: it skips the retired
+  `vendor/`, `tools/` and `.lake*` directories, accepts a literal `inductive` as a
+  definition anchor, lets an allowlisted audit file reach a draft's provider through
+  the draft's own import, and compares paths in POSIX form) verifies every frozen
+  byte, the exact `by sorry` body of each draft, the import quarantine and the
+  absence of any other `sorry` or `axiom`. The axiom audit, now
+  `lean/scripts/Audit/AxiomAudit.lean` because the checker allows a draft to be
+  imported only from an `Audit` directory, admits `sorryAx` only for manifested
+  `DRAFT_SORRY` theorems and reports the elaborated signatures;
+  `scripts/update_readme.py --check` compares their hashes with the manifest and
+  accepts a `sorry` only in a draft's file. CI runs all three. The checker was
+  mutation-tested on 2026-11-12: a stray `sorry`, a one-byte change to a frozen
+  definition, `Core` importing a provider, an ordinary module importing a draft, and
+  an altered draft body each fail it.
+- **Module system.** The frozen files follow D3 (no module system), so the checker
+  runs with `--allow-non-module`. A later port moves their bytes and must be recorded
+  as a semantics-neutral hash change.

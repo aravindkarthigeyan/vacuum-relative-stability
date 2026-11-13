@@ -226,7 +226,13 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
     if not audit.get("passed"):
         problems.append("the axiom audit did not pass")
     allowed = set(audit["allowed_axioms"])
-    theorems = {t["name"]: t for t in audit["theorems"]}
+    # Constructor lemmas that Lean generates for a frozen inductive definition.
+    generated = {
+        t["name"] for t in audit["theorems"]
+        if any(t["name"].startswith(a["export"] + ".") for a in anchors if a.get("kind") == "definition")
+        and t["name"].rsplit(".", 1)[-1] in {"inj", "injEq", "sizeOf_spec"}
+    }
+    theorems = {t["name"]: t for t in audit["theorems"] if t["name"] not in generated}
     for r in results:
         if r["state"] in DONE:
             t = theorems.get(r["lean"])

@@ -39,8 +39,9 @@
       "number": "3.1",
       "title": "Positivity and the transfer annulus",
       "file": "paper-a/transfer.tex",
-      "state": "NOT_STARTED",
-      "lean": null,
+      "state": "FROZEN_UNPROVED",
+      "lean": "QEDCore.PaperA.positivity_and_transfer_annulus",
+      "frozen_note": "By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).",
       "claim": "The centered finite-CAR trace `F` is positive, and exactly `d` transfer eigenvalues, with algebraic multiplicity, satisfy `|λ| ≤ e^{-b m_*}`; the other `d` are their partners `1/conj(λ)`, of modulus at least `e^{b m_*}`.",
       "lean_coverage": "the product algebra of form preservation, the inverse-adjoint identity with an explicit inverse, the scalar endpoint implications of a strict β-form drop, and the eigenvector-level inverse-adjoint correspondence",
       "outside_lean": "form preservation of the actual propagators, derived from the generator relations; the β-form derivative identity (3.3), the strict decrease and the Gronwall integration; algebraic multiplicities and the exact eigenvalue count; reality and positivity of the centered trace along the homotopy; measurable histories."
@@ -51,8 +52,9 @@
       "number": "3.2",
       "title": "Canonical Fourier bound",
       "file": "paper-a/transfer.tex",
-      "state": "NOT_STARTED",
-      "lean": null,
+      "state": "FROZEN_UNPROVED",
+      "lean": "QEDCore.PaperA.canonical_fourier_bound",
+      "frozen_note": "By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).",
       "claim": "`|F_q| ≤ binom(2d, d+|q|) e^{-b m_* |q|} F_0` for `|q| ≤ d`.",
       "lean_coverage": "the finite coefficient estimate inside the proof, that is, the elementary-symmetric bounds and the Vandermonde bound for the antidiagonal correlation relative to the vacuum weight, for every natural `q`",
       "outside_lean": "the factorization `F(φ) = C ∏_j |1 + e^{iφ} λ_j|²`, the identification of `F_q` with the finite antidiagonal correlation, and negative `q` by conjugation."

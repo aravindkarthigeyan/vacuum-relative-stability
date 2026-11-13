@@ -8,7 +8,7 @@ Lean's comparator (`lake comparator`, bundled with the pinned toolchain) in the
 yet (see [`../status.json`](../status.json)), and the conditional supporting lemmas in
 `Core/` are not headline theorems. A comparator check of them would certify only
 that they are what they say, which the build and the
-[axiom audit](../scripts/AxiomAudit.lean) already do.
+[axiom audit](../scripts/Audit/AxiomAudit.lean) already do.
 
 ## When the first Paper A result is proved
 

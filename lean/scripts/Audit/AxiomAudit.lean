@@ -3,6 +3,8 @@ Copyright (c) 2026 Aravind Karthigeyan. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 import Core
+import Frozen.PaperA.PositivityAndTransferAnnulus
+import Frozen.PaperA.CanonicalFourierBound
 import Lean
 
 /-!
@@ -10,7 +12,7 @@ import Lean
 
 Run from the `lean/` directory after `lake build`:
 
-    lake env lean scripts/AxiomAudit.lean
+    lake env lean scripts/Audit/AxiomAudit.lean
 
 For every declaration whose defining module belongs to one of the library roots in
 `projectRoots`, this computes the axioms the declaration depends on, exactly as
@@ -21,9 +23,17 @@ The audit fails, with a Lean error and exit code 1, if
 
 * any audited declaration depends on an axiom other than `propext`, `Classical.choice`
   and `Quot.sound` (an unfinished proof shows up as `sorryAx`; `native_decide`
-  introduces an auxiliary axiom of its own), or
+  introduces an auxiliary axiom of its own). The single exception: a theorem that
+  `frozen-manifest.json` registers as a `DRAFT_SORRY` anchor may also depend on
+  `sorryAx`. Anything that uses such a theorem inherits `sorryAx` and fails;
+* the manifest names an anchor that is not an audited declaration;
 * any project module declares an axiom of its own, or
 * a library root listed in `projectRoots` contributes no declarations.
+
+The frozen statements are imported above; this file is on their quarantine allowlist
+(`draft_allowlist.audit_paths` in the manifest). For every manifest anchor it also records
+the elaborated signature (a theorem's type; a definition's type and value; an inductive
+type and its constructors), whose SHA-256 the manifest pins as `abi_sha256`.
 
 A machine-readable report is written to `.lake/axiom-audit.json`; the README statistics
 are generated from it by `scripts/update_readme.py` at the repository root.
@@ -35,10 +45,13 @@ namespace AxiomAudit
 
 /-- Library roots whose declarations are audited. `scripts/update_readme.py` checks
 that every Lean source file outside `Audit/` and `scripts/` belongs to one of them. -/
-def projectRoots : List Name := [`Core]
+def projectRoots : List Name := [`Core, `Frozen]
 
 /-- Lean's three standard axioms. -/
 def allowedAxioms : List Name := [``propext, ``Classical.choice, ``Quot.sound]
+
+/-- The frozen-anchor manifest, relative to `lean/`. -/
+def manifestPath : System.FilePath := "frozen-manifest.json"
 
 def isAudited (m : Name) : Bool :=
   projectRoots.any (·.isPrefixOf m) && !(`Audit).isPrefixOf m
@@ -55,9 +68,40 @@ def kindOf : ConstantInfo → String
 
 def strArray (xs : Array String) : Json := Json.arr (xs.map Json.str)
 
+/-- All anchor exports of the manifest, and those that are `DRAFT_SORRY` theorems. -/
+def readManifest : IO (Array Name × Array Name) := do
+  unless ← manifestPath.pathExists do
+    return (#[], #[])
+  let json ← IO.ofExcept (Json.parse (← IO.FS.readFile manifestPath))
+  let anchors ← IO.ofExcept (json.getObjValAs? (Array Json) "anchors")
+  let mut all := #[]
+  let mut drafts := #[]
+  for a in anchors do
+    let exportName ← IO.ofExcept (a.getObjValAs? String "export")
+    let kind ← IO.ofExcept (a.getObjValAs? String "kind")
+    let state ← IO.ofExcept (a.getObjValAs? String "state")
+    all := all.push exportName.toName
+    if kind == "theorem" && state == "DRAFT_SORRY" then
+      drafts := drafts.push exportName.toName
+  return (all, drafts)
+
+/-- The elaborated signature of an anchor, whose hash the manifest pins. -/
+def abiString (env : Environment) (n : Name) : Option String :=
+  match env.find? n with
+  | some (.thmInfo t) => some s!"theorem {n} : {t.type}"
+  | some (.defnInfo d) => some s!"def {n} : {d.type} := {d.value}"
+  | some (.inductInfo i) =>
+    let ctors := i.ctors.map fun k =>
+      match env.find? k with
+      | some c => s!"{k} : {c.type}"
+      | none => s!"{k}"
+    some s!"inductive {n} : {i.type} | {" | ".intercalate ctors}"
+  | _ => none
+
 run_cmd do
   let env ← getEnv
   let header := env.header
+  let (anchors, drafts) ← liftIO readManifest
   let mut modules : Array String := #[]
   let mut audited : Array (Name × Name × ConstantInfo) := #[]
   for h : i in [0:header.moduleNames.size] do
@@ -73,11 +117,19 @@ run_cmd do
   let mut definitions : Array String := #[]
   let mut violations : Array Json := #[]
   let mut usage : Std.HashMap Name Nat := {}
+  for a in anchors do
+    unless audited.any (·.1 == a) do
+      logError m!"manifest anchor {a} is not a declaration of an audited module"
+      violations := violations.push <| Json.mkObj
+        [("declaration", a.toString), ("reason", "manifest anchor not audited")]
   for (n, m, c) in audited do
     let axs ← liftCoreM (collectAxioms n)
-    for a in axs do
-      usage := usage.insert a (usage.getD a 0 + 1)
-    let bad := axs.filter (fun a => !allowedAxioms.contains a)
+    let isDraft := drafts.contains n
+    unless isDraft do
+      for a in axs do
+        usage := usage.insert a (usage.getD a 0 + 1)
+    let allowed := if isDraft then allowedAxioms ++ [``sorryAx] else allowedAxioms
+    let bad := axs.filter (fun a => !allowed.contains a)
     if c matches .axiomInfo _ then
       logError m!"{n} (module {m}) is an axiom declared in the project"
       violations := violations.push <| Json.mkObj
@@ -92,7 +144,8 @@ run_cmd do
       | .thmInfo _ =>
         theorems := theorems.push <| Json.mkObj
           [("name", n.toString), ("module", m.toString),
-           ("axioms", strArray (axs.map toString |>.qsort (· < ·)))]
+           ("axioms", strArray (axs.map toString |>.qsort (· < ·))),
+           ("draft", toJson isDraft)]
       | .defnInfo _ | .opaqueInfo _ | .inductInfo _ =>
         definitions := definitions.push n.toString
       | _ => pure ()
@@ -101,6 +154,14 @@ run_cmd do
   if usage.isEmpty then
     logError "no audited declaration depends on any axiom; proof bodies may not be loaded"
     violations := violations.push <| Json.mkObj [("reason", "no axioms collected")]
+  let mut abi : Array (String × Json) := #[]
+  for a in anchors do
+    match abiString env a with
+    | some s => abi := abi.push (a.toString, Json.str s)
+    | none =>
+      logError m!"cannot compute the elaborated signature of manifest anchor {a}"
+      violations := violations.push <| Json.mkObj
+        [("declaration", a.toString), ("reason", "no elaborated signature")]
   let sortedTheorems := theorems.qsort fun x y =>
     (x.getObjValAs? String "name").toOption.getD "" < (y.getObjValAs? String "name").toOption.getD ""
   let usageJson := Json.mkObj <| (usage.toList.map fun (a, k) => (a.toString, toJson k)).mergeSort
@@ -114,12 +175,15 @@ run_cmd do
      ("theorems", Json.arr sortedTheorems),
      ("definitions", strArray (definitions.qsort (· < ·))),
      ("axiom_usage", usageJson),
+     ("draft_exports", strArray (drafts.map toString |>.qsort (· < ·))),
+     ("anchor_abi", Json.mkObj (abi.qsort (fun x y => x.1 < y.1)).toList),
      ("violations", Json.arr violations),
      ("passed", toJson violations.isEmpty)]
   IO.FS.createDirAll ".lake"
   IO.FS.writeFile ".lake/axiom-audit.json" (report.pretty ++ "\n")
   if violations.isEmpty then
     logInfo m!"axiom audit passed: {audited.size} declarations in {modules.size} modules, \
-      {theorems.size} theorems; axioms used: {usage.toList.map (·.1)}"
+      {theorems.size} theorems ({drafts.size} registered DRAFT_SORRY anchors); \
+      axioms used outside them: {usage.toList.map (·.1)}"
 
 end AxiomAudit

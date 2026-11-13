@@ -1,0 +1,358 @@
+{
+  "schema_version": 1,
+  "manifest_state": "AUTHOR_APPROVED",
+  "seal_limits": {
+    "max_body_lines": 3,
+    "max_body_bytes": 240
+  },
+  "anchors": [
+    {
+      "id": "def_step_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:11-26"
+      },
+      "contract": {
+        "id": "paper-a.def.history-step",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/Step.lean",
+      "export": "QEDCore.PaperA.Step",
+      "split_policy": {
+        "source_group": "paper-a.def.history-step",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "1490cf38efb216eb9da8f3d68ba53a4db7c4418699b6f4786ff97c035b08a1d2",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+    },
+    {
+      "id": "def_dirac_operator_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e; paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/model.tex:27-38; paper-a/transfer.tex:13"
+      },
+      "contract": {
+        "id": "paper-a.def.dirac-operator",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/DiracOperator.lean",
+      "export": "QEDCore.PaperA.diracOperator",
+      "split_policy": {
+        "source_group": "paper-a.def.dirac-operator",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "8e584268400dbaecd85eb507430893aa4d93bc820ac79cc26fb533f8eb250ac8",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+    },
+    {
+      "id": "def_step_generator_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:20-26,83-84"
+      },
+      "contract": {
+        "id": "paper-a.def.step-generator",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/StepGenerator.lean",
+      "export": "QEDCore.PaperA.Step.generator",
+      "split_policy": {
+        "source_group": "paper-a.def.step-generator",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "7a85dcbb051d0baf976ef29b296bffb73b9f512f7e297d5d79920ff7c82b1f79",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+    },
+    {
+      "id": "def_step_free_time_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:15,25"
+      },
+      "contract": {
+        "id": "paper-a.def.step-free-time",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/StepFreeTime.lean",
+      "export": "QEDCore.PaperA.Step.freeTime",
+      "split_policy": {
+        "source_group": "paper-a.def.step-free-time",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "f02bcd442e5bdf66e08f4bf50f40cfda7db2571b0c86501fb63804252c4748f5",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "1ed87b1ce3052d1fe0a798cefe5601c3d1272cb91a95dc6784197a0f8522e613"
+    },
+    {
+      "id": "def_transfer_matrix_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:11-21"
+      },
+      "contract": {
+        "id": "paper-a.def.transfer-matrix",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/TransferMatrix.lean",
+      "export": "QEDCore.PaperA.transferMatrix",
+      "split_policy": {
+        "source_group": "paper-a.def.transfer-matrix",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "e0943f9b548d2149cf282079e0ffa2e203867c2cc8d0cd90b1505bebb99cc828",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+    },
+    {
+      "id": "def_centered_trace_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:17-23"
+      },
+      "contract": {
+        "id": "paper-a.def.centered-trace",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/CenteredTrace.lean",
+      "export": "QEDCore.PaperA.centeredTrace",
+      "split_policy": {
+        "source_group": "paper-a.def.centered-trace",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "0d9d1742126502473e4d81eacf516b99e48b8f967c8313524755926fbc69a31f",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        },
+        {
+          "path": "Core/PaperA/Defs/TransferMatrix.lean",
+          "sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
+    },
+    {
+      "id": "lem_transfer_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:9-81"
+      },
+      "contract": {
+        "id": "paper-a.lem:transfer",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/PositivityAndTransferAnnulus.lean",
+      "export": "QEDCore.PaperA.positivity_and_transfer_annulus",
+      "implementation": {
+        "module": "Core.PaperA.Provider.PositivityAndTransferAnnulus",
+        "export": "QEDCore.PaperA.Provider.positivity_and_transfer_annulus"
+      },
+      "split_policy": {
+        "source_group": "paper-a.lem:transfer",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "48c44cf3675aa01e2380fb5c4370ce5b5bb2ec1b9bd78f50ba46e25e8e05280f",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepFreeTime.lean",
+          "sha256": "1ed87b1ce3052d1fe0a798cefe5601c3d1272cb91a95dc6784197a0f8522e613"
+        },
+        {
+          "path": "Core/PaperA/Defs/TransferMatrix.lean",
+          "sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+        },
+        {
+          "path": "Core/PaperA/Defs/CenteredTrace.lean",
+          "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "358471020e4471b4b95462a49d6b8a88dbaf4c7e75b2b50b271a3f94fb93c27b",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
+    },
+    {
+      "id": "lem_fourier_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-12",
+        "approval_ref": "docs/DECISIONS.md#d11",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf",
+        "range": "paper-a/transfer.tex:93-130"
+      },
+      "contract": {
+        "id": "paper-a.lem:fourier",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/CanonicalFourierBound.lean",
+      "export": "QEDCore.PaperA.canonical_fourier_bound",
+      "implementation": {
+        "module": "Core.PaperA.Provider.CanonicalFourierBound",
+        "export": "QEDCore.PaperA.Provider.canonical_fourier_bound"
+      },
+      "split_policy": {
+        "source_group": "paper-a.lem:fourier",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d11"
+      },
+      "abi_sha256": "7e2b22d01f60c80db633656f9f12a19b5b7429d6656300750f12cbcdf3e388aa",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepFreeTime.lean",
+          "sha256": "1ed87b1ce3052d1fe0a798cefe5601c3d1272cb91a95dc6784197a0f8522e613"
+        },
+        {
+          "path": "Core/PaperA/Defs/TransferMatrix.lean",
+          "sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+        },
+        {
+          "path": "Core/PaperA/Defs/CenteredTrace.lean",
+          "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "5fd81d9cdc86adbc4906ecedce0cf4235927467d2f90c8f25e4a78d91e5bbb8d",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
+    }
+  ]
+}

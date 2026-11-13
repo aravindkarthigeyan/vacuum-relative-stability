@@ -1,9 +1,10 @@
 # Lean library `Core`: checked finite steps for Paper A
 
-This is a **partial** formalization. It does not formalize the lattice stability
-theorem of Paper A or any other numbered result of it. It checks conditional
-algebraic, finite-coefficient and integration lemmas used inside the proofs of
-Lemma 3.1, Lemma 3.2 and Theorem 4.1. The ODE estimate, the full spectral pairing,
+This is a **partial** formalization. It does not prove the lattice stability
+theorem of Paper A or any other numbered result of it. Lemmas 3.1 and 3.2 have frozen,
+author-approved Lean statements (in `Frozen/`) whose proofs are in progress. The
+library also checks conditional algebraic, finite-coefficient and integration lemmas
+used inside the proofs of Lemma 3.1, Lemma 3.2 and Theorem 4.1. The ODE estimate, the full spectral pairing,
 the identification with determinants and Fourier integrals, the Hamiltonian
 construction and all limits remain proofs in the paper.
 
@@ -16,8 +17,10 @@ construction and all limits remain proofs in the paper.
 
 | Path | Contents |
 |---|---|
-| `Core.lean`, `Core/` | The library (namespace `QEDCore`). |
-| `scripts/AxiomAudit.lean` | Axiom and `sorry` audit of every declaration of the library; writes `.lake/axiom-audit.json`. |
+| `Core.lean`, `Core/` | The library (namespace `QEDCore`). `Core/PaperA/Defs/` holds the six frozen definitions of the Paper A statements; `Core/PaperA/Provider/` will hold their proofs. |
+| `Frozen/` | The frozen theorem statements (library `Frozen`, imported by nothing in `Core`). |
+| `frozen-manifest.json` | Hashes, source ranges and states of every frozen file; checked by `../scripts/check_frozen_anchors.py`. |
+| `scripts/Audit/AxiomAudit.lean` | Axiom and `sorry` audit of every declaration of `Core` and `Frozen`; admits `sorry` only in manifested `DRAFT_SORRY` statements; writes `.lake/axiom-audit.json`. |
 | `scripts/PrintAxioms.lean` | `#print axioms` for each listed theorem, for human reading. |
 | `Audit/` | Comparator restatements (empty stub; see [`Audit/README.md`](Audit/README.md)). Excluded from the audit. |
 | `status.json` | Status manifest. |
@@ -31,11 +34,14 @@ in this directory:
 ```bash
 lake exe cache get                     # Mathlib's prebuilt files
 lake build                             # Lean checks every proof
-lake env lean scripts/AxiomAudit.lean  # fails on sorry or non-standard axioms
+lake env lean scripts/Audit/AxiomAudit.lean  # fails on unregistered sorry or non-standard axioms
 lake env lean scripts/PrintAxioms.lean # optional: per-theorem report
 ```
 
-Then, from the repository root, `python3 -I scripts/update_readme.py --check` checks
+Then, from the repository root,
+`python3 -I scripts/check_frozen_anchors.py --root lean --manifest lean/frozen-manifest.json --allow-non-module`
+checks the frozen files against the manifest, and
+`python3 -I scripts/update_readme.py --check` checks
 `status.json` against the audit report and the pinned Paper A sources, and that the
 generated README sections are current. Avoid `lake update` and `lake clean` when
 verifying this version.

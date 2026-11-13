@@ -5,7 +5,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 import Core
 
 -- Human-readable `#print axioms` for the supporting lemmas listed in status.json.
--- The authoritative check is scripts/AxiomAudit.lean, which audits every
+-- The authoritative check is scripts/Audit/AxiomAudit.lean, which audits every
 -- declaration of the library. Standard Lean foundations (propext,
 -- Classical.choice, Quot.sound) are allowed; sorryAx/custom axioms are not.
 #print axioms QEDCore.preservesForm_mul

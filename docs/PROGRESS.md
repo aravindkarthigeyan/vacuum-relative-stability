@@ -26,24 +26,52 @@ versioned successor.
 
 ## Current state
 
-Phase: **step 1 (pilot), waiting for author approval.** Nothing frozen, nothing
-committed by this campaign yet.
+Phase: **step 2 done (statements frozen); step 3 (source dependency graph) next.**
 
-- Paper A sources: SHA-256 checked against `lean/status.json` on 2026-11-12; unchanged.
-- Legacy library: five-bin test of the 23 `QEDCore` lemmas recorded in
-  [`audits/LEGACY_BINDER_TEST.md`](audits/LEGACY_BINDER_TEST.md). All 23 have EXCESS
-  binders relative to the paper; they are helpers only.
-- Proposed declarations: six definitions and two theorems in namespace
-  `QEDCore.PaperA` (see "Proposed declarations" below). They elaborate against the
-  pinned Mathlib with only the two intended `sorry` bodies. They are proposals, not
-  formalization, and have no status until approved and frozen.
-- Numerical check of the proposed statements (Python, 334 random step histories with
-  spatial dimension 1–3, high-precision recheck of the 18 ill-conditioned cases): no
-  counterexample; reality fails as expected if the centering sign is flipped.
-- Independent pre-approval statement audits: `audits/pilot/STATEMENT_AUDIT_A.md` and
-  `audits/pilot/STATEMENT_AUDIT_B.md` (fresh Opus sessions).
+- 2026-11-12: the author approved v1 with "Approve with R1(a)" (rulings R1(a)–R4,
+  [DECISIONS.md](DECISIONS.md) D11). Frozen as `DRAFT_SORRY` with manifest entries
+  ([`lean/frozen-manifest.json`](../lean/frozen-manifest.json), mechanics in D12):
+  `QEDCore.PaperA.positivity_and_transfer_annulus` (`lem_transfer_v1`) and
+  `QEDCore.PaperA.canonical_fourier_bound` (`lem_fourier_v1`), plus six sealed
+  definitions. `lean/status.json`: both lemmas `FROZEN_UNPROVED`.
+- Verified on 2026-11-12: `lake build` (Core and Frozen; the only `sorry` warnings are
+  the two drafts), `lake env lean scripts/Audit/AxiomAudit.lean` (68 declarations, 16
+  modules, standard axioms outside the two registered drafts),
+  `scripts/check_frozen_anchors.py` (OK; five mutations each detected),
+  `scripts/update_readme.py --check` (current).
+- Paper A sources: SHA-256 unchanged against `lean/status.json`.
+- Legacy library: five-bin test in
+  [`audits/LEGACY_BINDER_TEST.md`](audits/LEGACY_BINDER_TEST.md); helpers only.
+- GitHub: private repository `vacuum-relative-stability`; see D13 once created.
 
-## Proposed declarations (v1, awaiting approval)
+Status fields (lean-orchestrator):
+
+```text
+DRAFT_ANCHORS: 2 (lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean, lean/Frozen/PaperA/CanonicalFourierBound.lean)
+UNREGISTERED_SORRIES: 0
+DRAFT_IMPORT_VIOLATIONS: 0
+SEALED_THIS_TURN: 0
+```
+
+## Next steps
+
+1. Step 3: build the source dependency graph from the two anchors down through
+   transfer.tex (skill `build-proof-dependency-graph`), with `SOURCE_GAP` records for
+   every skipped step; independent topology review; list the gaps for the author.
+2. Step 4: bounded proof tasks from the dependency-ready frontier. Expected hard
+   nodes: C-form preservation of a matrix exponential with C-anti-Hermitian
+   generator; the β-form derivative along `exp(-t h)` and the per-step Gronwall bound;
+   eigenvalue pairing with algebraic multiplicity via the characteristic polynomial
+   (Mathlib has `Matrix.charpoly_inv`, `Matrix.det_eq_prod_roots_charpoly`);
+   `det (exp X) = exp (tr X)` for Hermitian and i·Hermitian `X` (a Mathlib TODO; no
+   Schur triangulation in Mathlib, so use the spectral theorem); reality and
+   positivity of the centered trace along the homotopy. Lemma 3.2's provider must not
+   import Lemma 3.1's quarantined provider; shared results go in ordinary modules.
+3. The finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson
+   mass bound `M(U) ≥ mI` of model.tex (2.4), the `m = 0` remark) needs separately
+   approved statements; not drafted yet.
+
+## Approved declarations (v1, frozen 2026-11-12)
 
 Exact audited bytes: [`audits/pilot/audited-draft-v1.lean.txt`](audits/pilot/audited-draft-v1.lean.txt),
 SHA-256 `13952055e164b3a4eefd8ba22b225368184640d194474c8986f9fd10ad883d91` (both auditors
@@ -81,31 +109,12 @@ Audit outcome (fresh Opus sessions A and B, refute-first):
 
 ## Open decisions for the author
 
-1. **R1 (blocking): history class.** Either (a) freeze v1 for finite piecewise-constant
-   histories (free steps with constant Hermitian `v_j`, constant `M ≥ m_*I`, `τ ≥ 0`;
-   separate instantaneous kicks `exp(i Θ⊗1)`), recording a specialization deviation;
-   or (b) replace D1–D6 by an ODE carrier with coefficient paths. Orchestrator
-   recommendation: (a). The time-dependent case is then a later, separately frozen
-   approximation result (outside this campaign's scope).
-2. R2: arbitrary finite spatial type `ι` (empty allowed), every Hermitian Clifford set,
-   and `d` as a binder with `4|ι| = 2d`.
-3. R3: Lemma 3.2's `F_0` is stated as `Im F_0 = 0 ∧ ‖F_q‖ ≤ … · Re F_0`.
-4. R4: kicks are parameterized by a Hermitian generator `Θ` with centering computed
-   from `Θ` (transfer.tex 26, 83–84); the phase is independent of the choice of
-   logarithm (checked numerically by both auditors).
-5. Scope of `thm:main`: its finite-dimensional content is Lemma 3.2 applied with
-   `D = 4N`, `d = 2N`, `m_* = m`, plus the Wilson mass bound `M(U) ≥ mI` (model.tex
-   (2.4)) and the `m = 0` nonnegativity remark (transfer.tex 89–91). Proposed: draft
-   these after T1 and T2 are frozen.
+None pending. R1(a)–R4 are decided (D11).
 
-## Infrastructure notes for step 2
+## Infrastructure notes
 
-- `lean/scripts/AxiomAudit.lean` fails on any `sorryAx`, and
-  `scripts/update_readme.py --check` fails on comment-stripped `sorry`. D5 in
-  `docs/DECISIONS.md` defers the exemption for registered frozen statements to the first
-  freeze. Plan: a frozen-anchor manifest modeled on the `lean-orchestrator` template,
-  checked by its `check_frozen_anchors.py`; both audits exempt exactly the manifested
-  `DRAFT_SORRY` exports and nothing else.
-- D3: the library is not on the Lean module system. Frozen files will follow D3 unless
-  the author decides otherwise; a later port moves their bytes and must be recorded as
-  a semantics-neutral hash change.
+See [DECISIONS.md](DECISIONS.md) D12. To seal an anchor: prove the provider theorem in
+`lean/Core/PaperA/Provider/…` with exactly the frozen statement, replace only the
+draft's `by sorry` by `by exact QEDCore.PaperA.Provider.…`, set the manifest state to
+`SEALED` (the prefix and suffix hashes do not change), run the four checks above, get
+two independent audits into `docs/audits/`, then update `lean/status.json`.
