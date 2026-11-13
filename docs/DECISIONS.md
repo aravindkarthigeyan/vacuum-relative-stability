@@ -190,3 +190,10 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
 - **Module system.** The frozen files follow D3 (no module system), so the checker
   runs with `--allow-non-module`. A later port moves their bytes and must be recorded
   as a semantics-neutral hash change.
+
+## D13. GitHub repository (author request, 2026-11-12)
+
+The repository is published as the **private** GitHub repository
+`aravindkarthigeyan/vacuum-relative-stability`, the name the README badges already
+used, with `main` as the default branch. D6's CI runs on every push. Making it public
+still requires the `lean-public-release` checklist of D10.

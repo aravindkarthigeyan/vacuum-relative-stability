@@ -42,7 +42,7 @@ Phase: **step 2 done (statements frozen); step 3 (source dependency graph) next.
 - Paper A sources: SHA-256 unchanged against `lean/status.json`.
 - Legacy library: five-bin test in
   [`audits/LEGACY_BINDER_TEST.md`](audits/LEGACY_BINDER_TEST.md); helpers only.
-- GitHub: private repository `vacuum-relative-stability`; see D13 once created.
+- GitHub: private repository `aravindkarthigeyan/vacuum-relative-stability` (D13).
 
 Status fields (lean-orchestrator):
 

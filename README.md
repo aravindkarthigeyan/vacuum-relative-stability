@@ -1,7 +1,7 @@
 # Vacuum-relative stability of lattice QED: papers and a partial Lean formalization
 
-[![Build and verify](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/build.yml)
-[![Comparator](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/comparator.yml/badge.svg?branch=main)](https://github.com/OWNER/vacuum-relative-stability/actions/workflows/comparator.yml)
+[![Build and verify](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/build.yml/badge.svg?branch=main)](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/build.yml)
+[![Comparator](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml/badge.svg?branch=main)](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml)
 
 <!-- BEGIN badges -->
 ![Paper A results proved in Lean: 0/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-0%2F10-lightgrey) ![frozen statements: 0 proved, 2 unproved](https://img.shields.io/badge/frozen%20statements-0%20proved%2C%202%20unproved-blue) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
