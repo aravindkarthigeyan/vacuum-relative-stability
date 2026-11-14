@@ -514,7 +514,7 @@
           "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
         }
       ],
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "d5ab8ec3df9c632259c292ea47a9870c926b8da91e2252035368533482128aa7",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {
@@ -579,7 +579,7 @@
           "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
         }
       ],
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "a73e24cac502ee6146ed261a239ad0c8d471c9d72a23af1e0b5e8c044497ed06",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {
@@ -636,7 +636,7 @@
           "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
         }
       ],
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "84412720976eada1b2bcfa0b025710118c80f1d335ddd9084cdb3afa94a98fb4",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {
@@ -693,7 +693,7 @@
           "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
         }
       ],
-      "state": "DRAFT_SORRY",
+      "state": "SEALED",
       "prefix_sha256": "45a8dcb2a0be2d040aab52aee7320b7e215c288f0aedaa9e57885909c6dce1b9",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {

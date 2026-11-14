@@ -37,7 +37,8 @@ theorem wilson_mass_bound
       (((m + (3 + 6 * r) / a : ℝ) : ℂ) • 1 +
         diracOperator α β (wilsonHopping n a U) (wilsonMass n a m r U)).PosSemidef :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact QEDCore.PaperA.Provider.wilson_mass_bound hn α β hα_herm hβ_herm hα_sq hβ_sq hα_anti
+      hαβ_anti a m r ha hm hr U hU
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

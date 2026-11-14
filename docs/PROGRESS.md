@@ -27,7 +27,7 @@ versioned successor.
 ## Current state
 
 Phase: **Lemmas 3.1 and 3.2 AUDITED; four finite-dimensional proof steps of Theorem 4.1
-frozen (DRAFT_SORRY) and their dependency graph reviewed (2026-11-14); step 4 (proofs) next.**
+proved and sealed (2026-11-14, step 4 wave 3); their seal audits (step 5) pending.**
 
 - 2026-11-12, step 4: compile gate `scripts/lean-gate.sh` (two machine-wide slots,
   D15). The Mathlib API map is [`campaign/MATHLIB_API.md`](campaign/MATHLIB_API.md).
@@ -80,8 +80,21 @@ frozen (DRAFT_SORRY) and their dependency graph reviewed (2026-11-14); step 4 (p
   where the source applies them. Reviewed by `topology-reviewer-2` and `global-reviewer-2`;
   every correction accepted ([`audits/graph/MERGE_LOG.md`](audits/graph/MERGE_LOG.md), Revision 5).
   7 new `[minor]` source gaps, no erratum candidate (list below).
-- Next: after the graph reviews, step 4 workers for T3–T6 (T5 and T6 are routine lattice
-  algebra; T3 composes the sealed Lemmas 3.1 and 3.2 with T5; T4 is a limit of Lemma 3.1).
+- 2026-11-14, step 4 wave 3 started (author: "Start step 4"): routes and worker table in
+  [`campaign/TASKS.md`](campaign/TASKS.md), "Wave 3". W9 (Wilson shift lemmas), W10 (T6),
+  W11 (T4) and W12 (twist split, then the T3 provider) are running; W13 (T5's norm bound)
+  starts after W9 lands. Workers own new files under `lean/Core/PaperA/Wilson/`,
+  `Transfer/NonnegMass.lean` and the four providers; nothing is landed until the
+  orchestrator reviews the diff and runs the landing checklist.
+- 2026-11-14, wave 3 landed: **T3–T6 sealed** (`main_twisted_integrand_v1`, `rem_nonneg_mass_v1`,
+  `eq_mass_bound_v1`, `gauge_covariance_v1` SEALED; `frozen_steps` PROVED). New helper modules
+  `Core/PaperA/Wilson/{Shift,MassBound,GaugeCovariance,TwistSplit}.lean` and
+  `Core/PaperA/Transfer/NonnegMass.lean`; the four providers filled in. Checks: `lake build`
+  (no `sorry` anywhere), axiom audit (390 declarations, 47 modules, 0 drafts, standard axioms
+  only), per-module `leanchecker` replay of the 18 new or sealed modules
+  ([`audits/seal/KERNEL_REPLAY_2026-11-14.md`](audits/seal/KERNEL_REPLAY_2026-11-14.md)),
+  frozen-anchor guard, graph gate with the manifest hash re-pinned, README check. Next: two
+  seal audits per theorem, then `AUDITED`.
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,
@@ -116,10 +129,10 @@ frozen (DRAFT_SORRY) and their dependency graph reviewed (2026-11-14); step 4 (p
 Status fields (lean-orchestrator):
 
 ```text
-DRAFT_ANCHORS: 2 (lean/Frozen/PaperA/PositivityAndTransferAnnulus.lean, lean/Frozen/PaperA/CanonicalFourierBound.lean)
+DRAFT_ANCHORS: 0
 UNREGISTERED_SORRIES: 0
 DRAFT_IMPORT_VIOLATIONS: 0
-SEALED_THIS_TURN: 0
+SEALED_THIS_TURN: 4 (wilson_twisted_trace_pos_and_fourier_bound, centeredTrace_nonneg_of_posSemidef_mass, wilson_mass_bound, wilson_gauge_covariance; 2026-11-14)
 ```
 
 ## Next steps

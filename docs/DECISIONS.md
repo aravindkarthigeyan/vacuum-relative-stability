@@ -297,7 +297,9 @@ The package:
   m = r = 0), so the non-strict form is the true one. T5 and T6 are frozen as
   `eq_mass_bound_v1` and `gauge_covariance_v1` (deviation 11 records T6's generalization).
 - **Status.** T3 and T4 are proof-step statements of `thm:main`, not Theorem 4.1, which stays
-  `NOT_STARTED` (audit A, S0). `lean/status.json` lists them under `frozen_steps`.
+  `NOT_STARTED` (audit A, S0). `lean/status.json` lists them under `frozen_steps`. On
+  2026-11-14 (author: "Start step 4") T3–T6 were proved and sealed, unchanged; their
+  `frozen_steps` entries are `PROVED`, and two seal audits of each follow before `AUDITED`.
 
 Two independent statement audits (refute-first, numerical and Lean probes) found D7–D9
 faithful and T3, T4 faithful under these rulings, with no EXCESS binder and no counterexample:

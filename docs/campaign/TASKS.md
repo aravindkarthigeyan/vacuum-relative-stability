@@ -89,6 +89,40 @@ files, `Core.lean`, the manifest or the docs; the orchestrator integrates and la
   provider keep unused hypotheses (silenced with `linter.unusedVariables`). This is harmless:
   each use discharges them.
 
+## Wave 3: the frozen proof steps T3–T6 of Theorem 4.1 (started 2026-11-14)
+
+Lean routes (graph nodes in parentheses; helpers in `lean/Core/PaperA/Wilson/` unless noted):
+
+- **T5** `wilson_mass_bound`. `T_j(U)ᴴ T_j(U) = 1` for unit links (`eq:mass-bound#shift-unitary`);
+  `M(U) - m = (r/2a) Σ_j (1 - T_j)ᴴ(1 - T_j)` (`#mass-lower-bound`). For `Wᴴ W = 1`,
+  `2 ± (W + Wᴴ) = (1 ± W)ᴴ(1 ± W) ⪰ 0`; applied to `W = -i T_j ⊗ α_j` (each hopping term within
+  `±1/a`), to `1 ⊗ β` (the `m` term, within `±m`) and to `T_j ⊗ β` (the `2 - T - Tᴴ` terms, within
+  `±2r/a` each), the sum gives `h_* ± h_W ⪰ 0` (`#norm-bound`).
+- **T6** `wilson_gauge_covariance`. `T_j(U^u) = uᴴ T_j(U) u` entrywise
+  (`model:gauge-covariance#shift-covariance`), then linearity, `uᴴ u = 1` for the `m` and `2`
+  terms, and `mul_kronecker_mul`.
+- **T4** `centeredTrace_nonneg_of_posSemidef_mass` (in `Transfer/`). Shift every mass by `ε • 1`;
+  the sealed Lemma 3.1 at `m_* = ε` gives `F_ε > 0` real (`rem:nonneg-mass#apply-transfer`);
+  `ε ↦ F_ε` is continuous with `F_0 = F` (`#continuity`), so `F` is a limit of positive reals.
+- **T3** `wilson_twisted_trace_pos_and_fourier_bound`. The Wilson history followed by the kick
+  `diag(ϑ + φ)` satisfies Lemma 3.1's hypotheses with `ι = X`, `d = 2n³`, `m_* = m`
+  (`thm:main#wilson-history`, using T5's helper lemmas, not T5); `diag(ϑ + φ) = diag ϑ + φ • 1`
+  splits the kick (`thm:main#twist-split`), so `F` is Lemma 3.2's twisted trace of the history
+  ending in `diag ϑ` (`thm:main#apply-fourier`).
+
+| ID | Model | Files owned | Target | Status |
+|---|---|---|---|---|
+| W9 | Sonnet | `Wilson/Shift.lean` | shift-unitary, wilson-hopping-hermitian, mass-lower-bound | proved, landed |
+| W10 | Sonnet | `Wilson/GaugeCovariance.lean`, `Provider/WilsonGaugeCovariance.lean` | T6 | proved, landed, sealed |
+| W11 | Opus | `Transfer/NonnegMass.lean`, `Provider/CenteredTraceNonneg.lean` | T4 | proved, landed, sealed |
+| W12 | Opus | `Wilson/TwistSplit.lean`; after W9, `Provider/WilsonTwistedTraceBound.lean` | twist-split, then T3 | proved, landed, sealed |
+| W13 | Opus | `Wilson/MassBound.lean`, `Provider/WilsonMassBound.lean` | T5 norm bound, after W9 | proved, landed, sealed |
+
+Each provider's statement is byte-identical to its anchor's. The T3 provider consumes the sealed
+anchors `QEDCore.PaperA.positivity_and_transfer_annulus` and `canonical_fourier_bound` (not
+their providers); the T4 provider consumes the sealed Lemma 3.1 once per `ε > 0`. Seal audits:
+two per theorem, pending.
+
 ## Landing checklist (per wave)
 
 1. Read every diff; reject any added hypothesis or changed target.

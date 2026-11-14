@@ -36,7 +36,8 @@ theorem centeredTrace_nonneg_of_posSemidef_mass
     (htime : (hist.map Step.freeTime).sum = b) :
     (centeredTrace α β hist).im = 0 ∧ 0 ≤ (centeredTrace α β hist).re :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact QEDCore.PaperA.Provider.centeredTrace_nonneg_of_posSemidef_mass α β hα_herm hβ_herm
+      hα_sq hβ_sq hα_anti hαβ_anti b hb hist hfree hkick htime
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

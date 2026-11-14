@@ -49,7 +49,8 @@ theorem wilson_twisted_trace_pos_and_fourier_bound
       ‖Fhat Q‖ ≤ ((4 * n ^ 3).choose (2 * n ^ 3 + Q.natAbs) : ℝ) *
         Real.exp (-(b * m * |(Q : ℝ)|)) * (Fhat 0).re :=
 -- FROZEN_ANCHOR_PROOF_BEGIN
-  by sorry
+  by exact QEDCore.PaperA.Provider.wilson_twisted_trace_pos_and_fourier_bound hn α β hα_herm
+      hβ_herm hα_sq hβ_sq hα_anti hαβ_anti a m r ha hm hr links hlinks b hb htime ϑ Q hQ
 -- FROZEN_ANCHOR_PROOF_END
 -- FROZEN_ANCHOR_SUFFIX_BEGIN
 

@@ -4,11 +4,11 @@
 [![Comparator](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml/badge.svg?branch=main)](https://github.com/aravindkarthigeyan/vacuum-relative-stability/actions/workflows/comparator.yml)
 
 <!-- BEGIN badges -->
-![Paper A results proved in Lean: 2/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-2%2F10-yellow) ![frozen statements: 2 proved, 4 unproved](https://img.shields.io/badge/frozen%20statements-2%20proved%2C%204%20unproved-blue) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
+![Paper A results proved in Lean: 2/10](https://img.shields.io/badge/Paper%20A%20results%20proved%20in%20Lean-2%2F10-yellow) ![frozen statements: 6 proved, 0 unproved](https://img.shields.io/badge/frozen%20statements-6%20proved%2C%200%20unproved-brightgreen) ![supporting lemmas checked: 23](https://img.shields.io/badge/supporting%20lemmas%20checked-23-blue) ![unregistered sorry: 0](https://img.shields.io/badge/unregistered%20sorry-0-brightgreen) ![axioms: standard only](https://img.shields.io/badge/axioms-standard%20only-brightgreen) ![Lean: v4.35.0](https://img.shields.io/badge/Lean-v4.35.0-blue) ![Mathlib: v4.35.0](https://img.shields.io/badge/Mathlib-v4.35.0-blue) ![papers: drafts, not specialist-reviewed](https://img.shields.io/badge/papers-drafts%2C%20not%20specialist--reviewed-orange)
 <!-- END badges -->
 
 <!-- BEGIN progress -->
-![Paper A numbered results (10): 2/10 proved; Frozen theorem statements (6): 2/6 proved](docs/img/progress.svg)
+![Paper A numbered results (10): 2/10 proved; Frozen theorem statements (6): 6/6 proved](docs/img/progress.svg)
 <!-- END progress -->
 
 This repository contains three draft papers on the stability of matter relative to
@@ -31,11 +31,11 @@ specialists.**
 
 <!-- BEGIN glance -->
 - ⬜ **The stability theorem is not formalized.** 2 of the 10 numbered results of Paper A are proved in Lean, and 0 have a frozen Lean statement whose proof is in progress.
-- ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry` except the registered proof placeholders of 4 frozen, unproved statements; every declaration other than those unproved statements depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
+- ✅ **What is checked.** The library compiles on Lean v4.35.0 with Mathlib v4.35.0, with no `sorry`; every declaration in the library depends only on `propext`, `Classical.choice`, `Quot.sound`. It contains 23 conditional supporting lemmas for steps of 3 results.
 - ⬜ **Lemma 2.1, Operator realization** (`lem:operator`): not formalized.
 - ✅ **Lemma 3.1, Positivity and the transfer annulus** (`lem:transfer`): audited as `QEDCore.PaperA.positivity_and_transfer_annulus`. By author ruling R1(a) the frozen statement covers piecewise-constant histories: free steps with constant coefficients, and separate instantaneous kicks (deviation 7).
 - ✅ **Lemma 3.2, Canonical Fourier bound** (`lem:fourier`): audited as `QEDCore.PaperA.canonical_fourier_bound`. By author ruling R1(a) the frozen statement covers piecewise-constant histories (deviation 7); it states `F_0` real and bounds `|F_q|` by its real part (ruling R3).
-- 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Frozen statements of proof steps: 0 of 4 proved. Checked supporting lemmas: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation; four finite-dimensional proof steps have frozen statements, not yet proved (deviations 9–11) (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula with the finite-CAR identity `Tr_F Γ(A) = det(I + A)` (ruling R8), the passage from step histories to Brownian-bridge paths, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0` beyond its frozen nonnegativity step, and the identification of the auxiliary ground energy with `E_0`.
+- 🔧 **Theorem 4.1, Exact physical-sector comparison** (`thm:main`): not formalized as stated. Frozen statements of proof steps: 4 of 4 proved. Checked supporting lemmas: the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation; four finite-dimensional proof steps are proved as frozen statements (deviations 9–11): positivity and the canonical Fourier bound of the twisted Wilson integrand, the nonnegative-mass remark, the Wilson mass bound (2.5) and gauge covariance (4 lemmas). Not in Lean: the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula with the finite-CAR identity `Tr_F Γ(A) = det(I + A)` (ruling R8), the passage from step histories to Brownian-bridge paths, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0` beyond its frozen nonnegativity step, and the identification of the auxiliary ground energy with `E_0`.
 - ⬜ **Lemma 4.2, Uniform lattice self-energy** (`lem:green`): not formalized.
 - ⬜ **Corollary 4.3, Stability after individual nuclear subtraction** (`cor:stability`): not formalized.
 - ⬜ **Lemma 5.1, Cutting with retained rotors** (`lem:cut`): not formalized.
@@ -96,15 +96,15 @@ Paper A results  ████▒▒░░░░░░░░░░░░░░  2
 | … frozen statement, unproved (`FROZEN_UNPROVED`) | 0 |
 | … `NOT_STARTED`, with checked supporting lemmas | 1 |
 | … `NOT_STARTED`, nothing in Lean | 7 |
-| Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 2 / 4 |
+| Frozen theorem statements in `lean/frozen-manifest.json` (proved / unproved) | 6 / 0 |
 | Frozen definitions in `lean/frozen-manifest.json` | 9 |
 | Supporting lemmas listed in `lean/status.json` | 23 |
-| Proof lemmas for the frozen statements (`lean/Core/PaperA/`) | 93 |
-| Theorems in the axiom audit | 122 |
-| Declarations audited (including auxiliary ones) | 308 |
-| Library modules / files / lines | 42 / 42 / 3305 |
+| Proof lemmas for the frozen statements (`lean/Core/PaperA/`) | 139 |
+| Theorems in the axiom audit | 168 |
+| Declarations audited (including auxiliary ones) | 390 |
+| Library modules / files / lines | 47 / 47 / 4280 |
 | Comparator files in `lean/Audit/` | 0 |
-| Registered `sorry` (proof bodies of frozen, unproved statements) | 4 |
+| Registered `sorry` (proof bodies of frozen, unproved statements) | 0 |
 | Unregistered `sorry` or `admit` outside `lean/Audit/` | 0 |
 | `axiom` declarations in the project | 0 |
 | Axioms used | `propext`, `Classical.choice`, `Quot.sound` |
@@ -136,10 +136,10 @@ Frozen statements of proof steps (author-approved anchors; each is a step in the
 
 | Lean statement | Paper A result | Source | State | Step |
 |---|---|---|---|---|
-| [`PaperA.wilson_twisted_trace_pos_and_fourier_bound`](lean/Frozen/PaperA/WilsonTwistedTraceBound.lean) | `thm:main` | comparison.tex lines 54–91 | `FROZEN_UNPROVED` | The twisted fermionic integrand for a piecewise-constant link history (ruling R5): for `m > 0` it is positive, `F_0` is real, and the `Q`-th Fourier coefficient is at most `binom(4N, 2N+\|Q\|) e^{-bm\|Q\|} F_0`. |
-| [`PaperA.centeredTrace_nonneg_of_posSemidef_mass`](lean/Frozen/PaperA/CenteredTraceNonneg.lean) | `thm:main` | transfer.tex lines 89–91, used at comparison.tex lines 98–99 | `FROZEN_UNPROVED` | The remark after Lemma 3.1 (ruling R7): with a positive semidefinite mass the centered trace is real and nonnegative; Theorem 4.1 uses it for `m = 0`. |
-| [`PaperA.wilson_mass_bound`](lean/Frozen/PaperA/WilsonMassBound.lean) | `thm:main` | model.tex lines 39–46, display (2.5) | `FROZEN_UNPROVED` | The Wilson mass bound (2.5) for unit links: `M(U) ≥ mI` and `‖h_W(U)‖ ≤ m + (3+6r)/a`; Theorem 4.1 uses `M(U) ≥ mI` to apply Lemma 3.1 (comparison.tex line 72) and, at `m = 0`, the remark after it. |
-| [`PaperA.wilson_gauge_covariance`](lean/Frozen/PaperA/WilsonGaugeCovariance.lean) | `thm:main` | model.tex lines 64–71 | `FROZEN_UNPROVED` | Gauge covariance of the Wilson operator, `h_W(U^u) = u^* h_W(U) u`; Theorem 4.1 uses it to move the gauge insertion into the link argument (comparison.tex line 54). |
+| [`PaperA.wilson_twisted_trace_pos_and_fourier_bound`](lean/Frozen/PaperA/WilsonTwistedTraceBound.lean) | `thm:main` | comparison.tex lines 54–91 | `PROVED` | The twisted fermionic integrand for a piecewise-constant link history (ruling R5): for `m > 0` it is positive, `F_0` is real, and the `Q`-th Fourier coefficient is at most `binom(4N, 2N+\|Q\|) e^{-bm\|Q\|} F_0`. |
+| [`PaperA.centeredTrace_nonneg_of_posSemidef_mass`](lean/Frozen/PaperA/CenteredTraceNonneg.lean) | `thm:main` | transfer.tex lines 89–91, used at comparison.tex lines 98–99 | `PROVED` | The remark after Lemma 3.1 (ruling R7): with a positive semidefinite mass the centered trace is real and nonnegative; Theorem 4.1 uses it for `m = 0`. |
+| [`PaperA.wilson_mass_bound`](lean/Frozen/PaperA/WilsonMassBound.lean) | `thm:main` | model.tex lines 39–46, display (2.5) | `PROVED` | The Wilson mass bound (2.5) for unit links: `M(U) ≥ mI` and `‖h_W(U)‖ ≤ m + (3+6r)/a`; Theorem 4.1 uses `M(U) ≥ mI` to apply Lemma 3.1 (comparison.tex line 72) and, at `m = 0`, the remark after it. |
+| [`PaperA.wilson_gauge_covariance`](lean/Frozen/PaperA/WilsonGaugeCovariance.lean) | `thm:main` | model.tex lines 64–71 | `PROVED` | Gauge covariance of the Wilson operator, `h_W(U^u) = u^* h_W(U) u`; Theorem 4.1 uses it to move the gauge insertion into the link argument (comparison.tex line 54). |
 
 Each supporting lemma is a conditional statement about a single proof step. Its hypotheses include facts that Paper A proves analytically and Lean does not:
 
@@ -246,7 +246,7 @@ theorem canonical_fourier_bound
         Real.exp (-(b * mStar * |(q : ℝ)|)) * (Fhat 0).re :=
 ```
 
-`QEDCore.PaperA.wilson_twisted_trace_pos_and_fourier_bound`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; comparison.tex lines 54–91), verbatim from [lean/Frozen/PaperA/WilsonTwistedTraceBound.lean](lean/Frozen/PaperA/WilsonTwistedTraceBound.lean); proof in progress: its body is the registered placeholder `by sorry`.
+`QEDCore.PaperA.wilson_twisted_trace_pos_and_fourier_bound`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; comparison.tex lines 54–91), verbatim from [lean/Frozen/PaperA/WilsonTwistedTraceBound.lean](lean/Frozen/PaperA/WilsonTwistedTraceBound.lean); proved.
 
 ```lean
 /-- **Paper A, Theorem 4.1, proof step: the twisted Wilson integrand** (comparison.tex
@@ -277,7 +277,7 @@ theorem wilson_twisted_trace_pos_and_fourier_bound
         Real.exp (-(b * m * |(Q : ℝ)|)) * (Fhat 0).re :=
 ```
 
-`QEDCore.PaperA.centeredTrace_nonneg_of_posSemidef_mass`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; transfer.tex lines 89–91, used at comparison.tex lines 98–99), verbatim from [lean/Frozen/PaperA/CenteredTraceNonneg.lean](lean/Frozen/PaperA/CenteredTraceNonneg.lean); proof in progress: its body is the registered placeholder `by sorry`.
+`QEDCore.PaperA.centeredTrace_nonneg_of_posSemidef_mass`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; transfer.tex lines 89–91, used at comparison.tex lines 98–99), verbatim from [lean/Frozen/PaperA/CenteredTraceNonneg.lean](lean/Frozen/PaperA/CenteredTraceNonneg.lean); proved.
 
 ```lean
 /-- **Paper A, remark after Lemma 3.1 (nonnegative mass).** If every free step of a
@@ -298,7 +298,7 @@ theorem centeredTrace_nonneg_of_posSemidef_mass
     (centeredTrace α β hist).im = 0 ∧ 0 ≤ (centeredTrace α β hist).re :=
 ```
 
-`QEDCore.PaperA.wilson_mass_bound`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; model.tex lines 39–46, display (2.5)), verbatim from [lean/Frozen/PaperA/WilsonMassBound.lean](lean/Frozen/PaperA/WilsonMassBound.lean); proof in progress: its body is the registered placeholder `by sorry`.
+`QEDCore.PaperA.wilson_mass_bound`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; model.tex lines 39–46, display (2.5)), verbatim from [lean/Frozen/PaperA/WilsonMassBound.lean](lean/Frozen/PaperA/WilsonMassBound.lean); proved.
 
 ```lean
 /-- **Paper A, (2.5) (Wilson mass bound).** For unit link variables, the Wilson mass satisfies
@@ -319,7 +319,7 @@ theorem wilson_mass_bound
         diracOperator α β (wilsonHopping n a U) (wilsonMass n a m r U)).PosSemidef :=
 ```
 
-`QEDCore.PaperA.wilson_gauge_covariance`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; model.tex lines 64–71), verbatim from [lean/Frozen/PaperA/WilsonGaugeCovariance.lean](lean/Frozen/PaperA/WilsonGaugeCovariance.lean); proof in progress: its body is the registered placeholder `by sorry`.
+`QEDCore.PaperA.wilson_gauge_covariance`, the frozen statement of a step in the proof of Theorem 4.1 (`thm:main`; model.tex lines 64–71), verbatim from [lean/Frozen/PaperA/WilsonGaugeCovariance.lean](lean/Frozen/PaperA/WilsonGaugeCovariance.lean); proved.
 
 ```lean
 /-- **Paper A, gauge covariance of the Wilson operator** (model.tex line 71). For a gauge
