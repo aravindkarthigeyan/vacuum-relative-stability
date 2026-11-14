@@ -121,7 +121,20 @@ Lean routes (graph nodes in parentheses; helpers in `lean/Core/PaperA/Wilson/` u
 Each provider's statement is byte-identical to its anchor's. The T3 provider consumes the sealed
 anchors `QEDCore.PaperA.positivity_and_transfer_annulus` and `canonical_fourier_bound` (not
 their providers); the T4 provider consumes the sealed Lemma 3.1 once per `ε > 0`. Seal audits:
-two per theorem, pending.
+two, each covering T3–T6, both passing with no BLOCKING or MINOR finding
+(`docs/audits/seal/THM_MAIN_STEPS_AUDIT_1.md`, statement fidelity and seal integrity;
+`THM_MAIN_STEPS_AUDIT_2.md`, consumption and hypothesis hygiene); T3–T6 AUDITED.
+
+## Follow-ups from the wave 3 seal audits (non-blocking)
+
+- `scripts/check_frozen_anchors.py` enforces the provider import quarantine only for
+  `DRAFT_SORRY` anchors; the rule that providers reach other results through sealed anchors,
+  never through other providers, was checked by hand (audit 2, X-N1). A guard for it would
+  make the check mechanical.
+- The checker confirms that a seal body passes binder names, not their order or count; audit 1
+  verified both by hand.
+- `latticeShift_mul_conjTranspose_self` (Wilson/Shift) is unused by every provider; keep it as
+  the second half of the graph node `eq:mass-bound#shift-unitary`.
 
 ## Landing checklist (per wave)
 

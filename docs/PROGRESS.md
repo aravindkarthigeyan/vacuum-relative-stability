@@ -27,7 +27,8 @@ versioned successor.
 ## Current state
 
 Phase: **Lemmas 3.1 and 3.2 AUDITED; four finite-dimensional proof steps of Theorem 4.1
-proved and sealed (2026-11-14, step 4 wave 3); their seal audits (step 5) pending.**
+proved, sealed and AUDITED (2026-11-14). Theorem 4.1 itself stays NOT_STARTED (its
+remaining steps are outside the finite-dimensional scope).**
 
 - 2026-11-12, step 4: compile gate `scripts/lean-gate.sh` (two machine-wide slots,
   D15). The Mathlib API map is [`campaign/MATHLIB_API.md`](campaign/MATHLIB_API.md).
@@ -93,8 +94,15 @@ proved and sealed (2026-11-14, step 4 wave 3); their seal audits (step 5) pendin
   (no `sorry` anywhere), axiom audit (390 declarations, 47 modules, 0 drafts, standard axioms
   only), per-module `leanchecker` replay of the 18 new or sealed modules
   ([`audits/seal/KERNEL_REPLAY_2026-11-14.md`](audits/seal/KERNEL_REPLAY_2026-11-14.md)),
-  frozen-anchor guard, graph gate with the manifest hash re-pinned, README check. Next: two
-  seal audits per theorem, then `AUDITED`.
+  frozen-anchor guard, graph gate with the manifest hash re-pinned, README check.
+- 2026-11-14, step 5: two independent seal audits, each covering T3–T6
+  ([`audits/seal/THM_MAIN_STEPS_AUDIT_1.md`](audits/seal/THM_MAIN_STEPS_AUDIT_1.md): bytes,
+  hashes, ABI, binder-by-binder source comparison, non-vacuity with the standard Dirac
+  matrices; [`…_2.md`](audits/seal/THM_MAIN_STEPS_AUDIT_2.md): node-to-declaration
+  consumption, hypothesis hygiene over the providers' 299-constant closure, T3 reaching Lemmas
+  3.1/3.2 only through their sealed anchors, numerical spot checks). Both PASS with no
+  BLOCKING or MINOR finding; `frozen_steps` AUDITED. Non-blocking follow-ups are in
+  [`campaign/TASKS.md`](campaign/TASKS.md).
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

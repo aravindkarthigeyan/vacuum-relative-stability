@@ -300,6 +300,9 @@ The package:
   `NOT_STARTED` (audit A, S0). `lean/status.json` lists them under `frozen_steps`. On
   2026-11-14 (author: "Start step 4") T3–T6 were proved and sealed, unchanged; their
   `frozen_steps` entries are `PROVED`, and two seal audits of each follow before `AUDITED`.
+  Both seal audits passed all four with no BLOCKING or MINOR finding
+  ([`audits/seal/THM_MAIN_STEPS_AUDIT_1.md`](audits/seal/THM_MAIN_STEPS_AUDIT_1.md),
+  [`…_2.md`](audits/seal/THM_MAIN_STEPS_AUDIT_2.md)); the entries are `AUDITED`.
 
 Two independent statement audits (refute-first, numerical and Lean probes) found D7–D9
 faithful and T3, T4 faithful under these rulings, with no EXCESS binder and no counterexample:
