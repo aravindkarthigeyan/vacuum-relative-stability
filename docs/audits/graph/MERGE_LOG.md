@@ -144,3 +144,35 @@ Unresolved source questions carried forward to the author (global review §9):
    definition. Not a Lean obligation.
 4. The symbol `s` is used both for e^{−bm_*} and for the deformation parameter; the graph
    writes σ for the latter.
+
+## Revision 5 (2026-11-14): the frozen proof steps of Theorem 4.1
+
+Writer and extractor of the new records: `graph-writer-2` (a fresh Opus session briefed by
+the orchestrator); the amendment's author is `orchestrator-f3486c47`. Node reviewer:
+`topology-reviewer-2` ([TOPOLOGY_REVIEW_REV5.md](TOPOLOGY_REVIEW_REV5.md)). Global reviewer:
+`global-reviewer-2` ([GLOBAL_REVIEW_REV5.md](GLOBAL_REVIEW_REV5.md)). Both reviewers were fresh
+Opus sessions; neither wrote or extracted a record, and the global reviewer did no node review.
+The revision-4 node blocks are unchanged, and their reviews stand.
+
+- Proposed: 71 nodes (19 new), 195 edges, 60 coverage items (33 new, 4 changed and reset to
+  PROPOSED), new roots `thm:main#twisted-integrand`, `rem:nonneg-mass`,
+  `model:gauge-covariance`, 7 new `SOURCE_GAP: [minor]`, no erratum candidate. GRAPH_VERSION
+  stays 4 (the linter's schema version); this is the fifth revision of the content.
+- Node review: 13 of 19 nodes and all 37 coverage items PASS. The 6 FAILs were the missing
+  Hermiticity premise of `eq:mass-bound`, the `|U_{xj}| = 1` wording in two of its subnodes, and
+  dropped binders (`b > 0`, the Clifford set, `a > 0`, `r ≥ 0`) in `thm:main#wilson-history`,
+  `#apply-transfer` and `#apply-fourier`. Two stale reviewed records were also found:
+  `lem:fourier#twist-is-kick` and `transfer:remark-prefactor`.
+- Global review: PASS after D1 (required; the same defect as the first node FAIL) and D2–D6
+  (recommended or cosmetic).
+- Merge decisions (orchestrator): every correction accepted. The per-node fixes were preferred
+  to the optional convention H41. D2 makes `eq:mass-bound` a root, so the twisted-integrand
+  closure (64 nodes) no longer contains the unused norm bound. The `twist-is-kick` fix is the
+  append-only amendment `amend-twist-is-kick-corpus-rev5`, in the text the node reviewer
+  approved; it changes a locator remark only, so CONTRACT_VERSION stays 1. Declined (optional):
+  naming the third application at transfer.tex L89–L90 in the provenance paragraph, and the
+  rename offered in D6.
+- Re-check: both reviewers re-checked the 16 changed records and the closure (section 7 of the
+  node review; "Confirmation after corrections" in the global review). Result: all PASS; 71
+  nodes, 197 edges, 61 coverage items. The full gate (`--require-reviewed` and the other flags
+  CI uses) exits 0.

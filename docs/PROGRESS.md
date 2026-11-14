@@ -26,8 +26,8 @@ versioned successor.
 
 ## Current state
 
-Phase: **Lemmas 3.1 and 3.2 AUDITED; the finite-dimensional proof steps of Theorem 4.1 are
-frozen (DRAFT_SORRY, 2026-11-14), their dependency graph (step 3) is next.**
+Phase: **Lemmas 3.1 and 3.2 AUDITED; four finite-dimensional proof steps of Theorem 4.1
+frozen (DRAFT_SORRY) and their dependency graph reviewed (2026-11-14); step 4 (proofs) next.**
 
 - 2026-11-12, step 4: compile gate `scripts/lean-gate.sh` (two machine-wide slots,
   D15). The Mathlib API map is [`campaign/MATHLIB_API.md`](campaign/MATHLIB_API.md).
@@ -74,9 +74,12 @@ frozen (DRAFT_SORRY, 2026-11-14), their dependency graph (step 3) is next.**
   (`audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_{A,B}.md`; no EXCESS, no ruling; the (2.5)
   constant is attained) and are frozen as DRAFT_SORRY anchors `eq_mass_bound_v1`,
   `gauge_covariance_v1` (D16 condition met; deviation 11). Four DRAFT_SORRY anchors in all.
-- In progress: graph writer 2 extends the dependency graph to the four new roots; fresh
-  topology reviewers and a global reviewer follow. The CI graph gate fails until the graph is
-  re-pinned to the current manifest, so nothing is pushed in between.
+- 2026-11-14, step 3 for the new roots: graph revision 5 (`graph-writer-2`), 71 nodes, 197
+  edges, 61 coverage items; new roots `thm:main#twisted-integrand`, `eq:mass-bound`,
+  `rem:nonneg-mass`, `model:gauge-covariance`, all closures reaching the sealed Lemmas 3.1/3.2
+  where the source applies them. Reviewed by `topology-reviewer-2` and `global-reviewer-2`;
+  every correction accepted ([`audits/graph/MERGE_LOG.md`](audits/graph/MERGE_LOG.md), Revision 5).
+  7 new `[minor]` source gaps, no erratum candidate (list below).
 - Next: after the graph reviews, step 4 workers for T3–T6 (T5 and T6 are routine lattice
   algebra; T3 composes the sealed Lemmas 3.1 and 3.2 with T5; T4 is a limit of Lemma 3.1).
 - Landing procedure while workers write into the same checkout: stage only finished
@@ -133,7 +136,7 @@ SEALED_THIS_TURN: 0
 2. The finite-dimensional part of `thm:main`: T3, T4 frozen 2026-11-14 (see "Current state");
    T5, T6 frozen the same day; then the graph and the proofs.
 
-## Source gaps of the graph (21; no erratum)
+## Source gaps of the graph (28; no erratum)
 
 `[substantive]`: the source uses a standard theorem it neither proves nor names.
 
@@ -164,6 +167,21 @@ SEALED_THIS_TURN: 0
 - `lem:fourier#constant-positive`: λ_j ≠ −1.
 - `lem:fourier#coefficient-identification`: F_q = C Σ_j e_{j+q} conj(e_j).
 - `lem:fourier#elementary-bound`: |e_j| ≤ binom(d, j) s^j.
+
+Revision 5 (2026-11-14, the proof steps of Theorem 4.1), all `[minor]`:
+
+- `thm:main#wilson-hopping-hermitian`: v_j(U) is Hermitian; Lemma 3.1 needs it, the source
+  never states it.
+- `eq:mass-bound#shift-unitary`: T_j(U) is unitary, asserted without argument (model.tex L40).
+- `eq:mass-bound#norm-bound`: the triangle-inequality estimate for ‖h_W‖ ≤ h_* is not written,
+  and h_W Hermitian is unstated.
+- `thm:main#integrand-centered-trace`: the fermionic factor of (4.5) is never shown to be the
+  centered trace (Tr h_W = 0 is left implicit).
+- `thm:main#twist-split`: the kicks e^{iϑ} and e^{iφ} compose to e^{iθ} with multiplying
+  centering phases; not stated.
+- `model:gauge-covariance#shift-covariance`: h_W(U^u) = u* h_W(U) u is asserted without the
+  computation.
+- `rem:nonneg-mass#continuity`: continuity in ε of the m = 0 limit is not argued.
 
 Open source questions are recorded in [`audits/graph/MERGE_LOG.md`](audits/graph/MERGE_LOG.md).
 None of them blocks the frozen statements.

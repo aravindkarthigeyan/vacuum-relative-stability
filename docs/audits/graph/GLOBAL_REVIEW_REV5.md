@@ -1,0 +1,482 @@
+# Global review, revision 5: three new roots for Paper A
+
+Reviewed: `docs/graph/DEPGRAPH.md` (GRAPH_VERSION 4 schema, revision 5: 71 nodes, 195 edges,
+5 roots, 15 frozen anchors) and `docs/graph/DEPGRAPH_COVERAGE.md` (60 items, 20 excluded).
+The review covers the new roots `thm:main#twisted-integrand`, `rem:nonneg-mass` and
+`model:gauge-covariance`, the frozen display `eq:mass-bound`, the 19 nodes that `graph-writer-2` added,
+the 33 new and 4 changed coverage items, the header, and the interface with revision 4.
+Reviewer: global-reviewer-2, a fresh agent. I did not write, extract or node-review any part of this graph.
+Date: 2026-11-14.
+
+**What I read.**
+- `paper-a/transfer.tex` (whole file).
+- `paper-a/model.tex` L1-125.
+- `paper-a/comparison.tex` L1-130.
+- `paper-a/main.tex` L90-100 and `paper-a/thermodynamics.tex` L28-34, only to check the word "admissible".
+- The six frozen theorem files in `lean/Frozen/PaperA/`.
+- The nine frozen definition files in `lean/Core/PaperA/Defs/`.
+- The identity fields of `lean/frozen-manifest.json`.
+- `docs/DECISIONS.md` D11, D14 and D16, and `docs/ERRATA-AND-DEVIATIONS.md` (Paper A).
+- From `scripts/proof_depgraph.py`, its `--help` text and its header-field checks.
+- `docs/audits/graph/GLOBAL_REVIEW.md`, as a format model only.
+
+**What I did not read.** `lean/Core/PaperA/Provider/*`, any proof body, `lean/.lake/scratch/**`, `docs/PROGRESS.md`,
+`docs/campaign/**`, `TOPOLOGY_REVIEW_NODES.md`, `MERGE_LOG.md` and the pilot-chargegap audits.
+
+No proofs were attempted and no Lean status was judged. This file is the only file I wrote in the repository.
+The dry run in §9 used a scratch copy outside the repository.
+
+## 1. Hashes and identity verified
+
+| Object | Computed SHA-256 | Graph field | Result |
+|---|---|---|---|
+| `paper-a/transfer.tex` | `b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf` | CORPUS | match |
+| `paper-a/model.tex` | `2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e` | CORPUS | match |
+| `paper-a/comparison.tex` | `1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273` | CORPUS | match |
+| `lean/frozen-manifest.json` | `a9ab3a4a4c4e0a47a907d7507cce98f444561c09e76046302d437a7fb931feaf` | FROZEN_MANIFEST | match |
+
+The manifest is unchanged since commit `eea8f30`. It has 15 anchors, and each one is in FROZEN_ANCHORS.
+I parsed the files independently. For every anchor, the manifest's `id`, `path`, `export`, `contract.id`,
+`contract.version` and `abi_sha256` equal the graph's FROZEN_ANCHOR_ID, FROZEN_FILE, FROZEN_DECL, CONTRACT_ID,
+CONTRACT_VERSION and FROZEN_ABI_SHA256. I compared the ABI hashes as strings and did not recompute them.
+No non-anchor node has a `FROZEN_*` field. The new anchors are:
+
+| Node | Anchor | Export | ABI prefix | State |
+|---|---|---|---|---|
+| thm:main#twisted-integrand | main_twisted_integrand_v1 | wilson_twisted_trace_pos_and_fourier_bound | b83a0c8a | DRAFT_SORRY |
+| rem:nonneg-mass | rem_nonneg_mass_v1 | centeredTrace_nonneg_of_posSemidef_mass | 8da711bd | DRAFT_SORRY |
+| model:gauge-covariance | gauge_covariance_v1 | wilson_gauge_covariance | a9c88dba | DRAFT_SORRY |
+| eq:mass-bound | eq_mass_bound_v1 | wilson_mass_bound | 218a7458 | DRAFT_SORRY |
+| def:lattice-shift | def_lattice_shift_v1 | latticeShift | 3400f002 | SEALED |
+| def:wilson-hopping | def_wilson_hopping_v1 | wilsonHopping | 7349b3eb | SEALED |
+| def:wilson-mass | def_wilson_mass_v1 | wilsonMass | 4e71de78 | SEALED |
+
+The new definition anchors' DEPS mirror the frozen imports: WilsonHopping and WilsonMass import LatticeShift.
+
+**Structural recomputation (my own parse).**
+- The graph has 71 nodes and 195 DEPS. Each DEPS item has exactly one EDGE.
+- There are no dangling ids, no cycles, and no node outside every closure.
+- Closure sizes: lem:transfer 40, lem:fourier 52, thm:main#twisted-integrand 66, rem:nonneg-mass 43,
+  model:gauge-covariance 6. The closure of eq:mass-bound has 8 nodes.
+- There are 6 leaves: def:c5, def:dirac-operator, def:history-step, def:lattice-shift, lem:fourier#paired-factor and
+  lem:transfer#norm-bounds-beta-form.
+- There are 28 SOURCE_GAP nodes: 21 from revision 4 and 7 new, all 7 new ones `[minor]`.
+- The dashboard figures agree with all of the above.
+
+**Linter.** Structural mode, as specified (`--require-complete-coverage --require-initial-lean-status
+--require-all-reachable --check`), exits 0 with no diagnostics. With `--require-reviewed` it exits 1 with exactly
+56 diagnostics, all from the review gate: the 19 PROPOSED nodes and the 37 PROPOSED coverage items. This is expected
+at this stage.
+
+## 2. Root thm:main#twisted-integrand (frozen main_twisted_integrand_v1)
+
+### 2.1 Identity and source fields
+
+STATEMENT_SOURCE comparison.tex L54-L91 equals the manifest range. PROOF_SOURCE L70-L89 is correct.
+The NOTE correctly says that V_ω is defined at L48-L49.
+
+The hypotheses are faithful:
+- n >= 3 with N = n^3;
+- the Clifford set;
+- a > 0, r >= 0, m > 0 and b > 0;
+- U(1) links, and V_ω generated by -h_W;
+- θ = ϑ + φ;
+- F as the (4.5) factor;
+- F_Q normalized as in (3.4);
+- |Q| <= 2N, obtained from admissibility through (2.9).
+
+The quantifier order matches the frozen binders: n, Clifford set, a m r, links, b, ϑ, Q, and ∀ φ inside the
+conclusion. CONSTANT_SCOPE is correct.
+
+Two remarks:
+- The source fixes ϑ_root = 0 (L83). The SOURCE_HYPOTHESES field records the frozen generalization ("ϑ in R^X (R6)")
+  in place of the source condition (D4).
+- L91 ("the nonnegative zeroth coefficient") lies inside the statement range. It is implied by the frozen bound,
+  because the constant is positive, so Re F_0 >= 0. The NOTE could say so (D6).
+
+Frozen statement. F φ = centeredTrace(Wilson free steps ++ [Step.kick (diagonal (ϑ + φ))]). Fhat is defined
+exactly as in lem_fourier_v1. The conclusion is:
+- ∀ φ, 0 < Re F φ ∧ Im F φ = 0;
+- Im Fhat 0 = 0;
+- ‖Fhat Q‖ <= C(4n³, 2n³ + |Q|) e^{-bm|Q|} Re Fhat 0.
+
+I checked the conventions against the frozen definitions:
+- `transferMatrix` is the reversed product, so the final kick multiplies on the left. The transfer matrix is u V_ω.
+- `Step.generator (.kick Θ) = -i(Θ ⊗ 1)`, so the centering factor is exp(½·(-i)·4Σθ) = e^{-2iΣθ_x}. This is the
+  factor of (4.5) L61, and it agrees with transfer.tex L84-L86.
+- Free steps contribute τ Tr h_W = 0.
+- `latticeShift` gives (T_j f)(x) = conj(U_xj) f(x + e_j).
+- `wilsonHopping` and `wilsonMass` are literally (2.3).
+
+The NOTE records R5, R6 and R8, the Re/Im encoding, the harmless Q binder over the positivity conjunct, and the
+excluded scalar factors. Every difference between the frozen statement and the source is recorded.
+
+### 2.2 Closure trace
+
+| Conjunct | Supporting path |
+|---|---|
+| F(φ) real and > 0 for every φ | apply-transfer ← **lem:transfer** at θ = ϑ + φ; wilson-history (← eq:mass-bound [first assertion] ← mass-lower-bound ← shift-unitary, def:wilson-mass; wilson-hopping-hermitian; def:history-step; def:step-free-time); integrand-centered-trace (← def:centered-trace, def:transfer-matrix, def:step-generator, def:history-step, lem:transfer#trace-h-zero) |
+| Im F_0 = 0 | apply-fourier ← **lem:fourier** on W ++ [kick ϑ]; twist-split; wilson-history at θ = ϑ; integrand-centered-trace |
+| ‖F_Q‖ <= C(4N, 2N + \|Q\|) e^{-bm\|Q\|} Re F_0 | the same path, with q = Q, d = 2N and m_* = m |
+
+**The four places the brief asks about.**
+
+1. **The split θ = ϑ + φ and the charge Q.**
+   - twist-split is the right obligation. Two diagonal kicks commute, so their exponentials compose to exp(i diag(ϑ+φ) ⊗ 1).
+   - Their generator traces add, -4iΣϑ - 4iNφ. So the centering factor splits as e^{-2iΣϑ}·e^{-idφ}, with d = 2N.
+   - This is exactly lem_fourier_v1's appended `Step.kick (φ • 1)`, counted once.
+   - At the Fock level, which is outside the surface by R8, the split is exact: Σ_x q_x = dΓ(I) - 2N is Lemma 3.2's
+     Q = dΓ(I) - d.
+   - The sign is consistent. e^{-iθ·ν} = e^{-iϑ·ν} e^{-iφQ_ν} selects the coefficient F_{Q_ν} under the convention
+     (2π)⁻¹∫e^{-iqφ}, which both frozen statements use.
+   - The [minor] grade of twist-split matches revision 4's twist-is-kick.
+   - One presentation defect: the graph uses `Q` for the integer index (= Q_ν, Lemma 3.2's q) in the thm:main nodes,
+     and for Lemma 3.2's charge operator in lem:fourier and twist-is-kick. No convention line separates the two (D3).
+2. **D = 4N, d = 2N and the binomial constant.**
+   - The ambient space ℓ²(X) ⊗ C⁴ with |X| = n³ gives 4|X| = 2·(2N). This matches the frozen `hd`, with
+     `Fintype.card (Fin 3 → ZMod n) = n³` under `NeZero n`.
+   - C(2d, d + |q|) e^{-bm_*|q|} becomes `(4 * n^3).choose (2 * n^3 + Q.natAbs) * exp(-(b*m*|Q|))`.
+   - Lemma 3.2's premise |q| <= d is the root's |Q| <= 2N.
+   - All of this is recorded in the wilson-history and apply-fourier NOTEs, and it is correct.
+3. **Positivity via M(U) >= mI.**
+   - lem:transfer's `hfree` is exactly the first conjunct of eq_mass_bound_v1 with mStar = m > 0.
+   - v_j Hermitian comes from wilson-hopping-hermitian.
+   - τ_k >= 0 and |U| = 1 are binders.
+   - The kick diag θ is Hermitian because θ is real.
+   - The total free time is b, because a kick has free time 0.
+   - Every premise of both applications is discharged (§6).
+   - The edge, however, goes to the whole display eq:mass-bound. So the closure of this root contains
+     eq:mass-bound#norm-bound and its gap, which the root does not use (D2).
+4. **The m = 0 route through the remark.** This root is stated for m > 0 only. The m = 0 Wilson application of the
+   remark (comparison.tex L98-L99) has no frozen anchor and no node, and the NOTEs and the coverage item say so.
+   That treatment is correct. The frozen set would support a later m = 0 step: eq_mass_bound_v1 allows m >= 0,
+   wilson-hopping-hermitian has no condition on m, and rem_nonneg_mass_v1 takes M ⪰ 0 with b > 0.
+
+There are no missing source steps. The positivity of K_b and e^{-∫H_B}, the gauge insertion, the finite-CAR identity,
+the projection and the bridge measure are correctly excluded.
+
+The node integrand-centered-trace is not a Lean obligation under R8. It is still the source's own identification
+(L87-L88, using transfer.tex L83-L86), and it is kept in the same way that revision 4 kept twist-is-kick. Keeping it
+is justified.
+
+**Verdict: PASS.** The identity is exact and every conjunct is supported. D2-D4 are recommended.
+
+## 3. eq:mass-bound (frozen eq_mass_bound_v1)
+
+The source fields are faithful to model.tex L39-L46. The constant checks out: ‖v_j‖ <= 1/a, and
+m <= M(U) <= m + 6r/a because 0 <= 2 - T - T* <= 4, so h_* = m + (3+6r)/a.
+mass-lower-bound uses only r/(2a) >= 0, and its NOTE says so.
+
+**Defect D1 (required).** The frozen second and third conjuncts state `(h_* • 1 ∓ h_W(U)).PosSemidef`.
+`PosSemidef` includes `IsHermitian`, so these conjuncts hold only if h_W(U) is Hermitian, and deviation 11 calls
+the encoding the norm bound "for the Hermitian h_W(U)". That Hermiticity needs three facts:
+- v_j(U) Hermitian (thm:main#wilson-hopping-hermitian);
+- M(U) Hermitian (eq:mass-bound#mass-lower-bound, already a dependency);
+- Σα_j v_j + βM Hermitian for Hermitian coefficients (lem:transfer#dirac-hermitian).
+
+The norm-bound NOTE names this need, but neither of the two nodes that would supply it lies in the closure of
+eq:mass-bound. The closure therefore does not support the frozen surface. The fix is to add two edges (§9). With
+D1, **PASS**.
+
+## 4. Root rem:nonneg-mass (frozen rem_nonneg_mass_v1)
+
+**Identity.** The source fields read Lemma 3.1's hypotheses with M >= 0 and b > 0 kept. R7 is recorded, and
+"may vanish" is correctly treated as a comment.
+
+**Frozen statement.** It covers histories of `Step ι` with τ >= 0, Hermitian v, `M.PosSemidef`, Hermitian kicks and
+Σ freeTime = b > 0. The conclusion is Im F = 0 ∧ 0 <= Re F. The statement has no `d` binder. Lemma 3.1 is therefore
+applied with d = 2|ι|, which always exists. This deserves a NOTE line (D6).
+
+**Closure trace.**
+- F_ε > 0 comes from apply-transfer ← lem:transfer on H_ε, with m_* = ε. M + εI - εI = M ⪰ 0, and the free times are
+  unchanged.
+- F = lim F_ε comes from continuity.
+- Re F >= 0 and Im F = 0 follow by closedness. This last step is in the root's edge rationale, as in revision 4's positivity.
+
+Every premise is discharged. The closure is complete and has no unneeded node.
+
+The continuity gap is [minor], which is consistent with lem:transfer#homotopy-continuity.
+
+**Verdict: PASS.**
+
+## 5. Root model:gauge-covariance (frozen gauge_covariance_v1)
+
+I checked the identity directly from the frozen definitions. The (x, y) entry of T_j(U^u) is
+[y = x+e_j]·conj(u_x)·conj(U_xj)·u_{x+e_j}, which is the entry of u* T_j(U) u. This needs no |u| = 1, and
+shift-covariance says so. The rest of the proof uses three more facts:
+- T_j(U^u)* = u* T_j(U)* u, which gives covariance of v_j.
+- u*u = I, which needs |u_x| = 1 and gives covariance of M through the terms m and 2.
+- The Kronecker mixed product: (u*vu) ⊗ α = (u*⊗1)(v⊗α)(u⊗1).
+
+The closure (6 nodes) has all of these, and the edge rationales name u*u = I.
+
+Deviation 11's generalization is recorded in the NOTE: no Clifford relations, any U, and any a, m, r. The source
+statement is an instance of the frozen one.
+
+This is correctly a separate root. Under R5 there are no endpoint conditions, and the insertion of W(u) and the
+sector projection are excluded, so no other root uses it.
+
+**Verdict: PASS.**
+
+## 6. Interface with revision 4
+
+**Revision-4 records are undisturbed.** `git diff HEAD` on DEPGRAPH.md shows only the header, the provenance
+paragraph, appended node blocks after `lem:fourier#negative-q`, and the dashboard. No revision-4 node block changed.
+
+Four revision-4 coverage items changed: transfer:remark-centering, transfer:remark-massless, model:wilson and
+model:tensor-structure. Each was correctly reset to PROPOSED with extractor `graph-writer-2`. Their new dispositions
+are correct.
+
+**Interface edges and premise discharge.**
+
+| Edge | Premises of the target | Supplied by |
+|---|---|---|
+| thm:main#apply-transfer → lem:transfer | Clifford set; 4\|X\| = 2d; mStar = m > 0; b > 0; free τ >= 0, v Hermitian, M - m ⪰ 0; kick Hermitian; Σ freeTime = b | root binders; wilson-history (d = 2N, eq:mass-bound first assertion, wilson-hopping-hermitian, kick diag θ real, def:step-free-time) |
+| thm:main#apply-fourier → lem:fourier | as above for W ++ [kick ϑ]; \|q\| <= d | wilson-history at θ = ϑ; root premise \|Q\| <= 2N |
+| rem:nonneg-mass#apply-transfer → lem:transfer | the same, with mStar = ε | the root's hypotheses; M + εI - εI = M ⪰ 0; d = 2\|ι\| |
+| thm:main#integrand-centered-trace → lem:transfer#trace-h-zero | the Clifford set only (its SOURCE_HYPOTHESES) | the root's Clifford binders. The node is quantified over every h, so applying it to h_W(U_k) is within its scope |
+| new → def:centered-trace, def:transfer-matrix, def:step-generator, def:history-step, def:step-free-time, def:dirac-operator | definitions | correct use sites; two locators are cosmetic issues (D5) |
+
+D1 adds one more interface edge, eq:mass-bound → lem:transfer#dirac-hermitian. That node is quantified "for every
+such v_j, M", so it applies to v_j(U) and M(U). The edge does not change the revision-4 node.
+
+## 7. SOURCE_GAP assessment
+
+I applied revision 4's EXTERNAL_POLICY grading:
+- [minor] means a few lines from facts already stated.
+- [substantive] means a standard theorem or argument that the source neither gives nor names.
+- A named method is not a gap.
+- Elementary linear algebra and calculus count as stated facts.
+
+| Node | Graph grade | My grade | Comparable revision-4 node |
+|---|---|---|---|
+| eq:mass-bound#shift-unitary | minor | minor | lem:transfer#c5-involution (asserted property) |
+| eq:mass-bound#norm-bound | minor | minor (the input "T unitary" is named; the triangle-inequality computation is not) | — |
+| thm:main#wilson-hopping-hermitian | minor | minor | lem:transfer#dirac-hermitian ("never stated") |
+| thm:main#integrand-centered-trace | minor | minor | lem:fourier#twist-is-kick |
+| thm:main#twist-split | minor | minor (exponential law for commuting matrices) | lem:fourier#twist-is-kick |
+| model:gauge-covariance#shift-covariance | minor | minor | — |
+| rem:nonneg-mass#continuity | minor | minor | lem:transfer#homotopy-continuity |
+
+The following steps are correctly left unflagged:
+- eq:mass-bound#mass-lower-bound: the method "(I - T)*(I - T)" is named.
+- thm:main#wilson-history: the source states m_* = m and D = 4N.
+- thm:main#apply-transfer and thm:main#apply-fourier: the lemmas and their parameters are named.
+- rem:nonneg-mass#apply-transfer: the method is named.
+
+The discharge of Lemma 3.2's |q| <= d at L89 is left implicit in the source. It is supplied by the root's premise,
+taken from admissibility and (2.9). I agree that this is not a gap, but see SQ1.
+
+No gap is missing. I found no grade too high or too low, and the new grades are consistent with revision 4.
+
+No gap points to an error. I re-derived each asserted step and each is true: T_j unitary, the constant of (2.5),
+covariance, the twisted centering, and the split. **I found no erratum candidate.**
+
+## 8. Header and coverage
+
+**Header.**
+- ROOTS are all anchors.
+- CORPUS ranges and hashes are correct.
+- FROZEN_ANCHORS (15) and FROZEN_MANIFEST are correct.
+- EXTERNAL_POLICY's revision-5 sentence is accurate. The excluded parts cite the Poisson and wrapped-Gaussian formula
+  (4.3), the Dyson series and Feynman-Kac formula, and the finite-CAR identity. No included line cites anything.
+- The CONVENTIONS revision-5 clauses are correct against the frozen definitions: the torus, (2.3), the gauge action,
+  R5-R8, R7 and the two-sided form of (2.5). The only gap in them is the Q notation (D3).
+- STANDING_ASSUMPTIONS `-` is still right, because every premise is a binder.
+- The H1 title says "two proof steps of Theorem 4.1", but the graph roots four finite-dimensional steps
+  (ERRATA, "Outside the formalization") (D6).
+- WRITER, GLOBAL_REVIEWER and GLOBAL_REVIEW_REF are left to the orchestrator, as briefed (§9, item H).
+
+**Coverage.** I compared the manifest line by line with the raw corpus: model.tex L4-15, L27-46, L62-71, L86-97 and
+L116-118, and comparison.tex L4-104.
+- Every labeled unit and display is disposed of exactly once: thm:main, eq:main, eq:thermal, eq:heat, eq:fk,
+  eq:twisted, eq:hilbert, eq:wilson and eq:hamiltonian (inside model:wilson), eq:mass-bound, eq:gauge-unitary and
+  eq:capacity.
+- Every cross-reference is disposed of: \eqref{eq:hamiltonian} through thm:main and model:wilson,
+  Lemma~\ref{lem:transfer}, Lemma~\ref{lem:fourier} and Section~\ref{sec:transfer}.
+- Every proof paragraph is disposed of.
+- Only blank lines and the proof delimiters at L22 and L104 have no item, the same as in revision 4.
+
+The counts (60 items, 20 excluded, 37 PROPOSED) are correct. I accept these dispositions:
+- comparison:cite-sec-transfer → rem:nonneg-mass. The cited result is a root, and the manifest's own range for
+  rem_nonneg_mass_v1 includes comparison.tex 98-99.
+- thm:main → the proof-step root. The REASON says that Theorem 4.1 itself has no node.
+
+I found no omitted theorem-like unit, display or proof paragraph.
+
+## 9. Defects and exact corrections
+
+The revision-5 records are all PROPOSED and unpublished, so these are in-place replacements. I dry-ran D1 and D2
+together on a scratch copy outside the repository. The structural linter reported no diagnostics: 197 edges, and
+closures thm:main#twisted-integrand 64 and eq:mass-bound 10.
+
+**D1 (required). eq:mass-bound: support Hermiticity of h_W(U) for the frozen two-sided form.**
+```
+NODE: eq:mass-bound
+DEPS: eq:mass-bound#mass-lower-bound, eq:mass-bound#norm-bound, thm:main#wilson-hopping-hermitian, lem:transfer#dirac-hermitian, def:wilson-mass, def:wilson-hopping, def:dirac-operator
+EDGE: thm:main#wilson-hopping-hermitian | paper-a/model.tex#eq:mass-bound@L43-L43 | v_j(U) Hermitian: the frozen two-sided form h_* 1 -/+ h_W(U) >= 0 is the norm bound only for Hermitian h_W(U)
+EDGE: lem:transfer#dirac-hermitian | paper-a/model.tex#eq:mass-bound@L43-L43 | h_W(U) = sum_j alpha_j v_j(U) + beta M(U) is Hermitian for Hermitian v_j(U) and M(U), as the frozen two-sided form needs
+NODE: eq:mass-bound#norm-bound
+NOTE: SOURCE_GAP: [minor] asserted from 'Since T_j(U) is unitary' alone; the triangle inequality with ||alpha_j|| = ||beta|| = 1 (Hermitian involutions), ||v_j(U)|| <= 1/a and ||M(U)|| <= m + (r/2a) 3 4 = m + 6r/a (using m >= 0, r >= 0) is not written. The frozen two-sided form h_* 1 -/+ h_W(U) positive semidefinite is equivalent for Hermitian h_W(U); that Hermiticity, which the source does not state, enters at eq:mass-bound through thm:main#wilson-hopping-hermitian, eq:mass-bound#mass-lower-bound and lem:transfer#dirac-hermitian.
+```
+The last sentence of the old NOTE, "No other root uses this assertion", becomes inaccurate once D2 makes
+eq:mass-bound a root, so the replacement drops it.
+
+**D2 (recommended). Make the positivity edge direct: thm:main#wilson-history consumes only M(U) >= mI.** Today
+the closure of the twisted-integrand root contains eq:mass-bound#norm-bound and its gap, which the root never uses.
+For Lean planning this also ties sealing T3 to the norm-bound conjuncts of T5.
+```
+ROOTS: lem:transfer, lem:fourier, thm:main#twisted-integrand, rem:nonneg-mass, model:gauge-covariance, eq:mass-bound
+NODE: thm:main#wilson-history
+DEPS: eq:mass-bound#mass-lower-bound, thm:main#wilson-hopping-hermitian, def:dirac-operator, def:history-step, def:step-free-time
+EDGE: eq:mass-bound#mass-lower-bound | paper-a/comparison.tex#thm:main-proof@L71-L72 | 'the time-dependent Wilson mass M(omega_t) >= m I': the first assertion of (2.5), with m > 0
+(remove) EDGE: eq:mass-bound | paper-a/comparison.tex#thm:main-proof@L71-L72 | ...
+NODE: eq:mass-bound
+NOTE: Frozen eq_mass_bound_v1 (D16, T5): for unit link variables U : X -> Fin 3 -> C, M(U) - m 1 positive semidefinite, and the norm bound encoded as h_* 1 - h_W(U) and h_* 1 + h_W(U) positive semidefinite, h_W(U) = diracOperator alpha beta (wilsonHopping n a U) (wilsonMass n a m r U). A root: thm:main#wilson-history consumes only its first assertion, through eq:mass-bound#mass-lower-bound (comparison.tex L71-L72); its second assertion serves the Dyson bound (comparison.tex L33-L36, excluded) and Lemma 2.1 (outside the corpus).
+```
+In the header provenance paragraph, replace "the frozen display `eq:mass-bound` (`eq_mass_bound_v1`, not a root
+because `thm:main#twisted-integrand` uses its first assertion)" with "the frozen display `eq:mass-bound`
+(`eq_mass_bound_v1`, a root; `thm:main#twisted-integrand` uses only its first assertion,
+`eq:mass-bound#mass-lower-bound`)".
+
+Coverage changes:
+```
+ITEM: comparison:proof-positivity
+DISPOSITION: NODE thm:main#apply-transfer, thm:main#wilson-history, eq:mass-bound#mass-lower-bound, thm:main#wilson-hopping-hermitian
+ITEM: eq:mass-bound
+REASON: (2.5), frozen as eq_mass_bound_v1, a root: the first assertion M(U) >= m I (eq:mass-bound#mass-lower-bound), used by thm:main#wilson-history, and the second, ||h_W(U)|| <= h_*, which no other root uses (it serves the excluded Dyson bound and Lemma 2.1)
+```
+The alternative is to keep the anchor-level edge, on the view that T3's Lean proof will call the frozen T5. In that
+case, add to the wilson-history NOTE: "Only the first conjunct of eq:mass-bound is consumed;
+eq:mass-bound#norm-bound lies in this closure only through the anchor." D1 is needed under either choice.
+
+**D3 (recommended). CONVENTIONS: separate the two meanings of Q.** In the twist-convention clause, replace
+`F_Q = (2 pi)^{-1} int_0^{2 pi} e^{-i Q phi} F(phi) d phi with Q an integer,` with:
+```
+F_Q = (2 pi)^{-1} int_0^{2 pi} e^{-i Q phi} F(phi) d phi with Q an integer (in thm:main#* nodes Q is the Fourier index Q_nu, Lemma 3.2's q, never Lemma 3.2's charge operator Q = dGamma(I) - d; with d = 2N that operator is sum_x q_x, outside the frozen surface, and the phi-part of the twist is Lemma 3.2's appended kick Step.kick (phi * 1) with centering e^{-i d phi} = e^{-2i N phi}),
+```
+
+**D4 (recommended). thm:main#twisted-integrand: record the source's root-site condition.**
+- In SOURCE_HYPOTHESES, replace `a gauge function u_x = e^{i theta_x} with theta_x = vartheta_x + phi (model.tex L64; comparison.tex L82-L83), vartheta in R^X (R6);`
+  with `a gauge function u_x = e^{i theta_x} with theta_x = vartheta_x + phi and vartheta_root = 0 at a fixed root site (model.tex L64; comparison.tex L82-L83; R6 drops the root-site condition and takes vartheta in R^X);`.
+- In SOURCE_QUANTIFIERS, replace `vartheta in R^X` with `relative twists vartheta with vartheta_root = 0 (R6: every vartheta in R^X)`.
+
+**D5 (cosmetic). Edge locators at the target's use site, the revision-4 rule.**
+```
+NODE: thm:main#wilson-history
+EDGE: def:step-free-time | paper-a/comparison.tex#thm:main-proof@L71-L72 | Lemma 3.1 is applied with total free time b, the length of the path interval [0, b] (R5: sum_k tau_k = b)
+NODE: thm:main#integrand-centered-trace
+EDGE: def:history-step | paper-a/comparison.tex#eq:twisted@L61-L61 | det(I + u V_omega): the free steps exp(-tau_k h_W(U_k)) of V_omega followed by the kick u form one history
+```
+These replace the edges that cite `comparison.tex#eq:fk@L43-L45`, an excluded display outside the node's proof
+source, and `thm:main-proof@L48-L49`, the definition site of V_ω.
+
+**D6 (cosmetic). NOTEs and titles.**
+- Append to the thm:main#twisted-integrand NOTE: "'the nonnegative zeroth coefficient' (L91) is implied: the
+  frozen bound, whose constant is positive for |Q| <= 2N, forces Re F_0 >= 0."
+- Append to the rem:nonneg-mass NOTE: "The frozen statement has no d binder: 4|iota| is even, and Lemma 3.1 is
+  applied with d = 2|iota|."
+- Retitle the graph H1 to "Proof dependency database: Paper A, Lemmas 3.1 and 3.2 and four finite-dimensional proof
+  steps of Theorem 4.1", and the coverage H1 to match.
+- Optional: thm:main#wilson-hopping-hermitian is a fact about (2.3), and D1 makes eq:mass-bound consume it too. While
+  every revision-5 node is still PROPOSED, an ID such as `eq:wilson#hopping-hermitian` would fit it better.
+
+**H (after acceptance, orchestrator).**
+- Set GLOBAL_REVIEWER to include `global-reviewer-2` (for example `global-reviewer-1 (rev 4); global-reviewer-2 (rev 5)`).
+- Set GLOBAL_REVIEW_REF to `docs/audits/graph/GLOBAL_REVIEW.md (rev 4); docs/audits/graph/GLOBAL_REVIEW_REV5.md (rev 5)`.
+- Record `graph-writer-2` in WRITER.
+- global-reviewer-2 differs from WRITER and from every node EXTRACTOR (`orchestrator-f3486c47`, `graph-writer-2`).
+
+## 10. Unresolved source questions (no erratum)
+
+- **SQ1.** "Admissible" (comparison.tex L7) is not defined in model.tex or comparison.tex. The graph reads it as
+  H_ν ≠ 0, that is |Q_ν| <= 2N by (2.9). That reading matches thermodynamics.tex L31.
+  L89 applies Lemma 3.2 without checking |q| <= d. This is harmless: for |Q_ν| > 2N, Z_ν = 0 and the binomial is 0.
+- **SQ2.** comparison.tex L98 says "determinants are nonnegative". The nonnegative object is the centered trace
+  e^{-2iΣθ} det(I + uV_ω). det(I + uV_ω) itself carries the phase e^{2iΣθ}. This is wording, outside the frozen surface.
+- **SQ3.** L72 uses M(ω_t) >= mI without citing (2.5). The source never states that v_j(U) or h_W(U) is Hermitian.
+  The graph records both as minor gaps (wilson-hopping-hermitian, and D1).
+- **SQ4.** Notation: Q is Lemma 3.2's operator, while Q_ν is Theorem 4.1's integer (D3).
+
+## 11. Verdict
+
+- **thm:main#twisted-integrand: PASS.** The identity is exact under R5, R6 and R8. Positivity, Im F_0 = 0 and the
+  binomial bound are supported, and every premise at both cross-root applications is discharged. D2-D4 are recommended.
+- **eq:mass-bound: PASS after D1.** The PSD encoding needs Hermitian h_W(U), and nothing in its closure supplies it today.
+- **rem:nonneg-mass: PASS.**
+- **model:gauge-covariance: PASS.**
+- Source gaps: 7 new, all [minor], consistently graded. None is missing and none is an erratum candidate.
+- Coverage is complete. The header is correct apart from D3 and the D6 title.
+- The revision-4 nodes are undisturbed.
+
+**Overall: PASS after listed corrections.** D1 is required. D2-D4 are recommended. D5-D6 are cosmetic.
+
+## Confirmation after corrections
+
+Date: 2026-11-14. I re-read `docs/graph/DEPGRAPH.md` and `docs/graph/DEPGRAPH_COVERAGE.md` as corrected by
+`graph-writer-2`. The corpus and manifest hashes are unchanged: transfer.tex `b2dcc793…98cf`, model.tex
+`2464b16f…961e`, comparison.tex `1caaf36b…3273`, frozen-manifest.json `a9ab3a4a…feaf`. All 15 anchor bindings
+still match.
+
+### C.1 Status of D1-D6
+
+| # | Status | Checked against |
+|---|---|---|
+| D1 | Applied as proposed | eq:mass-bound DEPS now include thm:main#wilson-hopping-hermitian and lem:transfer#dirac-hermitian, with the two EDGEs at model.tex L43 verbatim. The norm-bound NOTE is replaced verbatim. The eq:mass-bound NOTE also records the Hermiticity route, which is an accurate addition. |
+| D2 | Applied as proposed | ROOTS include eq:mass-bound. thm:main#wilson-history depends on eq:mass-bound#mass-lower-bound, and its EDGE is at L71-L72. The eq:mass-bound NOTE, the header provenance paragraph, and the coverage items comparison:proof-positivity and eq:mass-bound use the proposed text. |
+| D3 | Applied as proposed | The CONVENTIONS twist clause separates Q_ν (Lemma 3.2's q) from the charge operator dΓ(I) - d, verbatim. |
+| D4 | Applied as proposed | The root's SOURCE_HYPOTHESES and SOURCE_QUANTIFIERS record ϑ_root = 0 and give R6 as the generalization. |
+| D5 | Applied as proposed | wilson-history → def:step-free-time is now at comparison.tex L71-L72. integrand-centered-trace → def:history-step is now at eq:twisted L61. |
+| D6 | Applied, except the optional rename | The NOTE lines on L91 and on the d binder are present, and both H1 titles read "four finite-dimensional proof steps". The optional ID rename was not made, which is acceptable. |
+
+**The topology reviewer's fixes.**
+- b > 0 is now in wilson-history's hypotheses.
+- apply-transfer and apply-fourier list the full root hypotheses.
+- The eq:mass-bound subnodes state |U_{xj}| = 1.
+
+None of these changes an edge or contradicts the global findings.
+
+### C.2 Global closure and linter
+
+My own parse finds 71 nodes and 197 DEPS. Each DEPS item has exactly one EDGE. There are no dangling ids, no cycles,
+and no node outside every closure.
+
+| Root | Closure |
+|---|---|
+| lem:transfer | 40 |
+| lem:fourier | 52 |
+| thm:main#twisted-integrand | 64 (no longer contains eq:mass-bound or eq:mass-bound#norm-bound) |
+| rem:nonneg-mass | 43 |
+| model:gauge-covariance | 6 |
+| eq:mass-bound | 10 (now contains thm:main#wilson-hopping-hermitian and lem:transfer#dirac-hermitian) |
+
+The 6 leaves are unchanged. There are 28 SOURCE_GAP nodes; the 7 new ones are all [minor] and unchanged.
+
+I re-traced every conjunct:
+- **thm:main#twisted-integrand.** Positivity: apply-transfer ← lem:transfer, wilson-history (← mass-lower-bound,
+  wilson-hopping-hermitian) and integrand-centered-trace. Im F_0 = 0 and the bound: apply-fourier ← lem:fourier,
+  wilson-history, twist-split and integrand-centered-trace.
+- **eq:mass-bound.** The first conjunct comes from mass-lower-bound. The two-sided conjuncts come from norm-bound
+  together with Hermitian h_W(U).
+- **rem:nonneg-mass and model:gauge-covariance.** Unchanged.
+
+Every premise at the four interface edges is still discharged.
+
+`git diff HEAD` shows no removed or changed line in any revision-4 node block. The amendment section is still `None.`
+
+The structural linter (`--require-complete-coverage --require-initial-lean-status --require-all-reachable --check`)
+exits 0 with no diagnostics. Its dashboard reports 197 edges and 6 roots.
+
+### C.3 Pending item and final verdict
+
+The fix to lem:fourier#twist-is-kick is not yet in the file, so this confirmation does not cover it.
+lem:fourier#twist-is-kick is a published, REVIEWED revision-4 node, so the fix must land as an append-only `AMEND`
+record with an independent reviewer. If that AMEND changes only NOTE or source-statement fields, nothing in this
+review is affected. If it adds or drops DEPS, the structural linter must be re-run. If it changes what
+thm:main#twist-split or thm:main#apply-fourier rely on (the kick `Step.kick (phi * 1)` and its centering
+e^{-i d phi}), it needs a re-check of §2.2 item 1.
+
+**Final verdict: PASS.** D1-D6 are resolved and the closure, coverage and header are correct. On that basis
+`GLOBAL_REVIEWER: global-reviewer-2` (or a composite naming both global reviewers) and
+`GLOBAL_REVIEW_REF: docs/audits/graph/GLOBAL_REVIEW_REV5.md` may be set, once the twist-is-kick AMEND lands within
+the scope above. global-reviewer-2 differs from WRITER and from every node EXTRACTOR.
