@@ -26,8 +26,8 @@ versioned successor.
 
 ## Current state
 
-Phase: **step 4 in progress (bounded proof tasks); task board in
-[`campaign/TASKS.md`](campaign/TASKS.md).**
+Phase: **Lemmas 3.1 and 3.2 AUDITED; the finite-dimensional proof steps of Theorem 4.1 are
+frozen (DRAFT_SORRY, 2026-11-14), their dependency graph (step 3) is next.**
 
 - 2026-11-12, step 4: compile gate `scripts/lean-gate.sh` (two machine-wide slots,
   D15). The Mathlib API map is [`campaign/MATHLIB_API.md`](campaign/MATHLIB_API.md).
@@ -59,9 +59,22 @@ Phase: **step 4 in progress (bounded proof tasks); task board in
   ([`audits/seal/KERNEL_REPLAY_2026-11-13.md`](audits/seal/KERNEL_REPLAY_2026-11-13.md)).
   After audit 1, the checker's seal rule was tightened to read only the top-level binders
   (mutation-tested).
-- Next: the finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson mass
-  bound of model.tex (2.5), the `m = 0` remark). It needs new author-approved statements;
-  nothing has been drafted.
+- 2026-11-14: **finite-dimensional part of Theorem 4.1 frozen** (author approval and rulings
+  R5–R8, [DECISIONS.md](DECISIONS.md) D16; deviations 9 and 10). Sealed definitions
+  `def_lattice_shift_v1`, `def_wilson_hopping_v1`, `def_wilson_mass_v1`
+  (`lean/Core/PaperA/Defs/`); DRAFT_SORRY anchors `main_twisted_integrand_v1`
+  (`Frozen/PaperA/WilsonTwistedTraceBound.lean`, T3) and `rem_nonneg_mass_v1`
+  (`Frozen/PaperA/CenteredTraceNonneg.lean`, T4), with empty providers. Declaration text is
+  byte-identical to the audited draft (`audits/pilot-chargegap/audited-draft-v1.lean.txt`).
+  `status.json` lists T3 and T4 under the new `frozen_steps` (they are proof steps, so
+  `thm:main` stays NOT_STARTED); `update_readme.py` checks and renders that list. The graph
+  is only re-pinned to the new manifest; it does not cover T3/T4 yet.
+- In progress: two independent statement audits of T5 `wilson_mass_bound` (model.tex (2.5))
+  and T6 `wilson_gauge_covariance` (model.tex L71), reports
+  `audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_{A,B}.md`. Approved on condition that both pass
+  with no EXCESS binder and no new ruling (D16); then freeze them like T3/T4.
+- Next: step 3 for `thm:main`'s frozen steps (graph roots T3–T6, corpus comparison.tex
+  L54–L99, model.tex (2.3), (2.5), L64–L71, transfer.tex L89–L91), then step 4 workers.
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,
@@ -113,9 +126,8 @@ SEALED_THIS_TURN: 0
    Schur triangulation in Mathlib, so use the spectral theorem); reality and
    positivity of the centered trace along the homotopy. Lemma 3.2's provider must not
    import Lemma 3.1's quarantined provider; shared results go in ordinary modules.
-2. The finite-dimensional part of `thm:main` (Lemma 3.2 with `D = 4N`, the Wilson
-   mass bound `M(U) ≥ mI` of model.tex (2.4), the `m = 0` remark) needs separately
-   approved statements; not drafted yet.
+2. The finite-dimensional part of `thm:main`: T3, T4 frozen 2026-11-14 (see "Current state");
+   T5, T6 under audit; then the graph and the proofs.
 
 ## Source gaps of the graph (21; no erratum)
 
@@ -190,7 +202,19 @@ Audit outcome (fresh Opus sessions A and B, refute-first):
 
 ## Open decisions for the author
 
-None pending. R1(a)–R4 are decided (D11).
+R1(a)–R4 are decided (D11); R5–R8 and the charge-gap package are decided (D16, 2026-11-14).
+Nothing is pending. The record of the approval round:
+
+- Audited draft v1 (D7 `latticeShift`, D8 `wilsonHopping`, D9 `wilsonMass`, T3
+  `wilson_twisted_trace_pos_and_fourier_bound`, T4 `centeredTrace_nonneg_of_posSemidef_mass`):
+  `docs/audits/pilot-chargegap/audited-draft-v1.lean.txt`, SHA-256 `e16372fb…fa2bc`.
+  Audits A and B: D7–D9 PASS; T3 and T4 PASS conditional on new rulings (audit A's R5, R7;
+  R6 recorded; R8 if the finite-CAR identity stays outside Lean). No counterexample.
+- T5 `wilson_mass_bound` (model.tex (2.5)) and T6 `wilson_gauge_covariance` (model.tex L71)
+  were added after audit A's surface findings S2–S3: `draft-v1b-with-T5-T6.lean.txt`
+  (SHA-256 `f3169e83…f339`). Checked numerically, **not yet independently audited**.
+- Approved and frozen 2026-11-14 (D16); T5 and T6 conditionally on two clean audits.
+  `thm:main` stays NOT_STARTED in `lean/status.json` (audit A, S0).
 
 ## Infrastructure notes
 

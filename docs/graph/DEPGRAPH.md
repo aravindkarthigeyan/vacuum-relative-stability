@@ -7,7 +7,7 @@ CONVENTIONS: Dirac matrices alpha_j, beta Hermitian 4x4 Clifford (model.tex L27-
 STANDING_ASSUMPTIONS: -
 EXTERNAL_POLICY: transfer.tex cites no external result. Textbook facts the source names (determinant as the product of eigenvalues with multiplicity, Vandermonde's convolution, Gronwall integration, complex conjugation) are modeled inside the step that uses them; a step the source asserts without an argument, and without naming a method, is marked SOURCE_GAP, graded [minor] (a few lines from facts already stated) or [substantive] (needs a standard theorem or argument the source neither gives nor names); a gap is not an erratum unless the asserted step is false; Lean effort is not part of the grade; elementary calculus and linear algebra (intermediate and mean value theorems, exponentials of commuting matrices, determinants of triangular or diagonal matrices) count as stated facts; remarks about Lean live in NOTE because LEAN_NOTE stays initialized at this stage
 FROZEN_ANCHORS: lem:transfer, lem:fourier, def:history-step, def:dirac-operator, def:step-generator, def:step-free-time, def:transfer-matrix, def:centered-trace
-FROZEN_MANIFEST: lean/frozen-manifest.json | sha256:40c3c09f12a467fc0bb84ad0e8ed0b42343b9f58844179b44e596e190e65cbda
+FROZEN_MANIFEST: lean/frozen-manifest.json | sha256:4f4ec07d336b14f12d124983c249cf95f178349bad89c31746b3cdfc1be7fbc3
 WRITER: orchestrator-f3486c47
 GLOBAL_REVIEWER: global-reviewer-1
 GLOBAL_REVIEW_REF: docs/audits/graph/GLOBAL_REVIEW.md

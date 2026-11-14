@@ -13,6 +13,9 @@ import Core.PaperA.Defs.StepGenerator
 import Core.PaperA.Defs.StepFreeTime
 import Core.PaperA.Defs.TransferMatrix
 import Core.PaperA.Defs.CenteredTrace
+import Core.PaperA.Defs.LatticeShift
+import Core.PaperA.Defs.WilsonHopping
+import Core.PaperA.Defs.WilsonMass
 import Core.PaperA.Transfer.DiracAlgebra
 import Core.PaperA.Transfer.DiracLift
 import Core.PaperA.Transfer.RootCount

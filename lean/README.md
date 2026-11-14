@@ -16,7 +16,7 @@ construction, the path measure and all limits remain proofs in the paper.
 
 | Path | Contents |
 |---|---|
-| `Core.lean`, `Core/` | The library (namespace `QEDCore`). `Core/PaperA/Defs/` holds the six frozen definitions of the Paper A statements; `Core/PaperA/Provider/` will hold their proofs. |
+| `Core.lean`, `Core/` | The library (namespace `QEDCore`). `Core/PaperA/Defs/` holds the nine frozen definitions of the Paper A statements; `Core/PaperA/Provider/` will hold their proofs. |
 | `Frozen/` | The frozen theorem statements (library `Frozen`, imported by nothing in `Core`). |
 | `frozen-manifest.json` | Hashes, source ranges and states of every frozen file; checked by `../scripts/check_frozen_anchors.py`. |
 | `scripts/Audit/AxiomAudit.lean` | Axiom and `sorry` audit of every declaration of `Core` and `Frozen`; admits `sorry` only in manifested `DRAFT_SORRY` statements; writes `.lake/axiom-audit.json`. |

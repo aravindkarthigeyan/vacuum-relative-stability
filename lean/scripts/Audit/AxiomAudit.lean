@@ -5,6 +5,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 import Core
 import Frozen.PaperA.PositivityAndTransferAnnulus
 import Frozen.PaperA.CanonicalFourierBound
+import Frozen.PaperA.WilsonTwistedTraceBound
+import Frozen.PaperA.CenteredTraceNonneg
 import Lean
 
 /-!

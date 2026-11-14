@@ -225,6 +225,103 @@
       "full_file_sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
     },
     {
+      "id": "def_lattice_shift_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/model.tex:27-32"
+      },
+      "contract": {
+        "id": "paper-a.def.lattice-shift",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/LatticeShift.lean",
+      "export": "QEDCore.PaperA.latticeShift",
+      "split_policy": {
+        "source_group": "paper-a.def.lattice-shift",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "3400f002d5aa6dba1b2e5843c41b6959b754287669291486b058c2922bb7b960",
+      "definition_closure": [],
+      "state": "SEALED",
+      "full_file_sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+    },
+    {
+      "id": "def_wilson_hopping_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/model.tex:27-32"
+      },
+      "contract": {
+        "id": "paper-a.def.wilson-hopping",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/WilsonHopping.lean",
+      "export": "QEDCore.PaperA.wilsonHopping",
+      "split_policy": {
+        "source_group": "paper-a.def.wilson-hopping",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "7349b3eb37adb3ad34023013a75d2b208b60a8e4b5112efce66e168a558a7435",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/LatticeShift.lean",
+          "sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "c1e00e4976e3dd67ffc29ecea0432ea868392ad1bea9a0ea8a802f8ebc328e32"
+    },
+    {
+      "id": "def_wilson_mass_v1",
+      "kind": "definition",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/model.tex:27-35"
+      },
+      "contract": {
+        "id": "paper-a.def.wilson-mass",
+        "version": "1"
+      },
+      "path": "Core/PaperA/Defs/WilsonMass.lean",
+      "export": "QEDCore.PaperA.wilsonMass",
+      "split_policy": {
+        "source_group": "paper-a.def.wilson-mass",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "4e71de782982987004ca088fe93e4f7509d30b3c8fc56d402f9d89405c188787",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/LatticeShift.lean",
+          "sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+        }
+      ],
+      "state": "SEALED",
+      "full_file_sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
+    },
+    {
       "id": "lem_transfer_v1",
       "kind": "theorem",
       "author_approval": {
@@ -346,6 +443,144 @@
       ],
       "state": "SEALED",
       "prefix_sha256": "5fd81d9cdc86adbc4906ecedce0cf4235927467d2f90c8f25e4a78d91e5bbb8d",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
+    },
+    {
+      "id": "main_twisted_integrand_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/comparison.tex@sha256:1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273; paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/comparison.tex:54-91; paper-a/model.tex:27-35"
+      },
+      "contract": {
+        "id": "paper-a.thm:main.twisted-integrand",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/WilsonTwistedTraceBound.lean",
+      "export": "QEDCore.PaperA.wilson_twisted_trace_pos_and_fourier_bound",
+      "implementation": {
+        "module": "Core.PaperA.Provider.WilsonTwistedTraceBound",
+        "export": "QEDCore.PaperA.Provider.wilson_twisted_trace_pos_and_fourier_bound"
+      },
+      "split_policy": {
+        "source_group": "paper-a.thm:main.twisted-integrand",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "b83a0c8ad43792560d5ef61bc2495ea76a58285a6bb4dfda4de724acbded421c",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        },
+        {
+          "path": "Core/PaperA/Defs/TransferMatrix.lean",
+          "sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+        },
+        {
+          "path": "Core/PaperA/Defs/CenteredTrace.lean",
+          "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
+        },
+        {
+          "path": "Core/PaperA/Defs/LatticeShift.lean",
+          "sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonHopping.lean",
+          "sha256": "c1e00e4976e3dd67ffc29ecea0432ea868392ad1bea9a0ea8a802f8ebc328e32"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonMass.lean",
+          "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "d5ab8ec3df9c632259c292ea47a9870c926b8da91e2252035368533482128aa7",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
+    },
+    {
+      "id": "rem_nonneg_mass_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/transfer.tex@sha256:b2dcc793552cfa284131c60d563703b462bb6c77112b9d2002c2bed5f7c698cf; paper-a/comparison.tex@sha256:1caaf36bb7ab5f90c15224be3bc0f1eb20baeae06f40fb7c340ad3145db13273",
+        "range": "paper-a/transfer.tex:89-91; paper-a/comparison.tex:98-99"
+      },
+      "contract": {
+        "id": "paper-a.rem:nonneg-mass",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/CenteredTraceNonneg.lean",
+      "export": "QEDCore.PaperA.centeredTrace_nonneg_of_posSemidef_mass",
+      "implementation": {
+        "module": "Core.PaperA.Provider.CenteredTraceNonneg",
+        "export": "QEDCore.PaperA.Provider.centeredTrace_nonneg_of_posSemidef_mass"
+      },
+      "split_policy": {
+        "source_group": "paper-a.rem:nonneg-mass",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "8da711bd44595add34e9f40de2ef6a89d94d7ca311ff955d94f11d4fe3e42316",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/Step.lean",
+          "sha256": "599e912a79908055bd6b40919aa06a9d885823470b3aedcb5a297b736e0ce1b2"
+        },
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepGenerator.lean",
+          "sha256": "f2204d490751508e616a9aaccc09b8b8d919b2df00eaafddf5779cdd9a05d89e"
+        },
+        {
+          "path": "Core/PaperA/Defs/StepFreeTime.lean",
+          "sha256": "1ed87b1ce3052d1fe0a798cefe5601c3d1272cb91a95dc6784197a0f8522e613"
+        },
+        {
+          "path": "Core/PaperA/Defs/TransferMatrix.lean",
+          "sha256": "4a15618f6c2a8f08d96906d4759d6afc4527cb089b614552b77a5404d65e4e96"
+        },
+        {
+          "path": "Core/PaperA/Defs/CenteredTrace.lean",
+          "sha256": "edd9450999f0e874e59d79caf986b54be37d6df67f0a9b0666aaea9b7dea2261"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "a73e24cac502ee6146ed261a239ad0c8d471c9d72a23af1e0b5e8c044497ed06",
       "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
       "draft_allowlist": {
         "frozen_paths": [],

@@ -4,7 +4,8 @@
 
 Every number in README.md comes from this script, which reads
 
-* lean/status.json            the state of each Paper A result and the supporting lemmas,
+* lean/status.json            the state of each Paper A result, the supporting lemmas and the
+                              frozen statements of proof steps (`frozen_steps`),
 * lean/frozen-manifest.json   the author-approved frozen statements (optional),
 * lean/.lake/axiom-audit.json the report written by `lake env lean scripts/Audit/AxiomAudit.lean`,
 * the Lean sources            file, line, `sorry` and `axiom` counts, verbatim statements,
@@ -206,9 +207,28 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
             problems.append(f"{lab}: FROZEN_UNPROVED needs a DRAFT_SORRY anchor in the manifest")
         if r["state"] in DONE and r["lean"] in draft_exports:
             problems.append(f"{lab}: {r['lean']} is still DRAFT_SORRY in the manifest")
-    linked = {r["lean"] for r in results if r["lean"]}
+    # Frozen statements of proof steps: author-approved anchors that are not themselves numbered
+    # results of the paper (for example a step in the proof of a theorem).
+    steps = status.get("frozen_steps", [])
+    step_names: set[str] = set()
+    for s in steps:
+        name = s["lean"]
+        if name in step_names:
+            problems.append(f"duplicate frozen step {name}")
+        step_names.add(name)
+        if s["supports"] not in seen:
+            problems.append(f"frozen step {name} cites unknown result {s['supports']}")
+        if name not in theorem_anchors:
+            problems.append(f"frozen step {name} is not a frozen theorem anchor in the manifest")
+        if s["state"] not in STATES[1:]:
+            problems.append(f"frozen step {name}: state must be FROZEN_UNPROVED, PROVED or AUDITED")
+        if s["state"] == "FROZEN_UNPROVED" and name not in draft_exports:
+            problems.append(f"frozen step {name}: FROZEN_UNPROVED needs a DRAFT_SORRY anchor in the manifest")
+        if s["state"] in DONE and name in draft_exports:
+            problems.append(f"frozen step {name} is still DRAFT_SORRY in the manifest")
+    linked = {r["lean"] for r in results if r["lean"]} | step_names
     for export in sorted(set(theorem_anchors) - linked):
-        problems.append(f"frozen theorem {export} is not the Lean statement of any result")
+        problems.append(f"frozen theorem {export} is neither a result's Lean statement nor a frozen step")
     abi = audit.get("anchor_abi", {})
     for a in anchors:
         text = abi.get(a["export"])
@@ -245,7 +265,14 @@ def validate(status: dict, audit: dict, anchors: list[dict]) -> dict:
                 problems.append(f"{r['label']}: {r['lean']} is not an audited theorem")
             elif not set(t["axioms"]) <= allowed:
                 problems.append(f"{r['label']}: {r['lean']} uses {t['axioms']}")
-    claimed = {r["lean"] for r in results if r["lean"]}
+    for s in steps:
+        if s["state"] in DONE:
+            t = theorems.get(s["lean"])
+            if t is None:
+                problems.append(f"frozen step {s['lean']} is not an audited theorem")
+            elif not set(t["axioms"]) <= allowed:
+                problems.append(f"frozen step {s['lean']} uses {t['axioms']}")
+    claimed = {r["lean"] for r in results if r["lean"]} | step_names
     for s in status["supporting"]:
         if s["name"] not in theorems:
             problems.append(f"supporting {s['name']} is not an audited theorem")
@@ -428,6 +455,10 @@ def render_glance(status: dict, facts: dict) -> str:
             parts.append(f"statement frozen as `{r['lean']}`, proof in progress.{note}")
         elif sup:
             parts.append("not formalized as stated.")
+        rsteps = [s for s in status.get("frozen_steps", []) if s["supports"] == r["label"]]
+        if rsteps:
+            k = sum(s["state"] in DONE for s in rsteps)
+            parts.append(f"Frozen statements of proof steps: {k} of {len(rsteps)} proved.")
         if sup:
             parts.append(f"Checked supporting lemmas: {r['lean_coverage']} ({len(sup)} lemmas). "
                          f"Not in Lean: {r['outside_lean']}")
@@ -580,6 +611,19 @@ def render_table(status: dict, facts: dict) -> str:
             f"| {r['number']} | {icon} {r['kind']}: {r['title']} | [`{r['label']}`]({r['file']}) "
             f"| `{r['state']}` | {lean} | {names} |"
         )
+    steps = status.get("frozen_steps", [])
+    if steps:
+        lines += [
+            "",
+            "Frozen statements of proof steps (author-approved anchors; each is a step in the proof "
+            "of the result named, not the result itself):",
+            "",
+            "| Lean statement | Paper A result | Source | State | Step |",
+            "|---|---|---|---|---|",
+        ]
+        for s in steps:
+            lean = f"[`{short(s['lean'])}`](lean/{paths[s['lean']]})"
+            lines.append(f"| {lean} | `{s['supports']}` | {s['source']} | `{s['state']}` | {cell(s['step'])} |")
     lines += [
         "",
         "Each supporting lemma is a conditional statement about a single proof step. "
@@ -670,6 +714,18 @@ def render_verbatim(status: dict, facts: dict) -> str:
             f"`{r['lean']}`, the frozen statement of {r['kind']} {r['number']} (`{r['label']}`), "
             f"verbatim from [{rel}]({rel}); {state}.\n\n```lean\n"
             + frozen_statement(ROOT / rel, short(r["lean"]).split(".")[-1]) + "\n```"
+        )
+    for s in status.get("frozen_steps", []):
+        anchor = next(a for a in facts["anchors"] if a["export"] == s["lean"])
+        rel = "lean/" + anchor["path"]
+        result = next(r for r in status["results"] if r["label"] == s["supports"])
+        state = ("proof in progress: its body is the registered placeholder `by sorry`"
+                 if anchor["state"] == "DRAFT_SORRY" else "proved")
+        parts.append(
+            f"`{s['lean']}`, the frozen statement of a step in the proof of {result['kind']} "
+            f"{result['number']} (`{result['label']}`; {s['source']}), verbatim from [{rel}]({rel}); "
+            f"{state}.\n\n```lean\n" + frozen_statement(ROOT / rel, short(s["lean"]).split(".")[-1])
+            + "\n```"
         )
     for s in [s for s in status["supporting"] if s["headline"]]:
         rel = module_path(facts["module_of"][s["name"]])

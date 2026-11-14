@@ -20,7 +20,7 @@ evidence about the paper as a whole.
 <!-- BEGIN counts -->
 | Source | Errata | Deviations |
 |---|---|---|
-| Paper A | 0 | 8 |
+| Paper A | 0 | 10 |
 <!-- END counts -->
 
 ## Paper A
@@ -41,6 +41,8 @@ None.
 | 6 | Theorem 4.1, proof of (4.2) | Abstract measure, explicit integrability | `positive_measure_comparison`, `canonical_integral_comparison` |
 | 7 | Lemmas 3.1 and 3.2, class of histories | Specialization: piecewise-constant histories (ruling R1(a)) | `PaperA.positivity_and_transfer_annulus`, `PaperA.canonical_fourier_bound`, `PaperA.Step` |
 | 8 | Lemmas 3.1 and 3.2, spatial factor | Generalization: any finite spatial index (ruling R2) | the same |
+| 9 | Theorem 4.1, proof: fermionic integrand | Proof step for piecewise-constant link histories (rulings R5, R6, R8) | `PaperA.wilson_twisted_trace_pos_and_fourier_bound`, `PaperA.latticeShift`, `PaperA.wilsonHopping`, `PaperA.wilsonMass` |
+| 10 | Remark after Lemma 3.1, nonnegative mass | Specialization and generalization as in 7 and 8 (ruling R7) | `PaperA.centeredTrace_nonneg_of_posSemidef_mass` |
 
 1. **Lemma 3.2 (`lem:fourier`), inequality (3.4).** Printed for integers `|q| ≤ d`.
    The Lean bounds hold for every natural number `q`, including `q > d`, where both
@@ -106,7 +108,8 @@ library as helpers. Since 2026-11-12 Lemmas 3.1 and 3.2 are proved as frozen sta
 the spectral pairing with algebraic multiplicities, the exact count, the positivity of the
 centered trace and the Fourier bound for integer `q` are now stated and proved, so deviations
 1, 2, 4 and 5 no longer describe how those results stand in Lean. Deviations 7 and 8 describe
-how the frozen statements differ from the printed lemmas.
+how the frozen statements differ from the printed lemmas; deviations 9 and 10 do the same
+for the frozen proof steps of Theorem 4.1 (rulings of 2026-11-14, DECISIONS.md D16).
 
 7. **Lemmas 3.1 and 3.2 (`lem:transfer`, `lem:fourier`), class of histories.** The
    lemmas allow time-dependent coefficients `v_j(t)`, `M(t)` on the free intervals
@@ -135,6 +138,30 @@ how the frozen statements differ from the printed lemmas.
    paper treats as real, is stated as `Im F_0 = 0` together with `|F_q| ≤ … · Re F_0`
    (ruling R3); this makes the paper's implicit claim explicit and is not a deviation.
 
+9. **Theorem 4.1 (`thm:main`), proof: the fermionic integrand.** The proof uses, for each
+   Brownian-bridge path `ω`, the fermionic factor `e^{−2iΣθ} det(I + uV_ω)` of the twisted
+   trace (4.5), its positivity for `m > 0` (comparison.tex lines 70–72) and the bound
+   `binom(4N, 2N+|Q_ν|) e^{−bm|Q_ν|} F_0` on its `φ`-Fourier coefficients (lines 82–89). The
+   frozen statement `wilson_twisted_trace_pos_and_fourier_bound` states these for finite
+   piecewise-constant link histories (author ruling R5 of 2026-11-14, [DECISIONS.md](DECISIONS.md)
+   D16): link configurations `U_k ∈ U(1)^ℰ` held for durations `τ_k ≥ 0` with `Σ τ_k = b`,
+   without the bridge endpoint conditions, and for every real relative twist `ϑ ∈ ℝ^X` (R6;
+   the paper fixes `ϑ_root = 0`). The fermionic factor is the centered trace of the history
+   followed by the kick `diag(ϑ + φ)`; its identification with the Fock-space trace
+   (`Tr_F Γ(A) = det(I + A)`, `q_x = n_x − 2`) is not formalized (R8). Effect: a proof step of
+   Theorem 4.1 for a special class of paths, not Theorem 4.1 itself, which stays
+   `NOT_STARTED`. The Wilson operator is the literal (2.3): see
+   [`lean/Core/PaperA/Defs/`](../lean/Core/PaperA/Defs).
+
+10. **Remark after Lemma 3.1 (transfer.tex lines 89–91), nonnegative mass.** The remark
+   "the centered trace is then nonnegative but may vanish" is used for `m = 0` in the proof of
+   Theorem 4.1 (comparison.tex lines 98–99). The frozen statement
+   `centeredTrace_nonneg_of_posSemidef_mass` states it in Lemma 3.1's frozen setting (ruling
+   R7): piecewise-constant histories, any finite spatial index, Hermitian kick generators,
+   `M ⪰ 0`, and total free time `b > 0`, which is kept from Lemma 3.1 although the conclusion
+   also holds at `b = 0`. Effect: a specialization as in deviation 7 and a generalization as
+   in deviation 8.
+
 ## How the formal proof route differs
 
 For the Vandermonde step of Lemma 3.2, the paper sums
@@ -153,7 +180,9 @@ a hypothesis.
 
 Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 are proved for
 piecewise-constant histories and any finite spatial index (deviations 7 and 8); their
-time-dependent versions are not formalized. Theorem 4.1 is not formalized as stated; Lemma 2.1, Lemma 4.2, Corollary 4.3,
+time-dependent versions are not formalized. Theorem 4.1 is not formalized as stated (two of its
+finite-dimensional proof steps are frozen, deviations 9 and 10; the finite-CAR identity
+`Tr_F Γ(A) = det(I + A)` is outside the frozen surface by ruling R8); Lemma 2.1, Lemma 4.2, Corollary 4.3,
 Lemma 5.1, Theorem 5.2, Proposition 5.3 and Theorem 5.4 have nothing in Lean.
 Hypothesis (BF) is stated in Paper A and not proved there. Paper B and the companion
 notes are not formalized.

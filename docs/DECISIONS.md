@@ -251,3 +251,50 @@ pins the manifest by SHA-256, so a manifest change fails the graph check.
 - **Route.** The β-form estimate is formalized per free step as two unconditional bounds
   plus a strict drop, which replaces the source's trajectory-sign case split
   (campaign/TASKS.md). The source graph is unchanged.
+
+## D16. Rulings on the finite-dimensional part of Theorem 4.1 (author, 2026-11-14)
+
+The author approved the recommended charge-gap package of 2026-11-14 with the words "okay
+finish with what you think is next", in reply to the request to approve it as recommended.
+The package:
+
+- **Declarations.** D7 `latticeShift`, D8 `wilsonHopping`, D9 `wilsonMass` (model.tex (2.3)),
+  T3 `wilson_twisted_trace_pos_and_fourier_bound` and T4
+  `centeredTrace_nonneg_of_posSemidef_mass` are frozen exactly as audited (archived byte for
+  byte in [`audits/pilot-chargegap/audited-draft-v1.lean.txt`](audits/pilot-chargegap/audited-draft-v1.lean.txt),
+  SHA-256 `e16372fb6560b6336a0eb0c9353936743b2c45d87ad6a6bfe852a84e7d0fa2bc`), each in its own
+  file; the theorems get docstrings. T3 is not split into a positivity and a Fourier statement.
+- **R5 (history class of T3; extends R1(a)).** Theorem 4.1's fermionic integrand is frozen for
+  finite piecewise-constant link histories: a list of pairs `(τ_k, U_k)` with `τ_k ≥ 0`,
+  `U_k : X → Fin 3 → ℂ`, `|U_k(x, j)| = 1` and `Σ_k τ_k = b`. Each pair contributes the free
+  step `exp(−τ_k h_W(U_k))` built from (2.3), and the history ends with the gauge kick
+  `exp(i diag θ ⊗ 1)`. This stands in for the continuous Brownian-bridge paths `ω` of
+  (4.4)–(4.5) (comparison.tex L43–L51, L57–L61, L70–L72). The bridge endpoint conditions
+  `ω_0 = U`, `ω_b = U^u` are not imposed. The passage from step paths to bridge paths
+  (L50–L51) is not formalized.
+- **R6 (record).** In T3 the twist is `θ = ϑ + φ·1` with `ϑ ∈ ℝ^X` unrestricted: no root site
+  with `ϑ_root = 0` and no reduction modulo 2π (L82–L84), a generalization. As in R3, `F̂_0`
+  real is stated as `Im F̂_0 = 0`, with the bound written against `Re F̂_0`.
+- **R7 (scope of R1(a), R2 and R4 for the remark at transfer.tex L89–L91).** The
+  nonnegative-mass remark (T4) is frozen in Lemma 3.1's setting as fixed by R1(a), R2 and R4
+  (piecewise-constant histories, any finite spatial index, Hermitian kick generators), with
+  `M ⪰ 0` for `m_* = 0`. Lemma 3.1's premise `b > 0` (L15) is retained.
+- **R8 (finite-CAR identity outside the frozen surface).** For `thm:main` the centered trace
+  of the twisted Wilson history is taken as the definition of the fermionic integrand
+  `e^{−2iΣθ} det(I + uV_ω)`. The finite-CAR identity `Tr_F Γ(A) = det(I + A)` (comparison.tex
+  L55), the identity `e^{iΣθ_x q_x} = e^{−2iΣθ_x} Γ(u)` and the charge-sector reading of the
+  `φ`-Fourier coefficient stay outside the frozen surface. A Fock-space statement can be
+  drafted later as a separate, separately approved round.
+- **T5 and T6.** `wilson_mass_bound` (model.tex (2.5), L39–L46) and `wilson_gauge_covariance`
+  (model.tex L64–L71) were drafted after audit A's surface findings S2–S3
+  ([`audits/pilot-chargegap/draft-v1b-with-T5-T6.lean.txt`](audits/pilot-chargegap/draft-v1b-with-T5-T6.lean.txt),
+  SHA-256 `f3169e835332bd8f8b4095dcf31370935e5a76de67a8c07967d7f77bd9e5f339`). They are
+  approved on condition that two independent statement audits pass with no EXCESS binder and
+  no new ruling; otherwise they return to the author.
+- **Status.** T3 and T4 are proof-step statements of `thm:main`, not Theorem 4.1, which stays
+  `NOT_STARTED` (audit A, S0). `lean/status.json` lists them under `frozen_steps`.
+
+Two independent statement audits (refute-first, numerical and Lean probes) found D7–D9
+faithful and T3, T4 faithful under these rulings, with no EXCESS binder and no counterexample:
+[`audits/pilot-chargegap/`](audits/pilot-chargegap). The resulting deviations are entries 9 and
+10 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).

@@ -68,8 +68,8 @@
       "state": "NOT_STARTED",
       "lean": null,
       "claim": "`E_ν ≥ E_0 + m |Q_ν|` in every admissible integer source sector; `0 < Z_ν(b) ≤ Z_0(b)`, and the binomial thermal bound (4.2) for `m > 0`; the unrestricted auxiliary ground energy equals `E_0`.",
-      "lean_coverage": "the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation",
-      "outside_lean": "the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0`, and the identification of the auxiliary ground energy with `E_0`."
+      "lean_coverage": "the final integration step behind (4.2), for an abstract positive measure and conditional on a supplied factored representation; two finite-dimensional proof steps have frozen statements, not yet proved (deviations 9 and 10)",
+      "outside_lean": "the compact-rotor heat kernel, the Dyson and Feynman–Kac representation, the twisted trace formula with the finite-CAR identity `Tr_F Γ(A) = det(I + A)` (ruling R8), the passage from step histories to Brownian-bridge paths, the exact gauge projection and the change of torus coordinates that produces `F_{Q_ν}`, the ground-energy limit, the case `m = 0` beyond its frozen nonnegativity step, and the identification of the auxiliary ground energy with `E_0`."
     },
     {
       "label": "lem:green",
@@ -283,6 +283,22 @@
       "supports": "thm:main",
       "step": "The integrated comparison behind (4.2), conditional on a supplied measure, nonnegative prefactor, unit phase, eigenvalue bound and integrability.",
       "headline": true
+    }
+  ],
+  "frozen_steps": [
+    {
+      "lean": "QEDCore.PaperA.wilson_twisted_trace_pos_and_fourier_bound",
+      "supports": "thm:main",
+      "source": "comparison.tex lines 54–91",
+      "state": "FROZEN_UNPROVED",
+      "step": "The twisted fermionic integrand for a piecewise-constant link history (ruling R5): for `m > 0` it is positive, `F_0` is real, and the `Q`-th Fourier coefficient is at most `binom(4N, 2N+|Q|) e^{-bm|Q|} F_0`."
+    },
+    {
+      "lean": "QEDCore.PaperA.centeredTrace_nonneg_of_posSemidef_mass",
+      "supports": "thm:main",
+      "source": "transfer.tex lines 89–91, used at comparison.tex lines 98–99",
+      "state": "FROZEN_UNPROVED",
+      "step": "The remark after Lemma 3.1 (ruling R7): with a positive semidefinite mass the centered trace is real and nonnegative; Theorem 4.1 uses it for `m = 0`."
     }
   ]
 }

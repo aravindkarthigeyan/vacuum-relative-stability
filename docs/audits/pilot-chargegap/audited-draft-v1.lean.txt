@@ -1,0 +1,81 @@
+import Core.PaperA.Defs.CenteredTrace
+import Core.PaperA.Defs.StepFreeTime
+import Mathlib.Data.ZMod.Basic
+import Mathlib.LinearAlgebra.Matrix.PosDef
+import Mathlib.MeasureTheory.Integral.IntervalIntegral.Basic
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+
+/-! TRANSIENT pre-approval elaboration check (draft v1 of the finite-dimensional part of
+Theorem 4.1). Not tracked. Each block below is destined for its own one-declaration file. -/
+
+namespace QEDCore.PaperA
+
+open Matrix
+open scoped Kronecker ComplexOrder
+
+-- D7  Core/PaperA/Defs/LatticeShift.lean
+/-- The link shift `T_j(U)` of Paper A, (2.3): `(T_j(U) f)(x) = conj(U_{x j}) f(x + e_j)` on the
+torus `X = (ℤ/nℤ)³`, where `e_j = Pi.single j 1` and `U_{x j}` is the link variable on the link
+from `x` to `x + e_j`. -/
+def latticeShift (n : ℕ) (U : (Fin 3 → ZMod n) → Fin 3 → ℂ) (j : Fin 3) :
+    Matrix (Fin 3 → ZMod n) (Fin 3 → ZMod n) ℂ :=
+  Matrix.of fun x y => if y = x + Pi.single j 1 then star (U x j) else 0
+
+-- D8  Core/PaperA/Defs/WilsonHopping.lean
+/-- `v_j(U) = (T_j(U) - T_j(U)^*) / (2 i a)` (Paper A, (2.3)). -/
+noncomputable def wilsonHopping (n : ℕ) (a : ℝ) (U : (Fin 3 → ZMod n) → Fin 3 → ℂ) (j : Fin 3) :
+    Matrix (Fin 3 → ZMod n) (Fin 3 → ZMod n) ℂ :=
+  (2 * Complex.I * (a : ℂ))⁻¹ • (latticeShift n U j - (latticeShift n U j)ᴴ)
+
+-- D9  Core/PaperA/Defs/WilsonMass.lean
+/-- The Wilson mass `M(U) = m + (r / 2a) Σ_j (2 - T_j(U) - T_j(U)^*)` (Paper A, (2.3)). -/
+noncomputable def wilsonMass (n : ℕ) (a m r : ℝ) (U : (Fin 3 → ZMod n) → Fin 3 → ℂ) :
+    Matrix (Fin 3 → ZMod n) (Fin 3 → ZMod n) ℂ :=
+  (m : ℂ) • 1 +
+    ((r / (2 * a) : ℝ) : ℂ) • ∑ j, ((2 : ℂ) • 1 - latticeShift n U j - (latticeShift n U j)ᴴ)
+
+-- T3  Frozen/PaperA/WilsonTwistedTraceBound.lean   (thm:main, finite-dimensional integrand)
+theorem wilson_twisted_trace_pos_and_fourier_bound
+    {n : ℕ} [NeZero n] (hn : 3 ≤ n)
+    (α : Fin 3 → Matrix (Fin 4) (Fin 4) ℂ) (β : Matrix (Fin 4) (Fin 4) ℂ)
+    (hα_herm : ∀ j, (α j).IsHermitian) (hβ_herm : β.IsHermitian)
+    (hα_sq : ∀ j, α j * α j = 1) (hβ_sq : β * β = 1)
+    (hα_anti : ∀ j k, j ≠ k → α j * α k + α k * α j = 0)
+    (hαβ_anti : ∀ j, α j * β + β * α j = 0)
+    (a m r : ℝ) (ha : 0 < a) (hm : 0 < m) (hr : 0 ≤ r)
+    (links : List (ℝ × ((Fin 3 → ZMod n) → Fin 3 → ℂ)))
+    (hlinks : ∀ p ∈ links, 0 ≤ p.1 ∧ ∀ x j, ‖p.2 x j‖ = 1)
+    (b : ℝ) (hb : 0 < b) (htime : (links.map Prod.fst).sum = b)
+    (ϑ : (Fin 3 → ZMod n) → ℝ) (Q : ℤ) (hQ : |Q| ≤ 2 * (n : ℤ) ^ 3) :
+    let F : ℝ → ℂ := fun φ => centeredTrace α β
+      (links.map (fun p => Step.free p.1 (wilsonHopping n a p.2) (wilsonMass n a m r p.2)) ++
+        [Step.kick (Matrix.diagonal fun x => ((ϑ x + φ : ℝ) : ℂ))])
+    let Fhat : ℤ → ℂ := fun p =>
+      (2 * Real.pi : ℂ)⁻¹ *
+        ∫ φ in (0 : ℝ)..2 * Real.pi, Complex.exp (-(p * φ * Complex.I)) * F φ
+    (∀ φ : ℝ, 0 < (F φ).re ∧ (F φ).im = 0) ∧ (Fhat 0).im = 0 ∧
+      ‖Fhat Q‖ ≤ ((4 * n ^ 3).choose (2 * n ^ 3 + Q.natAbs) : ℝ) *
+        Real.exp (-(b * m * |(Q : ℝ)|)) * (Fhat 0).re := by
+  sorry
+
+-- T4  Frozen/PaperA/CenteredTraceNonneg.lean   (transfer.tex L89-L91, used for m = 0)
+theorem centeredTrace_nonneg_of_posSemidef_mass
+    {ι : Type*} [Fintype ι] [DecidableEq ι]
+    (α : Fin 3 → Matrix (Fin 4) (Fin 4) ℂ) (β : Matrix (Fin 4) (Fin 4) ℂ)
+    (hα_herm : ∀ j, (α j).IsHermitian) (hβ_herm : β.IsHermitian)
+    (hα_sq : ∀ j, α j * α j = 1) (hβ_sq : β * β = 1)
+    (hα_anti : ∀ j k, j ≠ k → α j * α k + α k * α j = 0)
+    (hαβ_anti : ∀ j, α j * β + β * α j = 0)
+    (b : ℝ) (hb : 0 < b) (hist : List (Step ι))
+    (hfree : ∀ τ v M, Step.free τ v M ∈ hist →
+      0 ≤ τ ∧ (∀ j, (v j).IsHermitian) ∧ M.PosSemidef)
+    (hkick : ∀ Θ, Step.kick Θ ∈ hist → Θ.IsHermitian)
+    (htime : (hist.map Step.freeTime).sum = b) :
+    (centeredTrace α β hist).im = 0 ∧ 0 ≤ (centeredTrace α β hist).re := by
+  sorry
+
+end QEDCore.PaperA
+
+#check @QEDCore.PaperA.wilson_twisted_trace_pos_and_fourier_bound
+#check @QEDCore.PaperA.centeredTrace_nonneg_of_posSemidef_mass
+#print QEDCore.PaperA.wilsonMass
