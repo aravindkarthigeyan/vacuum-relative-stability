@@ -127,10 +127,11 @@ two, each covering T3–T6, both passing with no BLOCKING or MINOR finding
 
 ## Follow-ups from the wave 3 seal audits (non-blocking)
 
-- `scripts/check_frozen_anchors.py` enforces the provider import quarantine only for
-  `DRAFT_SORRY` anchors; the rule that providers reach other results through sealed anchors,
-  never through other providers, was checked by hand (audit 2, X-N1). A guard for it would
-  make the check mechanical.
+- Done 2026-11-14 (audit 2, X-N1): the rule that providers reach other results through sealed
+  anchors, never through other providers, is now mechanical. `scripts/check_frozen_anchors.py`
+  (adaptation 6) rejects a direct import of a sealed anchor's provider, or its export name,
+  outside that anchor; the axiom audit rejects any declaration whose elaborated term names a
+  provider export other than its own anchor (D12).
 - The checker confirms that a seal body passes binder names, not their order or count; audit 1
   verified both by hand.
 - `latticeShift_mul_conjTranspose_self` (Wilson/Shift) is unused by every provider; keep it as

@@ -31,7 +31,12 @@ The audit fails, with a Lean error and exit code 1, if
   `frozen-manifest.json` registers as a `DRAFT_SORRY` anchor may also depend on
   `sorryAx`. Anything that uses such a theorem inherits `sorryAx` and fails;
 * the manifest names an anchor that is not an audited declaration;
-* any project module declares an axiom of its own, or
+* any project module declares an axiom of its own,
+* the type or value of an audited declaration names the provider export of a manifest
+  theorem anchor (its `implementation.export`), unless the declaration is that anchor or
+  one of its auxiliary declarations: every other result reaches a provider's theorem only
+  through its frozen anchor, never by the provider name (a later provider written inside
+  `namespace QEDCore.PaperA.Provider` could otherwise resolve a short name to it), or
 * a library root listed in `projectRoots` contributes no declarations.
 
 The frozen statements are imported above; this file is on their quarantine allowlist
@@ -89,6 +94,29 @@ def readManifest : IO (Array Name × Array Name) := do
       drafts := drafts.push exportName.toName
   return (all, drafts)
 
+/-- The pairs (anchor export, provider export) of the manifest's theorem anchors. -/
+def readProviders : IO (Array (Name × Name)) := do
+  unless ← manifestPath.pathExists do
+    return #[]
+  let json ← IO.ofExcept (Json.parse (← IO.FS.readFile manifestPath))
+  let anchors ← IO.ofExcept (json.getObjValAs? (Array Json) "anchors")
+  let mut pairs := #[]
+  for a in anchors do
+    let kind ← IO.ofExcept (a.getObjValAs? String "kind")
+    if kind == "theorem" then
+      let exportName ← IO.ofExcept (a.getObjValAs? String "export")
+      let impl ← IO.ofExcept (a.getObjValAs? Json "implementation")
+      let provider ← IO.ofExcept (impl.getObjValAs? String "export")
+      pairs := pairs.push (exportName.toName, provider.toName)
+  return pairs
+
+/-- The constants named in a declaration's type and value. -/
+def usedConstants (c : ConstantInfo) : Array Name :=
+  let fromValue := match c.value? (allowOpaque := true) with
+    | some v => v.getUsedConstants
+    | none => #[]
+  c.type.getUsedConstants ++ fromValue
+
 /-- The elaborated signature of an anchor, whose hash the manifest pins. -/
 def abiString (env : Environment) (n : Name) : Option String :=
   match env.find? n with
@@ -106,6 +134,7 @@ run_cmd do
   let env ← getEnv
   let header := env.header
   let (anchors, drafts) ← liftIO readManifest
+  let providers ← liftIO readProviders
   let mut modules : Array String := #[]
   let mut audited : Array (Name × Name × ConstantInfo) := #[]
   for h : i in [0:header.moduleNames.size] do
@@ -143,6 +172,14 @@ run_cmd do
       violations := violations.push <| Json.mkObj
         [("declaration", n.toString), ("module", m.toString),
          ("axioms", strArray (bad.map toString))]
+    for (anchor, provider) in providers do
+      if (usedConstants c).contains provider &&
+          !(anchor.isPrefixOf n || provider.isPrefixOf n) then
+        logError (m!"{n} (module {m}) names the provider {provider} " ++
+          m!"of the frozen anchor {anchor}; use the anchor instead")
+        violations := violations.push <| Json.mkObj
+          [("declaration", n.toString), ("module", m.toString),
+           ("reason", s!"names provider {provider} outside its anchor {anchor}")]
     unless n.isInternalDetail do
       match c with
       | .thmInfo _ =>

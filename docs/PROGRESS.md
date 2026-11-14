@@ -103,6 +103,10 @@ remaining steps are outside the finite-dimensional scope).**
   3.1/3.2 only through their sealed anchors, numerical spot checks). Both PASS with no
   BLOCKING or MINOR finding; `frozen_steps` AUDITED. Non-blocking follow-ups are in
   [`campaign/TASKS.md`](campaign/TASKS.md).
+- 2026-11-14: the provider rule is mechanical (audit 2, X-N1): the anchor guard rejects a
+  direct import or name of a sealed anchor's provider outside that anchor (adaptation 6), and
+  the axiom audit rejects any declaration whose elaborated term names a provider export other
+  than its own anchor. Both mutation-tested (D12).
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

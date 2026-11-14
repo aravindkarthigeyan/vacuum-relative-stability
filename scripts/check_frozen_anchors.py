@@ -4,7 +4,7 @@
 This tool verifies supplied baselines only.  It deliberately has no update,
 accept, or rebaseline command: an author-approved successor is external work.
 
-Repository copy of the `lean-orchestrator` skill's checker, with five local
+Repository copy of the `lean-orchestrator` skill's checker, with six local
 adaptations recorded in docs/DECISIONS.md (D12):
 
 1. `project_files` skips `.lake*` build directories and the retired, git-ignored
@@ -21,6 +21,11 @@ adaptations recorded in docs/DECISIONS.md (D12):
    binder names (`by exact Provider.result α β h₁ h₂ ...`), and to nothing else,
    because the frozen theorems bind their hypotheses before the colon. A provider
    that needs any extra premise therefore cannot be sealed.
+6. A SEALED anchor's provider module may be imported directly only by the anchor's
+   frozen file, and its provider export may be named only there and in the provider
+   itself. Every other module, including a later provider, reaches the result through
+   the sealed anchor. (The axiom audit checks the same rule on elaborated terms, which
+   also catches a short name resolved inside `namespace ...Provider`.)
 
 Usage (from the repository root):
 
@@ -290,6 +295,7 @@ class Guard:
         self.check_split_groups(anchors)
         self.check_import_graph(modules, parsed)
         self.check_draft_quarantine(parsed)
+        self.check_sealed_provider_imports(parsed)
         self.check_all_sorries()
         self.check_forbidden_axioms_constants()
 
@@ -645,6 +651,26 @@ class Guard:
                         self.fail(f"{anchor['id']}: DRAFT provider imported directly or transitively outside its provider and frozen anchor: {path.relative_to(self.root)}")
                     if provider_token.search(code):
                         self.fail(f"{anchor['id']}: DRAFT provider export used outside its provider and frozen anchor: {path.relative_to(self.root)}")
+
+    def check_sealed_provider_imports(self, parsed: list[tuple[dict[str, Any], Path, Path | None]]) -> None:
+        """Adaptation 6: a sealed anchor's provider is reached only through the anchor."""
+        files = self.project_files()
+        for anchor, frozen, implementation in parsed:
+            if anchor.get("kind") != "theorem" or anchor.get("state") != "SEALED" or implementation is None:
+                continue
+            data = anchor.get("implementation", {})
+            provider_module, provider_export = data.get("module", ""), data.get("export", "")
+            token = re.compile(
+                r"(?<![A-Za-z0-9_.])" + re.escape(provider_export) + r"(?![A-Za-z0-9_.])")
+            approved = {frozen.resolve(), implementation.resolve()}
+            for path in files:
+                if path.resolve() in approved:
+                    continue
+                label = path.relative_to(self.root)
+                if provider_module in self.imports(path):
+                    self.fail(f"{anchor['id']}: SEALED provider module imported directly outside its frozen anchor (import the anchor instead): {label}")
+                if token.search(self.code_mask(self.read_utf8(path))):
+                    self.fail(f"{anchor['id']}: SEALED provider export named outside its provider and frozen anchor: {label}")
 
     def comparator_challenges(self) -> set[Path]:
         """The Challenge file named by the `challenge_module` of each tracked `comparator.json`.
