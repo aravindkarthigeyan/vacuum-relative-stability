@@ -20,7 +20,7 @@ evidence about the paper as a whole.
 <!-- BEGIN counts -->
 | Source | Errata | Deviations |
 |---|---|---|
-| Paper A | 0 | 10 |
+| Paper A | 0 | 11 |
 <!-- END counts -->
 
 ## Paper A
@@ -43,6 +43,7 @@ None.
 | 8 | Lemmas 3.1 and 3.2, spatial factor | Generalization: any finite spatial index (ruling R2) | the same |
 | 9 | Theorem 4.1, proof: fermionic integrand | Proof step for piecewise-constant link histories (rulings R5, R6, R8) | `PaperA.wilson_twisted_trace_pos_and_fourier_bound`, `PaperA.latticeShift`, `PaperA.wilsonHopping`, `PaperA.wilsonMass` |
 | 10 | Remark after Lemma 3.1, nonnegative mass | Specialization and generalization as in 7 and 8 (ruling R7) | `PaperA.centeredTrace_nonneg_of_posSemidef_mass` |
+| 11 | Model, (2.5) and gauge covariance | Norm bound as two semidefinite inequalities; covariance with fewer premises | `PaperA.wilson_mass_bound`, `PaperA.wilson_gauge_covariance` |
 
 1. **Lemma 3.2 (`lem:fourier`), inequality (3.4).** Printed for integers `|q| ≤ d`.
    The Lean bounds hold for every natural number `q`, including `q > d`, where both
@@ -162,6 +163,15 @@ for the frozen proof steps of Theorem 4.1 (rulings of 2026-11-14, DECISIONS.md D
    also holds at `b = 0`. Effect: a specialization as in deviation 7 and a generalization as
    in deviation 8.
 
+11. **Model section (model.tex lines 39–46 and 64–71), the mass bound (2.5) and gauge
+   covariance.** `wilson_mass_bound` states `‖h_W(U)‖ ≤ h_*` as `h_* • 1 − h_W(U) ⪰ 0` and
+   `h_* • 1 + h_W(U) ⪰ 0`, which for the Hermitian `h_W(U)` is the operator-norm bound, so no
+   matrix norm is chosen; this is not a change of content. `wilson_gauge_covariance` states
+   `h_W(U^u) = u^* h_W(U) u` for every link field `U` and parameters `a, m, r`, without the
+   Clifford relations, `|U_{xj}| = 1` or the sign conditions, assuming only `|u_x| = 1`.
+   Effect: a harmless generalization, as in deviation 8; the source statement is an instance
+   (both statement audits of 2026-11-14 checked this).
+
 ## How the formal proof route differs
 
 For the Vandermonde step of Lemma 3.2, the paper sums
@@ -180,8 +190,8 @@ a hypothesis.
 
 Everything in Paper A other than the steps above. Lemmas 3.1 and 3.2 are proved for
 piecewise-constant histories and any finite spatial index (deviations 7 and 8); their
-time-dependent versions are not formalized. Theorem 4.1 is not formalized as stated (two of its
-finite-dimensional proof steps are frozen, deviations 9 and 10; the finite-CAR identity
+time-dependent versions are not formalized. Theorem 4.1 is not formalized as stated (four of its
+finite-dimensional proof steps are frozen, deviations 9–11; the finite-CAR identity
 `Tr_F Γ(A) = det(I + A)` is outside the frozen surface by ruling R8); Lemma 2.1, Lemma 4.2, Corollary 4.3,
 Lemma 5.1, Theorem 5.2, Proposition 5.3 and Theorem 5.4 have nothing in Lean.
 Hypothesis (BF) is stated in Paper A and not proved there. Paper B and the companion

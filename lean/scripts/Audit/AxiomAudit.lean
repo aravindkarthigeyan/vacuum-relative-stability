@@ -7,6 +7,8 @@ import Frozen.PaperA.PositivityAndTransferAnnulus
 import Frozen.PaperA.CanonicalFourierBound
 import Frozen.PaperA.WilsonTwistedTraceBound
 import Frozen.PaperA.CenteredTraceNonneg
+import Frozen.PaperA.WilsonMassBound
+import Frozen.PaperA.WilsonGaugeCovariance
 import Lean
 
 /-!

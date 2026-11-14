@@ -69,12 +69,16 @@ frozen (DRAFT_SORRY, 2026-11-14), their dependency graph (step 3) is next.**
   `status.json` lists T3 and T4 under the new `frozen_steps` (they are proof steps, so
   `thm:main` stays NOT_STARTED); `update_readme.py` checks and renders that list. The graph
   is only re-pinned to the new manifest; it does not cover T3/T4 yet.
-- In progress: two independent statement audits of T5 `wilson_mass_bound` (model.tex (2.5))
-  and T6 `wilson_gauge_covariance` (model.tex L71), reports
-  `audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_{A,B}.md`. Approved on condition that both pass
-  with no EXCESS binder and no new ruling (D16); then freeze them like T3/T4.
-- Next: step 3 for `thm:main`'s frozen steps (graph roots T3–T6, corpus comparison.tex
-  L54–L99, model.tex (2.3), (2.5), L64–L71, transfer.tex L89–L91), then step 4 workers.
+- 2026-11-14: T5 `wilson_mass_bound` (model.tex (2.5)) and T6 `wilson_gauge_covariance`
+  (model.tex L64–L71) passed two independent statement audits
+  (`audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_{A,B}.md`; no EXCESS, no ruling; the (2.5)
+  constant is attained) and are frozen as DRAFT_SORRY anchors `eq_mass_bound_v1`,
+  `gauge_covariance_v1` (D16 condition met; deviation 11). Four DRAFT_SORRY anchors in all.
+- In progress: graph writer 2 extends the dependency graph to the four new roots; fresh
+  topology reviewers and a global reviewer follow. The CI graph gate fails until the graph is
+  re-pinned to the current manifest, so nothing is pushed in between.
+- Next: after the graph reviews, step 4 workers for T3–T6 (T5 and T6 are routine lattice
+  algebra; T3 composes the sealed Lemmas 3.1 and 3.2 with T5; T4 is a limit of Lemma 3.1).
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,
@@ -127,7 +131,7 @@ SEALED_THIS_TURN: 0
    positivity of the centered trace along the homotopy. Lemma 3.2's provider must not
    import Lemma 3.1's quarantined provider; shared results go in ordinary modules.
 2. The finite-dimensional part of `thm:main`: T3, T4 frozen 2026-11-14 (see "Current state");
-   T5, T6 under audit; then the graph and the proofs.
+   T5, T6 frozen the same day; then the graph and the proofs.
 
 ## Source gaps of the graph (21; no erratum)
 

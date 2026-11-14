@@ -290,7 +290,12 @@ The package:
   ([`audits/pilot-chargegap/draft-v1b-with-T5-T6.lean.txt`](audits/pilot-chargegap/draft-v1b-with-T5-T6.lean.txt),
   SHA-256 `f3169e835332bd8f8b4095dcf31370935e5a76de67a8c07967d7f77bd9e5f339`). They are
   approved on condition that two independent statement audits pass with no EXCESS binder and
-  no new ruling; otherwise they return to the author.
+  no new ruling; otherwise they return to the author. Both audits passed on 2026-11-14
+  ([`audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_A.md`](audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_A.md),
+  [`…_B.md`](audits/pilot-chargegap/STATEMENT_AUDIT_T5T6_B.md)): no EXCESS binder, no ruling
+  needed, no counterexample, and the constant of (2.5) is attained (n = 4, π-flux links,
+  m = r = 0), so the non-strict form is the true one. T5 and T6 are frozen as
+  `eq_mass_bound_v1` and `gauge_covariance_v1` (deviation 11 records T6's generalization).
 - **Status.** T3 and T4 are proof-step statements of `thm:main`, not Theorem 4.1, which stays
   `NOT_STARTED` (audit A, S0). `lean/status.json` lists them under `frozen_steps`.
 

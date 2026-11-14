@@ -588,6 +588,120 @@
           "scripts/Audit/AxiomAudit.lean"
         ]
       }
+    },
+    {
+      "id": "eq_mass_bound_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/model.tex:39-46"
+      },
+      "contract": {
+        "id": "paper-a.eq:mass-bound",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/WilsonMassBound.lean",
+      "export": "QEDCore.PaperA.wilson_mass_bound",
+      "implementation": {
+        "module": "Core.PaperA.Provider.WilsonMassBound",
+        "export": "QEDCore.PaperA.Provider.wilson_mass_bound"
+      },
+      "split_policy": {
+        "source_group": "paper-a.eq:mass-bound",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "218a74588ce44905592eaf7ad7850a4e9fc3618f39a40435f3af38a6e1343880",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/LatticeShift.lean",
+          "sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonHopping.lean",
+          "sha256": "c1e00e4976e3dd67ffc29ecea0432ea868392ad1bea9a0ea8a802f8ebc328e32"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonMass.lean",
+          "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "84412720976eada1b2bcfa0b025710118c80f1d335ddd9084cdb3afa94a98fb4",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
+    },
+    {
+      "id": "gauge_covariance_v1",
+      "kind": "theorem",
+      "author_approval": {
+        "approved_by": "Aravind Karthigeyan",
+        "approved_at": "2026-11-14",
+        "approval_ref": "docs/DECISIONS.md#d16",
+        "approval_version": "1"
+      },
+      "source": {
+        "revision": "paper-a/model.tex@sha256:2464b16fd9bbedce20aaf07991b2bfb7b9f24b922166d049c8f4d379dcdd961e",
+        "range": "paper-a/model.tex:64-71"
+      },
+      "contract": {
+        "id": "paper-a.model.gauge-covariance",
+        "version": "1"
+      },
+      "path": "Frozen/PaperA/WilsonGaugeCovariance.lean",
+      "export": "QEDCore.PaperA.wilson_gauge_covariance",
+      "implementation": {
+        "module": "Core.PaperA.Provider.WilsonGaugeCovariance",
+        "export": "QEDCore.PaperA.Provider.wilson_gauge_covariance"
+      },
+      "split_policy": {
+        "source_group": "paper-a.model.gauge-covariance",
+        "mode": "NOT_SPLIT",
+        "ruling_ref": "docs/DECISIONS.md#d16"
+      },
+      "abi_sha256": "a9c88dba21a22f42a995d0324d6f025daec649649709fa10ded792094271864b",
+      "definition_closure": [
+        {
+          "path": "Core/PaperA/Defs/DiracOperator.lean",
+          "sha256": "75ec4f635a0872f7bb25cfb593a07e3674fdd5e87d142780bac8fe01cd8caf68"
+        },
+        {
+          "path": "Core/PaperA/Defs/LatticeShift.lean",
+          "sha256": "463f6cc0139c53351263f08752b018c3e0454dbede475e72f80331493722aa67"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonHopping.lean",
+          "sha256": "c1e00e4976e3dd67ffc29ecea0432ea868392ad1bea9a0ea8a802f8ebc328e32"
+        },
+        {
+          "path": "Core/PaperA/Defs/WilsonMass.lean",
+          "sha256": "6255fe3f51c8339b950ea578d673d4701d98fdabe3aab6a2c1829035fddaafb4"
+        }
+      ],
+      "state": "DRAFT_SORRY",
+      "prefix_sha256": "45a8dcb2a0be2d040aab52aee7320b7e215c288f0aedaa9e57885909c6dce1b9",
+      "suffix_sha256": "a76b93d165dbe18cb2e511588d18edbea48f51c3b0ebc1f430f611de2436f9aa",
+      "draft_allowlist": {
+        "frozen_paths": [],
+        "audit_paths": [
+          "scripts/Audit/AxiomAudit.lean"
+        ]
+      }
     }
   ]
 }

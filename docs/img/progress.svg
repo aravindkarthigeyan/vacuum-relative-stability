@@ -9,14 +9,14 @@
 <rect x="124.0" y="40" width="52.0" height="16" fill="#bf8700"><title>1: supporting</title></rect>
 </g>
 <text x="554" y="53">2/10 proved</text>
-<text x="20" y="82" font-weight="600">Frozen theorem statements (4)</text>
+<text x="20" y="82" font-weight="600">Frozen theorem statements (6)</text>
 <clipPath id="bar1"><rect x="20" y="90" width="520" height="16" rx="4"/></clipPath>
 <g clip-path="url(#bar1)">
 <rect x="20" y="90" width="520" height="16" fill="#d0d7de"/>
-<rect x="20.0" y="90" width="260.0" height="16" fill="#1a7f37"><title>2: proved</title></rect>
-<rect x="280.0" y="90" width="260.0" height="16" fill="#0969da"><title>2: frozen</title></rect>
+<rect x="20.0" y="90" width="173.3" height="16" fill="#1a7f37"><title>2: proved</title></rect>
+<rect x="193.3" y="90" width="346.7" height="16" fill="#0969da"><title>4: frozen</title></rect>
 </g>
-<text x="554" y="103">2/4 proved</text>
+<text x="554" y="103">2/6 proved</text>
 <rect x="20" y="130" width="11" height="11" rx="2" fill="#1a7f37"/>
 <text x="36" y="140" font-size="12" fill="#59636e">proved in Lean</text>
 <rect x="141" y="130" width="11" height="11" rx="2" fill="#0969da"/>
