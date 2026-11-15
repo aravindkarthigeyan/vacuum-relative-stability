@@ -107,6 +107,9 @@ remaining steps are outside the finite-dimensional scope).**
   direct import or name of a sealed anchor's provider outside that anchor (adaptation 6), and
   the axiom audit rejects any declaration whose elaborated term names a provider export other
   than its own anchor. Both mutation-tested (D12).
+- 2026-11-14: the seal rule checks argument order and count (audit 1 follow-up): a seal body
+  must pass exactly the anchor's explicit binder names, each once, in declaration order
+  (adaptation 5, mutation-tested, D12). All six seals already did.
 - Landing procedure while workers write into the same checkout: stage only finished
   files, export the index with `git checkout-index -a --prefix=<tmp>/`, copy
   `lean/.lake/axiom-audit.json` into it, and run `update_readme.py`,

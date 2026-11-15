@@ -132,8 +132,9 @@ two, each covering T3–T6, both passing with no BLOCKING or MINOR finding
   (adaptation 6) rejects a direct import of a sealed anchor's provider, or its export name,
   outside that anchor; the axiom audit rejects any declaration whose elaborated term names a
   provider export other than its own anchor (D12).
-- The checker confirms that a seal body passes binder names, not their order or count; audit 1
-  verified both by hand.
+- Done 2026-11-14 (audit 1): the checker now requires a seal body to pass exactly the anchor's
+  explicit binder names, each once, in declaration order (adaptation 5, D12); audit 1 had
+  verified order and count by hand.
 - `latticeShift_mul_conjTranspose_self` (Wilson/Shift) is unused by every provider; keep it as
   the second half of the graph node `eq:mass-bound#shift-unitary`.
 

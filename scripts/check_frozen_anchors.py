@@ -17,10 +17,11 @@ adaptations recorded in docs/DECISIONS.md (D12):
    provider export, and nothing may import the allowlisted file.
 4. Definition-closure paths are compared in POSIX form, so the check gives the
    same result on Windows as on Linux.
-5. A SEALED body may apply the provider export to the frozen declaration's own
-   binder names (`by exact Provider.result α β h₁ h₂ ...`), and to nothing else,
-   because the frozen theorems bind their hypotheses before the colon. A provider
-   that needs any extra premise therefore cannot be sealed.
+5. A SEALED body may apply the provider export to the frozen declaration's
+   explicit binder names (`by exact Provider.result α β h₁ h₂ ...`), each exactly
+   once and in declaration order, and to nothing else, because the frozen theorems
+   bind their hypotheses before the colon. Implicit and instance binders are not
+   passed. A provider that needs any extra premise therefore cannot be sealed.
 6. A SEALED anchor's provider module may be imported directly only by the anchor's
    frozen file, and its provider export may be named only there and in the provider
    itself. Every other module, including a later provider, reaches the result through
@@ -473,34 +474,41 @@ class Guard:
             implementation = anchor.get("implementation")
             export = implementation.get("export") if isinstance(implementation, dict) else None
             escaped = re.escape(export) if isinstance(export, str) else r"(?!)"
-            # Local adaptation 5: the export may be applied to the frozen declaration's own
-            # binder names (and nothing else), since frozen theorems bind their hypotheses
-            # before the colon.
-            binders = self.binder_names(text[:body_start])
+            # Local adaptation 5: the export is applied to the frozen declaration's explicit
+            # binder names, each exactly once and in declaration order, and to nothing else,
+            # since frozen theorems bind their hypotheses before the colon.
+            explicit = self.explicit_binder_names(text[:body_start])
             match = re.fullmatch(r"\s*by\s+(?:exact\s+|simpa\s+using\s+)" + escaped + r"((?:\s+\S+)*)\s*", body)
-            if match is None or any(arg not in binders for arg in match.group(1).split()):
+            if explicit is None:
+                self.fail(f"{label}: cannot read the frozen declaration's explicit binders "
+                          "(an unnamed or untyped explicit binder cannot be passed by a seal)")
+            elif match is None or match.group(1).split() != explicit:
                 self.fail(f"{label}: SEALED body must be trivial assembly of exactly implementation.export "
-                          "applied only to the frozen declaration's own binder names")
+                          "applied to the frozen declaration's explicit binder names, each once, in "
+                          f"declaration order: {' '.join(explicit) or '(no arguments)'}")
             lines = 0 if not body.strip() else body.strip().count("\n") + 1
             if lines > limits["max_body_lines"] or len(body.encode("utf-8")) > limits["max_body_bytes"]:
                 self.fail(f"{label}: SEALED body exceeds configured short assembly limits")
         return body_start, body_end
 
-    def binder_names(self, prefix: str) -> set[str]:
-        """Names bound by the top-level binder groups of the last declaration header.
+    def explicit_binder_names(self, prefix: str) -> list[str] | None:
+        """Names of the explicit `( )` binders of the last declaration header, in order.
 
         Scans from the declaration name over consecutive `( )`, `{ }`, `[ ]`, `⦃ ⦄`
         groups at bracket depth 0 and stops at the colon that starts the conclusion, so
         names bound inside the conclusion (`let`, `fun`, casts) are not collected.
+        Implicit, strict-implicit and instance binders are skipped: a seal never passes
+        them. Returns None (fail closed) when an explicit group has no top-level colon or
+        binds a token that is not a plain name, such as `_`.
         """
         code = self.code_mask(prefix)
         match = None
         for match in re.finditer(r"(?:theorem|lemma)\s+\S+", code):
             pass
         if match is None:
-            return set()
+            return None
         opening, closing = "([{⦃", ")]}⦄"
-        names: set[str] = set()
+        names: list[str] = []
         index, size = match.end(), len(code)
         while index < size:
             while index < size and code[index].isspace():
@@ -516,8 +524,10 @@ class Guard:
                     if depth == 0:
                         break
                 index += 1
-            group = code[start + 1:index]
+            bracket, group = code[start], code[start + 1:index]
             index += 1
+            if bracket != "(":
+                continue
             depth, colon = 0, -1
             for position, char in enumerate(group):
                 if char in opening:
@@ -527,9 +537,11 @@ class Guard:
                 elif char == ":" and depth == 0:
                     colon = position
                     break
-            if colon > 0:
-                names.update(token for token in group[:colon].split()
-                             if re.fullmatch(r"[^\W\d][\w'!?₀-₉]*", token))
+            tokens = group[:colon].split() if colon > 0 else []
+            if not tokens or any(token == "_" or not re.fullmatch(r"[^\W\d][\w'!?₀-₉]*", token)
+                                 for token in tokens):
+                return None
+            names.extend(tokens)
         return names
 
     def check_declaration(self, anchor: dict[str, Any], label: str, text: str, kind: str) -> None:

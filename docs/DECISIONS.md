@@ -181,7 +181,9 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
   definition anchor, lets an allowlisted audit file reach a draft's provider through
   the draft's own import, compares paths in POSIX form, and lets a sealed body apply the
   provider to the frozen declaration's own top-level binder names and nothing else, since
-  the frozen theorems bind their hypotheses before the colon, and, added 2026-11-14 after
+  the frozen theorems bind their hypotheses before the colon (tightened 2026-11-14: exactly
+  the explicit `( )` binder names, each once, in declaration order; implicit and instance
+  binders are not passed, and an unnamed explicit binder fails closed), and, added 2026-11-14 after
   the T3–T6 seal audits, lets a sealed anchor's provider module be imported directly, and its
   export named, only by that anchor, so that later providers consume sealed results through
   their anchors) verifies every frozen
@@ -201,7 +203,10 @@ entries 7 and 8 in [ERRATA-AND-DEVIATIONS.md](ERRATA-AND-DEVIATIONS.md).
   `namespace QEDCore.PaperA.Provider` passes the text check, so the axiom audit now also
   rejects any declaration whose elaborated type or value names a manifest provider export,
   other than that provider's own anchor; a scratch module doing exactly that failed the
-  audit.
+  audit. The tightened seal rule was mutation-tested the same day on a scratch copy of the
+  T5 seal: swapped arguments (`m a r`), reordered hypotheses, a dropped or repeated argument,
+  an implicit binder passed, no arguments, and an unnamed explicit binder in the anchor each
+  fail it, while the same arguments reflowed over three lines, or under `simpa using`, pass.
 - **Module system.** The frozen files follow D3 (no module system), so the checker
   runs with `--allow-non-module`. A later port moves their bytes and must be recorded
   as a semantics-neutral hash change.
